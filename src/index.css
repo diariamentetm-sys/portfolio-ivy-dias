@@ -98,7 +98,20 @@
   }
 
   .input-field {
-    @apply w-full px-4 py-3.5 rounded-lg border border-neutral-200 bg-white outline-none transition-colors focus:border-accent;
+    @apply w-full px-4 py-3.5 rounded-lg border border-neutral-200 outline-none transition-colors focus:border-accent text-neutral-950;
+    background-color: #efefef;
+    color: #0a0a0a;
+    -webkit-text-fill-color: #0a0a0a;
+    caret-color: #0a0a0a;
+  }
+
+  .input-field::placeholder {
+    color: #6b6b6b;
+    -webkit-text-fill-color: #6b6b6b;
+  }
+
+  .section-inverted .card {
+    @apply text-neutral-950;
   }
 
   .stat-value {
