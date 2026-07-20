@@ -26,6 +26,7 @@ export type ProjectLocaleContent = {
     kicker: string;
     title: string;
     body: string;
+    images?: { src: string; alt?: string }[];
   }[];
 };
 
@@ -69,6 +70,7 @@ export function emptyProjectLocale(): ProjectLocaleContent {
         kicker: "Context",
         title: "Challenge",
         body: "",
+        images: [],
       },
     ],
   };

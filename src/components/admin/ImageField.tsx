@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { uploadPortfolioImage } from "../../lib/uploadImage";
 
 type ImageFieldProps = {
@@ -10,6 +10,10 @@ type ImageFieldProps = {
   uploadLabel: string;
   uploadingLabel: string;
   urlLabel: string;
+  /** When true, URL is committed only via Add button / Enter (for galleries). */
+  appendMode?: boolean;
+  addUrlLabel?: string;
+  hideEmptyPreview?: boolean;
 };
 
 export function ImageField({
@@ -21,10 +25,14 @@ export function ImageField({
   uploadLabel,
   uploadingLabel,
   urlLabel,
+  appendMode = false,
+  addUrlLabel = "Add URL",
+  hideEmptyPreview = false,
 }: ImageFieldProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState("");
+  const [draftUrl, setDraftUrl] = useState("");
 
   async function handleFile(file: File | undefined) {
     if (!file) return;
@@ -37,25 +45,38 @@ export function ImageField({
       return;
     }
     onChange(result.url);
+    if (appendMode) setDraftUrl("");
   }
+
+  function commitDraftUrl(event?: FormEvent) {
+    event?.preventDefault();
+    const next = draftUrl.trim();
+    if (!next) return;
+    onChange(next);
+    setDraftUrl("");
+  }
+
+  const showPreview = Boolean(value) || !hideEmptyPreview;
 
   return (
     <div className="flex flex-col gap-3">
-      <span className="eyebrow">{label}</span>
+      <span className="text-sm font-semibold text-neutral-950">{label}</span>
 
-      {value ? (
-        <img
-          src={value}
-          alt=""
-          className={`${previewClassName} border border-neutral-200 bg-neutral-100`}
-        />
-      ) : (
-        <div
-          className={`${previewClassName} border border-dashed border-neutral-300 bg-neutral-100 flex items-center justify-center text-sm text-neutral-500`}
-        >
-          No image
-        </div>
-      )}
+      {showPreview ? (
+        value ? (
+          <img
+            src={value}
+            alt=""
+            className={`${previewClassName} border border-neutral-200 bg-neutral-100`}
+          />
+        ) : (
+          <div
+            className={`${previewClassName} border border-dashed border-neutral-300 bg-neutral-100 flex items-center justify-center text-sm text-neutral-500`}
+          >
+            No image
+          </div>
+        )
+      ) : null}
 
       <div className="flex flex-wrap gap-2">
         <button
@@ -81,15 +102,36 @@ export function ImageField({
 
       {error && <p className="text-sm text-error">{error}</p>}
 
-      <label className="flex flex-col gap-2">
-        <span className="eyebrow">{urlLabel}</span>
-        <input
-          className="input-field"
-          value={value}
-          onChange={(event) => onChange(event.target.value)}
-          placeholder="https://…"
-        />
-      </label>
+      {appendMode ? (
+        <form onSubmit={commitDraftUrl} className="flex flex-col gap-2">
+          <span className="text-xs text-neutral-500">{urlLabel}</span>
+          <div className="flex flex-wrap gap-2">
+            <input
+              className="input-field flex-1 min-w-[12rem]"
+              value={draftUrl}
+              onChange={(event) => setDraftUrl(event.target.value)}
+              placeholder="https://…"
+            />
+            <button
+              type="submit"
+              className="btn-ghost px-4 py-2 text-sm"
+              disabled={!draftUrl.trim()}
+            >
+              {addUrlLabel}
+            </button>
+          </div>
+        </form>
+      ) : (
+        <label className="flex flex-col gap-2">
+          <span className="text-xs text-neutral-500">{urlLabel}</span>
+          <input
+            className="input-field"
+            value={value}
+            onChange={(event) => onChange(event.target.value)}
+            placeholder="https://…"
+          />
+        </label>
+      )}
     </div>
   );
 }

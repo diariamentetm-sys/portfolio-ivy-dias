@@ -64,6 +64,7 @@ function buildCashlogLocale(locale: Locale): ProjectLocaleContent {
         kicker: page.s02.kicker,
         title: page.s02.title,
         body: joinParagraphs([page.s02.body, page.s02.profilesLabel]),
+        images: [{ src: cashlogData.researchImg }],
       },
       {
         number: "03",
@@ -76,6 +77,7 @@ function buildCashlogLocale(locale: Locale): ProjectLocaleContent {
         kicker: page.s04.kicker,
         title: page.s04.title,
         body: joinParagraphs([page.s04.body, page.s04.wireframesLabel]),
+        images: cashlogData.wireframes.map(({ src, alt }) => ({ src, alt })),
       },
       {
         number: "05",
@@ -86,6 +88,7 @@ function buildCashlogLocale(locale: Locale): ProjectLocaleContent {
           page.s05.paletteLabel,
           page.s05.uiScreensLabel,
         ]),
+        images: cashlogData.uiScreens.map(({ src, alt }) => ({ src, alt })),
       },
     ],
   };
@@ -113,6 +116,7 @@ function buildClaroLocale(locale: Locale): ProjectLocaleContent {
         kicker: page.s01.kicker,
         title: page.s01.title,
         body: joinParagraphs([page.s01.body, page.s01.funilLabel]),
+        images: [{ src: claroData.overviewImg }],
       },
       {
         number: "02",
@@ -168,6 +172,7 @@ function buildClaroLocale(locale: Locale): ProjectLocaleContent {
           page.s06.cardArchLabel,
           page.s06.finalSetLabel,
         ]),
+        images: claroData.cards.map(({ src, alt }) => ({ src, alt })),
       },
     ],
   };
@@ -200,6 +205,12 @@ function buildAbtestLocale(locale: Locale): ProjectLocaleContent {
         `${labels.metric}: ${test.metric}`,
         `${test.result} ${test.resultLabel}`,
       ]),
+      images: [
+        {
+          src: abtestData.tests[index].image,
+          alt: abtestData.tests[index].imageAlt,
+        },
+      ],
     })),
   };
 }
@@ -226,6 +237,7 @@ function buildEtituloLocale(locale: Locale): ProjectLocaleContent {
         kicker: page.s01.label,
         title: page.s01.title,
         body: page.s01.body,
+        images: [{ src: etituloData.overviewImg }],
       },
       {
         number: "02",
@@ -249,6 +261,10 @@ function buildEtituloLocale(locale: Locale): ProjectLocaleContent {
         kicker: page.s04.label,
         title: page.s04.title,
         body: page.s04.intro,
+        images: etituloData.personas.map(({ img, imgAlt }) => ({
+          src: img,
+          alt: imgAlt,
+        })),
       },
       {
         number: "05",
@@ -302,13 +318,62 @@ export const seedProjects: ManagedProject[] = [
   buildSeedProject("etitulo", "04", etituloData.overviewImg, buildEtituloLocale),
 ];
 
+function sectionNeedsImages(
+  section: ProjectLocaleContent["sections"][number],
+) {
+  return !section.images?.length;
+}
+
+function enrichProjectFromSeed(
+  project: ManagedProject,
+  seed: ManagedProject,
+): { project: ManagedProject; enriched: boolean } {
+  let enriched = false;
+  const locales: Locale[] = ["en", "pt"];
+  const updated: ManagedProject = { ...project };
+
+  for (const locale of locales) {
+    const copy = updated[locale];
+    const seedCopy = seed[locale];
+    const sections = copy.sections.map((section, index) => {
+      const seedSection = seedCopy.sections[index];
+      if (!seedSection?.images?.length || !sectionNeedsImages(section)) {
+        return section;
+      }
+      enriched = true;
+      return { ...section, images: seedSection.images };
+    });
+    updated[locale] = { ...copy, sections };
+  }
+
+  return { project: updated, enriched };
+}
+
 export function mergeSeedProjects(projects: ManagedProject[]) {
-  const existingSlugs = new Set(projects.map((project) => project.slug));
-  const missing = seedProjects.filter((seed) => !existingSlugs.has(seed.slug));
-  return {
-    projects: missing.length ? [...projects, ...missing] : projects,
-    addedCount: missing.length,
-  };
+  const result = [...projects];
+  let addedCount = 0;
+
+  for (const seed of seedProjects) {
+    const existingIndex = result.findIndex((project) => project.slug === seed.slug);
+
+    if (existingIndex === -1) {
+      result.push(seed);
+      addedCount++;
+      continue;
+    }
+
+    const { project: enrichedProject, enriched } = enrichProjectFromSeed(
+      result[existingIndex],
+      seed,
+    );
+
+    if (enriched) {
+      result[existingIndex] = enrichedProject;
+      addedCount++;
+    }
+  }
+
+  return { projects: result, addedCount };
 }
 
 export function managedProjectToCaseStudyConfig(

@@ -1,5 +1,5 @@
 import { Link, Navigate, useParams } from "react-router-dom";
-import { CaseSection } from "../components/cases/CaseBlocks";
+import { CaseImage, CaseSection } from "../components/cases/CaseBlocks";
 import { Footer } from "../components/layout/Footer";
 import { PostItTag } from "../components/ui/PostItTag";
 import { useContent } from "../content/ContentContext";
@@ -87,6 +87,23 @@ export function DynamicCasePage() {
           title={section.title}
         >
           <p className="max-w-3xl body-md whitespace-pre-line">{section.body}</p>
+          {section.images?.length ? (
+            <div
+              className={
+                section.images.length > 1
+                  ? "mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                  : "mt-6"
+              }
+            >
+              {section.images.map((image) => (
+                <CaseImage
+                  key={image.src}
+                  src={image.src}
+                  alt={image.alt ?? section.title}
+                />
+              ))}
+            </div>
+          ) : null}
         </CaseSection>
       ))}
 
