@@ -98,10 +98,25 @@ export function HomePage() {
 
       <header
         id="top"
-        className="relative px-5 md:px-16 pt-24 md:pt-28 pb-20 md:pb-28 max-w-7xl mx-auto border-b border-neutral-200"
+        className="relative isolate overflow-hidden border-b border-neutral-200"
       >
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-          <Reveal className="lg:col-span-7 xl:col-span-7">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 w-full md:w-[58%] lg:w-[52%]"
+        >
+          <img
+            src={content.heroImage}
+            alt=""
+            className="h-full w-full object-cover object-[center_18%] scale-x-[-1] opacity-90 md:opacity-100"
+            loading="eager"
+            decoding="async"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-neutral-50 via-neutral-50/85 to-neutral-50/20 md:from-neutral-50 md:via-neutral-50/70 md:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-50 via-transparent to-neutral-50/40 md:hidden" />
+        </div>
+
+        <div className="relative z-10 px-5 md:px-16 pt-24 md:pt-28 pb-20 md:pb-28 max-w-7xl mx-auto">
+          <Reveal className="max-w-xl lg:max-w-2xl">
             <div className="flex flex-wrap gap-2.5 mb-7">
               {t.hero.tags.map((tag, index) => (
                 <span
@@ -139,33 +154,23 @@ export function HomePage() {
             </div>
           </Reveal>
 
-          <Reveal delay={120} className="lg:col-span-5 xl:col-span-5">
-            <figure className="relative mx-auto w-full max-w-md lg:max-w-none lg:ml-auto">
-              <img
-                src={content.heroImage}
-                alt={t.hero.imageAlt}
-                className="w-full rounded-2xl shadow-card object-cover object-[22%_18%] aspect-[4/5] lg:aspect-[3/4]"
-                loading="eager"
-                decoding="async"
-              />
-            </figure>
+          <Reveal
+            delay={200}
+            className="mt-14 md:mt-20 flex flex-wrap gap-4 md:gap-6 items-stretch border-t border-neutral-200/80 pt-8"
+          >
+            {t.hero.stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className={`post-it post-it-stat ${heroStatStyles[index]?.tone ?? "post-it-mint"} ${heroStatStyles[index]?.rotate ?? "rotate-1"}`}
+              >
+                <div className="stat-value">{stat.value}</div>
+                <div className="text-xs text-neutral-700 mt-1.5">{stat.label}</div>
+              </div>
+            ))}
           </Reveal>
         </div>
 
-        <Reveal
-          delay={200}
-          className="mt-14 md:mt-20 flex flex-wrap gap-4 md:gap-6 items-stretch border-t border-neutral-200 pt-8"
-        >
-          {t.hero.stats.map((stat, index) => (
-            <div
-              key={stat.label}
-              className={`post-it post-it-stat ${heroStatStyles[index]?.tone ?? "post-it-mint"} ${heroStatStyles[index]?.rotate ?? "rotate-1"}`}
-            >
-              <div className="stat-value">{stat.value}</div>
-              <div className="text-xs text-neutral-700 mt-1.5">{stat.label}</div>
-            </div>
-          ))}
-        </Reveal>
+        <span className="sr-only">{t.hero.imageAlt}</span>
       </header>
 
       <section id="sobre" className="section-narrative bg-white">
@@ -288,8 +293,7 @@ export function HomePage() {
           </div>
 
           <Reveal className="mt-6 md:mt-8 rounded-card p-8 md:p-14 section-inverted">
-            <div className="flex flex-wrap gap-3 items-center mb-5">
-              <span className="text-5xl font-extrabold text-white/20">05</span>
+            <div className="mb-5">
               <span className="eyebrow text-white/50">{t.work.industryEyebrow}</span>
             </div>
             <h3 className="text-3xl md:text-4xl font-bold leading-tight max-w-lg text-white">
