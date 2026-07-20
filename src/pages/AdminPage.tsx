@@ -1,5 +1,6 @@
 import { FormEvent, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { ImageField } from "../components/admin/ImageField";
 import { useContent } from "../content/ContentContext";
 import {
   type ManagedProject,
@@ -21,11 +22,13 @@ export function AdminPage() {
     addProject,
     updateProject,
     removeProject,
+    saveNow,
+    saveStatus,
+    saveError,
   } = useContent();
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [tab, setTab] = useState<Tab>("hero");
-  const [savedFlash, setSavedFlash] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editLocale, setEditLocale] = useState<Locale>("en");
 
@@ -34,9 +37,8 @@ export function AdminPage() {
     [content.projects, editingId],
   );
 
-  function flashSaved() {
-    setSavedFlash(true);
-    window.setTimeout(() => setSavedFlash(false), 1600);
+  async function handleSave() {
+    await saveNow();
   }
 
   function handleLogin(event: FormEvent) {
@@ -113,25 +115,36 @@ export function AdminPage() {
       </header>
 
       <main className="max-w-5xl mx-auto px-5 md:px-10 py-10">
-        {savedFlash && (
+        {saveStatus === "saving" && (
+          <p className="mb-4 text-sm font-semibold text-neutral-500">{t.admin.saving}</p>
+        )}
+        {saveStatus === "saved" && (
           <p className="mb-4 text-sm font-semibold text-success">{t.admin.saved}</p>
+        )}
+        {saveStatus === "error" && (
+          <p className="mb-4 text-sm font-semibold text-error">
+            {t.admin.saveError}
+            {saveError ? ` (${saveError})` : ""}
+          </p>
         )}
 
         {tab === "hero" && (
           <section className="card p-6 md:p-8 flex flex-col gap-6">
-            <label className="flex flex-col gap-2">
-              <span className="eyebrow">Hero image URL</span>
-              <input
-                className="input-field"
-                value={content.heroImage}
-                onChange={(event) =>
-                  updateContent((current) => ({
-                    ...current,
-                    heroImage: event.target.value,
-                  }))
-                }
-              />
-            </label>
+            <ImageField
+              label={t.admin.heroImage}
+              value={content.heroImage}
+              folder="hero"
+              uploadLabel={t.admin.uploadImage}
+              uploadingLabel={t.admin.uploading}
+              urlLabel={t.admin.imageUrl}
+              onChange={(url) => {
+                updateContent((current) => ({
+                  ...current,
+                  heroImage: url,
+                }));
+                void saveNow();
+              }}
+            />
             {(["en", "pt"] as Locale[]).map((lang) => (
               <div key={lang} className="border-t border-neutral-200 pt-6">
                 <p className="eyebrow mb-4">
@@ -202,35 +215,39 @@ export function AdminPage() {
             <button
               type="button"
               className="btn-primary self-start"
-              onClick={flashSaved}
+              disabled={saveStatus === "saving"}
+              onClick={() => void handleSave()}
             >
-              {t.admin.save}
+              {saveStatus === "saving" ? t.admin.saving : t.admin.save}
             </button>
           </section>
         )}
 
         {tab === "contact" && (
           <section className="card p-6 md:p-8 flex flex-col gap-4">
-            <label className="flex flex-col gap-2">
-              <span className="eyebrow">Contact photo URL (circular mask)</span>
-              <input
-                className="input-field"
-                value={content.contactPhoto}
-                onChange={(event) =>
-                  updateContent((current) => ({
-                    ...current,
-                    contactPhoto: event.target.value,
-                  }))
-                }
-              />
-            </label>
-            <img
-              src={content.contactPhoto}
-              alt=""
-              className="w-40 h-40 rounded-full object-cover object-top border-4 border-white shadow-card"
+            <ImageField
+              label={t.admin.contactImage}
+              value={content.contactPhoto}
+              folder="contact"
+              previewClassName="w-40 h-40 rounded-full object-cover object-top border-4 border-white shadow-card"
+              uploadLabel={t.admin.uploadImage}
+              uploadingLabel={t.admin.uploading}
+              urlLabel={t.admin.imageUrl}
+              onChange={(url) => {
+                updateContent((current) => ({
+                  ...current,
+                  contactPhoto: url,
+                }));
+                void saveNow();
+              }}
             />
-            <button type="button" className="btn-primary self-start" onClick={flashSaved}>
-              {t.admin.save}
+            <button
+              type="button"
+              className="btn-primary self-start"
+              disabled={saveStatus === "saving"}
+              onClick={() => void handleSave()}
+            >
+              {saveStatus === "saving" ? t.admin.saving : t.admin.save}
             </button>
           </section>
         )}
@@ -312,7 +329,8 @@ export function AdminPage() {
                 editLocale={editLocale}
                 setEditLocale={setEditLocale}
                 onChange={updateProject}
-                onSave={flashSaved}
+                onSave={() => void handleSave()}
+                saveStatus={saveStatus}
                 labels={t.admin}
               />
             )}
@@ -329,6 +347,7 @@ function ProjectEditor({
   setEditLocale,
   onChange,
   onSave,
+  saveStatus,
   labels,
 }: {
   project: ManagedProject;
@@ -336,10 +355,15 @@ function ProjectEditor({
   setEditLocale: (locale: Locale) => void;
   onChange: (project: ManagedProject) => void;
   onSave: () => void;
+  saveStatus: "idle" | "saving" | "saved" | "error";
   labels: {
     editEn: string;
     editPt: string;
     save: string;
+    saving: string;
+    uploadImage: string;
+    uploading: string;
+    imageUrl: string;
   };
 }) {
   const localeContent = project[editLocale];
@@ -396,16 +420,19 @@ function ProjectEditor({
         </label>
       </div>
 
-      <label className="flex flex-col gap-2">
-        <span className="eyebrow">Overview image URL</span>
-        <input
-          className="input-field"
-          value={project.overviewImage ?? ""}
-          onChange={(event) =>
-            onChange({ ...project, overviewImage: event.target.value })
-          }
-        />
-      </label>
+      <ImageField
+        label="Overview image"
+        value={project.overviewImage ?? ""}
+        folder="projects"
+        previewClassName="w-full max-w-md rounded-2xl object-cover aspect-video"
+        uploadLabel={labels.uploadImage}
+        uploadingLabel={labels.uploading}
+        urlLabel={labels.imageUrl}
+        onChange={(url) => {
+          onChange({ ...project, overviewImage: url });
+          onSave();
+        }}
+      />
 
       {(
         [
@@ -542,8 +569,13 @@ function ProjectEditor({
         ))}
       </div>
 
-      <button type="button" className="btn-primary self-start" onClick={onSave}>
-        {labels.save}
+      <button
+        type="button"
+        className="btn-primary self-start"
+        disabled={saveStatus === "saving"}
+        onClick={onSave}
+      >
+        {saveStatus === "saving" ? labels.saving : labels.save}
       </button>
     </div>
   );

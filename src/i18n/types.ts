@@ -112,7 +112,14 @@ export type Dictionary = {
     projectsTab: string;
     contactTab: string;
     save: string;
+    saving: string;
     saved: string;
+    saveError: string;
+    uploadImage: string;
+    uploading: string;
+    imageUrl: string;
+    heroImage: string;
+    contactImage: string;
     addProject: string;
     deleteProject: string;
     publish: string;

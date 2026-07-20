@@ -4,6 +4,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -21,23 +22,29 @@ import {
   type SiteContent,
 } from "./siteContent";
 
+export type SaveStatus = "idle" | "saving" | "saved" | "error";
+
 type ContentContextValue = {
   content: SiteContent;
   isAdmin: boolean;
   isSyncing: boolean;
+  saveStatus: SaveStatus;
+  saveError: string;
   login: (password: string) => boolean;
   logout: () => void;
   updateContent: (updater: (current: SiteContent) => SiteContent) => void;
   addProject: () => ManagedProject;
   updateProject: (project: ManagedProject) => void;
   removeProject: (id: string) => void;
-  syncNow: () => Promise<void>;
+  saveNow: () => Promise<boolean>;
 };
 
 const ContentContext = createContext<ContentContextValue | null>(null);
 
 const ADMIN_PASSWORD =
   import.meta.env.VITE_ADMIN_PASSWORD?.toString() || "ivy-admin";
+
+const REMOTE_DEBOUNCE_MS = 700;
 
 function readAdminSession() {
   try {
@@ -51,6 +58,16 @@ export function ContentProvider({ children }: { children: ReactNode }) {
   const [content, setContent] = useState<SiteContent>(() => loadSiteContent());
   const [isAdmin, setIsAdmin] = useState(() => readAdminSession());
   const [isSyncing, setIsSyncing] = useState(false);
+  const [saveStatus, setSaveStatus] = useState<SaveStatus>("idle");
+  const [saveError, setSaveError] = useState("");
+
+  const contentRef = useRef(content);
+  const debounceRef = useRef<number | null>(null);
+  const persistSeq = useRef(0);
+
+  useEffect(() => {
+    contentRef.current = content;
+  }, [content]);
 
   useEffect(() => {
     let cancelled = false;
@@ -75,36 +92,69 @@ export function ContentProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  const persistLocalAndRemote = useCallback(
-    async (next: SiteContent) => {
+  useEffect(() => {
+    return () => {
+      if (debounceRef.current) window.clearTimeout(debounceRef.current);
+    };
+  }, []);
+
+  const persistRemote = useCallback(async (next: SiteContent) => {
+    if (!isSupabaseConfigured) {
+      setSaveStatus("saved");
+      setSaveError("");
+      window.setTimeout(() => setSaveStatus("idle"), 1600);
+      return true;
+    }
+
+    const seq = ++persistSeq.current;
+    setSaveStatus("saving");
+    setSaveError("");
+
+    const result = await persistSiteContentToSupabase(next);
+    if (seq !== persistSeq.current) return false;
+
+    if (!result.ok) {
+      setSaveStatus("error");
+      setSaveError(result.error);
+      console.error("Failed to sync with Supabase:", result.error);
+      return false;
+    }
+
+    setSaveStatus("saved");
+    setSaveError("");
+    window.setTimeout(() => {
+      if (persistSeq.current === seq) setSaveStatus("idle");
+    }, 1600);
+    return true;
+  }, []);
+
+  const scheduleRemotePersist = useCallback(
+    (next: SiteContent) => {
+      if (debounceRef.current) window.clearTimeout(debounceRef.current);
+      debounceRef.current = window.setTimeout(() => {
+        void persistRemote(next);
+      }, REMOTE_DEBOUNCE_MS);
+    },
+    [persistRemote],
+  );
+
+  const applyLocal = useCallback(
+    (next: SiteContent, options?: { syncRemote?: boolean }) => {
+      contentRef.current = next;
       setContent(next);
       saveSiteContent(next);
-      if (isSupabaseConfigured) {
-        const result = await persistSiteContentToSupabase(next);
-        if (!result.ok) {
-          console.error("Failed to sync with Supabase:", result.error);
-        }
+      if (options?.syncRemote !== false) {
+        scheduleRemotePersist(next);
       }
     },
-    [],
+    [scheduleRemotePersist],
   );
 
   const updateContent = useCallback(
     (updater: (current: SiteContent) => SiteContent) => {
-      setContent((current) => {
-        const next = updater(current);
-        saveSiteContent(next);
-        if (isSupabaseConfigured) {
-          void persistSiteContentToSupabase(next).then((result) => {
-            if (!result.ok) {
-              console.error("Failed to sync with Supabase:", result.error);
-            }
-          });
-        }
-        return next;
-      });
+      applyLocal(updater(contentRef.current));
     },
-    [],
+    [applyLocal],
   );
 
   const login = useCallback((password: string) => {
@@ -121,80 +171,75 @@ export function ContentProvider({ children }: { children: ReactNode }) {
 
   const addProject = useCallback(() => {
     const project = createEmptyProject();
-    let created = project;
-    setContent((current) => {
-      created = {
-        ...project,
-        n: String(5 + current.projects.length).padStart(2, "0"),
-      };
-      const next = { ...current, projects: [...current.projects, created] };
-      saveSiteContent(next);
-      if (isSupabaseConfigured) {
-        void persistSiteContentToSupabase(next);
-      }
-      return next;
+    const created = {
+      ...project,
+      n: String(5 + contentRef.current.projects.length).padStart(2, "0"),
+    };
+    applyLocal({
+      ...contentRef.current,
+      projects: [...contentRef.current.projects, created],
     });
     return created;
-  }, []);
+  }, [applyLocal]);
 
-  const updateProject = useCallback((project: ManagedProject) => {
-    setContent((current) => {
-      const next = {
-        ...current,
-        projects: current.projects.map((item) =>
+  const updateProject = useCallback(
+    (project: ManagedProject) => {
+      applyLocal({
+        ...contentRef.current,
+        projects: contentRef.current.projects.map((item) =>
           item.id === project.id ? project : item,
         ),
-      };
-      saveSiteContent(next);
-      if (isSupabaseConfigured) {
-        void persistSiteContentToSupabase(next);
-      }
-      return next;
-    });
-  }, []);
+      });
+    },
+    [applyLocal],
+  );
 
-  const removeProject = useCallback((id: string) => {
-    setContent((current) => {
-      const next = {
-        ...current,
-        projects: current.projects.filter((item) => item.id !== id),
-      };
-      saveSiteContent(next);
-      if (isSupabaseConfigured) {
-        void persistSiteContentToSupabase(next);
-      }
-      return next;
-    });
-  }, []);
+  const removeProject = useCallback(
+    (id: string) => {
+      applyLocal({
+        ...contentRef.current,
+        projects: contentRef.current.projects.filter((item) => item.id !== id),
+      });
+    },
+    [applyLocal],
+  );
 
-  const syncNow = useCallback(async () => {
-    await persistLocalAndRemote(content);
-  }, [content, persistLocalAndRemote]);
+  const saveNow = useCallback(async () => {
+    if (debounceRef.current) {
+      window.clearTimeout(debounceRef.current);
+      debounceRef.current = null;
+    }
+    return persistRemote(contentRef.current);
+  }, [persistRemote]);
 
   const value = useMemo(
     () => ({
       content,
       isAdmin,
       isSyncing,
+      saveStatus,
+      saveError,
       login,
       logout,
       updateContent,
       addProject,
       updateProject,
       removeProject,
-      syncNow,
+      saveNow,
     }),
     [
       content,
       isAdmin,
       isSyncing,
+      saveStatus,
+      saveError,
       login,
       logout,
       updateContent,
       addProject,
       updateProject,
       removeProject,
-      syncNow,
+      saveNow,
     ],
   );
 
