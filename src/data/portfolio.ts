@@ -274,7 +274,7 @@ export const caseStudies: Record<string, CaseStudyConfig> = {
     accent: "#3B6FEA",
     breadcrumb: "Tribunal Superior Eleitoral · 2026",
     kicker: "Estudo de caso · Service Design",
-    title: "Redesenho da jornada de onboarding do ",
+    title: "Onboarding do ",
     titleAccent: "e-Título",
     subtitle:
       "Service Design aplicado ao aplicativo e-Título do TSE, repensando o acesso à cidadania digital com acessibilidade no centro da experiência.",
