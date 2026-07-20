@@ -1,4 +1,5 @@
 import type { Locale } from "../i18n/types";
+import { mergeSeedProjects, seedProjects } from "../data/seedProjects";
 
 export const CONTENT_STORAGE_KEY = "ivy-portfolio-content-v1";
 export const ADMIN_SESSION_KEY = "ivy-portfolio-admin-session";
@@ -124,7 +125,7 @@ export const defaultSiteContent: SiteContent = {
         "Há mais de 20 anos transformo complexidade de negócio em experiências que geram valor real — atuando como liderança técnica em projetos estratégicos de CX Design, Service Design e User Research.",
     },
   },
-  projects: [],
+  projects: seedProjects,
 };
 
 export function loadSiteContent(): SiteContent {
@@ -139,7 +140,7 @@ export function loadSiteContent(): SiteContent {
         ...defaultSiteContent.heroCopy,
         ...(parsed.heroCopy ?? {}),
       },
-      projects: parsed.projects ?? [],
+      projects: mergeSeedProjects(parsed.projects ?? []).projects,
     };
   } catch {
     return structuredClone(defaultSiteContent);

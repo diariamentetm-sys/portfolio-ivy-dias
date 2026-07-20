@@ -48,12 +48,15 @@ export function HomePage() {
   const timeline = t.timeline.items;
 
   const workCases = useMemo(() => {
+    const publishedSlugs = new Set(
+      content.projects.filter((project) => project.published).map((project) => project.slug),
+    );
     const custom = content.projects
       .filter((project) => project.published)
       .map((project) => {
         const copy = project[locale];
         return {
-          id: project.id,
+          id: project.slug,
           n: project.n,
           kicker: copy.kicker,
           subtitle: copy.subtitle,
@@ -62,7 +65,8 @@ export function HomePage() {
           path: `/cases/${project.slug}`,
         };
       });
-    return [...t.work.cases, ...custom];
+    const legacy = t.work.cases.filter((item) => !publishedSlugs.has(item.id));
+    return [...custom, ...legacy];
   }, [content.projects, locale, t.work.cases]);
 
   async function handleSubmit(event: FormEvent) {

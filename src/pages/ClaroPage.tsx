@@ -6,18 +6,20 @@ import {
   RuleBarChart,
 } from "../components/cases/CaseBlocks";
 import { CaseStudyLayout } from "../components/layout/CaseStudyLayout";
-import { PostItTag } from "../components/ui/PostItTag";
+import { PostItNote, PostItTag } from "../components/ui/PostItTag";
+import { useContent } from "../content/ContentContext";
 import {
-  caseStudyConfigs,
   claroCaseDataContent,
   claroPageContent,
 } from "../data/casePagesContent";
 import { claroData } from "../data/caseStudies";
+import { resolveCaseStudyConfig } from "../data/seedProjects";
 import { useLocale } from "../i18n/LocaleContext";
 
 export function ClaroPage() {
   const { locale } = useLocale();
-  const config = caseStudyConfigs[locale].claro;
+  const { content } = useContent();
+  const config = resolveCaseStudyConfig("claro", locale, content.projects);
   const page = claroPageContent[locale];
   const caseData = claroCaseDataContent[locale];
 
@@ -35,14 +37,16 @@ export function ClaroPage() {
       >
         <p className="max-w-3xl body-md">{page.sections.s01.body}</p>
         <div className="mt-6 card-ui p-7">
-          <p className="eyebrow mb-4 text-accent">{page.sections.s01.funilLabel}</p>
+          <PostItTag index={0} className="mb-4">
+            {page.sections.s01.funilLabel}
+          </PostItTag>
           <div className="flex flex-col gap-4">
-            {caseData.funil.map((item) => (
+            {caseData.funil.map((item, index) => (
               <div
                 key={item.s}
                 className="grid grid-cols-[120px_1fr_auto] gap-4 items-center"
               >
-                <div className="text-sm font-medium text-neutral-950">{item.s}</div>
+                <PostItTag index={index + 1}>{item.s}</PostItTag>
                 <div className="h-2 rounded-full bg-neutral-200">
                   <div
                     className="h-2 rounded-full bg-accent"
@@ -109,11 +113,19 @@ export function ClaroPage() {
               title: page.sections.s03.groupTitles.riscos,
               items: caseData.riscos,
             },
-          ].map((group) => (
-            <div key={group.title} className="card-ui p-6">
-              <p className="eyebrow mb-3.5 text-accent">{group.title}</p>
-              <BulletList items={group.items} />
-            </div>
+          ].map((group, groupIndex) => (
+            <PostItNote key={group.title} index={groupIndex} compact>
+              <PostItTag index={groupIndex} className="mb-3.5">
+                {group.title}
+              </PostItTag>
+              <div className="flex flex-col gap-2.5">
+                {group.items.map((item, itemIndex) => (
+                  <PostItTag key={item} index={itemIndex + groupIndex + 3}>
+                    {item}
+                  </PostItTag>
+                ))}
+              </div>
+            </PostItNote>
           ))}
         </div>
       </CaseSection>
@@ -146,31 +158,33 @@ export function ClaroPage() {
         title={page.sections.s05.title}
         inverted
       >
-        <div className="card-ui p-7 bg-white">
-          <p className="eyebrow mb-3">{page.sections.s05.productGoalLabel}</p>
+        <PostItNote index={0} className="p-7">
+          <PostItTag index={0} className="mb-3">
+            {page.sections.s05.productGoalLabel}
+          </PostItTag>
           <p className="text-lg leading-relaxed text-neutral-950 text-pretty">
             {page.sections.s05.productGoal}
           </p>
-        </div>
+        </PostItNote>
         <div className="mt-4 grid md:grid-cols-2 gap-4">
-          <div className="card-ui p-6 bg-white">
-            <p className="eyebrow mb-3.5 text-accent">
+          <PostItNote index={1} compact>
+            <PostItTag index={1} className="mb-3.5">
               {page.sections.s05.expectedResultsLabel}
-            </p>
+            </PostItTag>
             <BulletList items={caseData.resultados} />
-          </div>
-          <div className="card-ui p-6 bg-white">
-            <p className="eyebrow mb-3.5 text-accent">
+          </PostItNote>
+          <PostItNote index={2} compact>
+            <PostItTag index={2} className="mb-3.5">
               {page.sections.s05.validationMetricsLabel}
-            </p>
+            </PostItTag>
             <div className="flex flex-wrap gap-2.5">
               {caseData.metricas.map((metrica, index) => (
-                <PostItTag key={metrica} index={index}>
+                <PostItTag key={metrica} index={index + 3}>
                   {metrica}
                 </PostItTag>
               ))}
             </div>
-          </div>
+          </PostItNote>
         </div>
       </CaseSection>
 
@@ -181,20 +195,20 @@ export function ClaroPage() {
       >
         <p className="max-w-3xl body-md">{page.sections.s06.body}</p>
         <div className="mt-6 grid sm:grid-cols-2 gap-4">
-          <div className="card-ui p-6">
-            <p className="text-base font-semibold text-neutral-950 mb-2">
+          <PostItNote index={3} compact>
+            <PostItTag index={4} className="mb-2">
               {page.sections.s06.jointWorkTitle}
-            </p>
-            <p className="text-sm leading-relaxed text-neutral-500">
+            </PostItTag>
+            <p className="text-sm leading-relaxed text-neutral-800">
               {page.sections.s06.jointWorkBody}
             </p>
-          </div>
-          <div className="card p-6 bg-neutral-950 text-white">
-            <p className="text-4xl font-extrabold leading-none text-accent">8</p>
-            <p className="mt-2 text-sm leading-relaxed text-white/70">
+          </PostItNote>
+          <PostItNote index={4} compact>
+            <p className="text-4xl font-extrabold leading-none text-neutral-950">8</p>
+            <p className="mt-2 text-sm leading-relaxed text-neutral-800">
               {page.sections.s06.cardsReadyBody}
             </p>
-          </div>
+          </PostItNote>
         </div>
         <div className="mt-8">
           <p className="eyebrow mb-3.5">{page.sections.s06.cardArchLabel}</p>

@@ -5,14 +5,21 @@ import {
   CaseSection,
 } from "../components/cases/CaseBlocks";
 import { CaseStudyLayout } from "../components/layout/CaseStudyLayout";
-import { postItTone } from "../components/ui/PostItTag";
+import { PostItNote } from "../components/ui/PostItTag";
+import { useContent } from "../content/ContentContext";
 import {
-  caseStudyConfigs,
   cashlogCaseDataContent,
   cashlogPageContent,
 } from "../data/casePagesContent";
 import { cashlogData } from "../data/caseStudies";
+import { resolveCaseStudyConfig } from "../data/seedProjects";
 import { useLocale } from "../i18n/LocaleContext";
+
+const statStyles = [
+  { tone: "post-it-mint" as const, rotate: "rotate-1" },
+  { tone: "post-it-lavender" as const, rotate: "-rotate-2" },
+  { tone: "post-it-peach" as const, rotate: "rotate-2" },
+];
 
 function ImageGrid({
   label,
@@ -37,7 +44,8 @@ function ImageGrid({
 
 export function CashlogPage() {
   const { locale } = useLocale();
-  const config = caseStudyConfigs[locale].cashlog;
+  const { content } = useContent();
+  const config = resolveCaseStudyConfig("cashlog", locale, content.projects);
   const page = cashlogPageContent[locale];
   const caseData = cashlogCaseDataContent[locale];
 
@@ -59,12 +67,18 @@ export function CashlogPage() {
         title={page.sections.s01.title}
       >
         <p className="max-w-3xl body-md">{page.sections.s01.body}</p>
-        <div className="mt-7 flex flex-wrap gap-6 md:gap-12 pt-5 border-t border-neutral-200">
-          {page.sections.s01.stats.map((stat) => (
-            <div key={stat.label}>
-              <p className="eyebrow mb-1.5">{stat.label}</p>
-              <p className="text-[15px] text-neutral-950">{stat.value}</p>
-            </div>
+        <div className="mt-7 flex flex-wrap gap-4 md:gap-6 items-stretch pt-5 border-t border-neutral-200">
+          {page.sections.s01.stats.map((stat, index) => (
+            <PostItNote
+              key={stat.label}
+              index={index}
+              stat
+              tone={statStyles[index]?.tone}
+              className={statStyles[index]?.rotate}
+            >
+              <div className="text-[15px] font-semibold text-neutral-950">{stat.value}</div>
+              <div className="text-xs text-neutral-700 mt-1.5">{stat.label}</div>
+            </PostItNote>
           ))}
         </div>
       </CaseSection>
@@ -78,19 +92,10 @@ export function CashlogPage() {
         <p className="mt-7 eyebrow mb-4">{page.sections.s02.profilesLabel}</p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
           {caseData.perfis.map((perfil, index) => (
-            <div
-              key={perfil.t}
-              className="relative overflow-hidden rounded-lg border border-neutral-200 bg-white p-5"
-            >
-              <span
-                aria-hidden
-                className={`case-card-accent ${postItTone(index)}`}
-              />
-              <div className="text-base font-semibold text-neutral-950">
-                {perfil.t}
-              </div>
-              <div className="mt-1 text-sm text-neutral-500">{perfil.d}</div>
-            </div>
+            <PostItNote key={perfil.t} index={index} compact>
+              <div className="text-base font-semibold text-neutral-950">{perfil.t}</div>
+              <div className="mt-1 text-sm text-neutral-700">{perfil.d}</div>
+            </PostItNote>
           ))}
         </div>
         <div className="mt-6">
@@ -122,18 +127,15 @@ export function CashlogPage() {
       >
         <p className="max-w-3xl body-md">{page.sections.s04.body}</p>
         <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {caseData.diretrizes.map((item) => (
-            <div
-              key={item.n}
-              className="p-6 rounded-card bg-neutral-950 text-white"
-            >
-              <div className="text-4xl font-extrabold leading-none text-accent">
+          {caseData.diretrizes.map((item, index) => (
+            <PostItNote key={item.n} index={index} compact>
+              <div className="text-3xl font-extrabold leading-none text-neutral-950">
                 {item.n}
               </div>
-              <p className="mt-3.5 text-[15px] leading-snug font-medium text-white/90">
+              <p className="mt-3 text-[15px] leading-snug font-medium text-neutral-800">
                 {item.d}
               </p>
-            </div>
+            </PostItNote>
           ))}
         </div>
         <ImageGrid

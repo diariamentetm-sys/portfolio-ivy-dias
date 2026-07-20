@@ -13,6 +13,7 @@ import {
   fetchSiteContentFromSupabase,
   persistSiteContentToSupabase,
 } from "./supabaseContent";
+import { mergeSeedProjects } from "../data/seedProjects";
 import {
   ADMIN_SESSION_KEY,
   createEmptyProject,
@@ -78,8 +79,13 @@ export function ContentProvider({ children }: { children: ReactNode }) {
       try {
         const remote = await fetchSiteContentFromSupabase();
         if (!cancelled && remote) {
-          setContent(remote);
-          saveSiteContent(remote);
+          const { projects, addedCount } = mergeSeedProjects(remote.projects);
+          const merged = { ...remote, projects };
+          setContent(merged);
+          saveSiteContent(merged);
+          if (addedCount > 0) {
+            void persistSiteContentToSupabase(merged);
+          }
         }
       } finally {
         if (!cancelled) setIsSyncing(false);

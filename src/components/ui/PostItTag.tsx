@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 const tones = [
   "post-it-yellow",
   "post-it-blue",
@@ -36,5 +38,33 @@ export function PostItTag({
     >
       {children}
     </span>
+  );
+}
+
+type PostItNoteProps = {
+  children: ReactNode;
+  index?: number;
+  tone?: (typeof tones)[number];
+  compact?: boolean;
+  stat?: boolean;
+  className?: string;
+};
+
+export function PostItNote({
+  children,
+  index = 0,
+  tone,
+  compact = false,
+  stat = false,
+  className = "",
+}: PostItNoteProps) {
+  const sizeClass = stat ? "post-it-stat" : compact ? "post-it-compact" : "";
+
+  return (
+    <div
+      className={`post-it ${sizeClass} ${tone ?? postItTone(index)} ${postItRotate(index)} ${className}`}
+    >
+      {children}
+    </div>
   );
 }

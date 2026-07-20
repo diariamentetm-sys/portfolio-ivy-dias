@@ -1,17 +1,19 @@
 import { CaseBlockSection, CaseImage } from "../components/cases/CaseBlocks";
 import { CaseStudyLayout } from "../components/layout/CaseStudyLayout";
-import { PostItTag, postItTone } from "../components/ui/PostItTag";
+import { PostItNote, PostItTag } from "../components/ui/PostItTag";
+import { useContent } from "../content/ContentContext";
 import {
-  caseStudyConfigs,
   etituloCaseDataContent,
   etituloPageContent,
 } from "../data/casePagesContent";
 import { etituloData } from "../data/caseStudies";
+import { resolveCaseStudyConfig } from "../data/seedProjects";
 import { useLocale } from "../i18n/LocaleContext";
 
 export function EtituloPage() {
   const { locale } = useLocale();
-  const config = caseStudyConfigs[locale].etitulo;
+  const { content } = useContent();
+  const config = resolveCaseStudyConfig("etitulo", locale, content.projects);
   const page = etituloPageContent[locale];
   const caseData = etituloCaseDataContent[locale];
 
@@ -78,24 +80,24 @@ export function EtituloPage() {
             [page.sections.s02.problemLabel, page.sections.s02.problemText],
             [page.sections.s02.objectiveLabel, page.sections.s02.objectiveText],
             [page.sections.s02.proposalLabel, page.sections.s02.proposalText],
-          ].map(([label, text]) => (
+          ].map(([label, text], index) => (
             <div
               key={label}
               className="grid md:grid-cols-[minmax(120px,180px)_1fr] gap-4 md:gap-10 py-6 first:pt-0"
             >
-              <div className="text-lg font-semibold text-neutral-950">{label}</div>
+              <PostItTag index={index}>{label}</PostItTag>
               <p className="body-md">{text}</p>
             </div>
           ))}
         </div>
-        <div className="mt-8 p-8 md:p-11 rounded-card bg-neutral-950">
-          <p className="eyebrow mb-4 text-white/50">
+        <PostItNote index={3} className="mt-8 p-8 md:p-11">
+          <p className="eyebrow mb-4 text-neutral-600">
             {page.sections.s02.whoFeelsLabel}
           </p>
-          <p className="text-2xl md:text-4xl font-bold leading-tight text-white max-w-2xl text-pretty">
+          <p className="text-2xl md:text-4xl font-bold leading-tight text-neutral-950 max-w-2xl text-pretty">
             {page.sections.s02.whoFeelsQuote}
           </p>
-        </div>
+        </PostItNote>
       </CaseBlockSection>
 
       <CaseBlockSection
@@ -103,21 +105,21 @@ export function EtituloPage() {
         title={page.sections.s03.title}
       >
         <div className="grid md:grid-cols-2 gap-4">
-          {caseData.fases.map((fase) => (
-            <div key={fase.n} className="card p-7">
+          {caseData.fases.map((fase, index) => (
+            <PostItNote key={fase.n} index={index} compact>
               <div className="flex items-baseline gap-2.5">
-                <span className="font-mono text-xs text-accent">{fase.n}</span>
+                <span className="font-mono text-xs text-neutral-700">{fase.n}</span>
                 <h3 className="text-xl font-semibold text-neutral-950">{fase.t}</h3>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-500">{fase.d}</p>
-              <div className="mt-4 pt-4 border-t border-neutral-200 flex flex-wrap gap-2.5">
+              <p className="mt-3 text-sm leading-relaxed text-neutral-800">{fase.d}</p>
+              <div className="mt-4 pt-4 border-t border-neutral-900/10 flex flex-wrap gap-2.5">
                 {fase.m.map((method, methodIndex) => (
-                  <PostItTag key={method} index={methodIndex}>
+                  <PostItTag key={method} index={methodIndex + index}>
                     {method}
                   </PostItTag>
                 ))}
               </div>
-            </div>
+            </PostItNote>
           ))}
         </div>
       </CaseBlockSection>
@@ -190,14 +192,16 @@ export function EtituloPage() {
         title={page.sections.s06.title}
       >
         <div className="grid md:grid-cols-2 gap-x-10">
-          {caseData.pains.map((pain) => (
+          {caseData.pains.map((pain, index) => (
             <div
               key={pain.n}
               className="grid grid-cols-[34px_1fr] gap-3.5 py-5 border-t border-neutral-200"
             >
               <span className="font-mono text-xs text-neutral-500">{pain.n}</span>
               <div>
-                <p className="eyebrow mb-2 text-accent">{pain.t}</p>
+                <PostItTag index={index} className="mb-2">
+                  {pain.t}
+                </PostItTag>
                 <p className="body-md text-neutral-950">{pain.d}</p>
               </div>
             </div>
@@ -212,24 +216,15 @@ export function EtituloPage() {
         <p className="max-w-2xl body-md mb-8">{page.sections.s07.intro}</p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5">
           {caseData.steps.map((step, index) => (
-            <div
-              key={step.n}
-              className="relative overflow-hidden rounded-lg border border-neutral-200 bg-white p-5"
-            >
-              <span
-                aria-hidden
-                className={`case-card-accent ${postItTone(index)}`}
-              />
-              <div className="w-8 h-8 rounded-ui bg-accent text-white flex items-center justify-center font-mono text-xs font-bold">
-                {step.n}
-              </div>
-              <h3 className="mt-3.5 text-base font-semibold text-neutral-950">
+            <PostItNote key={step.n} index={index} compact>
+              <div className="font-mono text-xs font-bold text-neutral-800">{step.n}</div>
+              <h3 className="mt-2.5 text-base font-semibold text-neutral-950">
                 {step.t}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-neutral-500">
+              <p className="mt-2 text-sm leading-relaxed text-neutral-700">
                 {step.d}
               </p>
-            </div>
+            </PostItNote>
           ))}
         </div>
       </CaseBlockSection>

@@ -1,11 +1,13 @@
 import { CaseImage } from "../components/cases/CaseBlocks";
 import { CaseStudyLayout } from "../components/layout/CaseStudyLayout";
+import { PostItNote, PostItTag } from "../components/ui/PostItTag";
+import { useContent } from "../content/ContentContext";
 import {
   abtestCaseDataContent,
   abtestPageContent,
-  caseStudyConfigs,
 } from "../data/casePagesContent";
 import { abtestData } from "../data/caseStudies";
+import { resolveCaseStudyConfig } from "../data/seedProjects";
 import { useLocale } from "../i18n/LocaleContext";
 
 import type { AbTestBlock } from "../types/cases";
@@ -38,20 +40,21 @@ function TestDetail({
           />
         )}
         <div className="p-8 md:p-12">
-          <p className="eyebrow mb-4 text-accent">{label}</p>
+          <PostItTag index={0} className="mb-4">
+            {label}
+          </PostItTag>
           <h2 className="text-2xl md:text-3xl font-bold leading-snug text-neutral-950">
             {title}
           </h2>
-          <div className="mt-6 flex flex-col gap-3.5">
+          <div className="mt-6 flex flex-wrap gap-2.5">
             {[
               [detailLabels.duration, duration],
               [detailLabels.device, device],
               [detailLabels.metric, metric],
-            ].map(([key, value]) => (
-              <div key={key} className="flex gap-3.5 text-sm text-neutral-500">
-                <span className="eyebrow min-w-[110px]">{key}</span>
-                {value}
-              </div>
+            ].map(([key, value], index) => (
+              <PostItTag key={key} index={index + 1}>
+                {`${key}: ${value}`}
+              </PostItTag>
             ))}
           </div>
           <div className="mt-8 flex items-baseline gap-3">
@@ -77,7 +80,8 @@ function TestDetail({
 
 export function AbtestPage() {
   const { locale } = useLocale();
-  const config = caseStudyConfigs[locale].abtest;
+  const { content } = useContent();
+  const config = resolveCaseStudyConfig("abtest", locale, content.projects);
   const page = abtestPageContent[locale];
   const caseData = abtestCaseDataContent[locale];
 
@@ -98,11 +102,11 @@ export function AbtestPage() {
           />
         ))}
 
-        <div className="mt-10 p-8 md:p-12 rounded-card bg-neutral-950">
-          <p className="text-2xl md:text-4xl font-bold leading-snug text-white max-w-xl text-pretty">
+        <PostItNote index={2} className="mt-10 p-8 md:p-12">
+          <p className="text-2xl md:text-4xl font-bold leading-snug text-neutral-950 max-w-xl text-pretty">
             {caseData.closingQuote}
           </p>
-        </div>
+        </PostItNote>
       </section>
     </CaseStudyLayout>
   );
