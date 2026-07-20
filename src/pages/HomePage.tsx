@@ -247,43 +247,47 @@ export function HomePage() {
             </p>
           </Reveal>
 
-          {workCases.map((item, index) => {
-            const accent = casePostItStyles[index % casePostItStyles.length];
-            return (
-              <Reveal key={item.id} delay={index * 80}>
-                <Link to={item.path} className="group block mt-8 md:mt-14">
-                  <article className="case-card p-8 md:p-14 group-hover:-translate-y-1">
-                    <span
-                      aria-hidden
-                      className={`case-card-accent ${accent.tone}`}
-                    />
-                    <div className="flex flex-wrap gap-3 items-center mb-5">
-                      <span className="text-6xl font-extrabold leading-none text-neutral-200">
-                        {item.n}
-                      </span>
-                      <div className="flex flex-col gap-2">
-                        <span
-                          className={`post-it post-it-tag ${accent.tone} ${accent.tagRotate}`}
-                        >
-                          {item.kicker}
+          <div className="mt-12 md:mt-14 grid sm:grid-cols-2 gap-5 md:gap-6">
+            {workCases.map((item, index) => {
+              const accent = casePostItStyles[index % casePostItStyles.length];
+              return (
+                <Reveal key={item.id} delay={index * 60} className="h-full">
+                  <Link to={item.path} className="group block h-full">
+                    <article className="case-card flex h-full flex-col p-6 md:p-8 group-hover:-translate-y-1">
+                      <span
+                        aria-hidden
+                        className={`case-card-accent ${accent.tone}`}
+                      />
+                      <div className="flex flex-wrap gap-3 items-center mb-4">
+                        <span className="text-4xl md:text-5xl font-extrabold leading-none text-neutral-200">
+                          {item.n}
                         </span>
-                        <p className="text-xs text-neutral-500">{item.subtitle}</p>
+                        <div className="flex flex-col gap-2 min-w-0">
+                          <span
+                            className={`post-it post-it-tag w-fit ${accent.tone} ${accent.tagRotate}`}
+                          >
+                            {item.kicker}
+                          </span>
+                          <p className="text-xs text-neutral-500">{item.subtitle}</p>
+                        </div>
                       </div>
-                    </div>
-                    <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-950 max-w-xl">
-                      {item.title}
-                    </h3>
-                    <p className="mt-4 body-md max-w-2xl">{item.description}</p>
-                    <span className="inline-flex mt-8 btn-primary text-sm px-6 py-3">
-                      {t.work.cta}
-                    </span>
-                  </article>
-                </Link>
-              </Reveal>
-            );
-          })}
+                      <h3 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-950 text-balance">
+                        {item.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-relaxed text-neutral-500 text-pretty line-clamp-3 flex-1">
+                        {item.description}
+                      </p>
+                      <span className="inline-flex mt-6 btn-primary text-sm px-5 py-2.5 w-fit">
+                        {t.work.cta}
+                      </span>
+                    </article>
+                  </Link>
+                </Reveal>
+              );
+            })}
+          </div>
 
-          <Reveal className="mt-6 rounded-card p-8 md:p-14 section-inverted">
+          <Reveal className="mt-6 md:mt-8 rounded-card p-8 md:p-14 section-inverted">
             <div className="flex flex-wrap gap-3 items-center mb-5">
               <span className="text-5xl font-extrabold text-white/20">05</span>
               <span className="eyebrow text-white/50">{t.work.industryEyebrow}</span>
