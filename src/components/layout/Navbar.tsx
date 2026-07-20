@@ -19,7 +19,7 @@ export function Navbar() {
         className="flex items-center gap-2.5 text-neutral-950 font-bold tracking-tight"
       >
         <span className="w-2.5 h-2.5 rounded-full bg-accent inline-block" />
-        Ivy Dias de Campos
+        Ivy DC - CX experience
       </Link>
       <div className="flex items-center gap-3 md:gap-6 text-sm font-medium">
         {navItems.map((link) => (
