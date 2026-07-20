@@ -1,0 +1,567 @@
+import { FormEvent, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  casePostItStyles,
+  specialtyPostItStyles,
+} from "../data/portfolio";
+import { Footer } from "../components/layout/Footer";
+import { Navbar } from "../components/layout/Navbar";
+import { PostItTag } from "../components/ui/PostItTag";
+import { Reveal } from "../components/ui/Reveal";
+import { useContent } from "../content/ContentContext";
+import { useLocale } from "../i18n/LocaleContext";
+
+const heroTagStyles = [
+  { tone: "post-it-yellow", rotate: "-rotate-2" },
+  { tone: "post-it-blue", rotate: "rotate-2" },
+  { tone: "post-it-coral", rotate: "-rotate-1" },
+] as const;
+
+const heroStatStyles = [
+  { tone: "post-it-mint", rotate: "rotate-1" },
+  { tone: "post-it-lavender", rotate: "-rotate-2" },
+  { tone: "post-it-peach", rotate: "rotate-2" },
+] as const;
+
+const contactTagStyles = [
+  { tone: "post-it-yellow", rotate: "-rotate-2" },
+  { tone: "post-it-mint", rotate: "rotate-2" },
+  { tone: "post-it-blue", rotate: "-rotate-1" },
+  { tone: "post-it-coral", rotate: "rotate-1" },
+] as const;
+
+export function HomePage() {
+  const { locale, t } = useLocale();
+  const { content } = useContent();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+
+  const hero = content.heroCopy[locale];
+  const specialties = t.specialties.items;
+  const testimonials = t.testimonials.items;
+  const timeline = t.timeline.items;
+
+  const workCases = useMemo(() => {
+    const custom = content.projects
+      .filter((project) => project.published)
+      .map((project) => {
+        const copy = project[locale];
+        return {
+          id: project.id,
+          n: project.n,
+          kicker: copy.kicker,
+          subtitle: copy.subtitle,
+          title: copy.title,
+          description: copy.description,
+          path: `/cases/${project.slug}`,
+        };
+      });
+    return [...t.work.cases, ...custom];
+  }, [content.projects, locale, t.work.cases]);
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+    if (status === "loading") return;
+
+    setStatus("loading");
+    const subject = encodeURIComponent(
+      locale === "en"
+        ? `Portfolio contact — ${name || "new CX project"}`
+        : `Contato do portfólio — ${name || "novo projeto de CX"}`,
+    );
+    const body = encodeURIComponent(
+      locale === "en"
+        ? `Name: ${name}\nEmail: ${email}\n\n${message}`
+        : `Nome: ${name}\nEmail: ${email}\n\n${message}`,
+    );
+    const mailto = `mailto:ivy.dias.de.campos@gmail.com?subject=${subject}&body=${body}`;
+
+    setTimeout(() => {
+      window.location.href = mailto;
+      setStatus("success");
+    }, 900);
+  }
+
+  return (
+    <div className="bg-neutral-50 overflow-x-hidden relative">
+      <Navbar />
+
+      <header
+        id="top"
+        className="relative px-5 md:px-16 pt-24 md:pt-28 pb-20 md:pb-28 max-w-7xl mx-auto border-b border-neutral-200"
+      >
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <Reveal className="lg:col-span-7 xl:col-span-7">
+            <div className="flex flex-wrap gap-2.5 mb-7">
+              {t.hero.tags.map((tag, index) => (
+                <span
+                  key={tag}
+                  className={`post-it post-it-tag ${heroTagStyles[index]?.tone ?? "post-it-yellow"} ${heroTagStyles[index]?.rotate ?? "rotate-1"}`}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <h1 className="hero-h1">
+              {hero.titleBefore}{" "}
+              <span className="text-accent">{hero.titleAccent}</span>
+            </h1>
+            <p className="mt-8 max-w-xl body-lg">{hero.subtitle}</p>
+            <div className="mt-10 flex flex-wrap gap-3.5">
+              <a href="#trabalhos" className="btn-primary">
+                {t.hero.ctaWork}
+              </a>
+              <a href="#contato" className="btn-secondary">
+                {t.hero.ctaContact}
+              </a>
+            </div>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <p className="text-sm font-semibold text-neutral-950">
+                Ivy Dias de Campos
+              </p>
+              <span className="text-neutral-300" aria-hidden>
+                ·
+              </span>
+              <p className="eyebrow normal-case tracking-normal">{t.hero.role}</p>
+              <span className="post-it post-it-tag post-it-mint rotate-2 whitespace-nowrap">
+                {t.hero.location}
+              </span>
+            </div>
+          </Reveal>
+
+          <Reveal delay={120} className="lg:col-span-5 xl:col-span-5">
+            <figure className="relative mx-auto w-full max-w-md lg:max-w-none lg:ml-auto">
+              <img
+                src={content.heroImage}
+                alt={t.hero.imageAlt}
+                className="w-full rounded-2xl shadow-card object-cover object-[18%_22%] aspect-[4/5] lg:aspect-[3/4]"
+                loading="eager"
+                decoding="async"
+              />
+            </figure>
+          </Reveal>
+        </div>
+
+        <Reveal
+          delay={200}
+          className="mt-14 md:mt-20 flex flex-wrap gap-4 md:gap-6 items-stretch border-t border-neutral-200 pt-8"
+        >
+          {t.hero.stats.map((stat, index) => (
+            <div
+              key={stat.label}
+              className={`post-it post-it-stat ${heroStatStyles[index]?.tone ?? "post-it-mint"} ${heroStatStyles[index]?.rotate ?? "rotate-1"}`}
+            >
+              <div className="stat-value">{stat.value}</div>
+              <div className="text-xs text-neutral-700 mt-1.5">{stat.label}</div>
+            </div>
+          ))}
+        </Reveal>
+      </header>
+
+      <section id="sobre" className="section-narrative bg-white">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-start">
+          <Reveal>
+            <p className="eyebrow mb-5 text-accent">{t.about.eyebrow}</p>
+            <h2 className="section-h2">{t.about.title}</h2>
+            <div className="mt-10 flex flex-wrap gap-2.5">
+              {t.about.languages.map((lang, index) => (
+                <span
+                  key={lang}
+                  className={index === 0 ? "chip-filled" : "chip"}
+                >
+                  {lang}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+          <Reveal delay={100} className="body-md md:text-lg">
+            <p>{t.about.p1}</p>
+            <p className="mt-5">{t.about.p2}</p>
+            <div className="mt-9 pt-7 border-t border-neutral-200">
+              <p className="eyebrow mb-3 text-accent">{t.about.brandsLabel}</p>
+              <p className="text-sm leading-loose text-neutral-500">
+                {t.about.brands}
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="especialidades" className="section-narrative overflow-visible">
+        <div className="max-w-7xl mx-auto overflow-visible">
+          <Reveal className="max-w-3xl">
+            <p className="eyebrow mb-5">{t.specialties.eyebrow}</p>
+            <h2 className="section-h2">{t.specialties.title}</h2>
+            <p className="mt-5 body-md max-w-2xl">{t.specialties.intro}</p>
+          </Reveal>
+          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 overflow-visible px-1 pb-4">
+            {specialties.map((item, index) => {
+              const postIt = specialtyPostItStyles[index];
+              return (
+                <Reveal
+                  key={item.num}
+                  delay={index * 60}
+                  className={postIt?.offset}
+                >
+                  <div
+                    className={`post-it ${postIt?.tone ?? "post-it-yellow"} ${postIt?.rotate ?? "rotate-1"} hover:rotate-0 hover:-translate-y-2`}
+                  >
+                    <div className="font-mono text-sm font-medium text-neutral-800/70">
+                      {item.num}
+                    </div>
+                    <h3 className="mt-4 text-card-title text-neutral-950">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-neutral-700 text-pretty">
+                      {item.desc}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section id="trabalhos" className="section-narrative bg-white">
+        <div className="max-w-7xl mx-auto">
+          <Reveal className="flex flex-wrap gap-5 items-end justify-between">
+            <div className="max-w-3xl">
+              <p className="eyebrow mb-5">{t.work.eyebrow}</p>
+              <h2 className="section-h2">{t.work.title}</h2>
+              <p className="mt-5 body-md max-w-2xl">{t.work.intro}</p>
+            </div>
+            <p className="eyebrow">
+              {String(workCases.length).padStart(2, "0")}{" "}
+              {locale === "en" ? "cases" : "casos"}
+            </p>
+          </Reveal>
+
+          {workCases.map((item, index) => {
+            const accent = casePostItStyles[index % casePostItStyles.length];
+            return (
+              <Reveal key={item.id} delay={index * 80}>
+                <Link to={item.path} className="group block mt-8 md:mt-14">
+                  <article className="case-card p-8 md:p-14 group-hover:-translate-y-1">
+                    <span
+                      aria-hidden
+                      className={`case-card-accent ${accent.tone}`}
+                    />
+                    <div className="flex flex-wrap gap-3 items-center mb-5">
+                      <span className="text-6xl font-extrabold leading-none text-neutral-200">
+                        {item.n}
+                      </span>
+                      <div className="flex flex-col gap-2">
+                        <span
+                          className={`post-it post-it-tag ${accent.tone} ${accent.tagRotate}`}
+                        >
+                          {item.kicker}
+                        </span>
+                        <p className="text-xs text-neutral-500">{item.subtitle}</p>
+                      </div>
+                    </div>
+                    <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-950 max-w-xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 body-md max-w-2xl">{item.description}</p>
+                    <span className="inline-flex mt-8 btn-primary text-sm px-6 py-3">
+                      {t.work.cta}
+                    </span>
+                  </article>
+                </Link>
+              </Reveal>
+            );
+          })}
+
+          <Reveal className="mt-6 rounded-card p-8 md:p-14 section-inverted">
+            <div className="flex flex-wrap gap-3 items-center mb-5">
+              <span className="text-5xl font-extrabold text-white/20">05</span>
+              <span className="eyebrow text-white/50">{t.work.industryEyebrow}</span>
+            </div>
+            <h3 className="text-3xl md:text-4xl font-bold leading-tight max-w-lg text-white">
+              {t.work.industryTitle}
+            </h3>
+            <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {t.work.industries.map((group) => (
+                <div key={group.label}>
+                  <p className="eyebrow text-accent mb-2">{group.label}</p>
+                  <p className="text-sm leading-relaxed text-white/70">
+                    {group.brands}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="depoimentos" className="section-narrative">
+        <div className="max-w-7xl mx-auto">
+          <Reveal className="max-w-3xl">
+            <p className="eyebrow mb-5">{t.testimonials.eyebrow}</p>
+            <h2 className="section-h2">{t.testimonials.title}</h2>
+            <p className="mt-5 body-md">{t.testimonials.intro}</p>
+          </Reveal>
+
+          <div className="mt-14 flex flex-col gap-5">
+            {testimonials
+              .filter((item) => item.featured)
+              .map((item) => (
+                <Reveal key={item.name}>
+                  <blockquote className="card p-8 md:p-12 lg:p-14">
+                    <div className="lg:grid lg:grid-cols-12 lg:gap-12 lg:items-end">
+                      <div className="lg:col-span-8">
+                        <span
+                          aria-hidden
+                          className="font-serif text-6xl md:text-7xl leading-none text-accent select-none"
+                        >
+                          “
+                        </span>
+                        <p className="mt-4 text-lg md:text-xl leading-relaxed text-neutral-600 text-pretty">
+                          {item.quote}
+                        </p>
+                      </div>
+                      <footer className="mt-8 lg:mt-0 lg:col-span-4 lg:border-l lg:border-neutral-200 lg:pl-10">
+                        <cite className="not-italic">
+                          <p className="text-lg font-semibold text-neutral-950">
+                            {item.name}
+                          </p>
+                          <p className="eyebrow mt-2 normal-case tracking-normal text-neutral-500">
+                            {item.role}
+                          </p>
+                        </cite>
+                      </footer>
+                    </div>
+                  </blockquote>
+                </Reveal>
+              ))}
+
+            <div className="grid md:grid-cols-2 gap-5">
+              {testimonials
+                .filter((item) => !item.featured)
+                .map((item, index) => (
+                  <Reveal key={item.name} delay={index * 60}>
+                    <blockquote className="card h-full p-8 md:p-10 flex flex-col">
+                      <span
+                        aria-hidden
+                        className="font-serif text-5xl leading-none text-accent select-none"
+                      >
+                        “
+                      </span>
+                      <p className="mt-4 flex-1 text-[15px] leading-relaxed text-neutral-600 text-pretty">
+                        {item.quote}
+                      </p>
+                      <footer className="mt-8 pt-6 border-t border-neutral-200">
+                        <cite className="not-italic">
+                          <p className="text-base font-semibold text-neutral-950">
+                            {item.name}
+                          </p>
+                          <p className="eyebrow mt-2 normal-case tracking-normal text-neutral-500">
+                            {item.role}
+                          </p>
+                        </cite>
+                      </footer>
+                    </blockquote>
+                  </Reveal>
+                ))}
+            </div>
+          </div>
+
+          <Reveal className="mt-10">
+            <a
+              href="https://www.linkedin.com/in/ivydiasdecampos"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost text-sm"
+            >
+              {t.testimonials.linkedinCta}
+            </a>
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="trajetoria" className="section-narrative bg-white">
+        <div className="max-w-3xl mx-auto">
+          <Reveal className="mb-14">
+            <p className="eyebrow mb-5">{t.timeline.eyebrow}</p>
+            <h2 className="section-h2">{t.timeline.title}</h2>
+          </Reveal>
+          {timeline.map((item, index) => (
+            <Reveal key={item.company} delay={index * 50}>
+              <div className="grid grid-cols-[minmax(90px,140px)_1fr] gap-4 md:gap-10 py-6 border-t border-neutral-200">
+                <div className="font-mono text-xs text-neutral-500 pt-1">
+                  {item.period}
+                </div>
+                <div>
+                  <div className="flex flex-wrap items-baseline gap-2.5">
+                    <h3 className="text-lg md:text-xl font-semibold text-neutral-950">
+                      {item.company}
+                    </h3>
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                    <span className="text-sm text-neutral-500">{item.role}</span>
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-neutral-500 text-pretty">
+                    {item.scope}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section id="contato" className="section-inverted py-20 md:py-32">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-start">
+          <Reveal>
+            <div className="flex flex-wrap items-end gap-6 mb-8">
+              <div className="relative">
+                <img
+                  src={content.contactPhoto}
+                  alt={t.contact.photoAlt}
+                  className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover object-[center_18%] border-4 border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
+                />
+                <span className="post-it post-it-tag post-it-yellow rotate-3 absolute -bottom-2 -right-3">
+                  CX
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2.5 pb-2">
+                {t.contact.tags.map((tag, index) => (
+                  <span
+                    key={tag}
+                    className={`post-it post-it-tag ${contactTagStyles[index]?.tone ?? "post-it-mint"} ${contactTagStyles[index]?.rotate ?? "rotate-1"}`}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <p className="eyebrow mb-5 text-white/50">{t.contact.eyebrow}</p>
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold leading-none tracking-tight text-white text-balance">
+              {t.contact.title}
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-white/70 max-w-md text-pretty">
+              {t.contact.subtitle}
+            </p>
+            <div className="mt-9 flex flex-col gap-3.5">
+              {[
+                {
+                  href: "mailto:ivy.dias.de.campos@gmail.com",
+                  label: "ivy.dias.de.campos@gmail.com",
+                },
+                {
+                  href: "https://wa.me/351961954617",
+                  label: "WhatsApp / +351 961 954 617",
+                },
+                {
+                  href: "https://www.linkedin.com/in/ivydiasdecampos",
+                  label: "LinkedIn / in/ivydiasdecampos",
+                },
+                {
+                  href: "https://www.behance.com/ivydc",
+                  label: "Behance / ivydc",
+                },
+              ].map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    link.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className="flex items-center gap-3 text-base text-white/80 hover:text-white transition-colors"
+                >
+                  <span className="font-mono text-xs text-accent">→</span>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={100}>
+            {status === "success" ? (
+              <div className="card p-10 text-center">
+                <div className="text-5xl font-extrabold text-accent">✓</div>
+                <h3 className="mt-4 text-3xl font-bold text-neutral-950">
+                  {t.contact.successTitle}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-500">
+                  {t.contact.successBody.replace(
+                    "{name}",
+                    name.trim() || (locale === "en" ? "soon" : "até já"),
+                  )}
+                </p>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="card p-7 md:p-10 flex flex-col gap-5 relative overflow-visible"
+              >
+                <PostItTag index={0} className="absolute -top-3 right-6">
+                  {locale === "en" ? "Let's talk" : "Vamos falar"}
+                </PostItTag>
+                {[
+                  {
+                    id: "name",
+                    label: t.contact.formName,
+                    type: "text",
+                    value: name,
+                    onChange: setName,
+                    placeholder: t.contact.namePlaceholder,
+                  },
+                  {
+                    id: "email",
+                    label: t.contact.formEmail,
+                    type: "email",
+                    value: email,
+                    onChange: setEmail,
+                    placeholder: t.contact.emailPlaceholder,
+                  },
+                ].map((field) => (
+                  <label key={field.id} className="flex flex-col gap-2">
+                    <span className="eyebrow">{field.label}</span>
+                    <input
+                      required
+                      type={field.type}
+                      value={field.value}
+                      onChange={(event) => field.onChange(event.target.value)}
+                      placeholder={field.placeholder}
+                      className="input-field"
+                    />
+                  </label>
+                ))}
+                <label className="flex flex-col gap-2">
+                  <span className="eyebrow">{t.contact.formMessage}</span>
+                  <textarea
+                    required
+                    rows={4}
+                    value={message}
+                    onChange={(event) => setMessage(event.target.value)}
+                    placeholder={t.contact.messagePlaceholder}
+                    className="input-field resize-y leading-relaxed"
+                  />
+                </label>
+                <button
+                  type="submit"
+                  disabled={status === "loading"}
+                  className="btn-primary mt-1 disabled:opacity-70"
+                >
+                  {status === "loading"
+                    ? t.contact.submitting
+                    : t.contact.submit}
+                </button>
+                <p className="text-xs text-center text-neutral-500 leading-relaxed">
+                  {t.contact.formHint}
+                </p>
+              </form>
+            )}
+          </Reveal>
+        </div>
+        <Footer inverted />
+      </section>
+    </div>
+  );
+}

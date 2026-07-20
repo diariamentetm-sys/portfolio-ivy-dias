@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#16111F;color:#EDE7F2;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--accent,#EC2A86);text-decoration:none}
+  a:hover{color:#FFCF3E}
+  input,textarea,button{font-family:inherit}
+  ::selection{background:#EC2A86;color:#fff}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="--accent:#EC2A86;--violet:#8257FF;--yellow:#FFCF3E;--lilac:#CBB9F6;--cream:#F3EEE4;--ink:#16111F;background:#16111F;overflow:hidden;position:relative">
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <!-- NAV -->
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px clamp(20px,5vw,64px);backdrop-filter:blur(12px);background:rgba(22,17,31,0.72);border-bottom:1px solid rgba(255,255,255,0.06)">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;color:#EDE7F2;font-weight:700;letter-spacing:-0.01em">
+      <span style="width:11px;height:11px;border-radius:50%;background:var(--accent,#EC2A86);display:inline-block"></span>
+      Ivy Dias de Campos
+    </a>
+    <div style="display:flex;align-items:center;gap:clamp(14px,2.2vw,34px);font-size:14px;font-weight:500">
+      <a href="#sobre" style="color:#C6BDD3">Sobre</a>
+      <a href="#especialidades" style="color:#C6BDD3">Especialidades</a>
+      <a href="#trabalhos" style="color:#C6BDD3">Trabalhos</a>
+      <a href="#trajetoria" style="color:#C6BDD3">Trajetória</a>
+      <a href="#contato" style="padding:9px 18px;border-radius:100px;background:var(--accent,#EC2A86);color:#fff;font-weight:600" style-hover="background:#FFCF3E;color:#16111F">Contato</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" style="position:relative;padding:clamp(150px,18vh,210px) clamp(20px,5vw,64px) clamp(80px,10vh,120px);max-width:1280px;margin:0 auto">
+    <div aria-hidden="true" style="position:absolute;top:12%;right:6%;width:min(38vw,440px);height:min(38vw,440px);border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(130,87,255,0.55),rgba(236,42,134,0.28) 55%,transparent 72%);filter:blur(8px);animation:floaty 9s ease-in-out infinite;pointer-events:none"></div>
+    <div aria-hidden="true" style="position:absolute;bottom:8%;left:-4%;width:min(24vw,260px);height:min(24vw,260px);border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(255,207,62,0.35),transparent 70%);filter:blur(6px);pointer-events:none"></div>
+    <div style="position:relative;max-width:960px">
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--lilac);margin-bottom:28px">CX Strategy · Service Design · User Research</div>
+      <h1 data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .7s ease .05s,transform .7s ease .05s;font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(48px,8.5vw,116px);line-height:0.98;letter-spacing:-0.02em;color:#F6F1FA;text-wrap:balance">Conecto marcas a <em style="color:var(--accent,#EC2A86);font-style:italic">experiências digitais reais.</em></h1>
+      <p data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .7s ease .1s,transform .7s ease .1s;margin-top:34px;max-width:640px;font-size:clamp(17px,1.5vw,21px);line-height:1.55;color:#BEB4CC;text-wrap:pretty">Há mais de 20 anos transformo complexidade de negócio em experiências que geram valor real — atuando como liderança técnica em projetos estratégicos de CX Design, Service Design e User Research.</p>
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .7s ease .15s,transform .7s ease .15s;display:flex;flex-wrap:wrap;gap:14px;margin-top:44px">
+        <a href="#trabalhos" style="display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:100px;background:var(--accent,#EC2A86);color:#fff;font-weight:600;font-size:15px" style-hover="background:#FFCF3E;color:#16111F">Ver trabalhos selecionados →</a>
+        <a href="#contato" style="display:inline-flex;align-items:center;padding:16px 28px;border-radius:100px;border:1px solid rgba(255,255,255,0.22);color:#EDE7F2;font-weight:600;font-size:15px" style-hover="border-color:#FFCF3E;color:#FFCF3E">Entrar em contato</a>
+      </div>
+    </div>
+    <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .7s ease .2s,transform .7s ease .2s;margin-top:clamp(56px,8vh,96px);display:flex;flex-wrap:wrap;gap:32px 56px;align-items:baseline;border-top:1px solid rgba(255,255,255,0.09);padding-top:34px">
+      <div><div style="font-family:'Instrument Serif',serif;font-size:44px;line-height:1;color:var(--yellow)">20+</div><div style="font-size:13px;color:#9E93AD;margin-top:6px">anos de experiência</div></div>
+      <div><div style="font-family:'Instrument Serif',serif;font-size:44px;line-height:1;color:var(--yellow)">30+</div><div style="font-size:13px;color:#9E93AD;margin-top:6px">marcas atendidas</div></div>
+      <div><div style="font-family:'Instrument Serif',serif;font-size:44px;line-height:1;color:var(--yellow)">3</div><div style="font-size:13px;color:#9E93AD;margin-top:6px">idiomas de trabalho</div></div>
+      <div style="margin-left:auto;text-align:right;font-size:13px;color:#9E93AD;line-height:1.6">Estrategista &amp; Designer de CX<br><span style="color:#C6BDD3">Portugal · projetos remotos e internacionais</span></div>
+    </div>
+  </header>
+
+  <!-- SOBRE -->
+  <section id="sobre" style="background:var(--cream);color:var(--ink);padding:clamp(80px,12vh,140px) clamp(20px,5vw,64px)">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(40px,6vw,88px);align-items:start">
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease">
+        <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:#EC2A86;margin-bottom:22px">(01) Sobre</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(34px,4.4vw,58px);line-height:1.05;letter-spacing:-0.015em;text-wrap:balance">Transformo complexidade em experiências que geram valor real.</h2>
+        <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:10px">
+          <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;background:#16111F;color:#F3EEE4">Português — nativo</span>
+          <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;border:1px solid rgba(22,17,31,0.25);color:#16111F">English — avançado</span>
+          <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;border:1px solid rgba(22,17,31,0.25);color:#16111F">Italiano — avançado</span>
+        </div>
+      </div>
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .7s ease .1s,transform .7s ease .1s;font-size:clamp(16px,1.3vw,18px);line-height:1.7;color:#3A3345">
+        <p style="text-wrap:pretty">Sou estrategista e designer de Customer Experience com mais de duas décadas dedicadas a produtos, serviços e marcas digitais. Trabalho na interseção entre CX Design, Service Design e User Research, sempre com um objetivo: transformar complexidade em experiências que geram valor real — para as pessoas e para o negócio.</p>
+        <p style="margin-top:20px;text-wrap:pretty">Atuo como liderança técnica em projetos estratégicos, unindo visão sistêmica, profundidade de design e a capacidade de dialogar com stakeholders de perfis muito diferentes. Minhas entregas cobrem UX, UI, pesquisa, service design, direção de arte e estratégia — com consistência, escuta atenta e profundidade.</p>
+
+        <div style="margin-top:36px;padding-top:28px;border-top:1px solid rgba(22,17,31,0.14)">
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8257FF;margin-bottom:14px">Marcas com quem colaborei</div>
+          <p style="font-size:15px;line-height:1.9;color:#54495F">Petrobras · TSE · Claro · Stix · Banco Pan · Genial Investimentos · BV · Santander · Bradesco · Itaú · SulAmérica · Unilever · Ale Combustíveis · Raízen · Ultracargo · Pernod Ricard · Sebrae · Polícia Federal</p>
+        </div>
+
+        <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px">
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8257FF;margin-bottom:12px">Formação</div>
+            <ul style="list-style:none;font-size:14.5px;line-height:1.7;color:#54495F;display:flex;flex-direction:column;gap:9px">
+              <li>MBA em Gestão de Marketing — USP/Esalq</li>
+              <li>Extensão em UX Strategy — PUC-Rio</li>
+              <li>CX Management &amp; Design Thinking — FIAP</li>
+              <li>Pós-graduação em Artes Visuais</li>
+            </ul>
+          </div>
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8257FF;margin-bottom:12px">Certificações</div>
+            <ul style="list-style:none;font-size:14.5px;line-height:1.7;color:#54495F;display:flex;flex-direction:column;gap:9px">
+              <li>Design System Specialist</li>
+              <li>Introdução ao Customer Experience</li>
+              <li>A (R)Evolução do Branding — Ana Couto</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPECIALIDADES -->
+  <section id="especialidades" style="padding:clamp(80px,12vh,140px) clamp(20px,5vw,64px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;max-width:720px">
+        <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--lilac);margin-bottom:22px">(02) Como eu trabalho</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(34px,4.4vw,58px);line-height:1.05;letter-spacing:-0.015em;color:#F6F1FA;text-wrap:balance">Frentes de atuação, não uma lista de skills.</h2>
+      </div>
+      <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+        <sc-for list="{{ specialties }}" as="s" hint-placeholder-count="6">
+          <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;padding:32px;border-radius:14px;border:1px solid rgba(255,255,255,0.09);background:linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01))" style-hover="border-color:rgba(236,42,134,0.55);transform:translateY(-4px)">
+            <div style="font-family:'Space Mono',monospace;font-size:14px;color:var(--yellow)">{{ s.num }}</div>
+            <h3 style="margin-top:16px;font-size:21px;font-weight:600;letter-spacing:-0.01em;color:#F1EBF5">{{ s.title }}</h3>
+            <p style="margin-top:12px;font-size:15px;line-height:1.6;color:#A99FB8;text-wrap:pretty">{{ s.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRABALHOS -->
+  <section id="trabalhos" style="padding:clamp(70px,9vh,110px) clamp(20px,5vw,64px) clamp(40px,6vh,80px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between">
+        <div style="max-width:760px">
+          <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--lilac);margin-bottom:22px">(03) Trabalhos selecionados</div>
+          <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(34px,4.4vw,58px);line-height:1.05;letter-spacing:-0.015em;color:#F6F1FA;text-wrap:balance">Cases em profundidade — do desafio ao resultado.</h2>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:13px;color:#9E93AD">04 casos + trajetória</div>
+      </div>
+    </div>
+
+    <!-- CASE 1 - CASHLOG -->
+    <article data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;max-width:1280px;margin:clamp(56px,8vh,90px) auto 0;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);cursor:pointer" onClick="{{ openCashlog }}" style-hover="border-color:rgba(236,42,134,0.6);transform:translateY(-3px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+        <div style="padding:clamp(32px,4vw,56px);background:linear-gradient(155deg,#2A1740,#16111F)">
+          <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:24px">
+            <span style="font-family:'Instrument Serif',serif;font-size:64px;line-height:1;color:var(--accent,#EC2A86)">01</span>
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--yellow)">Raízen · Fintech B2B</span>
+              <span style="font-size:12px;color:#9E93AD">Consultora de Inovação / UX · MJV Technology</span>
+            </div>
+          </div>
+          <h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(32px,3.5vw,46px);line-height:1.02;color:#F6F1FA">Cashlog</h3>
+          <p style="margin-top:18px;font-size:15.5px;line-height:1.65;color:#C0B6CE;max-width:46ch;text-wrap:pretty">Plataforma de gestão financeira para a operação de postos: precisava ser simples para colaboradores operacionais e robusta o suficiente para as decisões estratégicas de diretores em múltiplas áreas de negócio.</p>
+        </div>
+        <div style="background:repeating-linear-gradient(135deg,rgba(255,255,255,0.05) 0 14px,rgba(255,255,255,0.015) 14px 28px),#1C1626;min-height:280px;display:flex;align-items:center;justify-content:center;padding:24px">
+          <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.08em;color:rgba(237,231,242,0.5);text-align:center">[ dashboards · telas de gestão<br>financeira em alta fidelidade ]</span>
+        </div>
+      </div>
+      <div style="padding:clamp(28px,3.5vw,48px);background:rgba(255,255,255,0.02)">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8257FF;margin-bottom:22px">Processo — 5 etapas</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px">
+          <sc-for list="{{ cashlogSteps }}" as="st" hint-placeholder-count="5">
+            <div style="border-top:2px solid var(--accent,#EC2A86);padding-top:14px">
+              <div style="font-family:'Space Mono',monospace;font-size:13px;color:var(--yellow)">{{ st.n }}</div>
+              <div style="margin-top:8px;font-size:15px;font-weight:600;color:#EDE7F2;line-height:1.35">{{ st.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <blockquote style="margin-top:38px;padding-left:24px;border-left:3px solid var(--yellow);font-family:'Instrument Serif',serif;font-size:clamp(20px,2vw,27px);line-height:1.4;font-style:italic;color:#E7DFEF;max-width:70ch;text-wrap:pretty">“O projeto Cashlog foi uma oportunidade de aplicar UX em uma complexidade operacional, onde a interface precisava ser ao mesmo tempo intuitiva para colaboradores operacionais e poderosa o suficiente para suportar as decisões estratégicas de diretores em múltiplas áreas de negócio.”</blockquote>
+        <div style="margin-top:30px;display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:100px;background:var(--accent,#EC2A86);color:#fff;font-weight:600;font-size:14px">Ver estudo de caso completo →</div>
+      </div>
+    </article>
+
+    <!-- CASE 2 - CLARO CARDS -->
+    <article data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;max-width:1280px;margin:24px auto 0;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);cursor:pointer" onClick="{{ openClaro }}" style-hover="border-color:rgba(229,57,53,0.6);transform:translateY(-3px)">
+      <div style="padding:clamp(32px,4vw,56px)">
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:22px">
+          <span style="font-family:'Instrument Serif',serif;font-size:64px;line-height:1;color:var(--accent,#EC2A86)">02</span>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--yellow)">Claro AMX · Service Design</span>
+            <span style="font-size:12px;color:#9E93AD">CX na Claro · CoE CX / Portal Claro.com.br</span>
+          </div>
+        </div>
+        <h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(30px,3.4vw,44px);line-height:1.03;color:#F6F1FA;max-width:22ch">Cards de oferta no e-commerce</h3>
+        <p style="margin-top:16px;font-size:15.5px;line-height:1.65;color:#B7ADC5;max-width:64ch;text-wrap:pretty">Arquitetura de informação e regras de negócio para os cards de planos e combos do e-commerce da Claro, conduzido dentro de um time multidisciplinar — do desenho ao desenvolvimento.</p>
+
+        <div style="margin-top:34px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8257FF;margin-bottom:20px">Processo — 6 etapas</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px">
+          <sc-for list="{{ claroSteps }}" as="st" hint-placeholder-count="6">
+            <div style="border-top:2px solid var(--accent,#EC2A86);padding-top:14px">
+              <div style="font-family:'Space Mono',monospace;font-size:13px;color:var(--yellow)">{{ st.n }}</div>
+              <div style="margin-top:8px;font-size:14px;font-weight:600;color:#EDE7F2;line-height:1.35">{{ st.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px">
+          <div style="flex:1;min-width:200px;padding:22px;border-radius:12px;background:linear-gradient(155deg,rgba(130,87,255,0.16),rgba(255,255,255,0.02));border:1px solid rgba(130,87,255,0.3)">
+            <div style="font-family:'Instrument Serif',serif;font-size:40px;color:var(--yellow);line-height:1">8</div>
+            <div style="margin-top:6px;font-size:14px;color:#C0B6CE">cards finais entregues, do desenho ao dev</div>
+          </div>
+          <div style="flex:2;min-width:240px;padding:22px;border-radius:12px;background:repeating-linear-gradient(135deg,rgba(255,255,255,0.05) 0 14px,rgba(255,255,255,0.015) 14px 28px),#1C1626;display:flex;align-items:center;justify-content:center;min-height:120px">
+            <span style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(237,231,242,0.5);text-align:center">[ diagrama de arquitetura do card + conjunto final ]</span>
+          </div>
+        </div>
+
+        <blockquote style="margin-top:34px;padding-left:24px;border-left:3px solid var(--yellow);font-family:'Instrument Serif',serif;font-size:clamp(19px,1.9vw,26px);line-height:1.4;font-style:italic;color:#E7DFEF;max-width:74ch;text-wrap:pretty">“Esse projeto ilustra bem o tipo de trabalho que faço como service designer dentro de um time multidisciplinar: conduzir dinâmicas com grupos numerosos e transformar conhecimento disperso sobre regras de negócio em artefatos de decisão que orientam com clareza as etapas seguintes do processo de design.”</blockquote>
+        <div style="margin-top:30px;display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:100px;background:#E53935;color:#fff;font-weight:600;font-size:14px">Ver estudo de caso completo →</div>
+      </div>
+    </article>
+
+    <!-- CASE 3 - A/B TESTS -->
+    <article data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;max-width:1280px;margin:24px auto 0;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:linear-gradient(160deg,#20143A,#16111F);cursor:pointer" onClick="{{ openAbtest }}" style-hover="border-color:rgba(242,183,5,0.6);transform:translateY(-3px)">
+      <div style="padding:clamp(32px,4vw,56px)">
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:22px">
+          <span style="font-family:'Instrument Serif',serif;font-size:64px;line-height:1;color:var(--accent,#EC2A86)">03</span>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--yellow)">Claro · CRO / Experimentação</span>
+            <span style="font-size:12px;color:#9E93AD">Raciocínio orientado a dados e resultado de negócio</span>
+          </div>
+        </div>
+        <h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(30px,3.4vw,44px);line-height:1.03;color:#F6F1FA;max-width:22ch">Testes A/B orientados a dados</h3>
+        <p style="margin-top:16px;font-size:15.5px;line-height:1.65;color:#B7ADC5;max-width:62ch;text-wrap:pretty">Dois experimentos que provam a hipótese com métrica de negócio — não só entrega visual, mas decisão validada em produção.</p>
+
+        <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+          <div style="padding:30px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09)">
+            <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--lilac)">Teste 01 · Hub Claro TV+</div>
+            <p style="margin-top:14px;font-size:14.5px;line-height:1.6;color:#B7ADC5">Hipótese: um novo hub gera mais conversão de pedido e engajamento. 30 dias · desktop e mobile · métrica: conclusão de pedido com TV.</p>
+            <div style="margin-top:24px;display:flex;align-items:baseline;gap:8px">
+              <span style="font-family:'Instrument Serif',serif;font-size:clamp(56px,7vw,86px);line-height:0.9;color:var(--yellow)">+19%</span>
+              <span style="font-size:14px;color:#C0B6CE">pedidos<br>com TV</span>
+            </div>
+          </div>
+          <div style="padding:30px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09)">
+            <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--lilac)">Teste 02 · Página de Atendimento</div>
+            <p style="margin-top:14px;font-size:14.5px;line-height:1.6;color:#B7ADC5">Nova página criada a partir de CSAT e testes A/B para aumentar o engajamento. 42 dias · desktop e mobile · métrica: interação com a página.</p>
+            <div style="margin-top:24px;display:flex;align-items:baseline;gap:8px">
+              <span style="font-family:'Instrument Serif',serif;font-size:clamp(56px,7vw,86px);line-height:0.9;color:var(--yellow)">+38%</span>
+              <span style="font-size:14px;color:#C0B6CE">interação com<br>cards e shortcuts</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:30px;display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:100px;background:#F2B705;color:#16111F;font-weight:700;font-size:14px">Ver estudo de caso completo →</div>
+      </div>
+    </article>
+
+    <!-- CASE 4 - e-TÍTULO -->
+    <article data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;max-width:1280px;margin:24px auto 0;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);cursor:pointer" onClick="{{ openEtitulo }}" style-hover="border-color:rgba(43,79,224,0.7);transform:translateY(-3px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+        <div style="padding:clamp(32px,4vw,56px);background:linear-gradient(155deg,#3A1F2E,#16111F)">
+          <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:22px">
+            <span style="font-family:'Instrument Serif',serif;font-size:64px;line-height:1;color:var(--accent,#EC2A86)">04</span>
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--yellow)">TSE · Serviço público digital</span>
+              <span style="font-size:12px;color:#9E93AD">CX aplicado a cidadania e acessibilidade</span>
+            </div>
+          </div>
+          <h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(30px,3.4vw,44px);line-height:1.03;color:#F6F1FA;max-width:20ch">Onboarding do e-Título</h3>
+          <p style="margin-top:16px;font-size:15.5px;line-height:1.65;color:#C0B6CE;max-width:46ch;text-wrap:pretty">Redesenho do onboarding do serviço de identificação digital do eleitor — tratado como ecossistema, não apenas como interface. Desenhado para eleitores em geral, pessoas com deficiência e eleitores em situação de urgência no dia da eleição.</p>
+          <div style="margin-top:24px;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:100px;background:rgba(255,207,62,0.14);border:1px solid rgba(255,207,62,0.4);font-size:12.5px;color:var(--yellow)">Serviço público de alto volume · foco em inclusão</div>
+        </div>
+        <div style="padding:clamp(32px,4vw,56px);background:rgba(255,255,255,0.02);display:flex;flex-direction:column;justify-content:center">
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8257FF;margin-bottom:18px">4 fases</div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px">
+            <span style="font-family:'Space Mono',monospace;font-size:13px;padding:9px 16px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#EDE7F2">Discovery</span>
+            <span style="font-family:'Space Mono',monospace;font-size:13px;padding:9px 16px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#EDE7F2">Definição</span>
+            <span style="font-family:'Space Mono',monospace;font-size:13px;padding:9px 16px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#EDE7F2">Ideação</span>
+            <span style="font-family:'Space Mono',monospace;font-size:13px;padding:9px 16px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#EDE7F2">Validação</span>
+          </div>
+          <blockquote style="padding-left:22px;border-left:3px solid var(--accent,#EC2A86);font-family:'Instrument Serif',serif;font-size:clamp(24px,2.6vw,36px);line-height:1.25;font-style:italic;color:#F1EBF5;text-wrap:pretty">“O serviço exigia que o eleitor fosse resiliente, quando deveria protegê-lo.”</blockquote>
+          <p style="margin-top:26px;font-size:15px;line-height:1.6;color:#A99FB8;text-wrap:pretty">Mapeamos onde a jornada as-is quebrava e desenhamos um onboarding acessível por padrão, com oportunidades claras de evolução do serviço.</p>
+          <div style="margin-top:24px;font-family:'Instrument Serif',serif;font-size:20px;font-style:italic;color:var(--yellow)">Uma jornada projetada para simplificar a cidadania digital.</div>
+          <div style="margin-top:28px;display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:100px;background:#2B4FE0;color:#fff;font-weight:600;font-size:14px;align-self:flex-start">Ver estudo de caso completo →</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CASE 5 - MULTI-INDÚSTRIA -->
+    <article data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;max-width:1280px;margin:24px auto 0;border-radius:20px;padding:clamp(32px,4vw,56px);background:var(--cream);color:var(--ink)">
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:22px">
+        <span style="font-family:'Instrument Serif',serif;font-size:56px;line-height:1;color:#EC2A86">05</span>
+        <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#8257FF">Trajetória multi-indústria · prova social</span>
+      </div>
+      <h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(26px,3vw,40px);line-height:1.1;max-width:24ch">Adaptação a diferentes modelos de negócio e stakeholders.</h3>
+      <div style="margin-top:34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px">
+        <div><div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#EC2A86;margin-bottom:10px">Bancos &amp; Investimentos</div><p style="font-size:15px;line-height:1.6;color:#54495F">Santander · Bradesco · Itaú · Banco BV · Banco Pan · Genial</p></div>
+        <div><div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#EC2A86;margin-bottom:10px">Energia &amp; Varejo</div><p style="font-size:15px;line-height:1.6;color:#54495F">Raízen · Ale Combustíveis · Ultracargo · Stix</p></div>
+        <div><div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#EC2A86;margin-bottom:10px">Telecom &amp; Seguros</div><p style="font-size:15px;line-height:1.6;color:#54495F">Claro · Vivo · SulAmérica</p></div>
+        <div><div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#EC2A86;margin-bottom:10px">Setor público</div><p style="font-size:15px;line-height:1.6;color:#54495F">TSE · Polícia Federal · Petrobras · Sebrae</p></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- TRAJETÓRIA -->
+  <section id="trajetoria" style="padding:clamp(80px,12vh,140px) clamp(20px,5vw,64px)">
+    <div style="max-width:900px;margin:0 auto">
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;margin-bottom:56px">
+        <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--lilac);margin-bottom:22px">(04) Trajetória</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(34px,4.4vw,58px);line-height:1.05;letter-spacing:-0.015em;color:#F6F1FA;text-wrap:balance">Os marcos que moldaram minha prática de CX.</h2>
+      </div>
+      <div style="position:relative">
+        <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="6">
+          <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;display:grid;grid-template-columns:minmax(90px,140px) 1fr;gap:clamp(16px,4vw,44px);padding:26px 0;border-top:1px solid rgba(255,255,255,0.1)">
+            <div style="font-family:'Space Mono',monospace;font-size:13px;color:var(--yellow);padding-top:4px">{{ t.period }}</div>
+            <div>
+              <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px">
+                <h3 style="font-size:clamp(19px,2vw,25px);font-weight:600;letter-spacing:-0.01em;color:#F1EBF5">{{ t.company }}</h3>
+                <span style="width:6px;height:6px;border-radius:50%;background:var(--accent,#EC2A86)"></span>
+                <span style="font-size:14.5px;color:var(--lilac)">{{ t.role }}</span>
+              </div>
+              <p style="margin-top:9px;font-size:15px;line-height:1.6;color:#A99FB8;text-wrap:pretty">{{ t.scope }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" style="background:linear-gradient(180deg,#16111F,#0F0B17)">
+    <div style="max-width:1280px;margin:0 auto;padding:clamp(80px,12vh,140px) clamp(20px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(40px,6vw,80px)">
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease">
+        <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--lilac);margin-bottom:22px">(05) Contato</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(38px,5vw,68px);line-height:1;letter-spacing:-0.02em;color:#F6F1FA;text-wrap:balance">Vamos conversar sobre seu projeto de CX?</h2>
+        <p style="margin-top:24px;font-size:17px;line-height:1.6;color:#B7ADC5;max-width:44ch;text-wrap:pretty">Disponível para projetos remotos e internacionais, a partir de Portugal. Conte-me o desafio — respondo pessoalmente.</p>
+        <div style="margin-top:38px;display:flex;flex-direction:column;gap:14px">
+          <a href="mailto:ivy.dias.de.campos@gmail.com" style="display:flex;align-items:center;gap:12px;font-size:16px;color:#EDE7F2" style-hover="color:#FFCF3E"><span style="font-family:'Space Mono',monospace;font-size:12px;color:var(--accent,#EC2A86)">→</span> ivy.dias.de.campos@gmail.com</a>
+          <a href="https://wa.me/351961954617" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;font-size:16px;color:#EDE7F2" style-hover="color:#FFCF3E"><span style="font-family:'Space Mono',monospace;font-size:12px;color:var(--accent,#EC2A86)">→</span> WhatsApp / +351 961 954 617</a>
+          <a href="https://www.linkedin.com/in/ivydiasdecampos" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;font-size:16px;color:#EDE7F2" style-hover="color:#FFCF3E"><span style="font-family:'Space Mono',monospace;font-size:12px;color:var(--accent,#EC2A86)">→</span> LinkedIn / in/ivydiasdecampos</a>
+          <a href="https://www.behance.com/ivydc" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;font-size:16px;color:#EDE7F2" style-hover="color:#FFCF3E"><span style="font-family:'Space Mono',monospace;font-size:12px;color:var(--accent,#EC2A86)">→</span> Behance / ivydc</a>
+        </div>
+      </div>
+
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .7s ease .1s,transform .7s ease .1s">
+        <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:44px;border-radius:16px;background:linear-gradient(155deg,rgba(130,87,255,0.18),rgba(236,42,134,0.1));border:1px solid rgba(203,184,246,0.35);text-align:center">
+            <div style="font-family:'Instrument Serif',serif;font-size:52px;color:var(--yellow);line-height:1">✓</div>
+            <h3 style="margin-top:16px;font-family:'Instrument Serif',serif;font-size:28px;color:#F6F1FA">Mensagem enviada!</h3>
+            <p style="margin-top:12px;font-size:15px;line-height:1.6;color:#C0B6CE">Obrigada pelo contato, {{ nameOrDefault }}. Retorno em breve pelo email informado.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" style="padding:clamp(28px,3vw,40px);border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;gap:20px">
+            <label style="display:flex;flex-direction:column;gap:9px">
+              <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#9E93AD">Nome</span>
+              <input type="text" value="{{ name }}" onInput="{{ onName }}" required placeholder="Como posso te chamar?" style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.14);color:#EDE7F2;font-size:15px;outline:none" style-focus="border-color:var(--accent,#EC2A86)">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:9px">
+              <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#9E93AD">Email</span>
+              <input type="email" value="{{ email }}" onInput="{{ onEmail }}" required placeholder="seu@email.com" style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.14);color:#EDE7F2;font-size:15px;outline:none" style-focus="border-color:var(--accent,#EC2A86)">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:9px">
+              <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#9E93AD">Mensagem</span>
+              <textarea rows="4" value="{{ message }}" onInput="{{ onMessage }}" required placeholder="Conte-me sobre o desafio de CX..." style="padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.14);color:#EDE7F2;font-size:15px;outline:none;resize:vertical;line-height:1.5" style-focus="border-color:var(--accent,#EC2A86)"></textarea>
+            </label>
+            <button type="submit" disabled="{{ isLoading }}" style="margin-top:4px;padding:16px;border-radius:100px;border:none;background:var(--accent,#EC2A86);color:#fff;font-weight:700;font-size:15px;cursor:pointer;letter-spacing:0.01em" style-hover="background:#FFCF3E;color:#16111F">{{ submitLabel }}</button>
+            <p style="font-size:12px;color:#7B7189;text-align:center;line-height:1.5">Ao enviar, abre seu app de email com a mensagem pronta para ivy.dias.de.campos@gmail.com.</p>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer style="border-top:1px solid rgba(255,255,255,0.08);padding:34px clamp(20px,5vw,64px);max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:10px;font-weight:600;color:#EDE7F2"><span style="width:9px;height:9px;border-radius:50%;background:var(--accent,#EC2A86)"></span>Ivy Dias de Campos</div>
+      <div style="font-size:13px;color:#7B7189">Estrategista &amp; Designer de CX · Portugal · © {{ year }}</div>
+    </footer>
+  </section>
+  </sc-if>
+
+  <!-- ============ CASE DETAIL: CASHLOG ============ -->
+  <sc-if value="{{ isCashlog }}" hint-placeholder-val="{{ false }}">
+  <div style="--ca:#EC2A86;background:#16111F;min-height:100vh">
+    <div style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px clamp(20px,5vw,64px);backdrop-filter:blur(12px);background:rgba(22,17,31,0.82);border-bottom:1px solid rgba(255,255,255,0.07)">
+      <div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:9px;color:#EDE7F2;font-weight:600;font-size:14px;cursor:pointer" style-hover="color:var(--ca)">← Voltar aos trabalhos</div>
+      <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#9E93AD">Cashlog · Raízen · 2018</div>
+    </div>
+    <header style="max-width:1120px;margin:0 auto;padding:clamp(44px,8vh,92px) clamp(20px,5vw,64px) clamp(28px,4vh,52px)">
+      <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ca);margin-bottom:24px">Estudo de caso · UX/UI Design</div>
+      <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(46px,8vw,104px);line-height:0.98;letter-spacing:-0.02em;color:#F6F1FA">Cashlog<span style="color:var(--ca)"> — Raízen</span></h1>
+      <p style="margin-top:26px;max-width:640px;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#BEB4CC;text-wrap:pretty">Plataforma de gestão de demandas de investimento com machine learning para Varejo, Aviação, LD&amp;T e B2B.</p>
+      <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:9px">
+        <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#C6BDD3">UX Research</span>
+        <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#C6BDD3">UI Design</span>
+        <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#C6BDD3">Machine Learning</span>
+        <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#C6BDD3">MJV</span>
+      </div>
+    </header>
+    <section style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,64px) clamp(40px,6vh,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,64px)">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);border-radius:14px;overflow:hidden;align-self:start">
+        <sc-for list="{{ cashlogMeta }}" as="m" hint-placeholder-count="6">
+          <div style="background:#1A1425;padding:18px 20px"><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:7px">{{ m.k }}</div><div style="font-size:14.5px;color:#EDE7F2;font-weight:500">{{ m.v }}</div></div>
+        </sc-for>
+      </div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca);margin-bottom:16px">Sobre o projeto</div>
+        <p style="font-size:clamp(16px,1.4vw,19px);line-height:1.65;color:#C9BFD6;text-wrap:pretty">Atuei como consultora de inovação, UX e UI na MJV para o projeto Cashlog da Raízen, uma das maiores empresas do setor energético do Brasil.</p>
+        <p style="margin-top:16px;font-size:15.5px;line-height:1.7;color:#A99FB8;text-wrap:pretty">O objetivo era projetar uma plataforma que usasse machine learning para otimizar a aprovação de demandas de linhas de investimento, atendendo a 8 perfis distintos de usuários — do colaborador operacional ao diretor — além de um painel administrativo para configuração do sistema.</p>
+      </div>
+    </section>
+
+    <!-- 01 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,120px) 1fr;gap:clamp(16px,4vw,44px)">
+        <div style="font-family:'Instrument Serif',serif;font-size:clamp(48px,6vw,80px);line-height:0.8;color:rgba(255,255,255,0.14)">01</div>
+        <div style="max-width:820px">
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Contexto · Kick off</div>
+          <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,3.4vw,44px);line-height:1.05;color:#F6F1FA">O Desafio Raízen</h2>
+          <p style="margin-top:20px;font-size:16px;line-height:1.7;color:#B7ADC5;text-wrap:pretty">A Raízen necessitava de uma solução eficiente para a <strong style="color:#EDE7F2">aprovação de demandas de linhas de investimento</strong> abrangendo diversas áreas de atuação: Varejo, Aviação, LD&amp;T e B2B. A resposta foi a criação do <strong style="color:#EDE7F2">Cashlog</strong>, uma interface que utiliza machine learning para otimizar a tomada de decisões — acessada por 8 perfis, de operadores a diretores, com painel administrativo para gestão das configurações.</p>
+          <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:26px 48px;padding-top:22px;border-top:1px solid rgba(255,255,255,0.09)">
+            <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:6px">Áreas</div><div style="font-size:15px;color:#EDE7F2">Varejo · Aviação · LD&amp;T · B2B</div></div>
+            <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:6px">Perfis</div><div style="font-size:15px;color:#EDE7F2">8 tipos de usuários</div></div>
+            <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:6px">Diferencial</div><div style="font-size:15px;color:#EDE7F2">Machine learning integrado</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,120px) 1fr;gap:clamp(16px,4vw,44px)">
+        <div style="font-family:'Instrument Serif',serif;font-size:clamp(48px,6vw,80px);line-height:0.8;color:rgba(255,255,255,0.14)">02</div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Discovery · 15 entrevistas</div>
+          <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,3.4vw,44px);line-height:1.05;color:#F6F1FA">Pesquisa e Imersão</h2>
+          <p style="margin-top:20px;max-width:820px;font-size:16px;line-height:1.7;color:#B7ADC5;text-wrap:pretty">Realizei pesquisas qualitativas com 15 profissionais representando os diferentes perfis de usuários da plataforma. As entrevistas e sessões de observação nos ajudaram a entender profundamente suas necessidades, frustrações e expectativas no fluxo atual de aprovação de demandas.</p>
+          <div style="margin-top:28px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:16px">8 perfis de usuários identificados</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+            <sc-for list="{{ cashlogPerfis }}" as="p" hint-placeholder-count="8">
+              <div style="padding:20px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)"><span style="display:inline-block;width:12px;height:12px;border-radius:4px;background:var(--ca);margin-bottom:12px"></span><div style="font-size:16px;font-weight:600;color:#F1EBF5">{{ p.t }}</div><div style="margin-top:5px;font-size:13.5px;color:#9E93AD">{{ p.d }}</div></div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,120px) 1fr;gap:clamp(16px,4vw,44px)">
+        <div style="font-family:'Instrument Serif',serif;font-size:clamp(48px,6vw,80px);line-height:0.8;color:rgba(255,255,255,0.14)">03</div>
+        <div style="max-width:820px">
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Discovery · Definição</div>
+          <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,3.4vw,44px);line-height:1.05;color:#F6F1FA">Definição e Síntese</h2>
+          <p style="margin-top:20px;font-size:16px;line-height:1.7;color:#B7ADC5;text-wrap:pretty">Com base nos insights coletados, redefinimos o escopo inicial do projeto, identificando claramente os problemas a resolver. O mapeamento de fluxos revelou <strong style="color:#EDE7F2">gargalos críticos na comunicação entre as áreas de Varejo e Aviação</strong>, o que nos permitiu unificar os critérios de priorização no algoritmo de machine learning.</p>
+          <div style="margin-top:26px;padding:28px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)">
+            <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ca);margin-bottom:16px">Principais descobertas</div>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:12px">
+              <sc-for list="{{ cashlogDescobertas }}" as="d" hint-placeholder-count="4">
+                <li style="display:flex;gap:12px;font-size:15.5px;color:#C9BFD6"><span style="color:var(--ca)">●</span>{{ d }}</li>
+              </sc-for>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,120px) 1fr;gap:clamp(16px,4vw,44px)">
+        <div style="font-family:'Instrument Serif',serif;font-size:clamp(48px,6vw,80px);line-height:0.8;color:rgba(255,255,255,0.14)">04</div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Delivery · Ideação</div>
+          <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,3.4vw,44px);line-height:1.05;color:#F6F1FA">Ideação e Co-criação</h2>
+          <p style="margin-top:20px;max-width:820px;font-size:16px;line-height:1.7;color:#B7ADC5;text-wrap:pretty">Sessões de brainstorming, design sprint e co-criação com a equipe técnica e de produto da Raízen resultaram em três diretrizes centrais de design, além de um userflow completo — do login à aprovação de demanda (PEP).</p>
+          <div style="margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px">
+            <sc-for list="{{ cashlogDiretrizes }}" as="d" hint-placeholder-count="3">
+              <div style="padding:26px;border-radius:16px;background:#FBF79E;color:#2A1B00"><div style="font-family:'Instrument Serif',serif;font-size:40px;line-height:1;color:#740075">{{ d.n }}</div><p style="margin-top:14px;font-size:15px;line-height:1.5;font-weight:500">{{ d.d }}</p></div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,120px) 1fr;gap:clamp(16px,4vw,44px)">
+        <div style="font-family:'Instrument Serif',serif;font-size:clamp(48px,6vw,80px);line-height:0.8;color:rgba(255,255,255,0.14)">05</div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Delivery · Prototipação</div>
+          <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,3.4vw,44px);line-height:1.05;color:#F6F1FA">Prototipação de Alta Fidelidade</h2>
+          <p style="margin-top:20px;max-width:820px;font-size:16px;line-height:1.7;color:#B7ADC5;text-wrap:pretty">Fluxos em alta fidelidade, sistema de design e handoff. O dashboard reúne indicadores de solicitações em aprovação, holding e aprovadas, gráficos de dispêndio x plano e a rede de colaboradores — dando visibilidade completa do pipeline de investimento.</p>
+          <div style="margin-top:26px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:14px">Paleta do produto</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px">
+            <sc-for list="{{ cashlogPalette }}" as="c" hint-placeholder-count="5">
+              <div><div style="height:96px;border-radius:12px;background:{{ c.hex }};border:1px solid rgba(255,255,255,0.1)"></div><div style="margin-top:10px;font-family:'Space Mono',monospace;font-size:12px;color:#EDE7F2">{{ c.hex }}</div><div style="font-size:12px;color:#9E93AD">{{ c.name }}</div></div>
+            </sc-for>
+          </div>
+          <div style="margin-top:22px;padding:26px;border-radius:16px;background:repeating-linear-gradient(135deg,rgba(255,255,255,0.05) 0 14px,rgba(255,255,255,0.015) 14px 28px),#1C1626;display:flex;align-items:center;justify-content:center;min-height:200px"><span style="font-family:'Space Mono',monospace;font-size:12px;color:rgba(237,231,242,0.5);text-align:center">[ dashboard de gestão financeira · telas em alta fidelidade ]</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- aprendizado -->
+    <section style="background:#0D0A14;padding:clamp(56px,9vh,110px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca);margin-bottom:26px">Aprendizado</div>
+        <blockquote style="padding-left:26px;border-left:3px solid var(--ca);font-family:'Instrument Serif',serif;font-size:clamp(26px,3.6vw,52px);line-height:1.18;color:#F6F1FA;max-width:20ch;text-wrap:pretty">“O projeto Cashlog foi uma oportunidade de aplicar UX em uma complexidade operacional, onde a interface precisava ser ao mesmo tempo intuitiva para colaboradores operacionais e poderosa o suficiente para suportar as decisões estratégicas de diretores em múltiplas áreas de negócio.”</blockquote>
+      </div>
+    </section>
+    <div style="max-width:1120px;margin:0 auto;padding:clamp(32px,5vh,56px) clamp(20px,5vw,64px);display:flex;flex-wrap:wrap;gap:14px">
+      <div onClick="{{ goHome }}" style="padding:14px 26px;border-radius:100px;border:1px solid rgba(255,255,255,0.22);color:#EDE7F2;font-weight:600;font-size:15px;cursor:pointer" style-hover="border-color:var(--ca);color:var(--ca)">← Todos os trabalhos</div>
+      <div onClick="{{ openClaro }}" style="padding:14px 26px;border-radius:100px;background:var(--ca);color:#fff;font-weight:600;font-size:15px;cursor:pointer" style-hover="background:#FFCF3E;color:#16111F">Próximo: Cards Claro AMX →</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ CASE DETAIL: CLARO ============ -->
+  <sc-if value="{{ isClaro }}" hint-placeholder-val="{{ false }}">
+  <div style="--ca:#E53935;background:#16111F;min-height:100vh">
+    <div style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px clamp(20px,5vw,64px);backdrop-filter:blur(12px);background:rgba(22,17,31,0.82);border-bottom:1px solid rgba(255,255,255,0.07)">
+      <div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:9px;color:#EDE7F2;font-weight:600;font-size:14px;cursor:pointer" style-hover="color:var(--ca)">← Voltar aos trabalhos</div>
+      <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#9E93AD">Cards AMX Claro · 2023–2024</div>
+    </div>
+    <header style="max-width:1120px;margin:0 auto;padding:clamp(44px,8vh,92px) clamp(20px,5vw,64px) clamp(28px,4vh,52px)">
+      <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ca);margin-bottom:24px">Estudo de caso · Service Design</div>
+      <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(44px,7.5vw,100px);line-height:0.98;letter-spacing:-0.02em;color:#F6F1FA">Cards <span style="color:var(--ca)">Claro AMX</span></h1>
+      <p style="margin-top:26px;max-width:640px;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#BEB4CC;text-wrap:pretty">Discovery de regras de negócio e arquitetura de informação para o componente Card de vendas em países AMX.</p>
+      <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:9px">
+        <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#C6BDD3">Service Design</span>
+        <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#C6BDD3">DesignOps</span>
+        <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#C6BDD3">Claro</span>
+        <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#C6BDD3">AMX</span>
+      </div>
+    </header>
+    <section style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,64px) clamp(40px,6vh,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,64px)">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);border-radius:14px;overflow:hidden;align-self:start">
+        <sc-for list="{{ claroMeta }}" as="m" hint-placeholder-count="6">
+          <div style="background:#1A1425;padding:18px 20px"><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:7px">{{ m.k }}</div><div style="font-size:14.5px;color:#EDE7F2;font-weight:500">{{ m.v }}</div></div>
+        </sc-for>
+      </div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca);margin-bottom:16px">Sobre o projeto</div>
+        <p style="font-size:clamp(16px,1.4vw,19px);line-height:1.65;color:#C9BFD6;text-wrap:pretty">Atuei como service designer no time de DesignOps da Claro na condução do discovery do componente Card de vendas para os países AMX.</p>
+        <p style="margin-top:16px;font-size:15.5px;line-height:1.7;color:#A99FB8;text-wrap:pretty">O objetivo era consolidar as regras de negócio e a arquitetura de informação que dariam base aos novos modelos de card — um primeiro caminho a ser priorizado dentro de um momento de definição do processo de design.</p>
+      </div>
+    </section>
+
+    <!-- 01 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,120px) 1fr;gap:clamp(16px,4vw,44px)">
+        <div style="font-family:'Instrument Serif',serif;font-size:clamp(48px,6vw,80px);line-height:0.8;color:rgba(255,255,255,0.14)">01</div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Kick Off · 42 pessoas</div>
+          <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,3.4vw,44px);line-height:1.05;color:#F6F1FA">Contexto e alinhamento inicial</h2>
+          <p style="margin-top:20px;max-width:820px;font-size:16px;line-height:1.7;color:#B7ADC5;text-wrap:pretty">Os especialistas trouxeram o contexto e o histórico da iniciativa — resultados de testes, validações de POC e hipóteses de uso já levantadas — para que todos chegassem às sessões seguintes com o mesmo nível de entendimento.</p>
+          <div style="margin-top:26px;padding:28px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)">
+            <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ca);margin-bottom:18px">Funil de participação</div>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <sc-for list="{{ claroFunil }}" as="f" hint-placeholder-count="4">
+                <div style="display:grid;grid-template-columns:120px 1fr auto;gap:16px;align-items:center"><div style="font-size:14px;color:#EDE7F2;font-weight:500">{{ f.s }}</div><div style="height:8px;border-radius:100px;background:rgba(255,255,255,0.08)"><div style="height:8px;border-radius:100px;background:var(--ca);width:{{ f.w }}"></div></div><div style="font-size:14px;color:#9E93AD"><strong style="color:#F6F1FA;font-size:16px">{{ f.n }}</strong> · {{ f.d }}</div></div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:9px">
+            <sc-for list="{{ claroPerfis }}" as="p" hint-placeholder-count="7">
+              <span style="font-family:'Space Mono',monospace;font-size:12px;padding:8px 15px;border-radius:100px;border:1px solid rgba(255,255,255,0.14);color:#C6BDD3">{{ p }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,120px) 1fr;gap:clamp(16px,4vw,44px)">
+        <div style="font-family:'Instrument Serif',serif;font-size:clamp(48px,6vw,80px);line-height:0.8;color:rgba(255,255,255,0.14)">02</div>
+        <div style="max-width:900px">
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Sessão 1 · 45 participantes</div>
+          <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,3.4vw,44px);line-height:1.05;color:#F6F1FA">Objetivos e cenários de uso</h2>
+          <p style="margin-top:20px;font-size:16px;line-height:1.7;color:#B7ADC5;text-wrap:pretty">O time descreveu os objetivos e cenários dos cards a serem criados. Essa etapa gerou oito macro cenários e três cenários complementares que estruturaram todo o escopo do projeto.</p>
+          <div style="margin-top:24px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:12px">8 macro cenários</div>
+          <div style="display:flex;flex-wrap:wrap;gap:9px">
+            <sc-for list="{{ claroMacro }}" as="c" hint-placeholder-count="8">
+              <span style="font-size:14px;padding:9px 16px;border-radius:100px;background:rgba(229,57,53,0.12);border:1px solid rgba(229,57,53,0.3);color:#F0D5D4">{{ c }}</span>
+            </sc-for>
+          </div>
+          <div style="margin-top:22px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:12px">3 cenários complementares</div>
+          <div style="display:flex;flex-wrap:wrap;gap:9px">
+            <sc-for list="{{ claroComp }}" as="c" hint-placeholder-count="3">
+              <span style="font-size:14px;padding:9px 16px;border-radius:100px;border:1px solid rgba(255,255,255,0.14);color:#C6BDD3">{{ c }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,120px) 1fr;gap:clamp(16px,4vw,44px)">
+        <div style="font-family:'Instrument Serif',serif;font-size:clamp(48px,6vw,80px);line-height:0.8;color:rgba(255,255,255,0.14)">03</div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Sessão 2 · 29 participantes</div>
+          <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,3.4vw,44px);line-height:1.05;color:#F6F1FA">Premissas, restrições e riscos</h2>
+          <div style="margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+            <div style="padding:24px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)"><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Premissas</div><ul style="list-style:none;display:flex;flex-direction:column;gap:11px"><sc-for list="{{ claroPremissas }}" as="i" hint-placeholder-count="4"><li style="display:flex;gap:10px;font-size:14px;line-height:1.45;color:#C9BFD6"><span style="color:var(--ca)">●</span>{{ i }}</li></sc-for></ul></div>
+            <div style="padding:24px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)"><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Restrições</div><ul style="list-style:none;display:flex;flex-direction:column;gap:11px"><sc-for list="{{ claroRestricoes }}" as="i" hint-placeholder-count="3"><li style="display:flex;gap:10px;font-size:14px;line-height:1.45;color:#C9BFD6"><span style="color:var(--ca)">●</span>{{ i }}</li></sc-for></ul></div>
+            <div style="padding:24px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)"><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Riscos</div><ul style="list-style:none;display:flex;flex-direction:column;gap:11px"><sc-for list="{{ claroRiscos }}" as="i" hint-placeholder-count="4"><li style="display:flex;gap:10px;font-size:14px;line-height:1.45;color:#C9BFD6"><span style="color:var(--ca)">●</span>{{ i }}</li></sc-for></ul></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,120px) 1fr;gap:clamp(16px,4vw,44px)">
+        <div style="font-family:'Instrument Serif',serif;font-size:clamp(48px,6vw,80px);line-height:0.8;color:rgba(255,255,255,0.14)">04</div>
+        <div style="max-width:860px">
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Sessão 2 · Zen Voting</div>
+          <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,3.4vw,44px);line-height:1.05;color:#F6F1FA">Diagrama de Alvo</h2>
+          <p style="margin-top:20px;font-size:16px;line-height:1.7;color:#B7ADC5;text-wrap:pretty">O time escreveu em post-its as regras de negócio que deveriam compor os novos cards e as posicionou no diagrama, categorizando-as como prioritárias, secundárias ou terciárias. A votação gerou uma hierarquia clara de regras de negócio.</p>
+          <div style="margin-top:26px;padding:28px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)">
+            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ca);margin-bottom:16px">Regras primárias</div>
+            <div style="display:flex;flex-direction:column;gap:12px"><sc-for list="{{ claroRegrasP }}" as="r" hint-placeholder-count="6"><div style="display:grid;grid-template-columns:1fr 120px auto;gap:14px;align-items:center"><div style="font-size:14.5px;color:#EDE7F2">{{ r.t }}</div><div style="height:7px;border-radius:100px;background:rgba(255,255,255,0.08)"><div style="height:7px;border-radius:100px;background:var(--ca);width:{{ r.pct }}"></div></div><div style="font-size:15px;font-weight:700;color:#F6F1FA;text-align:right">{{ r.v }}</div></div></sc-for></div>
+            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin:22px 0 14px">Regras secundárias</div>
+            <div style="display:flex;flex-direction:column;gap:12px"><sc-for list="{{ claroRegrasS }}" as="r" hint-placeholder-count="2"><div style="display:grid;grid-template-columns:1fr 120px auto;gap:14px;align-items:center"><div style="font-size:14.5px;color:#C9BFD6">{{ r.t }}</div><div style="height:7px;border-radius:100px;background:rgba(255,255,255,0.08)"><div style="height:7px;border-radius:100px;background:rgba(229,57,53,0.7);width:{{ r.pct }}"></div></div><div style="font-size:15px;font-weight:700;color:#EDE7F2;text-align:right">{{ r.v }}</div></div></sc-for></div>
+            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin:22px 0 14px">Regras terciárias</div>
+            <div style="display:flex;flex-direction:column;gap:12px"><sc-for list="{{ claroRegrasT }}" as="r" hint-placeholder-count="3"><div style="display:grid;grid-template-columns:1fr 120px auto;gap:14px;align-items:center"><div style="font-size:14.5px;color:#A99FB8">{{ r.t }}</div><div style="height:7px;border-radius:100px;background:rgba(255,255,255,0.08)"><div style="height:7px;border-radius:100px;background:rgba(229,57,53,0.5);width:{{ r.pct }}"></div></div><div style="font-size:15px;font-weight:700;color:#C6BDD3;text-align:right">{{ r.v }}</div></div></sc-for></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);background:#0D0A14;padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,120px) 1fr;gap:clamp(16px,4vw,44px)">
+        <div style="font-family:'Instrument Serif',serif;font-size:clamp(48px,6vw,80px);line-height:0.8;color:rgba(255,255,255,0.14)">05</div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Reunião final · 12 participantes</div>
+          <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,3.4vw,44px);line-height:1.05;color:#F6F1FA">MVP Canvas</h2>
+          <div style="margin-top:24px;padding:28px;border-radius:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)"><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:12px">Objetivo do produto</div><p style="font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:#E7DFEF;text-wrap:pretty">Padronizar todos os cards de venda presentes nas jornadas de sites e e-commerce e reformular a arquitetura de informação em busca de consistência visual, contemplando todas as personas e dispositivos com prioridade mobile first.</p></div>
+          <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+            <div style="padding:24px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)"><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Resultados esperados</div><ul style="list-style:none;display:flex;flex-direction:column;gap:11px"><sc-for list="{{ claroResultados }}" as="i" hint-placeholder-count="4"><li style="display:flex;gap:10px;font-size:14px;line-height:1.45;color:#C9BFD6"><span style="color:var(--ca)">●</span>{{ i }}</li></sc-for></ul></div>
+            <div style="padding:24px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)"><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Métricas de validação</div><div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ claroMetricas }}" as="i" hint-placeholder-count="6"><span style="font-size:13px;padding:8px 14px;border-radius:100px;background:rgba(255,255,255,0.06);color:#EDE7F2">{{ i }}</span></sc-for></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,120px) 1fr;gap:clamp(16px,4vw,44px)">
+        <div style="font-family:'Instrument Serif',serif;font-size:clamp(48px,6vw,80px);line-height:0.8;color:rgba(255,255,255,0.14)">06</div>
+        <div style="max-width:860px">
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca);margin-bottom:14px">Depois do discovery</div>
+          <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(28px,3.4vw,44px);line-height:1.05;color:#F6F1FA">Co-criação com a esteira de e-commerce</h2>
+          <p style="margin-top:20px;font-size:16px;line-height:1.7;color:#B7ADC5;text-wrap:pretty">Concluída a definição das regras de negócio, avançamos para reuniões de co-criação com designers e contents da esteira de e-commerce da Claro. Foi nesse trabalho conjunto, traduzindo a priorização e a arquitetura de informação em decisões de layout, que chegamos ao resultado final dos cards.</p>
+          <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+            <div style="padding:24px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)"><div style="font-size:16px;font-weight:600;color:#F1EBF5;margin-bottom:8px">Trabalho conjunto</div><p style="font-size:14px;line-height:1.55;color:#A99FB8">Designers da esteira de e-commerce e o time de DesignOps definindo, em conjunto, o formato final do componente.</p></div>
+            <div style="padding:24px;border-radius:16px;background:linear-gradient(155deg,rgba(229,57,53,0.16),rgba(255,255,255,0.02));border:1px solid rgba(229,57,53,0.3)"><div style="font-family:'Instrument Serif',serif;font-size:40px;line-height:1;color:var(--ca)">8</div><p style="margin-top:8px;font-size:14px;line-height:1.55;color:#E7DFEF">cenários de card prontos para produção, do desenho ao desenvolvimento.</p></div>
+          </div>
+          <div style="margin-top:34px">
+            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:14px">Arquitetura do card · requisitos por ordem de disposição</div>
+            <img src="{{ claroReqImg }}" alt="Diagrama de requisitos do card por ordem de disposição, com prioridades primárias, secundárias e terciárias" style="width:100%;height:auto;display:block;border-radius:16px;border:1px solid rgba(255,255,255,0.1);background:#fff">
+          </div>
+          <div style="margin-top:34px">
+            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:14px">Conjunto final · 8 cards, do desenho ao desenvolvimento</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px">
+              <sc-for list="{{ claroCards }}" as="c" hint-placeholder-count="8">
+                <img src="{{ c.src }}" alt="{{ c.alt }}" style="width:100%;height:auto;display:block;border-radius:14px;border:1px solid rgba(255,255,255,0.1);background:#fff">
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#0D0A14;padding:clamp(56px,9vh,110px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ca);margin-bottom:26px">Aprendizado</div>
+        <blockquote style="padding-left:26px;border-left:3px solid var(--ca);font-family:'Instrument Serif',serif;font-size:clamp(24px,3.2vw,46px);line-height:1.2;color:#F6F1FA;max-width:24ch;text-wrap:pretty">“Esse projeto ilustra bem o tipo de trabalho que faço como service designer dentro de um time multidisciplinar: conduzir dinâmicas com grupos numerosos e transformar conhecimento disperso sobre regras de negócio em artefatos de decisão que orientam com clareza as etapas seguintes do processo de design.”</blockquote>
+      </div>
+    </section>
+    <div style="max-width:1120px;margin:0 auto;padding:clamp(32px,5vh,56px) clamp(20px,5vw,64px);display:flex;flex-wrap:wrap;gap:14px">
+      <div onClick="{{ goHome }}" style="padding:14px 26px;border-radius:100px;border:1px solid rgba(255,255,255,0.22);color:#EDE7F2;font-weight:600;font-size:15px;cursor:pointer" style-hover="border-color:var(--ca);color:var(--ca)">← Todos os trabalhos</div>
+      <div onClick="{{ openAbtest }}" style="padding:14px 26px;border-radius:100px;background:var(--ca);color:#fff;font-weight:600;font-size:15px;cursor:pointer" style-hover="background:#FFCF3E;color:#16111F">Próximo: Testes A/B →</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ CASE DETAIL: A/B TESTS ============ -->
+  <sc-if value="{{ isAbtest }}" hint-placeholder-val="{{ false }}">
+  <div style="--ca:#F2B705;background:#16111F;min-height:100vh">
+    <div style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px clamp(20px,5vw,64px);backdrop-filter:blur(12px);background:rgba(22,17,31,0.82);border-bottom:1px solid rgba(255,255,255,0.07)">
+      <div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:9px;color:#EDE7F2;font-weight:600;font-size:14px;cursor:pointer" style-hover="color:var(--ca)">← Voltar aos trabalhos</div>
+      <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#9E93AD">Claro · CRO / Experimentação</div>
+    </div>
+    <header style="max-width:1120px;margin:0 auto;padding:clamp(44px,8vh,92px) clamp(20px,5vw,64px) clamp(28px,4vh,52px)">
+      <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ca);margin-bottom:24px">Estudo de caso · CRO / Experimentação</div>
+      <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,6.5vw,88px);line-height:1;letter-spacing:-0.02em;color:#F6F1FA">Testes A/B <span style="color:var(--ca)">orientados a dados</span></h1>
+      <p style="margin-top:26px;max-width:660px;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#BEB4CC;text-wrap:pretty">Prova de raciocínio orientado a dados e resultado de negócio mensurável — não só entrega visual, mas hipótese validada em produção, no e-commerce da Claro.</p>
+    </header>
+
+    <section style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,64px) clamp(30px,5vh,60px)">
+      <div style="border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+          <div style="padding:clamp(30px,4vw,48px)">
+            <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ca);margin-bottom:16px">Teste 01 · Hub Claro TV+</div>
+            <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(24px,2.6vw,34px);line-height:1.15;color:#F6F1FA">Hipótese: um novo Hub de Claro TV+ gera mais conversão de pedido e engajamento.</h2>
+            <div style="margin-top:26px;display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;gap:14px;font-size:14.5px;color:#C9BFD6"><span style="font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#8A7F9A;min-width:110px">Duração</span> 30 dias</div>
+              <div style="display:flex;gap:14px;font-size:14.5px;color:#C9BFD6"><span style="font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#8A7F9A;min-width:110px">Dispositivo</span> Desktop e mobile</div>
+              <div style="display:flex;gap:14px;font-size:14.5px;color:#C9BFD6"><span style="font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#8A7F9A;min-width:110px">Métrica</span> Conclusão de pedido com TV</div>
+            </div>
+            <div style="margin-top:30px;display:flex;align-items:baseline;gap:12px"><span style="font-family:'Instrument Serif',serif;font-size:clamp(64px,9vw,120px);line-height:0.85;color:var(--ca)">+19%</span><span style="font-size:15px;color:#C0B6CE;line-height:1.3">no número de<br>pedidos com TV</span></div>
+          </div>
+          <img src="uploads/clarotv.jpg" alt="Split test do Hub Claro TV+ — original x variante, resultado +19% em pedidos com TV" style="width:100%;height:100%;object-fit:cover;display:block;min-height:280px">
+        </div>
+      </div>
+
+      <div style="margin-top:24px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+          <img src="uploads/pagina-autoatendimento.jpg" alt="Split test da página de Atendimento da Claro — resultado +38% de interação com cards e shortcuts" style="width:100%;height:100%;object-fit:cover;display:block;min-height:280px;order:1">
+          <div style="padding:clamp(30px,4vw,48px);order:2">
+            <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ca);margin-bottom:16px">Teste 02 · Página de Atendimento</div>
+            <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(24px,2.6vw,34px);line-height:1.15;color:#F6F1FA">Hipótese: uma nova página de Atendimento, criada com base em CSAT e testes A/B, gera mais engajamento.</h2>
+            <div style="margin-top:26px;display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;gap:14px;font-size:14.5px;color:#C9BFD6"><span style="font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#8A7F9A;min-width:110px">Duração</span> 42 dias</div>
+              <div style="display:flex;gap:14px;font-size:14.5px;color:#C9BFD6"><span style="font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#8A7F9A;min-width:110px">Dispositivo</span> Desktop e mobile</div>
+              <div style="display:flex;gap:14px;font-size:14.5px;color:#C9BFD6"><span style="font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#8A7F9A;min-width:110px">Métrica</span> Interação com a página</div>
+            </div>
+            <div style="margin-top:30px;display:flex;align-items:baseline;gap:12px"><span style="font-family:'Instrument Serif',serif;font-size:clamp(64px,9vw,120px);line-height:0.85;color:var(--ca)">+38%</span><span style="font-size:15px;color:#C0B6CE;line-height:1.3">de interação com<br>cards e shortcuts</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:40px;padding:clamp(30px,4vw,48px);border-radius:20px;background:#0D0A14;border:1px solid rgba(255,255,255,0.08)">
+        <p style="font-family:'Instrument Serif',serif;font-size:clamp(22px,2.6vw,36px);line-height:1.3;color:#F6F1FA;max-width:26ch;text-wrap:pretty">Design que se prova no número: cada decisão de interface amarrada a uma hipótese e a uma métrica de negócio.</p>
+      </div>
+    </section>
+    <div style="max-width:1120px;margin:0 auto;padding:clamp(20px,4vh,44px) clamp(20px,5vw,64px) clamp(40px,6vh,72px);display:flex;flex-wrap:wrap;gap:14px">
+      <div onClick="{{ goHome }}" style="padding:14px 26px;border-radius:100px;border:1px solid rgba(255,255,255,0.22);color:#EDE7F2;font-weight:600;font-size:15px;cursor:pointer" style-hover="border-color:var(--ca);color:var(--ca)">← Todos os trabalhos</div>
+      <div onClick="{{ openEtitulo }}" style="padding:14px 26px;border-radius:100px;background:var(--ca);color:#16111F;font-weight:700;font-size:15px;cursor:pointer" style-hover="background:#fff">Próximo: e-Título (TSE) →</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ CASE DETAIL: e-TÍTULO ============ -->
+  <sc-if value="{{ isEtitulo }}" hint-placeholder-val="{{ false }}">
+  <div style="--ca:#2B4FE0;background:#16111F;min-height:100vh">
+    <div style="position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:16px clamp(20px,5vw,64px);backdrop-filter:blur(12px);background:rgba(22,17,31,0.82);border-bottom:1px solid rgba(255,255,255,0.07)">
+      <div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:9px;color:#EDE7F2;font-weight:600;font-size:14px;cursor:pointer" style-hover="color:var(--ca)">← Voltar aos trabalhos</div>
+      <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#9E93AD">Tribunal Superior Eleitoral · 2025</div>
+    </div>
+    <header style="max-width:1120px;margin:0 auto;padding:clamp(44px,8vh,92px) clamp(20px,5vw,64px) clamp(28px,4vh,52px)">
+      <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ca);margin-bottom:24px">Estudo de caso · Service Design</div>
+      <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(40px,6.5vw,92px);line-height:0.98;letter-spacing:-0.02em;color:#F6F1FA">Redesenho da jornada de onboarding do <span style="color:var(--ca)">e-Título</span></h1>
+      <p style="margin-top:26px;max-width:660px;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#BEB4CC;text-wrap:pretty">Service Design aplicado ao aplicativo e-Título do TSE, repensando o acesso à cidadania digital com acessibilidade no centro da experiência.</p>
+      <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:9px">
+        <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#C6BDD3">Service Design</span>
+        <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#C6BDD3">Discovery</span>
+        <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#C6BDD3">Acessibilidade</span>
+        <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#C6BDD3">As-Is / To-Be</span>
+        <span style="font-family:'Space Mono',monospace;font-size:12px;padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.16);color:#C6BDD3">UX Research</span>
+      </div>
+      <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:24px 56px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.09)">
+        <div><div style="font-family:'Instrument Serif',serif;font-size:44px;line-height:1;color:var(--ca)">12</div><div style="font-size:13px;color:#9E93AD;margin-top:6px">etapas no novo onboarding</div></div>
+        <div><div style="font-family:'Instrument Serif',serif;font-size:44px;line-height:1;color:var(--ca)">3</div><div style="font-size:13px;color:#9E93AD;margin-top:6px">personas guiando a experiência</div></div>
+        <div><div style="font-family:'Instrument Serif',serif;font-size:44px;line-height:1;color:var(--ca)">4</div><div style="font-size:13px;color:#9E93AD;margin-top:6px">fases de Service Design</div></div>
+      </div>
+    </header>
+
+    <!-- 01 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F9A;margin-bottom:14px">01 / 08 · Visão geral</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(30px,4vw,54px);line-height:1.03;color:#F6F1FA;max-width:20ch">Um serviço tratado como ecossistema, não apenas como interface</h2>
+        <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,56px)">
+          <div>
+            <p style="font-size:16px;line-height:1.7;color:#B7ADC5;text-wrap:pretty">Atuei como Service Designer responsável pela condução estratégica do projeto, liderando a frente de experiência e articulando um time multidisciplinar, com apoio das disciplinas de UX, Consumer Insights e Comunicação para garantir uma leitura sistêmica da jornada.</p>
+            <div style="margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:22px">
+              <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:6px">Papel</div><div style="font-size:15px;color:#EDE7F2;font-weight:500">Lead Service Designer</div></div>
+              <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:6px">Contexto</div><div style="font-size:15px;color:#EDE7F2;font-weight:500">Hitss / Claro Brasil</div></div>
+              <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:6px">Cliente</div><div style="font-size:15px;color:#EDE7F2;font-weight:500">Tribunal Superior Eleitoral</div></div>
+              <div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:6px">Período</div><div style="font-size:15px;color:#EDE7F2;font-weight:500">2025</div></div>
+            </div>
+          </div>
+          <div style="padding:28px;border-radius:16px;background:rgba(43,79,224,0.1);border:1px solid rgba(43,79,224,0.3)">
+            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#9DB0F5;margin-bottom:18px">Impacto estratégico</div>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <sc-for list="{{ tseImpacto }}" as="i" hint-placeholder-count="4">
+                <div style="display:grid;grid-template-columns:26px 1fr;gap:12px"><span style="font-family:'Space Mono',monospace;font-size:12px;color:var(--ca)">{{ i.n }}</span><span style="font-size:14.5px;line-height:1.5;color:#DCE3FB">{{ i.t }}</span></div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F9A;margin-bottom:14px">02 / 08 · Entendendo o problema</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(30px,4vw,54px);line-height:1.03;color:#F6F1FA">Definição do desafio</h2>
+        <div style="margin-top:30px;display:flex;flex-direction:column;gap:0">
+          <div style="display:grid;grid-template-columns:minmax(120px,180px) 1fr;gap:clamp(16px,4vw,44px);padding:24px 0;border-top:1px solid rgba(255,255,255,0.09)"><div style="font-size:18px;font-weight:600;color:#F1EBF5">Problema</div><p style="font-size:15.5px;line-height:1.65;color:#B7ADC5;text-wrap:pretty">Os problemas não estavam em uma funcionalidade isolada, mas na transição entre etapas, na falta de previsibilidade, na ausência de feedback claro e na dependência excessiva da memória e da compreensão do usuário.</p></div>
+          <div style="display:grid;grid-template-columns:minmax(120px,180px) 1fr;gap:clamp(16px,4vw,44px);padding:24px 0;border-top:1px solid rgba(255,255,255,0.09)"><div style="font-size:18px;font-weight:600;color:#F1EBF5">Objetivo</div><p style="font-size:15.5px;line-height:1.65;color:#B7ADC5;text-wrap:pretty">Redesenhar uma nova jornada de onboarding para o e-Título com acessibilidade como foco central. Mais do que adaptar um fluxo existente, repensar a forma como os eleitores acessam o app, com experiência fluida e inclusiva desde o primeiro toque na tela.</p></div>
+          <div style="display:grid;grid-template-columns:minmax(120px,180px) 1fr;gap:clamp(16px,4vw,44px);padding:24px 0;border-top:1px solid rgba(255,255,255,0.09);border-bottom:1px solid rgba(255,255,255,0.09)"><div style="font-size:18px;font-weight:600;color:#F1EBF5">Proposta</div><p style="font-size:15.5px;line-height:1.65;color:#B7ADC5;text-wrap:pretty">Criar uma nova jornada de onboarding (To Be) baseada em pesquisa, benchmarking e testes com usuários, incorporando configurações de acessibilidade desde o início, múltiplos métodos de validação de identidade, feedbacks mais claros e uma estrutura de melhoria contínua por meio de Árvores de Oportunidades.</p></div>
+        </div>
+        <div style="margin-top:30px;padding:clamp(28px,4vw,44px);border-radius:20px;background:#0D0A14">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F9A;margin-bottom:16px">Quem mais sente</div>
+          <p style="font-family:'Instrument Serif',serif;font-size:clamp(24px,3vw,40px);line-height:1.2;color:#F6F1FA;max-width:24ch;text-wrap:pretty">Essas dores afetam de forma mais intensa idosos, pessoas com necessidades especiais e eleitores em situação de urgência nos dias de eleição.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F9A;margin-bottom:14px">03 / 08 · Abordagem do Service Design</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(30px,4vw,54px);line-height:1.03;color:#F6F1FA">Quatro fases, uma leitura de ponta a ponta</h2>
+        <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+          <sc-for list="{{ tseFases }}" as="f" hint-placeholder-count="4">
+            <div style="padding:28px;border-radius:16px;background:rgba(43,79,224,0.08);border:1px solid rgba(43,79,224,0.22)">
+              <div style="display:flex;align-items:baseline;gap:10px"><span style="font-family:'Space Mono',monospace;font-size:12px;color:var(--ca)">{{ f.n }}</span><h3 style="font-size:22px;font-weight:600;color:#F6F1FA">{{ f.t }}</h3></div>
+              <p style="margin-top:12px;font-size:14.5px;line-height:1.55;color:#B7ADC5">{{ f.d }}</p>
+              <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);display:flex;flex-wrap:wrap;gap:7px"><sc-for list="{{ f.m }}" as="mm" hint-placeholder-count="3"><span style="font-size:12px;padding:6px 12px;border-radius:100px;background:rgba(255,255,255,0.05);color:#C6BDD3">{{ mm }}</span></sc-for></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F9A;margin-bottom:14px">04 / 08 · Personas</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(30px,4vw,54px);line-height:1.03;color:#F6F1FA">Para quem estamos projetando</h2>
+        <p style="margin-top:16px;max-width:60ch;font-size:16px;line-height:1.6;color:#A99FB8">Três perfis que sintetizam motivações, contextos e barreiras distintas diante da Justiça Eleitoral digital.</p>
+        <div style="margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+          <sc-for list="{{ tsePersonas }}" as="p" hint-placeholder-count="3">
+            <div style="padding:28px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)">
+              <h3 style="font-size:20px;font-weight:600;color:#F1EBF5">{{ p.nome }}</h3>
+              <div style="margin-top:5px;font-size:13.5px;color:#9E93AD">{{ p.meta }}</div>
+              <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:7px"><sc-for list="{{ p.tags }}" as="tg" hint-placeholder-count="2"><span style="font-size:12px;padding:6px 12px;border-radius:100px;background:rgba(43,79,224,0.14);color:#B9C6F7">{{ tg }}</span></sc-for></div>
+              <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)"><div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ca);margin-bottom:6px">Motivação</div><p style="font-size:14px;line-height:1.55;color:#B7ADC5">{{ p.mot }}</p></div>
+              <div style="margin-top:14px"><div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ca);margin-bottom:6px">Objetivo</div><p style="font-size:14px;line-height:1.55;color:#B7ADC5">{{ p.obj }}</p></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 insight -->
+    <section style="background:#0D0A14;padding:clamp(56px,9vh,110px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F9A;margin-bottom:26px">05 / 08 · Insight-chave</div>
+        <blockquote style="font-family:'Instrument Serif',serif;font-size:clamp(34px,5.5vw,80px);line-height:1.08;color:#F6F1FA;max-width:16ch;text-wrap:balance">“O serviço exigia que o eleitor fosse <span style="color:var(--ca)">resiliente</span>, quando deveria protegê-lo.”</blockquote>
+        <p style="margin-top:26px;max-width:60ch;font-size:16px;line-height:1.65;color:#A99FB8">A síntese da jornada revelou que os problemas não estavam em uma funcionalidade isolada, mas distribuídos por todo o ecossistema do serviço — do onboarding ao uso recorrente, dos players concorrentes ao suporte e aos processos internos de governança.</p>
+      </div>
+    </section>
+
+    <!-- 06 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F9A;margin-bottom:14px">06 / 08 · Principais dores identificadas</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(30px,4vw,54px);line-height:1.03;color:#F6F1FA">Onde a jornada As-Is quebrava</h2>
+        <div style="margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 clamp(24px,4vw,56px)">
+          <sc-for list="{{ tsePains }}" as="p" hint-placeholder-count="6">
+            <div style="display:grid;grid-template-columns:34px 1fr;gap:14px;padding:22px 0;border-top:1px solid rgba(255,255,255,0.09)"><span style="font-family:'Space Mono',monospace;font-size:13px;color:#6E6480">{{ p.n }}</span><div><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ca);margin-bottom:8px">{{ p.t }}</div><p style="font-size:15px;line-height:1.55;color:#C9BFD6">{{ p.d }}</p></div></div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F9A;margin-bottom:14px">07 / 08 · Jornada To Be</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(30px,4vw,54px);line-height:1.03;color:#F6F1FA">Um novo onboarding, acessível por padrão</h2>
+        <p style="margin-top:16px;max-width:60ch;font-size:16px;line-height:1.6;color:#A99FB8">Nova jornada de onboarding projetada para acessibilidade, segurança e inclusão digital na Justiça Eleitoral — em 12 etapas.</p>
+        <div style="margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+          <sc-for list="{{ tseSteps }}" as="s" hint-placeholder-count="12">
+            <div style="padding:22px;border-radius:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)"><div style="width:30px;height:30px;border-radius:9px;background:var(--ca);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:12px;font-weight:700">{{ s.n }}</div><h3 style="margin-top:14px;font-size:16px;font-weight:600;color:#F1EBF5">{{ s.t }}</h3><p style="margin-top:7px;font-size:13.5px;line-height:1.5;color:#9E93AD">{{ s.d }}</p></div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 -->
+    <section style="border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,88px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F9A;margin-bottom:14px">08 / 08 · Melhoria contínua</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(30px,4vw,54px);line-height:1.03;color:#F6F1FA">Oportunidades de evolução do serviço</h2>
+        <p style="margin-top:16px;max-width:60ch;font-size:16px;line-height:1.6;color:#A99FB8">A partir das dores e insights, emergiram oportunidades claras — organizadas por horizonte de impacto para orientar o roadmap.</p>
+        <div style="margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+          <sc-for list="{{ tseOportunidades }}" as="o" hint-placeholder-count="4">
+            <div style="padding:28px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)"><div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><span style="font-family:'Instrument Serif',serif;font-size:34px;line-height:1;color:rgba(255,255,255,0.16)">{{ o.n }}</span><span style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ca)">{{ o.tag }}</span></div><h3 style="font-size:19px;font-weight:600;color:#F1EBF5">{{ o.t }}</h3><p style="margin-top:10px;font-size:14.5px;line-height:1.55;color:#A99FB8">{{ o.d }}</p></div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#0D0A14;padding:clamp(64px,11vh,130px) clamp(20px,5vw,64px)">
+      <div style="max-width:1120px;margin:0 auto">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8A7F9A;margin-bottom:24px">Novo onboarding e-Título · TSE</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(38px,6vw,88px);line-height:1;letter-spacing:-0.01em;color:#F6F1FA;max-width:16ch">Uma jornada projetada para simplificar a <span style="color:var(--ca)">cidadania digital.</span></h2>
+      </div>
+    </section>
+    <div style="max-width:1120px;margin:0 auto;padding:clamp(32px,5vh,56px) clamp(20px,5vw,64px);display:flex;flex-wrap:wrap;gap:14px">
+      <div onClick="{{ goHome }}" style="padding:14px 26px;border-radius:100px;border:1px solid rgba(255,255,255,0.22);color:#EDE7F2;font-weight:600;font-size:15px;cursor:pointer" style-hover="border-color:var(--ca);color:var(--ca)">← Todos os trabalhos</div>
+      <div onClick="{{ openCashlog }}" style="padding:14px 26px;border-radius:100px;background:var(--ca);color:#fff;font-weight:600;font-size:15px;cursor:pointer" style-hover="background:#fff;color:#16111F">Ver: Cashlog (Raízen) →</div>
+    </div>
+  </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Magenta&quot;,&quot;options&quot;:[&quot;Magenta&quot;,&quot;Violeta&quot;,&quot;Amarelo&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Aparência&quot;},&quot;reduceMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Aparência&quot;}}">
+class Component extends DCLogic {
+  state = { name:'', email:'', message:'', status:'idle', page:'home' };
+
+  applyAccent(){
+    const map = { Magenta:'#EC2A86', Violeta:'#8257FF', Amarelo:'#FFCF3E' };
+    if (this.root) this.root.style.setProperty('--accent', map[this.props.accent] || '#EC2A86');
+  }
+  setupReveal(){
+    if (!this.root) return;
+    const nodes = this.root.querySelectorAll('[data-reveal]');
+    if (this.props.reduceMotion || !this.io) { nodes.forEach(n => { n.style.opacity='1'; n.style.transform='none'; }); return; }
+    requestAnimationFrame(() => nodes.forEach(n => { if (getComputedStyle(n).opacity !== '1') this.io.observe(n); }));
+  }
+  componentDidMount(){
+    this.applyAccent();
+    this._page = this.state.page;
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='none'; this.io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    this.setupReveal();
+  }
+  componentDidUpdate(){
+    this.applyAccent();
+    if (this._page !== this.state.page) {
+      this._page = this.state.page;
+      window.scrollTo(0, 0);
+      this.setupReveal();
+    }
+  }
+  componentWillUnmount(){ if (this.io) this.io.disconnect(); }
+  go(page){ this.setState({ page }); }
+
+  renderVals(){
+    const st = this.state.status;
+    return {
+      rootRef: (el) => { this.root = el; },
+      page: this.state.page,
+      isHome: this.state.page === 'home',
+      isCashlog: this.state.page === 'cashlog',
+      isClaro: this.state.page === 'claro',
+      isAbtest: this.state.page === 'abtest',
+      isEtitulo: this.state.page === 'etitulo',
+      openCashlog: () => this.go('cashlog'),
+      openClaro: () => this.go('claro'),
+      openAbtest: () => this.go('abtest'),
+      openEtitulo: () => this.go('etitulo'),
+      goHome: () => this.go('home'),
+      cases: [
+        { n:'01', kicker:'Raízen · Fintech B2B', tags:'UX/UI · Machine Learning', title:'Cashlog', ctx:'Plataforma de gestão de demandas de investimento com machine learning — intuitiva para a operação e robusta para as decisões de diretoria.', ca:'#EC2A86', open:() => this.go('cashlog') },
+        { n:'02', kicker:'Claro AMX · Service Design', tags:'DesignOps · Arquitetura de informação', title:'Cards Claro AMX', ctx:'Discovery das regras de negócio e arquitetura dos cards de venda do e-commerce, conduzindo grupos de 12 a 45 pessoas.', ca:'#E53935', open:() => this.go('claro') },
+        { n:'03', kicker:'Claro · CRO / Experimentação', tags:'Testes A/B · Dados', title:'Testes A/B orientados a dados', ctx:'Dois experimentos com resultado de negócio mensurável: +19% de pedidos com TV e +38% de interação na página de atendimento.', ca:'#F2B705', open:() => this.go('abtest') },
+        { n:'04', kicker:'TSE · Serviço público digital', tags:'Service Design · Acessibilidade', title:'Onboarding do e-Título', ctx:'Redesenho do onboarding tratado como ecossistema, acessível por padrão, para toda a população eleitora.', ca:'#2B4FE0', open:() => this.go('etitulo') },
+      ],
+      cashlogMeta: [
+        { k:'Papel', v:'UX / UI Designer' },
+        { k:'Empresa', v:'MJV · Consultoria' },
+        { k:'Cliente', v:'Raízen' },
+        { k:'Período', v:'2018' },
+        { k:'Entrevistas', v:'15 profissionais' },
+        { k:'Perfis', v:'8 tipos de usuários' },
+      ],
+      cashlogPerfis: [
+        { t:'Gestor de Finanças', d:'Aprovação financeira' },
+        { t:'Gerente de Área', d:'Aprovação técnica' },
+        { t:'Gestor de Negócios', d:'Prospecção e alocação' },
+        { t:'Analista', d:'Validação de dados' },
+        { t:'Priorizador', d:'Fila de demandas' },
+        { t:'Colaborador', d:'Entrada de dados' },
+        { t:'Administrador', d:'Gestão do sistema' },
+        { t:'Coordenador de Área', d:'Planejamento geral' },
+      ],
+      cashlogDescobertas: [
+        'Processo manual e desconectado entre as áreas',
+        'Ausência de critérios unificados de priorização',
+        'Falta de visibilidade do status das aprovações',
+        'Duplicidade de inputs e retrabalho frequente',
+      ],
+      cashlogDiretrizes: [
+        { n:'01', d:'Facilitar o input de dados, tornando mais otimizado o processo de envio de novas demandas.' },
+        { n:'02', d:'Otimizar novas solicitações a partir da predição de dados baseados no histórico de pedidos.' },
+        { n:'03', d:'Fornecer dados mais analíticos e feedbacks dinâmicos dos status das solicitações.' },
+      ],
+      cashlogPalette: [
+        { hex:'#740075', name:'Deep Purple', dark:true },
+        { hex:'#F7E3F7', name:'Light Pink', dark:false },
+        { hex:'#FFD740', name:'Golden Yellow', dark:false },
+        { hex:'#FDFFA8', name:'Pale Yellow', dark:false },
+        { hex:'#FA08FB', name:'Hot Magenta', dark:true },
+      ],
+      claroMeta: [
+        { k:'Papel', v:'Service Designer' },
+        { k:'Time', v:'DesignOps · Claro' },
+        { k:'Período', v:'2023 – 2024' },
+        { k:'Sessões', v:'8 reuniões' },
+        { k:'Participantes', v:'12 a 45 pessoas' },
+        { k:'Entregável', v:'Redesign dos Cards' },
+      ],
+      claroPerfis: ['Gerentes de Produto','Squad Leads','Product Managers','Product Owners','Tech Leads','Lead de CX','Product Designers'],
+      claroFunil: [
+        { s:'Kick Off', n:42, d:'Abertura e contexto', w:'100%' },
+        { s:'Sessão 1', n:45, d:'Objetivos e premissas', w:'100%' },
+        { s:'Sessão 2', n:29, d:'Diagrama de Alvo + Zen Voting', w:'64%' },
+        { s:'Reunião Final', n:12, d:'Fechamento do ranking', w:'27%' },
+      ],
+      claroMacro: ['Aparelho','Combo PF','Combo PME','Celular','Fixo','Internet','TV / OTT','Acessórios'],
+      claroComp: ['Vitrine / Carrinho','Preço','Regras gerais'],
+      claroPremissas: ['Distinção visual entre os segmentos PME e PF','Acessibilidade e modularidade para todos os cenários de card','Padronização de taxonomia para CTAs, títulos e subtítulos','No e-commerce, o book de marketing determina todos os atributos do produto'],
+      claroRestricoes: ['Abordagem mobile first','Máximo de um CTA primário por card','Safe área vertical — card não ultrapassa um scroll'],
+      claroRiscos: ['Falta de padronização na taxonomia de nomes de planos','Limitação dos sistemas SAP e MIND para contemplar todas as informações','Processo ainda manual; ideal seria automatizado para todos os canais','Necessidade de manter engajamento dos times do discovery até o handoff'],
+      claroRegrasP: [ {t:'Preço', v:16, pct:'100%'}, {t:'Características e nome do plano', v:13, pct:'81%'}, {t:'CTA assinar / comprar / agendar visita', v:12, pct:'75%'}, {t:'CTA ver detalhes', v:8, pct:'50%'}, {t:'Apps inclusos no plano', v:6, pct:'38%'}, {t:'Cupom de desconto', v:4, pct:'25%'} ],
+      claroRegrasS: [ {t:'Detalhes do plano', v:7, pct:'44%'}, {t:'Bônus adicional + serviços adicionais', v:5, pct:'31%'} ],
+      claroRegrasT: [ {t:'Serviços adicionais ao plano', v:5, pct:'31%'}, {t:'CTA compra em débito automático / boleto', v:4, pct:'25%'}, {t:'Informativo de desconto de/por', v:4, pct:'25%'} ],
+      tseImpacto: [
+        { n:'01', t:'Decisões de roadmap mais orientadas à experiência do cidadão' },
+        { n:'02', t:'Redução de erros, retrabalho e pressão sobre canais de suporte' },
+        { n:'03', t:'Aumento da confiança institucional no serviço digital' },
+        { n:'04', t:'Evolução do e-Título como plataforma central da cidadania digital' },
+      ],
+      claroResultados: ['Jornadas unificadas nos sites e e-commerce','Aderência aos padrões de marca Claro','Engajamento dos times de negócio e design no uso dos componentes','Adoção por parceiros da Claro em suas comunicações online'],
+      claroMetricas: ['CSAT','CES','TNPS','Taxa de conversão','Taxa de abandono','Produtividade das equipes'],
+      claroReqImg: 'uploads/Requisitos%20por%20ordem%20de%20disposi%C3%A7%C3%A3o.png',
+      claroCards: [
+        { src:'uploads/Cards%20-%20Combo%20PF-1.png', alt:'Card Combo PF — 500 Mega com Globoplay e Pós 50 Giga' },
+        { src:'uploads/Cards%20-%20Combo%20PF-2.png', alt:'Card Combo PF — 500 Mega, R$ 189,90/mês' },
+        { src:'uploads/Cards%20-%20Combo%20PME.png', alt:'Card Combo PME — 400 Mega para empresas, R$ 119,90/mês' },
+        { src:'uploads/Cards%20-%20Plano%20celular.png', alt:'Card Plano celular — 15GB + 5GB de bônus, plano controle' },
+        { src:'uploads/Cards%20-%20Telefone%20fixo.png', alt:'Card Telefone fixo — Ilimitado Brasil total, R$ 30,90/mês' },
+        { src:'uploads/Cards%20-%20TV.png', alt:'Card TV — 4K Claro tv+ com Paramount+ e Globoplay' },
+        { src:'uploads/Cards%20-%20Aparelhos.png', alt:'Card Aparelho — Samsung Galaxy A54 5G 256GB' },
+        { src:'uploads/Cards%20-%20Acess%C3%B3rios.png', alt:'Card Acessório — Apple AirPod, R$ 1.529,90' },
+      ],
+      tsePersonas: [
+        { nome:'Antonio Fagundes', meta:'75 anos · Aposentado', tags:['Baixa afinidade digital','Autonomia'], mot:'Busca praticidade para resolver pendências eleitorais sem se deslocar até um cartório ou zona eleitoral.', obj:'Garantir que consiga realizar tarefas eleitorais sem depender de outras pessoas.' },
+        { nome:'Augusto dos Anjos', meta:'58 anos · Deficiência visual', tags:['Mangá','Artes plásticas','Leitor de tela'], mot:'A ideia de ter um título digital facilita a vida, principalmente quando não quer carregar o título físico.', obj:'Usar o e-Título como alternativa acessível ao processo presencial, com funcionalidades adaptadas.' },
+        { nome:'Clara Nunes', meta:'27 anos · Nativa digital', tags:['Eficiência','Mobile-first'], mot:'Gosta de soluções digitais e eficientes que se integrem bem ao seu cotidiano.', obj:'Resolver questões eleitorais digitalmente, sem sair de casa ou enfrentar filas.' },
+      ],
+      tseFases: [
+        { n:'01', t:'Discovery', d:'Entender o problema de forma sistêmica, a partir de dados, pessoas e concorrência.', m:['Análise competitiva','Pesquisa','Análise Heurística','Comunicação comparada'] },
+        { n:'02', t:'Definição', d:'Transformar achados dispersos em insights acionáveis para tomada de decisão.', m:['Jornada As-Is','Personas','Insights-chave'] },
+        { n:'03', t:'Ideação', d:'Co-criar a nova jornada com o time multidisciplinar e a Justiça Eleitoral.', m:['Workshops','Jornada To-Be','UI Design'] },
+        { n:'04', t:'Validação', d:'Confrontar as hipóteses com eleitores reais e priorizar melhorias contínuas.', m:['Testes de usabilidade','Árvores de Oportunidades'] },
+      ],
+      tsePains: [
+        { n:'01', t:'Descoberta', d:'Dúvidas sobre segurança, confiabilidade e facilidade de uso já na primeira abertura.' },
+        { n:'02', t:'Aceite de termos', d:'Falta de explicação sobre a necessidade dos aceites regulatórios e de notificações.' },
+        { n:'03', t:'Permissões', d:'Pedidos de permissão sem contexto geram desconfiança no eleitor.' },
+        { n:'04', t:'Cadastro', d:'Erros ao digitar os dados e falta de clareza sobre a obrigatoriedade dos campos.' },
+        { n:'05', t:'Validação facial', d:'Dificuldade na validação biométrica, sobretudo para idosos e menos familiarizados com tecnologia.' },
+        { n:'06', t:'Home logada', d:'A home não dá prévia das funções; dificuldade de encontrar recursos como a justificativa de ausência.' },
+      ],
+      tseSteps: [
+        { n:'01', t:'Home splash', d:'Carrossel explicativo com CTAs de acesso e modal de permissão para notificações.' },
+        { n:'02', t:'Personalização', d:'Ajusta acessibilidade — contraste e leitor de tela — e configura navegação assistida.' },
+        { n:'03', t:'Aceite de termos', d:'Lê sobre as funcionalidades e acessa os termos via hiperlinks antes de aceitar.' },
+        { n:'04', t:'Dados pessoais', d:'Orientações sobre o preenchimento obrigatório e inserção dos dados do cadastro eleitoral.' },
+        { n:'05', t:'Validação do dispositivo', d:'Explicações sobre a confirmação de identidade enquanto o dispositivo é validado.' },
+        { n:'06', t:'Questionário', d:'Responde três perguntas pessoais para confirmação de identidade, sem reiniciar o fluxo se errar.' },
+        { n:'07', t:'Dicas para selfie', d:'Explicações sobre a prova de vida via selfie em vídeo, com acesso à câmera.' },
+        { n:'08', t:'Ativação biométrica', d:'Validação biométrica por reconhecimento facial; após confirmada, avança.' },
+        { n:'09', t:'Cadastro de senha', d:'Define e confirma a senha, escolhe permitir ou não a autenticação biométrica.' },
+        { n:'10', t:'Preferências', d:'Escolhe notificações e preferências de uso e informativos da Justiça Eleitoral.' },
+        { n:'11', t:'Conclusão', d:'Mensagem de cadastro concluído; escolhe entre tour guiado ou acessar a home.' },
+        { n:'12', t:'Home logada', d:'Visualização do título, biometria, onde votar, justificativa, perfil e menu de serviços.' },
+      ],
+      tseOportunidades: [
+        { n:'01', tag:'Impacto rápido', t:'Aceites com contexto', d:'Explicações claras e contextuais sobre a necessidade e a utilidade dos aceites regulatórios e de notificações.' },
+        { n:'02', tag:'Impacto rápido', t:'Transparência de limitações', d:'Deixar claro quais limitações o eleitor sem biometria cadastrada enfrentará, antes que a ação ocorra.' },
+        { n:'03', tag:'Estrutural', t:'Acessibilidade por padrão', d:'Incorporar configurações de acessibilidade desde o primeiro toque, com múltiplos métodos de validação.' },
+        { n:'04', tag:'Governança', t:'Árvores de Oportunidades', d:'Estruturar uma prática de melhoria contínua, conectando dores mapeadas a oportunidades priorizadas.' },
+      ],
+      name: this.state.name, email: this.state.email, message: this.state.message,
+      nameOrDefault: this.state.name.trim() || 'até já',
+      isLoading: st === 'loading',
+      isSuccess: st === 'success',
+      showForm: st !== 'success',
+      submitLabel: st === 'loading' ? 'Enviando…' : 'Enviar mensagem',
+      onName: (e) => this.setState({ name: e.target.value }),
+      onEmail: (e) => this.setState({ email: e.target.value }),
+      onMessage: (e) => this.setState({ message: e.target.value }),
+      onSubmit: (e) => {
+        e.preventDefault();
+        if (this.state.status === 'loading') return;
+        this.setState({ status: 'loading' });
+        const { name, email, message } = this.state;
+        const subject = encodeURIComponent(`Contato do portfólio — ${name || 'novo projeto de CX'}`);
+        const body = encodeURIComponent(`Nome: ${name}\nEmail: ${email}\n\n${message}`);
+        const mailto = `mailto:ivy.dias.de.campos@gmail.com?subject=${subject}&body=${body}`;
+        setTimeout(() => {
+          window.location.href = mailto;
+          this.setState({ status: 'success' });
+        }, 900);
+      },
+      year: new Date().getFullYear(),
+      specialties: [
+        { num:'01', title:'CX Strategy & Service Design', desc:'Desenho o serviço inteiro, não só a tela: conecto pontos de contato, backstage e negócio numa jornada coerente.' },
+        { num:'02', title:'User Research', desc:'Transformo escuta e evidência em decisões de design — do campo à síntese acionável.' },
+        { num:'03', title:'Jornadas & mapeamento de serviços', desc:'Mapeio o as-is, exponho onde a experiência quebra e desenho o to-be com clareza.' },
+        { num:'04', title:'Design de interface (UX/UI)', desc:'Interfaces intuitivas para quem opera e robustas para quem decide.' },
+        { num:'05', title:'Facilitação de workshops', desc:'Conduzo Design Sprints e Lean Inceptions que alinham times numerosos em torno de decisões claras.' },
+        { num:'06', title:'Liderança técnica & squads de design', desc:'Lidero squads com direção, consistência e cuidado com as pessoas do time.' },
+      ],
+      cashlogSteps: [
+        { n:'01', label:'Desafio Raízen' },
+        { n:'02', label:'Pesquisa e imersão' },
+        { n:'03', label:'Definição e síntese' },
+        { n:'04', label:'Ideação e co-criação' },
+        { n:'05', label:'Prototipação alta fidelidade' },
+      ],
+      claroSteps: [
+        { n:'01', label:'Contexto e alinhamento' },
+        { n:'02', label:'Objetivos e cenários de uso' },
+        { n:'03', label:'Promessas, restrições e riscos' },
+        { n:'04', label:'Diagrama de alto nível' },
+        { n:'05', label:'MVP de cenários' },
+        { n:'06', label:'Co-criação com o e-commerce' },
+      ],
+      timeline: [
+        { period:'2022–2026', company:'Claro Brasil', role:'Líder de Pilar → Especialista CX CoE', scope:'Liderança de jornadas e serviços e atuação no Centro de Excelência de CX do Portal Claro.com.br.' },
+        { period:'2022', company:'Stix', role:'Coordenadora CX / UX', scope:'Coordenação de experiência e design no programa de fidelidade e coalizão.' },
+        { period:'2021', company:'Banco Pan & Genial', role:'Senior Product Designer', scope:'Design de produto para serviços financeiros e plataformas de investimento.' },
+        { period:'2019–2021', company:'Banco BV', role:'Consultora UX/UI', scope:'Pesquisa, jornadas e interface para produtos digitais do banco.' },
+        { period:'2018–2019', company:'MJV Technology & Innovation', role:'Consultora de Inovação', scope:'Consultoria de inovação e UX — inclui o case Cashlog (Raízen).' },
+        { period:'2007–2019', company:'DC Creative', role:'Especialista CX / UX', scope:'12 anos liderando projetos de CX, branding e direção de arte para múltiplas indústrias.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
