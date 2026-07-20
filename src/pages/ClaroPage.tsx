@@ -37,16 +37,14 @@ export function ClaroPage() {
       >
         <p className="max-w-3xl body-md">{page.sections.s01.body}</p>
         <div className="mt-6 card-ui p-7">
-          <PostItTag index={0} className="mb-4">
-            {page.sections.s01.funilLabel}
-          </PostItTag>
+          <p className="eyebrow mb-4 text-accent">{page.sections.s01.funilLabel}</p>
           <div className="flex flex-col gap-4">
-            {caseData.funil.map((item, index) => (
+            {caseData.funil.map((item) => (
               <div
                 key={item.s}
                 className="grid grid-cols-[120px_1fr_auto] gap-4 items-center"
               >
-                <PostItTag index={index + 1}>{item.s}</PostItTag>
+                <div className="text-sm font-medium text-neutral-950">{item.s}</div>
                 <div className="h-2 rounded-full bg-neutral-200">
                   <div
                     className="h-2 rounded-full bg-accent"
@@ -99,7 +97,7 @@ export function ClaroPage() {
         kicker={page.sections.s03.kicker}
         title={page.sections.s03.title}
       >
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6">
           {[
             {
               title: page.sections.s03.groupTitles.premissas,
@@ -114,17 +112,26 @@ export function ClaroPage() {
               items: caseData.riscos,
             },
           ].map((group, groupIndex) => (
-            <PostItNote key={group.title} index={groupIndex} compact>
-              <PostItTag index={groupIndex} className="mb-3.5">
+            <PostItNote key={group.title} index={groupIndex}>
+              <p className="font-mono text-sm font-medium text-neutral-800/70">
+                {String(groupIndex + 1).padStart(2, "0")}
+              </p>
+              <h3 className="mt-4 text-card-title text-neutral-950">
                 {group.title}
-              </PostItTag>
-              <div className="flex flex-col gap-2.5">
-                {group.items.map((item, itemIndex) => (
-                  <PostItTag key={item} index={itemIndex + groupIndex + 3}>
-                    {item}
-                  </PostItTag>
+              </h3>
+              <ul className="mt-3 flex flex-col gap-2.5">
+                {group.items.map((item) => (
+                  <li
+                    key={item}
+                    className="text-sm leading-relaxed text-neutral-700 text-pretty flex gap-2"
+                  >
+                    <span className="text-neutral-950/40 shrink-0" aria-hidden>
+                      ●
+                    </span>
+                    <span>{item}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </PostItNote>
           ))}
         </div>

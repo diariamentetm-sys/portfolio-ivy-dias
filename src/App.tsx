@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ScrollToTop } from "./components/layout/ScrollToTop";
 import { ContentProvider } from "./content/ContentContext";
 import { LocaleProvider } from "./i18n/LocaleContext";
 import { AbtestPage } from "./pages/AbtestPage";
@@ -14,6 +15,7 @@ function App() {
     <LocaleProvider>
       <ContentProvider>
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/admin" element={<AdminPage />} />
