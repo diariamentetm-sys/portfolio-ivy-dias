@@ -1,18 +1,31 @@
 import { CaseBlockSection, CaseImage } from "../components/cases/CaseBlocks";
 import { CaseStudyLayout } from "../components/layout/CaseStudyLayout";
 import { PostItTag, postItTone } from "../components/ui/PostItTag";
+import {
+  caseStudyConfigs,
+  etituloCaseDataContent,
+  etituloPageContent,
+} from "../data/casePagesContent";
 import { etituloData } from "../data/caseStudies";
-import { caseStudies } from "../data/portfolio";
+import { useLocale } from "../i18n/LocaleContext";
 
 export function EtituloPage() {
-  const config = caseStudies.etitulo;
+  const { locale } = useLocale();
+  const config = caseStudyConfigs[locale].etitulo;
+  const page = etituloPageContent[locale];
+  const caseData = etituloCaseDataContent[locale];
+
+  const personas = etituloData.personas.map((persona, index) => ({
+    ...caseData.personas[index],
+    img: persona.img,
+  }));
 
   return (
     <CaseStudyLayout config={config}>
       <section className="max-w-5xl mx-auto px-5 md:px-16 pb-4">
         <CaseImage
           src={etituloData.overviewImg}
-          alt="Capa do case e-Título — TSE · Service Design e redesenho da jornada de onboarding"
+          alt={caseData.overviewImgAlt}
           fill
           aspect="aspect-[2528/1328]"
           priority
@@ -20,36 +33,27 @@ export function EtituloPage() {
       </section>
 
       <CaseBlockSection
-        label="01 / 08 · Visão geral"
-        title="Um serviço tratado como ecossistema, não apenas como interface"
+        label={page.sections.s01.label}
+        title={page.sections.s01.title}
       >
         <div className="grid md:grid-cols-2 gap-8 md:gap-14">
           <div>
-            <p className="body-md">
-              Atuei como Service Designer responsável pela condução estratégica
-              do projeto, liderando a frente de experiência e articulando um time
-              multidisciplinar, com apoio das disciplinas de UX, Consumer
-              Insights e Comunicação para garantir uma leitura sistêmica da
-              jornada.
-            </p>
+            <p className="body-md">{page.sections.s01.body}</p>
             <div className="mt-6 grid grid-cols-2 gap-5">
-              {[
-                ["Papel", "Lead Service Designer"],
-                ["Contexto", "Hitss / Claro Brasil"],
-                ["Cliente", "Tribunal Superior Eleitoral"],
-                ["Período", "2026"],
-              ].map(([label, value]) => (
-                <div key={label}>
-                  <p className="eyebrow mb-1.5">{label}</p>
-                  <p className="text-[15px] font-medium text-neutral-950">{value}</p>
+              {page.sections.s01.metaLabels.map((item) => (
+                <div key={item.k}>
+                  <p className="eyebrow mb-1.5">{item.k}</p>
+                  <p className="text-[15px] font-medium text-neutral-950">{item.v}</p>
                 </div>
               ))}
             </div>
           </div>
           <div className="card p-7 bg-neutral-950 text-white">
-            <p className="eyebrow mb-4 text-white/50">Impacto estratégico</p>
+            <p className="eyebrow mb-4 text-white/50">
+              {page.sections.s01.impactLabel}
+            </p>
             <div className="flex flex-col gap-4">
-              {etituloData.impacto.map((item) => (
+              {caseData.impacto.map((item) => (
                 <div
                   key={item.n}
                   className="grid grid-cols-[26px_1fr] gap-3 items-start"
@@ -66,23 +70,14 @@ export function EtituloPage() {
       </CaseBlockSection>
 
       <CaseBlockSection
-        label="02 / 08 · Entendendo o problema"
-        title="Definição do desafio"
+        label={page.sections.s02.label}
+        title={page.sections.s02.title}
       >
         <div className="divide-y divide-neutral-200">
           {[
-            [
-              "Problema",
-              "Os problemas não estavam em uma funcionalidade isolada, mas na transição entre etapas, na falta de previsibilidade, na ausência de feedback claro e na dependência excessiva da memória e da compreensão do usuário.",
-            ],
-            [
-              "Objetivo",
-              "Redesenhar uma nova jornada de onboarding para o e-Título com acessibilidade como foco central. Mais do que adaptar um fluxo existente, repensar a forma como os eleitores acessam o app, com experiência fluida e inclusiva desde o primeiro toque na tela.",
-            ],
-            [
-              "Proposta",
-              "Criar uma nova jornada de onboarding (To Be) baseada em pesquisa, benchmarking e testes com usuários, incorporando configurações de acessibilidade desde o início, múltiplos métodos de validação de identidade, feedbacks mais claros e uma estrutura de melhoria contínua por meio de Árvores de Oportunidades.",
-            ],
+            [page.sections.s02.problemLabel, page.sections.s02.problemText],
+            [page.sections.s02.objectiveLabel, page.sections.s02.objectiveText],
+            [page.sections.s02.proposalLabel, page.sections.s02.proposalText],
           ].map(([label, text]) => (
             <div
               key={label}
@@ -94,21 +89,21 @@ export function EtituloPage() {
           ))}
         </div>
         <div className="mt-8 p-8 md:p-11 rounded-card bg-neutral-950">
-          <p className="eyebrow mb-4 text-white/50">Quem mais sente</p>
+          <p className="eyebrow mb-4 text-white/50">
+            {page.sections.s02.whoFeelsLabel}
+          </p>
           <p className="text-2xl md:text-4xl font-bold leading-tight text-white max-w-2xl text-pretty">
-            Essas dores afetam de forma mais intensa idosos, pessoas com
-            necessidades especiais e eleitores em situação de urgência nos dias
-            de eleição.
+            {page.sections.s02.whoFeelsQuote}
           </p>
         </div>
       </CaseBlockSection>
 
       <CaseBlockSection
-        label="03 / 08 · Abordagem do Service Design"
-        title="Quatro fases, uma leitura de ponta a ponta"
+        label={page.sections.s03.label}
+        title={page.sections.s03.title}
       >
         <div className="grid md:grid-cols-2 gap-4">
-          {etituloData.fases.map((fase) => (
+          {caseData.fases.map((fase) => (
             <div key={fase.n} className="card p-7">
               <div className="flex items-baseline gap-2.5">
                 <span className="font-mono text-xs text-accent">{fase.n}</span>
@@ -128,15 +123,12 @@ export function EtituloPage() {
       </CaseBlockSection>
 
       <CaseBlockSection
-        label="04 / 08 · Personas"
-        title="Para quem estamos projetando"
+        label={page.sections.s04.label}
+        title={page.sections.s04.title}
       >
-        <p className="max-w-2xl body-md mb-8">
-          Três perfis que sintetizam motivações, contextos e barreiras distintas
-          diante da Justiça Eleitoral digital.
-        </p>
+        <p className="max-w-2xl body-md mb-8">{page.sections.s04.intro}</p>
         <div className="grid md:grid-cols-3 gap-4">
-          {etituloData.personas.map((persona, index) => (
+          {personas.map((persona, index) => (
             <div key={persona.nome} className="card overflow-hidden rounded-2xl">
               {persona.img && (
                 <CaseImage
@@ -158,13 +150,17 @@ export function EtituloPage() {
                   ))}
                 </div>
                 <div className="mt-4 pt-4 border-t border-neutral-200">
-                  <p className="eyebrow mb-1.5 text-accent">Motivação</p>
+                  <p className="eyebrow mb-1.5 text-accent">
+                    {page.sections.s04.motivationLabel}
+                  </p>
                   <p className="text-sm leading-relaxed text-neutral-500">
                     {persona.mot}
                   </p>
                 </div>
                 <div className="mt-3.5">
-                  <p className="eyebrow mb-1.5 text-accent">Objetivo</p>
+                  <p className="eyebrow mb-1.5 text-accent">
+                    {page.sections.s04.objectiveLabel}
+                  </p>
                   <p className="text-sm leading-relaxed text-neutral-500">
                     {persona.obj}
                   </p>
@@ -177,27 +173,24 @@ export function EtituloPage() {
 
       <section className="section-inverted py-16 md:py-28">
         <div className="max-w-5xl mx-auto">
-          <p className="eyebrow mb-6 text-white/50">05 / 08 · Insight-chave</p>
+          <p className="eyebrow mb-6 text-white/50">{page.sections.s05.label}</p>
           <blockquote className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[1.08] text-white max-w-lg text-balance">
-            “O serviço exigia que o eleitor fosse{" "}
-            <span className="text-accent">resiliente</span>, quando deveria
-            protegê-lo.”
+            “{page.sections.s05.quote}
+            <span className="text-accent">{page.sections.s05.quoteAccent}</span>
+            {page.sections.s05.quoteEnd}”
           </blockquote>
           <p className="mt-6 max-w-2xl body-md text-white/70">
-            A síntese da jornada revelou que os problemas não estavam em uma
-            funcionalidade isolada, mas distribuídos por todo o ecossistema do
-            serviço — do onboarding ao uso recorrente, dos players concorrentes
-            ao suporte e aos processos internos de governança.
+            {page.sections.s05.body}
           </p>
         </div>
       </section>
 
       <CaseBlockSection
-        label="06 / 08 · Principais dores identificadas"
-        title="Onde a jornada As-Is quebrava"
+        label={page.sections.s06.label}
+        title={page.sections.s06.title}
       >
         <div className="grid md:grid-cols-2 gap-x-10">
-          {etituloData.pains.map((pain) => (
+          {caseData.pains.map((pain) => (
             <div
               key={pain.n}
               className="grid grid-cols-[34px_1fr] gap-3.5 py-5 border-t border-neutral-200"
@@ -213,15 +206,12 @@ export function EtituloPage() {
       </CaseBlockSection>
 
       <CaseBlockSection
-        label="07 / 08 · Jornada To Be"
-        title="Um novo onboarding, acessível por padrão"
+        label={page.sections.s07.label}
+        title={page.sections.s07.title}
       >
-        <p className="max-w-2xl body-md mb-8">
-          Nova jornada de onboarding projetada para acessibilidade, segurança e
-          inclusão digital na Justiça Eleitoral — em 12 etapas.
-        </p>
+        <p className="max-w-2xl body-md mb-8">{page.sections.s07.intro}</p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5">
-          {etituloData.steps.map((step, index) => (
+          {caseData.steps.map((step, index) => (
             <div
               key={step.n}
               className="relative overflow-hidden rounded-lg border border-neutral-200 bg-white p-5"
@@ -245,15 +235,12 @@ export function EtituloPage() {
       </CaseBlockSection>
 
       <CaseBlockSection
-        label="08 / 08 · Melhoria contínua"
-        title="Oportunidades de evolução do serviço"
+        label={page.sections.s08.label}
+        title={page.sections.s08.title}
       >
-        <p className="max-w-2xl body-md mb-8">
-          A partir das dores e insights, emergiram oportunidades claras —
-          organizadas por horizonte de impacto para orientar o roadmap.
-        </p>
+        <p className="max-w-2xl body-md mb-8">{page.sections.s08.intro}</p>
         <div className="grid md:grid-cols-2 gap-4">
-          {etituloData.oportunidades.map((item, index) => (
+          {caseData.oportunidades.map((item, index) => (
             <div key={item.n} className="card p-7">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl font-extrabold leading-none text-neutral-200">
@@ -273,11 +260,11 @@ export function EtituloPage() {
       <section className="section-inverted py-20 md:py-32">
         <div className="max-w-5xl mx-auto">
           <p className="eyebrow mb-6 text-white/50">
-            Novo onboarding e-Título · TSE
+            {page.sections.closing.kicker}
           </p>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-none tracking-tight text-white max-w-lg">
-            Uma jornada projetada para simplificar a{" "}
-            <span className="text-accent">cidadania digital.</span>
+            {page.sections.closing.titleBefore}
+            <span className="text-accent">{page.sections.closing.titleAccent}</span>
           </h2>
         </div>
       </section>

@@ -163,7 +163,7 @@ export const casePreviews: CasePreview[] = [
     title: "Cashlog",
     description:
       "Plataforma de gestão financeira para a operação de postos: precisava ser simples para colaboradores operacionais e robusta o suficiente para as decisões estratégicas de diretores em múltiplas áreas de negócio.",
-    accent: "#3B6FEA",
+    accent: "#EC2A86",
     path: "/cases/cashlog",
     ctaColor: "bg-accent",
   },
@@ -175,7 +175,7 @@ export const casePreviews: CasePreview[] = [
     title: "Cards de oferta no e-commerce",
     description:
       "Arquitetura de informação e regras de negócio para os cards de planos e combos do e-commerce da Claro, conduzido dentro de um time multidisciplinar — do desenho ao desenvolvimento.",
-    accent: "#3B6FEA",
+    accent: "#EC2A86",
     path: "/cases/claro",
     ctaColor: "bg-accent",
   },
@@ -187,7 +187,7 @@ export const casePreviews: CasePreview[] = [
     title: "Testes A/B orientados a dados",
     description:
       "Dois experimentos que provam a hipótese com métrica de negócio — não só entrega visual, mas decisão validada em produção.",
-    accent: "#3B6FEA",
+    accent: "#EC2A86",
     path: "/cases/abtest",
     ctaColor: "bg-accent",
   },
@@ -199,7 +199,7 @@ export const casePreviews: CasePreview[] = [
     title: "Onboarding do e-Título",
     description:
       "Redesenho do onboarding do serviço de identificação digital do eleitor — tratado como ecossistema, não apenas como interface.",
-    accent: "#3B6FEA",
+    accent: "#EC2A86",
     path: "/cases/etitulo",
     ctaColor: "bg-accent",
   },
@@ -209,7 +209,7 @@ export const caseStudies: Record<string, CaseStudyConfig> = {
   cashlog: {
     id: "cashlog",
     path: "/cases/cashlog",
-    accent: "#3B6FEA",
+    accent: "#EC2A86",
     breadcrumb: "Cashlog · Raízen · 2018",
     kicker: "Estudo de caso · UX/UI Design",
     title: "Cashlog",
@@ -234,7 +234,7 @@ export const caseStudies: Record<string, CaseStudyConfig> = {
   claro: {
     id: "claro",
     path: "/cases/claro",
-    accent: "#3B6FEA",
+    accent: "#EC2A86",
     breadcrumb: "Cards AMX Claro · 2023–2024",
     kicker: "Estudo de caso · Service Design",
     title: "Cards ",
@@ -249,7 +249,7 @@ export const caseStudies: Record<string, CaseStudyConfig> = {
   abtest: {
     id: "abtest",
     path: "/cases/abtest",
-    accent: "#3B6FEA",
+    accent: "#EC2A86",
     breadcrumb: "Claro · CRO / Experimentação",
     kicker: "Estudo de caso · CRO / Experimentação",
     title: "Testes A/B ",
@@ -271,7 +271,7 @@ export const caseStudies: Record<string, CaseStudyConfig> = {
   etitulo: {
     id: "etitulo",
     path: "/cases/etitulo",
-    accent: "#3B6FEA",
+    accent: "#EC2A86",
     breadcrumb: "Tribunal Superior Eleitoral · 2026",
     kicker: "Estudo de caso · Service Design",
     title: "Onboarding do ",
@@ -292,8 +292,7 @@ export const caseStudies: Record<string, CaseStudyConfig> = {
       { k: "Período", v: "2026" },
     ],
     about: [
-      "Atuei como Service Designer responsável pela condução estratégica do projeto, liderando a frente de experiência e articulando um time multidisciplinar.",
-      "O objetivo era redesenhar o onboarding do e-Título com acessibilidade como foco central — repensando como os eleitores acessam o app desde o primeiro toque.",
+      "Service Design aplicado ao aplicativo e-Título do TSE, repensando o acesso à cidadania digital com acessibilidade no centro da experiência.",
     ],
     headerStats: etituloData.headerStats,
     next: { label: "Ver: Cashlog (Raízen) →", path: "/cases/cashlog" },

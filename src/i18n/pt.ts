@@ -25,7 +25,7 @@ export const pt: Dictionary = {
       { value: "3", label: "idiomas de trabalho" },
     ],
     imageAlt:
-      "Ivy Dias conduzindo mapeamento de jornada em workshop de service design",
+      "Ivy Dias em workshop de service design, apontando para um mapa de jornada com post-its",
   },
   about: {
     eyebrow: "(01) Sobre",
@@ -247,7 +247,9 @@ export const pt: Dictionary = {
     submit: "Enviar mensagem",
     submitting: "Enviando…",
     formHint:
-      "Ao enviar, abre seu app de email com a mensagem pronta para ivy.dias.de.campos@gmail.com.",
+      "Sua mensagem vai direto para ivy.dias.de.campos@gmail.com. Eu respondo pessoalmente.",
+    formError:
+      "Não foi possível enviar. Tente de novo ou escreva direto no email.",
     successTitle: "Mensagem enviada!",
     successBody:
       "Obrigada pelo contato. Retorno em breve pelo email informado.",

@@ -12,8 +12,8 @@ export default {
           950: "#0A0A0A",
         },
         accent: {
-          DEFAULT: "#3B6FEA",
-          blue: "#3B6FEA",
+          DEFAULT: "#EC2A86",
+          pink: "#EC2A86",
         },
         success: "#1FA463",
         warning: "#E39A3B",

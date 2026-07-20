@@ -10,6 +10,7 @@ import { PostItTag } from "../components/ui/PostItTag";
 import { Reveal } from "../components/ui/Reveal";
 import { useContent } from "../content/ContentContext";
 import { useLocale } from "../i18n/LocaleContext";
+import { sendContactMessage } from "../lib/sendContact";
 
 const heroTagStyles = [
   { tone: "post-it-yellow", rotate: "-rotate-2" },
@@ -36,7 +37,10 @@ export function HomePage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
+    "idle",
+  );
+  const [formError, setFormError] = useState("");
 
   const hero = content.heroCopy[locale];
   const specialties = t.specialties.items;
@@ -61,27 +65,27 @@ export function HomePage() {
     return [...t.work.cases, ...custom];
   }, [content.projects, locale, t.work.cases]);
 
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
     if (status === "loading") return;
 
     setStatus("loading");
-    const subject = encodeURIComponent(
-      locale === "en"
-        ? `Portfolio contact — ${name || "new CX project"}`
-        : `Contato do portfólio — ${name || "novo projeto de CX"}`,
-    );
-    const body = encodeURIComponent(
-      locale === "en"
-        ? `Name: ${name}\nEmail: ${email}\n\n${message}`
-        : `Nome: ${name}\nEmail: ${email}\n\n${message}`,
-    );
-    const mailto = `mailto:ivy.dias.de.campos@gmail.com?subject=${subject}&body=${body}`;
+    setFormError("");
 
-    setTimeout(() => {
-      window.location.href = mailto;
-      setStatus("success");
-    }, 900);
+    const result = await sendContactMessage({
+      name: name.trim(),
+      email: email.trim(),
+      message: message.trim(),
+      locale,
+    });
+
+    if (!result.ok) {
+      setStatus("error");
+      setFormError(result.error);
+      return;
+    }
+
+    setStatus("success");
   }
 
   return (
@@ -136,7 +140,7 @@ export function HomePage() {
               <img
                 src={content.heroImage}
                 alt={t.hero.imageAlt}
-                className="w-full rounded-2xl shadow-card object-cover object-[18%_22%] aspect-[4/5] lg:aspect-[3/4]"
+                className="w-full rounded-2xl shadow-card object-cover object-[22%_18%] aspect-[4/5] lg:aspect-[3/4]"
                 loading="eager"
                 decoding="async"
               />
@@ -553,6 +557,12 @@ export function HomePage() {
                     ? t.contact.submitting
                     : t.contact.submit}
                 </button>
+                {status === "error" && (
+                  <p className="text-sm text-error text-center">
+                    {t.contact.formError}
+                    {formError ? ` (${formError})` : ""}
+                  </p>
+                )}
                 <p className="text-xs text-center text-neutral-500 leading-relaxed">
                   {t.contact.formHint}
                 </p>

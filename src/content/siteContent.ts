@@ -108,7 +108,7 @@ export function createEmptyProject(): ManagedProject {
 }
 
 export const defaultSiteContent: SiteContent = {
-  heroImage: "/images/ivy-hero-workshop.png",
+  heroImage: "/images/ivy-hero-workshop-v2.png",
   contactPhoto: "/images/ivy-dias-hero.png",
   heroCopy: {
     en: {

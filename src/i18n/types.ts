@@ -91,6 +91,7 @@ export type Dictionary = {
     submit: string;
     submitting: string;
     formHint: string;
+    formError: string;
     successTitle: string;
     successBody: string;
   };

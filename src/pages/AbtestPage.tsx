@@ -1,9 +1,18 @@
 import { CaseImage } from "../components/cases/CaseBlocks";
 import { CaseStudyLayout } from "../components/layout/CaseStudyLayout";
+import {
+  abtestCaseDataContent,
+  abtestPageContent,
+  caseStudyConfigs,
+} from "../data/casePagesContent";
 import { abtestData } from "../data/caseStudies";
-import { caseStudies } from "../data/portfolio";
+import { useLocale } from "../i18n/LocaleContext";
 
 import type { AbTestBlock } from "../types/cases";
+
+type TestDetailProps = AbTestBlock & {
+  detailLabels: { duration: string; device: string; metric: string };
+};
 
 function TestDetail({
   label,
@@ -16,7 +25,8 @@ function TestDetail({
   image,
   imageAlt,
   imageFirst,
-}: AbTestBlock) {
+  detailLabels,
+}: TestDetailProps) {
   return (
     <div className="card overflow-hidden rounded-2xl">
       <div className="grid md:grid-cols-2">
@@ -34,9 +44,9 @@ function TestDetail({
           </h2>
           <div className="mt-6 flex flex-col gap-3.5">
             {[
-              ["Duração", duration],
-              ["Dispositivo", device],
-              ["Métrica", metric],
+              [detailLabels.duration, duration],
+              [detailLabels.device, device],
+              [detailLabels.metric, metric],
             ].map(([key, value]) => (
               <div key={key} className="flex gap-3.5 text-sm text-neutral-500">
                 <span className="eyebrow min-w-[110px]">{key}</span>
@@ -66,18 +76,31 @@ function TestDetail({
 }
 
 export function AbtestPage() {
-  const config = caseStudies.abtest;
+  const { locale } = useLocale();
+  const config = caseStudyConfigs[locale].abtest;
+  const page = abtestPageContent[locale];
+  const caseData = abtestCaseDataContent[locale];
+
+  const tests = abtestData.tests.map((test, index) => ({
+    ...caseData.tests[index],
+    image: test.image,
+    imageFirst: test.imageFirst,
+  }));
 
   return (
     <CaseStudyLayout config={config}>
       <section className="max-w-5xl mx-auto px-5 md:px-16 pb-12 md:pb-16 space-y-6">
-        {abtestData.tests.map((test) => (
-          <TestDetail key={test.label} {...test} />
+        {tests.map((test) => (
+          <TestDetail
+            key={test.label}
+            {...test}
+            detailLabels={page.testDetailLabels}
+          />
         ))}
 
         <div className="mt-10 p-8 md:p-12 rounded-card bg-neutral-950">
           <p className="text-2xl md:text-4xl font-bold leading-snug text-white max-w-xl text-pretty">
-            {abtestData.closingQuote}
+            {caseData.closingQuote}
           </p>
         </div>
       </section>

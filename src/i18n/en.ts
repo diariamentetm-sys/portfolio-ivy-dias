@@ -25,7 +25,7 @@ export const en: Dictionary = {
       { value: "3", label: "working languages" },
     ],
     imageAlt:
-      "Ivy Dias facilitating a journey mapping workshop in a service design session",
+      "Ivy Dias in a service design workshop, pointing to a journey map of sticky notes",
   },
   about: {
     eyebrow: "(01) About",
@@ -245,7 +245,8 @@ export const en: Dictionary = {
     submit: "Send message",
     submitting: "Sending…",
     formHint:
-      "Submitting opens your email app with a draft ready for ivy.dias.de.campos@gmail.com.",
+      "Your message is sent directly to ivy.dias.de.campos@gmail.com. I reply personally.",
+    formError: "Couldn't send the message. Please try again or email me directly.",
     successTitle: "Message sent!",
     successBody: "Thanks for reaching out. I'll get back soon via the email you shared.",
   },
