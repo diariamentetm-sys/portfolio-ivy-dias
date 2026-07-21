@@ -651,6 +651,29 @@ function ProjectEditor({
                 }
               />
             </FieldLabel>
+            <FieldLabel
+              label={isPt ? "Categoria" : "Category"}
+              hint={isPt ? "Filtro na home" : "Home filter"}
+            >
+              <select
+                className="input-field text-sm"
+                value={project.category ?? "ux-ui"}
+                onChange={(event) =>
+                  onChange({
+                    ...project,
+                    category: event.target.value as ManagedProject["category"],
+                  })
+                }
+              >
+                <option value="service-design">
+                  {isPt ? "Service Design" : "Service Design"}
+                </option>
+                <option value="continuous-improvement">
+                  {isPt ? "Melhoria Contínua" : "Continuous Improvement"}
+                </option>
+                <option value="ux-ui">UX — UI</option>
+              </select>
+            </FieldLabel>
           </div>
           <div className="mt-5">
             <ImageField

@@ -5,6 +5,7 @@ import {
   type ProjectLocaleContent,
   type SiteContent,
 } from "./siteContent";
+import { resolveWorkCategory } from "../data/workCategories";
 
 type SettingsRow = {
   id: string;
@@ -18,6 +19,7 @@ type ProjectRow = {
   slug: string;
   n: string;
   published: boolean;
+  category: string | null;
   overview_image: string | null;
   content_en: ProjectLocaleContent;
   content_pt: ProjectLocaleContent;
@@ -29,6 +31,7 @@ function mapProject(row: ProjectRow): ManagedProject {
     slug: row.slug,
     n: row.n,
     published: row.published,
+    category: resolveWorkCategory(row.slug, row.category as ManagedProject["category"]),
     overviewImage: row.overview_image ?? "",
     en: row.content_en,
     pt: row.content_pt,
@@ -107,6 +110,7 @@ export async function persistSiteContentToSupabase(content: SiteContent) {
       slug: project.slug,
       n: project.n,
       published: project.published,
+      category: project.category ?? null,
       overview_image: project.overviewImage || null,
       content_en: project.en,
       content_pt: project.pt,

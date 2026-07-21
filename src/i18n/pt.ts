@@ -86,6 +86,12 @@ export const pt: Dictionary = {
       "Síntese de cada projeto antes de mergulhar no estudo de caso completo.",
     countLabel: "04 casos",
     cta: "Ver estudo de caso completo →",
+    filterAll: "Todos",
+    categories: {
+      "service-design": "Service Design",
+      "continuous-improvement": "Melhoria Contínua",
+      "ux-ui": "UX — UI",
+    },
     industryEyebrow: "Trajetória multi-indústria · prova social",
     industryTitle:
       "Adaptação a diferentes modelos de negócio e stakeholders.",

@@ -85,6 +85,12 @@ export const en: Dictionary = {
     intro: "A synthesis of each project before diving into the full case study.",
     countLabel: "04 cases",
     cta: "View full case study →",
+    filterAll: "All",
+    categories: {
+      "service-design": "Service Design",
+      "continuous-improvement": "Continuous Improvement",
+      "ux-ui": "UX — UI",
+    },
     industryEyebrow: "Multi-industry path · social proof",
     industryTitle:
       "Adaptation across different business models and stakeholders.",

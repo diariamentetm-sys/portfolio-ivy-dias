@@ -46,6 +46,12 @@ export type Dictionary = {
     intro: string;
     countLabel: string;
     cta: string;
+    filterAll: string;
+    categories: {
+      "service-design": string;
+      "continuous-improvement": string;
+      "ux-ui": string;
+    };
     industryEyebrow: string;
     industryTitle: string;
     industries: { label: string; brands: string }[];

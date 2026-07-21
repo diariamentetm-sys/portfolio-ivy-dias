@@ -6,9 +6,14 @@ import { SpecialtyStack } from "../components/home/SpecialtyStack";
 import { PostItTag } from "../components/ui/PostItTag";
 import { Reveal } from "../components/ui/Reveal";
 import { useContent } from "../content/ContentContext";
+import { casePostItStyles } from "../data/portfolio";
+import {
+  resolveWorkCategory,
+  WORK_CATEGORIES,
+  type WorkCategoryFilter,
+} from "../data/workCategories";
 import { useLocale } from "../i18n/LocaleContext";
 import { sendContactMessage } from "../lib/sendContact";
-import { casePostItStyles } from "../data/portfolio";
 
 const heroTagStyles = [
   { tone: "post-it-yellow", rotate: "-rotate-2" },
@@ -39,6 +44,7 @@ export function HomePage() {
     "idle",
   );
   const [formError, setFormError] = useState("");
+  const [workFilter, setWorkFilter] = useState<WorkCategoryFilter>("all");
 
   const hero = content.heroCopy[locale];
   const specialties = t.specialties.items;
@@ -61,11 +67,30 @@ export function HomePage() {
           title: `${copy.title}${copy.titleAccent ?? ""}`.trim(),
           description: copy.description,
           path: `/cases/${project.slug}`,
+          category: resolveWorkCategory(project.slug, project.category),
         };
       });
-    const legacy = t.work.cases.filter((item) => !publishedSlugs.has(item.id));
+    const legacy = t.work.cases
+      .filter((item) => !publishedSlugs.has(item.id))
+      .map((item) => ({
+        ...item,
+        category: resolveWorkCategory(item.id),
+      }));
     return [...custom, ...legacy];
   }, [content.projects, locale, t.work.cases]);
+
+  const filteredWorkCases = useMemo(() => {
+    if (workFilter === "all") return workCases;
+    return workCases.filter((item) => item.category === workFilter);
+  }, [workCases, workFilter]);
+
+  const workFilters: { id: WorkCategoryFilter; label: string }[] = [
+    { id: "all", label: t.work.filterAll },
+    ...WORK_CATEGORIES.map((id) => ({
+      id,
+      label: t.work.categories[id],
+    })),
+  ];
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -220,13 +245,42 @@ export function HomePage() {
               <p className="mt-5 body-md max-w-2xl">{t.work.intro}</p>
             </div>
             <p className="eyebrow">
-              {String(workCases.length).padStart(2, "0")}{" "}
+              {String(filteredWorkCases.length).padStart(2, "0")}{" "}
               {locale === "en" ? "cases" : "casos"}
             </p>
           </Reveal>
 
-          <div className="mt-12 md:mt-14 grid sm:grid-cols-2 gap-5 md:gap-6">
-            {workCases.map((item, index) => {
+          <Reveal className="mt-8 md:mt-10">
+            <div
+              role="tablist"
+              aria-label={locale === "en" ? "Filter work by discipline" : "Filtrar trabalhos por disciplina"}
+              className="flex flex-wrap gap-2.5 md:gap-3"
+            >
+              {workFilters.map((filter, index) => {
+                const active = workFilter === filter.id;
+                const tone = casePostItStyles[index % casePostItStyles.length];
+                return (
+                  <button
+                    key={filter.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={active}
+                    onClick={() => setWorkFilter(filter.id)}
+                    className={`post-it post-it-tag transition-[transform,opacity] duration-200 ${tone.tone} ${
+                      active
+                        ? `${tone.tagRotate} opacity-100`
+                        : "opacity-40 hover:opacity-70"
+                    }`}
+                  >
+                    {filter.label}
+                  </button>
+                );
+              })}
+            </div>
+          </Reveal>
+
+          <div className="mt-10 md:mt-12 grid sm:grid-cols-2 gap-5 md:gap-6">
+            {filteredWorkCases.map((item, index) => {
               const accent = casePostItStyles[index % casePostItStyles.length];
               return (
                 <Reveal key={item.id} delay={index * 60} className="h-full">

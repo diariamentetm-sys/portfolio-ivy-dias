@@ -16,6 +16,10 @@ import {
   type CaseStudyId,
 } from "./casePagesContent";
 import { abtestData, cashlogData, claroData, etituloData } from "./caseStudies";
+import {
+  resolveWorkCategory,
+  WORK_CATEGORY_BY_SLUG,
+} from "./workCategories";
 
 export const SEED_PROJECT_IDS: Record<CaseStudyId, string> = {
   cashlog: "11111111-1111-4111-8111-111111111101",
@@ -380,6 +384,7 @@ function buildSeedProject(
     slug: id,
     n,
     published: true,
+    category: WORK_CATEGORY_BY_SLUG[id] ?? "ux-ui",
     overviewImage,
     pt: buildLocale("pt"),
     en: buildLocale("en"),
@@ -406,7 +411,18 @@ function enrichProjectFromSeed(
 ): { project: ManagedProject; enriched: boolean } {
   let enriched = false;
   const locales: Locale[] = ["en", "pt"];
-  const updated: ManagedProject = { ...project };
+  let updated: ManagedProject = { ...project };
+
+  if (!updated.category && seed.category) {
+    updated = { ...updated, category: seed.category };
+    enriched = true;
+  } else if (!updated.category) {
+    updated = {
+      ...updated,
+      category: resolveWorkCategory(updated.slug),
+    };
+    enriched = true;
+  }
 
   for (const locale of locales) {
     const copy = updated[locale];
@@ -419,7 +435,7 @@ function enrichProjectFromSeed(
       enriched = true;
       return { ...section, images: seedSection.images };
     });
-    updated[locale] = { ...copy, sections };
+    updated = { ...updated, [locale]: { ...copy, sections } };
   }
 
   return { project: updated, enriched };

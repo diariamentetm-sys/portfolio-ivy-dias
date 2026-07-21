@@ -1,5 +1,6 @@
 import type { Locale } from "../i18n/types";
 import { mergeSeedProjects, seedProjects } from "../data/seedProjects";
+import type { WorkCategory } from "../data/workCategories";
 
 export const CONTENT_STORAGE_KEY = "ivy-portfolio-content-v1";
 export const ADMIN_SESSION_KEY = "ivy-portfolio-admin-session";
@@ -35,6 +36,7 @@ export type ManagedProject = {
   slug: string;
   n: string;
   published: boolean;
+  category?: WorkCategory;
   overviewImage?: string;
   en: ProjectLocaleContent;
   pt: ProjectLocaleContent;
@@ -86,6 +88,7 @@ export function createEmptyProject(): ManagedProject {
     slug: `project-${Date.now()}`,
     n: "05",
     published: false,
+    category: "ux-ui",
     overviewImage: "",
     en: {
       ...emptyProjectLocale(),
