@@ -37,8 +37,8 @@ export const pt: Dictionary = {
       "Petrobras · TSE · Claro · Stix · Banco Pan · Genial Investimentos · BV · Santander · Bradesco · Itaú · SulAmérica · Unilever · Ale Combustíveis · Raízen · Ultracargo · Pernod Ricard · Sebrae · Polícia Federal",
     languages: [
       "Português — nativo",
-      "English — avançado",
-      "Italiano — avançado",
+      "English — B1",
+      "Italiano — A2",
     ],
   },
   specialties: {

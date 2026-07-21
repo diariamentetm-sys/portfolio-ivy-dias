@@ -433,9 +433,11 @@ export function HomePage() {
           </Reveal>
           {timeline.map((item, index) => (
             <Reveal key={item.company} delay={index * 50}>
-              <div className="grid grid-cols-[minmax(90px,140px)_1fr] gap-4 md:gap-10 py-6 border-t border-neutral-200">
-                <div className="font-mono text-xs text-neutral-500 pt-1">
-                  {item.period}
+              <div className="grid grid-cols-[minmax(100px,150px)_1fr] gap-4 md:gap-10 py-6 border-t border-neutral-200 items-start">
+                <div className="pt-0.5">
+                  <PostItTag index={index} className="w-fit max-w-full whitespace-normal text-left leading-snug">
+                    {item.period}
+                  </PostItTag>
                 </div>
                 <div>
                   <div className="flex flex-wrap items-baseline gap-2.5">
