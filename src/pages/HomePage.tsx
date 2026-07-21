@@ -1,16 +1,14 @@
 import { FormEvent, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  casePostItStyles,
-  specialtyPostItStyles,
-} from "../data/portfolio";
 import { Footer } from "../components/layout/Footer";
 import { Navbar } from "../components/layout/Navbar";
+import { SpecialtyStack } from "../components/home/SpecialtyStack";
 import { PostItTag } from "../components/ui/PostItTag";
 import { Reveal } from "../components/ui/Reveal";
 import { useContent } from "../content/ContentContext";
 import { useLocale } from "../i18n/LocaleContext";
 import { sendContactMessage } from "../lib/sendContact";
+import { casePostItStyles } from "../data/portfolio";
 
 const heroTagStyles = [
   { tone: "post-it-yellow", rotate: "-rotate-2" },
@@ -60,7 +58,7 @@ export function HomePage() {
           n: project.n,
           kicker: copy.kicker,
           subtitle: copy.subtitle,
-          title: copy.title,
+          title: `${copy.title}${copy.titleAccent ?? ""}`.trim(),
           description: copy.description,
           path: `/cases/${project.slug}`,
         };
@@ -93,7 +91,7 @@ export function HomePage() {
   }
 
   return (
-    <div className="bg-neutral-50 overflow-x-hidden relative">
+    <div className="bg-neutral-50 relative">
       <Navbar />
 
       <header
@@ -209,32 +207,7 @@ export function HomePage() {
             <h2 className="section-h2">{t.specialties.title}</h2>
             <p className="mt-5 body-md max-w-2xl">{t.specialties.intro}</p>
           </Reveal>
-          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 overflow-visible px-1 pb-4">
-            {specialties.map((item, index) => {
-              const postIt = specialtyPostItStyles[index];
-              return (
-                <Reveal
-                  key={item.num}
-                  delay={index * 60}
-                  className={postIt?.offset}
-                >
-                  <div
-                    className={`post-it ${postIt?.tone ?? "post-it-yellow"} ${postIt?.rotate ?? "rotate-1"} hover:rotate-0 hover:-translate-y-2`}
-                  >
-                    <div className="font-mono text-sm font-medium text-neutral-800/70">
-                      {item.num}
-                    </div>
-                    <h3 className="mt-4 text-card-title text-neutral-950">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-neutral-700 text-pretty">
-                      {item.desc}
-                    </p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
+          <SpecialtyStack items={specialties} />
         </div>
       </section>
 

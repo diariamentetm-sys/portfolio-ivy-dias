@@ -29,51 +29,57 @@ function TestDetail({
   imageFirst,
   detailLabels,
 }: TestDetailProps) {
-  return (
-    <div className="card overflow-hidden rounded-2xl">
-      <div className="grid md:grid-cols-2">
-        {imageFirst && (
-          <CaseImage
-            src={image}
-            alt={imageAlt}
-            className="!rounded-none shadow-none min-h-[280px] object-cover h-full md:rounded-none"
-          />
-        )}
-        <div className="p-8 md:p-12">
-          <PostItTag index={0} className="mb-4">
-            {label}
+  const imageBlock = (
+    <CaseImage
+      src={image}
+      alt={imageAlt}
+      className="!rounded-none shadow-none w-full"
+    />
+  );
+
+  const contentBlock = (
+    <div className="p-8 md:p-12">
+      <PostItTag index={0} className="mb-4">
+        {label}
+      </PostItTag>
+      <h2 className="text-2xl md:text-3xl font-bold leading-snug text-neutral-950">
+        {title}
+      </h2>
+      <div className="mt-6 flex flex-wrap gap-2.5">
+        {[
+          [detailLabels.duration, duration],
+          [detailLabels.device, device],
+          [detailLabels.metric, metric],
+        ].map(([key, value], index) => (
+          <PostItTag key={key} index={index + 1}>
+            {`${key}: ${value}`}
           </PostItTag>
-          <h2 className="text-2xl md:text-3xl font-bold leading-snug text-neutral-950">
-            {title}
-          </h2>
-          <div className="mt-6 flex flex-wrap gap-2.5">
-            {[
-              [detailLabels.duration, duration],
-              [detailLabels.device, device],
-              [detailLabels.metric, metric],
-            ].map(([key, value], index) => (
-              <PostItTag key={key} index={index + 1}>
-                {`${key}: ${value}`}
-              </PostItTag>
-            ))}
-          </div>
-          <div className="mt-8 flex items-baseline gap-3">
-            <span className="text-6xl md:text-8xl font-extrabold leading-[0.85] text-accent">
-              {result}
-            </span>
-            <span className="text-[15px] text-neutral-500 leading-snug">
-              {resultLabel}
-            </span>
-          </div>
-        </div>
-        {!imageFirst && (
-          <CaseImage
-            src={image}
-            alt={imageAlt}
-            className="!rounded-none shadow-none min-h-[280px] object-cover h-full"
-          />
-        )}
+        ))}
       </div>
+      <div className="mt-8 flex items-baseline gap-3">
+        <span className="text-6xl md:text-8xl font-extrabold leading-[0.85] text-accent">
+          {result}
+        </span>
+        <span className="text-[15px] text-neutral-500 leading-snug">
+          {resultLabel}
+        </span>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="card overflow-hidden rounded-2xl flex flex-col">
+      {imageFirst ? (
+        <>
+          {imageBlock}
+          {contentBlock}
+        </>
+      ) : (
+        <>
+          {contentBlock}
+          {imageBlock}
+        </>
+      )}
     </div>
   );
 }

@@ -88,13 +88,7 @@ export function DynamicCasePage() {
         >
           <p className="max-w-3xl body-md whitespace-pre-line">{section.body}</p>
           {section.images?.length ? (
-            <div
-              className={
-                section.images.length > 1
-                  ? "mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
-                  : "mt-6"
-              }
-            >
+            <div className="mt-6 flex flex-col gap-5">
               {section.images.map((image) => (
                 <CaseImage
                   key={image.src}

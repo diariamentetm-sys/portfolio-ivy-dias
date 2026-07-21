@@ -223,7 +223,7 @@ export function ClaroPage() {
         </div>
         <div className="mt-8">
           <p className="eyebrow mb-3.5">{page.sections.s06.finalSetLabel}</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="flex flex-col gap-5">
             {cards.map((card) => (
               <CaseImage key={card.src} src={card.src} alt={card.alt} />
             ))}

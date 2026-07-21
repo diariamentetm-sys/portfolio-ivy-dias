@@ -24,16 +24,14 @@ const statStyles = [
 function ImageGrid({
   label,
   images,
-  stacked = false,
 }: {
   label: string;
   images: { src: string; alt: string }[];
-  stacked?: boolean;
 }) {
   return (
     <div className="mt-6">
       <p className="eyebrow mb-3.5">{label}</p>
-      <div className={stacked ? "flex flex-col gap-5" : "grid sm:grid-cols-2 gap-4"}>
+      <div className="flex flex-col gap-5">
         {images.map((image) => (
           <CaseImage key={image.src} src={image.src} alt={image.alt} />
         ))}
@@ -166,7 +164,6 @@ export function CashlogPage() {
         <ImageGrid
           label={page.sections.s05.uiScreensLabel}
           images={uiScreens}
-          stacked
         />
       </CaseSection>
 

@@ -12,7 +12,7 @@ import type {
 } from "../types/cases";
 import type { CaseStudyConfig, MetaItem, ProfileItem, Step } from "../types/portfolio";
 
-export type CaseStudyId = "cashlog" | "claro" | "abtest" | "etitulo";
+export type CaseStudyId = "cashlog" | "claro" | "abtest" | "etitulo" | "bbnk";
 
 // ---------------------------------------------------------------------------
 // Case study layout configs (header, meta, about, next)
@@ -126,6 +126,29 @@ export const caseStudyConfigs: Record<
         { value: "3", label: "personas guiando a experiência" },
         { value: "4", label: "fases de Service Design" },
       ],
+      next: { label: "Próximo: BBNK →", path: "/cases/bbnk" },
+    },
+    bbnk: {
+      id: "bbnk",
+      path: "/cases/bbnk",
+      accent: "#EC2A86",
+      breadcrumb: "BBNK · 2018 — 2019",
+      kicker: "Estudo de caso · UX / UI",
+      title: "Banco ",
+      titleAccent: "BBNK",
+      subtitle:
+        "Plataforma digital integrada de banking as a service e white label, com entregas rápidas de produtos bancários.",
+      tags: ["UX", "UI", "Inovação", "Fintech", "BaaS"],
+      meta: [
+        { k: "Papel", v: "Consultora de inovação, UX, UI" },
+        { k: "Cliente", v: "BBNK" },
+        { k: "Período", v: "2018 — 2019" },
+        { k: "Entregável", v: "Produto digital / white label" },
+      ],
+      about: [
+        "BBNK — O BANK, plataforma digital integrada de banking as a service e white label com entregas rápidas de produtos bancários.",
+        "Atuei como consultora de inovação, UX e UI no desenho de uma experiência bancária minimalista, com navegação dinâmica e foco em operações rápidas e seguras.",
+      ],
       next: { label: "Ver: Cashlog (Raízen) →", path: "/cases/cashlog" },
     },
   },
@@ -232,6 +255,29 @@ export const caseStudyConfigs: Record<
         { value: "12", label: "steps in the new onboarding" },
         { value: "3", label: "personas guiding the experience" },
         { value: "4", label: "Service Design phases" },
+      ],
+      next: { label: "Next: BBNK →", path: "/cases/bbnk" },
+    },
+    bbnk: {
+      id: "bbnk",
+      path: "/cases/bbnk",
+      accent: "#EC2A86",
+      breadcrumb: "BBNK · 2018 — 2019",
+      kicker: "Case study · UX / UI",
+      title: "BBNK ",
+      titleAccent: "Bank",
+      subtitle:
+        "Integrated digital banking-as-a-service and white-label platform built for rapid delivery of banking products.",
+      tags: ["UX", "UI", "Innovation", "Fintech", "BaaS"],
+      meta: [
+        { k: "Role", v: "Innovation, UX & UI consultant" },
+        { k: "Client", v: "BBNK" },
+        { k: "Period", v: "2018 — 2019" },
+        { k: "Deliverable", v: "Digital product / white label" },
+      ],
+      about: [
+        "BBNK — THE BANK, an integrated digital banking-as-a-service and white-label platform with fast delivery of banking products.",
+        "I worked as an innovation, UX, and UI consultant designing a minimal banking experience with dynamic navigation and a focus on fast, secure operations.",
       ],
       next: { label: "View: Cashlog (Raízen) →", path: "/cases/cashlog" },
     },

@@ -22,6 +22,7 @@ export const SEED_PROJECT_IDS: Record<CaseStudyId, string> = {
   claro: "11111111-1111-4111-8111-111111111102",
   abtest: "11111111-1111-4111-8111-111111111103",
   etitulo: "11111111-1111-4111-8111-111111111104",
+  bbnk: "11111111-1111-4111-8111-111111111105",
 };
 
 const workPreviewByLocale = {
@@ -294,6 +295,80 @@ function buildEtituloLocale(locale: Locale): ProjectLocaleContent {
   };
 }
 
+function buildBbnkLocale(locale: Locale): ProjectLocaleContent {
+  const config = caseStudyConfigs[locale].bbnk;
+  const preview = workPreviewByLocale[locale].find((item) => item.id === "bbnk")!;
+
+  const sections =
+    locale === "pt"
+      ? [
+          {
+            number: "01",
+            kicker: "01 / 04 · Visão geral",
+            title: "Banking as a Service com entregas rápidas",
+            body: "BBNK — O BANK, plataforma digital integrada de banking as a service e white label, com entregas rápidas de produtos bancários.",
+          },
+          {
+            number: "02",
+            kicker: "02 / 04 · Proposta de valor",
+            title: "Gestão financeira intuitiva e integrada",
+            body: "Com o BBNK, buscamos entregar gestão financeira de forma intuitiva, personalizada e integrada aos seus negócios e dia a dia. Focados no seu sucesso, criamos o seu banco e o seu futuro, de forma simples e rápida.",
+          },
+          {
+            number: "03",
+            kicker: "03 / 04 · Conceito visual",
+            title: "Minimalista, vibrante e clean",
+            body: "O conceito visual apresenta-se de forma minimalista, com cores vibrantes e um layout clean. Com uma interface intuitiva, a navegação é fácil e dinâmica, permitindo ao usuário realizar suas operações de forma rápida e segura, com o objetivo final de economizar tempo.",
+          },
+          {
+            number: "04",
+            kicker: "04 / 04 · Protótipo navegável",
+            title: "Explore a experiência BBNK",
+            body: "Interaja com o protótipo — desktop e fluxos da conta.",
+          },
+        ]
+      : [
+          {
+            number: "01",
+            kicker: "01 / 04 · Overview",
+            title: "Banking as a Service with fast delivery",
+            body: "BBNK — THE BANK, an integrated digital banking-as-a-service and white-label platform built for rapid delivery of banking products.",
+          },
+          {
+            number: "02",
+            kicker: "02 / 04 · Value proposition",
+            title: "Intuitive, personalized financial management",
+            body: "With BBNK, we deliver financial management that feels intuitive, personalized, and integrated into everyday business. Focused on your success, we create your bank — and your future — simply and quickly.",
+          },
+          {
+            number: "03",
+            kicker: "03 / 04 · Visual concept",
+            title: "Minimal, vibrant, and clean",
+            body: "The visual concept is minimal, with vibrant accents and a clean layout. An intuitive interface keeps navigation easy and dynamic, so users can complete operations quickly and securely — saving time at every step.",
+          },
+          {
+            number: "04",
+            kicker: "04 / 04 · Navigable prototype",
+            title: "Explore the BBNK experience",
+            body: "Interact with the prototype — account flows and desktop UI.",
+          },
+        ];
+
+  return {
+    kicker: preview.kicker,
+    subtitle: preview.subtitle,
+    title: config.title,
+    titleAccent: config.titleAccent,
+    description: preview.description,
+    breadcrumb: config.breadcrumb,
+    caseKicker: config.kicker,
+    tags: config.tags,
+    meta: config.meta,
+    about: config.about,
+    sections,
+  };
+}
+
 function buildSeedProject(
   id: CaseStudyId,
   n: string,
@@ -316,6 +391,7 @@ export const seedProjects: ManagedProject[] = [
   buildSeedProject("claro", "02", claroData.overviewImg, buildClaroLocale),
   buildSeedProject("abtest", "03", abtestData.tests[0].image, buildAbtestLocale),
   buildSeedProject("etitulo", "04", etituloData.overviewImg, buildEtituloLocale),
+  buildSeedProject("bbnk", "05", "", buildBbnkLocale),
 ];
 
 function sectionNeedsImages(

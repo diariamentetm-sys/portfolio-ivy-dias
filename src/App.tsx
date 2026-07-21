@@ -4,6 +4,7 @@ import { ContentProvider } from "./content/ContentContext";
 import { LocaleProvider } from "./i18n/LocaleContext";
 import { AbtestPage } from "./pages/AbtestPage";
 import { AdminPage } from "./pages/AdminPage";
+import { BbnkPage } from "./pages/BbnkPage";
 import { CashlogPage } from "./pages/CashlogPage";
 import { ClaroPage } from "./pages/ClaroPage";
 import { DynamicCasePage } from "./pages/DynamicCasePage";
@@ -23,6 +24,7 @@ function App() {
             <Route path="/cases/claro" element={<ClaroPage />} />
             <Route path="/cases/abtest" element={<AbtestPage />} />
             <Route path="/cases/etitulo" element={<EtituloPage />} />
+            <Route path="/cases/bbnk" element={<BbnkPage />} />
             <Route path="/cases/:slug" element={<DynamicCasePage />} />
           </Routes>
         </BrowserRouter>

@@ -148,6 +148,16 @@ export const pt: Dictionary = {
           "Redesenho do onboarding do serviço de identificação digital do eleitor — tratado como ecossistema, não apenas como interface.",
         path: "/cases/etitulo",
       },
+      {
+        id: "bbnk",
+        n: "05",
+        kicker: "BBNK · Banking as a Service",
+        subtitle: "Consultora de inovação, UX, UI · 2018 — 2019",
+        title: "Banco BBNK",
+        description:
+          "Plataforma digital integrada de banking as a service e white label, com entregas rápidas de produtos bancários e uma experiência minimalista e navegável.",
+        path: "/cases/bbnk",
+      },
     ],
   },
   testimonials: {

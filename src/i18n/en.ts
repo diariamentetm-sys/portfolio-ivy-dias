@@ -147,6 +147,16 @@ export const en: Dictionary = {
           "Redesign of the digital voter ID onboarding — treated as an ecosystem, not only as an interface.",
         path: "/cases/etitulo",
       },
+      {
+        id: "bbnk",
+        n: "05",
+        kicker: "BBNK · Banking as a Service",
+        subtitle: "Innovation, UX & UI consultant · 2018 — 2019",
+        title: "BBNK Bank",
+        description:
+          "Integrated digital banking-as-a-service and white-label platform for rapid banking product delivery, with a minimal, navigable experience.",
+        path: "/cases/bbnk",
+      },
     ],
   },
   testimonials: {
