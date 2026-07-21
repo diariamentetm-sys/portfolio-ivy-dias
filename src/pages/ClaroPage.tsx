@@ -15,6 +15,12 @@ import {
 import { claroData } from "../data/caseStudies";
 import { resolveCaseStudyConfig } from "../data/seedProjects";
 import { useLocale } from "../i18n/LocaleContext";
+import {
+  getManagedProject,
+  getSectionImages,
+  mapManagedOrFallback,
+  resolveOverviewSrc,
+} from "../utils/projectMedia";
 
 export function ClaroPage() {
   const { locale } = useLocale();
@@ -22,14 +28,31 @@ export function ClaroPage() {
   const config = resolveCaseStudyConfig("claro", locale, content.projects);
   const page = claroPageContent[locale];
   const caseData = claroCaseDataContent[locale];
+  const project = getManagedProject(content.projects, "claro");
+  const coverSrc = resolveOverviewSrc(project, claroData.overviewImg);
+  const cardImages = getSectionImages(project, locale, 5);
 
-  const cards = claroData.cards.map((card, index) => ({
-    src: card.src,
-    alt: caseData.cardAlts[index],
-  }));
+  const cards = mapManagedOrFallback(
+    cardImages,
+    claroData.cards.map((card, index) => ({
+      src: card.src,
+      alt: caseData.cardAlts[index],
+    })),
+  );
 
   return (
     <CaseStudyLayout config={config}>
+      {coverSrc ? (
+        <section className="max-w-5xl mx-auto px-5 md:px-16 pb-4">
+          <CaseImage
+            src={coverSrc}
+            alt={`${config.title}${config.titleAccent ?? ""}`}
+            fill
+            priority
+          />
+        </section>
+      ) : null}
+
       <CaseSection
         number="01"
         kicker={page.sections.s01.kicker}

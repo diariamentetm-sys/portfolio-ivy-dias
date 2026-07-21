@@ -9,6 +9,12 @@ import {
 import { etituloData } from "../data/caseStudies";
 import { resolveCaseStudyConfig } from "../data/seedProjects";
 import { useLocale } from "../i18n/LocaleContext";
+import {
+  getManagedProject,
+  getSectionImages,
+  mapManagedOrFallback,
+  resolveOverviewSrc,
+} from "../utils/projectMedia";
 
 export function EtituloPage() {
   const { locale } = useLocale();
@@ -16,17 +22,34 @@ export function EtituloPage() {
   const config = resolveCaseStudyConfig("etitulo", locale, content.projects);
   const page = etituloPageContent[locale];
   const caseData = etituloCaseDataContent[locale];
+  const project = getManagedProject(content.projects, "etitulo");
+  const overviewSrc = resolveOverviewSrc(project, etituloData.overviewImg);
+  const personaImages = getSectionImages(project, locale, 3);
 
-  const personas = etituloData.personas.map((persona, index) => ({
-    ...caseData.personas[index],
-    img: persona.img,
-  }));
+  const personas = mapManagedOrFallback(
+    personaImages,
+    etituloData.personas.map((persona, index) => ({
+      src: persona.img,
+      alt: caseData.personas[index]?.imgAlt ?? persona.imgAlt,
+    })),
+  ).map((image, index) => {
+    const base = caseData.personas[index];
+    return {
+      nome: base?.nome ?? image.alt ?? `Persona ${index + 1}`,
+      meta: base?.meta ?? "",
+      tags: base?.tags ?? [],
+      mot: base?.mot ?? "",
+      obj: base?.obj ?? "",
+      img: image.src,
+      imgAlt: image.alt || base?.imgAlt || "",
+    };
+  });
 
   return (
     <CaseStudyLayout config={config}>
       <section className="max-w-5xl mx-auto px-5 md:px-16 pb-4">
         <CaseImage
-          src={etituloData.overviewImg}
+          src={overviewSrc}
           alt={caseData.overviewImgAlt}
           fill
           aspect="aspect-[2528/1328]"

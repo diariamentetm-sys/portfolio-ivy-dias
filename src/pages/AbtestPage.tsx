@@ -9,6 +9,12 @@ import {
 import { abtestData } from "../data/caseStudies";
 import { resolveCaseStudyConfig } from "../data/seedProjects";
 import { useLocale } from "../i18n/LocaleContext";
+import {
+  getManagedProject,
+  getSectionImages,
+  pickManagedSrc,
+  resolveOverviewSrc,
+} from "../utils/projectMedia";
 
 import type { AbTestBlock } from "../types/cases";
 
@@ -90,15 +96,34 @@ export function AbtestPage() {
   const config = resolveCaseStudyConfig("abtest", locale, content.projects);
   const page = abtestPageContent[locale];
   const caseData = abtestCaseDataContent[locale];
+  const project = getManagedProject(content.projects, "abtest");
+  const overviewSrc = resolveOverviewSrc(project);
 
-  const tests = abtestData.tests.map((test, index) => ({
-    ...caseData.tests[index],
-    image: test.image,
-    imageFirst: test.imageFirst,
-  }));
+  const tests = abtestData.tests.map((test, index) => {
+    const sectionImages = getSectionImages(project, locale, index);
+    return {
+      ...caseData.tests[index],
+      image: pickManagedSrc(sectionImages, 0, test.image),
+      imageFirst: test.imageFirst,
+    };
+  });
+  const showOverview = Boolean(
+    overviewSrc && !tests.some((test) => test.image === overviewSrc),
+  );
 
   return (
     <CaseStudyLayout config={config}>
+      {showOverview ? (
+        <section className="max-w-5xl mx-auto px-5 md:px-16 pb-4">
+          <CaseImage
+            src={overviewSrc}
+            alt={`${config.title}${config.titleAccent ?? ""}`}
+            fill
+            priority
+          />
+        </section>
+      ) : null}
+
       <section className="max-w-5xl mx-auto px-5 md:px-16 pb-12 md:pb-16 space-y-6">
         {tests.map((test) => (
           <TestDetail

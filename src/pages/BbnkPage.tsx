@@ -1,9 +1,14 @@
-import { CaseBlockSection } from "../components/cases/CaseBlocks";
+import { CaseBlockSection, CaseImage } from "../components/cases/CaseBlocks";
 import { CaseEmbed } from "../components/cases/CaseEmbed";
 import { CaseStudyLayout } from "../components/layout/CaseStudyLayout";
 import { useContent } from "../content/ContentContext";
 import { resolveCaseStudyConfig } from "../data/seedProjects";
 import { useLocale } from "../i18n/LocaleContext";
+import {
+  getManagedProject,
+  getSectionImages,
+  resolveOverviewSrc,
+} from "../utils/projectMedia";
 
 /** Bump whenever the pocket embed is rebuilt — forces a fresh iframe shell. */
 const EMBED_SRC = "/embeds/bbnk/index.html?v=fix-20260721-2148";
@@ -45,25 +50,67 @@ const pageCopy = {
   },
 } as const;
 
+function SectionGallery({
+  images,
+  title,
+}: {
+  images: { src: string; alt?: string }[];
+  title: string;
+}) {
+  if (!images.length) return null;
+  return (
+    <div className="mt-6 flex flex-col gap-5">
+      {images.map((image) => (
+        <CaseImage
+          key={image.src}
+          src={image.src}
+          alt={image.alt?.trim() || title}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function BbnkPage() {
   const { locale } = useLocale();
   const { content } = useContent();
   const copy = pageCopy[locale];
   const config = resolveCaseStudyConfig("bbnk", locale, content.projects);
+  const project = getManagedProject(content.projects, "bbnk");
+  const overviewSrc = resolveOverviewSrc(project);
+  const overviewImages = getSectionImages(project, locale, 0);
+  const valueImages = getSectionImages(project, locale, 1);
+  const visualImages = getSectionImages(project, locale, 2);
+  const protoImages = getSectionImages(project, locale, 3);
 
   return (
     <CaseStudyLayout config={config}>
+      {overviewSrc ? (
+        <section className="max-w-5xl mx-auto px-5 md:px-16 pb-4">
+          <CaseImage
+            src={overviewSrc}
+            alt={`${config.title}${config.titleAccent ?? ""}`}
+            fill
+            priority
+          />
+        </section>
+      ) : null}
+
       <CaseBlockSection label={copy.overviewLabel} title={copy.overviewTitle}>
         <p className="max-w-3xl body-md">{copy.overviewBody}</p>
+        <SectionGallery images={overviewImages} title={copy.overviewTitle} />
       </CaseBlockSection>
       <CaseBlockSection label={copy.valueLabel} title={copy.valueTitle}>
         <p className="max-w-3xl body-md">{copy.valueBody}</p>
+        <SectionGallery images={valueImages} title={copy.valueTitle} />
       </CaseBlockSection>
       <CaseBlockSection label={copy.visualLabel} title={copy.visualTitle}>
         <p className="max-w-3xl body-md">{copy.visualBody}</p>
+        <SectionGallery images={visualImages} title={copy.visualTitle} />
       </CaseBlockSection>
       <CaseBlockSection label={copy.protoLabel} title={copy.protoTitle}>
         <p className="max-w-3xl body-md mb-8">{copy.protoBody}</p>
+        <SectionGallery images={protoImages} title={copy.protoTitle} />
         <CaseEmbed
           src={EMBED_SRC}
           title="BBNK — protótipo navegável"

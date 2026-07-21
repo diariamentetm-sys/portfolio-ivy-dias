@@ -488,6 +488,18 @@ function ProjectEditor({
     });
   }
 
+  function syncSectionImages(sectionIndex: number, images: SectionImage[]) {
+    const next = { ...project };
+    for (const locale of ["en", "pt"] as const) {
+      const localeCopy = next[locale];
+      if (!localeCopy.sections[sectionIndex]) continue;
+      const sections = [...localeCopy.sections];
+      sections[sectionIndex] = { ...sections[sectionIndex], images };
+      next[locale] = { ...localeCopy, sections };
+    }
+    onChange(next);
+  }
+
   function updateSection(
     index: number,
     patch: Partial<ProjectLocaleContent["sections"][number]>,
@@ -502,28 +514,22 @@ function ProjectEditor({
     imageIndex: number,
     patch: Partial<SectionImage>,
   ) {
-    const sections = [...localeContent.sections];
-    const images = [...(sections[sectionIndex].images ?? [])];
+    const images = [...(localeContent.sections[sectionIndex].images ?? [])];
     images[imageIndex] = { ...images[imageIndex], ...patch };
-    sections[sectionIndex] = { ...sections[sectionIndex], images };
-    patchLocale({ sections });
+    syncSectionImages(sectionIndex, images);
   }
 
   function addSectionImage(sectionIndex: number, src: string) {
-    const sections = [...localeContent.sections];
-    const images = [...(sections[sectionIndex].images ?? [])];
+    const images = [...(localeContent.sections[sectionIndex].images ?? [])];
     images.push({ src, alt: "" });
-    sections[sectionIndex] = { ...sections[sectionIndex], images };
-    patchLocale({ sections });
+    syncSectionImages(sectionIndex, images);
     onSave();
   }
 
   function removeSectionImage(sectionIndex: number, imageIndex: number) {
-    const sections = [...localeContent.sections];
-    const images = [...(sections[sectionIndex].images ?? [])];
+    const images = [...(localeContent.sections[sectionIndex].images ?? [])];
     images.splice(imageIndex, 1);
-    sections[sectionIndex] = { ...sections[sectionIndex], images };
-    patchLocale({ sections });
+    syncSectionImages(sectionIndex, images);
   }
 
   const blocks: {

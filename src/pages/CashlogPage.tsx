@@ -14,6 +14,12 @@ import {
 import { cashlogData } from "../data/caseStudies";
 import { resolveCaseStudyConfig } from "../data/seedProjects";
 import { useLocale } from "../i18n/LocaleContext";
+import {
+  getManagedProject,
+  getSectionImages,
+  mapManagedOrFallback,
+  resolveOverviewSrc,
+} from "../utils/projectMedia";
 
 const statStyles = [
   { tone: "post-it-mint" as const, rotate: "rotate-1" },
@@ -46,19 +52,44 @@ export function CashlogPage() {
   const config = resolveCaseStudyConfig("cashlog", locale, content.projects);
   const page = cashlogPageContent[locale];
   const caseData = cashlogCaseDataContent[locale];
+  const project = getManagedProject(content.projects, "cashlog");
+  const overviewSrc = resolveOverviewSrc(project);
+  const researchImages = getSectionImages(project, locale, 1);
+  const wireframeImages = getSectionImages(project, locale, 3);
+  const uiScreenImages = getSectionImages(project, locale, 4);
 
-  const wireframes = cashlogData.wireframes.map((image, index) => ({
-    src: image.src,
-    alt: caseData.wireframeAlts[index],
-  }));
+  const researchSrc = researchImages[0]?.src?.trim() || cashlogData.researchImg;
+  const showOverview = Boolean(overviewSrc && overviewSrc !== researchSrc);
 
-  const uiScreens = cashlogData.uiScreens.map((image, index) => ({
-    src: image.src,
-    alt: caseData.uiScreenAlts[index],
-  }));
+  const wireframes = mapManagedOrFallback(
+    wireframeImages,
+    cashlogData.wireframes.map((image, index) => ({
+      src: image.src,
+      alt: caseData.wireframeAlts[index],
+    })),
+  );
+
+  const uiScreens = mapManagedOrFallback(
+    uiScreenImages,
+    cashlogData.uiScreens.map((image, index) => ({
+      src: image.src,
+      alt: caseData.uiScreenAlts[index],
+    })),
+  );
 
   return (
     <CaseStudyLayout config={config}>
+      {showOverview ? (
+        <section className="max-w-5xl mx-auto px-5 md:px-16 pb-4">
+          <CaseImage
+            src={overviewSrc}
+            alt={`${config.title}${config.titleAccent ?? ""}`}
+            fill
+            priority
+          />
+        </section>
+      ) : null}
+
       <CaseSection
         number="01"
         kicker={page.sections.s01.kicker}
@@ -97,10 +128,7 @@ export function CashlogPage() {
           ))}
         </div>
         <div className="mt-6">
-          <CaseImage
-            src={cashlogData.researchImg}
-            alt={caseData.researchImgAlt}
-          />
+          <CaseImage src={researchSrc} alt={caseData.researchImgAlt} />
         </div>
       </CaseSection>
 
