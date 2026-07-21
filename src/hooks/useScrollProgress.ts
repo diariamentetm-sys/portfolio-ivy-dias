@@ -1,5 +1,9 @@
 import { useEffect, useState, type RefObject } from "react";
 
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
+}
+
 /** Returns 0–1 progress while `ref` scrolls through the viewport. */
 export function useScrollProgress(ref: RefObject<HTMLElement | null>) {
   const [progress, setProgress] = useState(0);
@@ -22,9 +26,12 @@ export function useScrollProgress(ref: RefObject<HTMLElement | null>) {
     const update = () => {
       frame = 0;
       const rect = node.getBoundingClientRect();
-      const viewHeight = window.innerHeight;
-      const scrollable = Math.max(rect.height - viewHeight, 1);
-      const traveled = Math.min(Math.max(-rect.top, 0), scrollable);
+      const viewHeight = window.innerHeight || 1;
+      // Start once the sticky stage can pin; finish as the track exits
+      const start = viewHeight * 0.2;
+      const end = rect.height - viewHeight * 0.55;
+      const scrollable = Math.max(end - start, 1);
+      const traveled = clamp(-rect.top - start, 0, scrollable);
       setProgress(traveled / scrollable);
     };
 
