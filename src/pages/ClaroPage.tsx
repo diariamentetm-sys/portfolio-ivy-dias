@@ -19,7 +19,6 @@ import {
   getManagedProject,
   getSectionImages,
   mapManagedOrFallback,
-  resolveOverviewSrc,
 } from "../utils/projectMedia";
 
 export function ClaroPage() {
@@ -29,7 +28,6 @@ export function ClaroPage() {
   const page = claroPageContent[locale];
   const caseData = claroCaseDataContent[locale];
   const project = getManagedProject(content.projects, "claro");
-  const coverSrc = resolveOverviewSrc(project, claroData.overviewImg);
   const cardImages = getSectionImages(project, locale, 5);
 
   const cards = mapManagedOrFallback(
@@ -42,17 +40,6 @@ export function ClaroPage() {
 
   return (
     <CaseStudyLayout config={config}>
-      {coverSrc ? (
-        <section className="max-w-5xl mx-auto px-5 md:px-16 pb-4">
-          <CaseImage
-            src={coverSrc}
-            alt={`${config.title}${config.titleAccent ?? ""}`}
-            fill
-            priority
-          />
-        </section>
-      ) : null}
-
       <CaseSection
         number="01"
         kicker={page.sections.s01.kicker}
@@ -189,25 +176,30 @@ export function ClaroPage() {
         inverted
       >
         <PostItNote index={0} className="p-7">
-          <PostItTag index={0} className="mb-3">
+          <p className="font-mono text-sm font-medium text-neutral-800/70">01</p>
+          <h3 className="mt-4 text-card-title text-neutral-950">
             {page.sections.s05.productGoalLabel}
-          </PostItTag>
-          <p className="text-lg leading-relaxed text-neutral-950 text-pretty">
+          </h3>
+          <p className="mt-3 text-lg leading-relaxed text-neutral-950 text-pretty">
             {page.sections.s05.productGoal}
           </p>
         </PostItNote>
         <div className="mt-4 grid md:grid-cols-2 gap-4">
           <PostItNote index={1} compact>
-            <PostItTag index={1} className="mb-3.5">
+            <p className="font-mono text-sm font-medium text-neutral-800/70">02</p>
+            <h3 className="mt-4 text-card-title text-neutral-950">
               {page.sections.s05.expectedResultsLabel}
-            </PostItTag>
-            <BulletList items={caseData.resultados} />
+            </h3>
+            <div className="mt-3">
+              <BulletList items={caseData.resultados} />
+            </div>
           </PostItNote>
           <PostItNote index={2} compact>
-            <PostItTag index={2} className="mb-3.5">
+            <p className="font-mono text-sm font-medium text-neutral-800/70">03</p>
+            <h3 className="mt-4 text-card-title text-neutral-950">
               {page.sections.s05.validationMetricsLabel}
-            </PostItTag>
-            <div className="flex flex-wrap gap-2.5">
+            </h3>
+            <div className="mt-3 flex flex-wrap gap-2.5">
               {caseData.metricas.map((metrica, index) => (
                 <PostItTag key={metrica} index={index + 3}>
                   {metrica}
@@ -246,9 +238,14 @@ export function ClaroPage() {
         </div>
         <div className="mt-8">
           <p className="eyebrow mb-3.5">{page.sections.s06.finalSetLabel}</p>
-          <div className="flex flex-col gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {cards.map((card) => (
-              <CaseImage key={card.src} src={card.src} alt={card.alt} />
+              <CaseImage
+                key={card.src}
+                src={card.src}
+                alt={card.alt}
+                className="!rounded-xl shadow-card"
+              />
             ))}
           </div>
         </div>
