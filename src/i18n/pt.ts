@@ -45,7 +45,7 @@ export const pt: Dictionary = {
     eyebrow: "(02) Como eu trabalho",
     title: "Frentes de atuação, não uma lista de skills.",
     intro:
-      "Cada frente como um post-it de workshop — síntese do que conduzo em projetos reais de CX e service design.",
+      "Síntese do que conduzo em projetos reais de CX e service design.",
     items: [
       {
         num: "01",
@@ -81,9 +81,9 @@ export const pt: Dictionary = {
   },
   work: {
     eyebrow: "(03) Trabalhos selecionados",
-    title: "Cases em profundidade — do desafio ao resultado.",
+    title: "Cases em profundidade do desafio ao resultado.",
     intro:
-      "Síntese de cada projeto antes de mergulhar no estudo de caso completo.",
+      "Estudos de casos que representam a versatilidade e o olhar 360 que aplico no meu trabalho",
     countLabel: "04 casos",
     cta: "Ver estudo de caso completo →",
     filterAll: "Todos",

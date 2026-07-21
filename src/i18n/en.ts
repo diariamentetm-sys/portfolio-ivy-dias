@@ -45,7 +45,7 @@ export const en: Dictionary = {
     eyebrow: "(02) How I work",
     title: "Areas of practice, not a skills checklist.",
     intro:
-      "Each area as a workshop post-it — a synthesis of what I lead in real CX and service design projects.",
+      "A synthesis of what I lead in real CX and service design projects.",
     items: [
       {
         num: "01",
@@ -81,8 +81,9 @@ export const en: Dictionary = {
   },
   work: {
     eyebrow: "(03) Selected work",
-    title: "Case studies in depth — from challenge to outcome.",
-    intro: "A synthesis of each project before diving into the full case study.",
+    title: "Case studies in depth from challenge to outcome.",
+    intro:
+      "Case studies that show the versatility and 360° perspective I bring to my work",
     countLabel: "04 cases",
     cta: "View full case study →",
     filterAll: "All",
