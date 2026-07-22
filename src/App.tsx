@@ -10,6 +10,7 @@ import { ClaroPage } from "./pages/ClaroPage";
 import { DynamicCasePage } from "./pages/DynamicCasePage";
 import { EtituloPage } from "./pages/EtituloPage";
 import { HomePage } from "./pages/HomePage";
+import { TrusthubPage } from "./pages/TrusthubPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/cases/abtest" element={<AbtestPage />} />
             <Route path="/cases/etitulo" element={<EtituloPage />} />
             <Route path="/cases/bbnk" element={<BbnkPage />} />
+            <Route path="/cases/trusthub" element={<TrusthubPage />} />
             <Route path="/cases/:slug" element={<DynamicCasePage />} />
           </Routes>
         </BrowserRouter>

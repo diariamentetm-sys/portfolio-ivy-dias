@@ -12,7 +12,13 @@ import type {
 } from "../types/cases";
 import type { CaseStudyConfig, MetaItem, ProfileItem, Step } from "../types/portfolio";
 
-export type CaseStudyId = "cashlog" | "claro" | "abtest" | "etitulo" | "bbnk";
+export type CaseStudyId =
+  | "cashlog"
+  | "claro"
+  | "abtest"
+  | "etitulo"
+  | "bbnk"
+  | "trusthub";
 
 // ---------------------------------------------------------------------------
 // Case study layout configs (header, meta, about, next)
@@ -149,6 +155,33 @@ export const caseStudyConfigs: Record<
         "BBNK — O BANK, plataforma digital integrada de banking as a service e white label com entregas rápidas de produtos bancários.",
         "Atuei como consultora de inovação, UX e UI no desenho de uma experiência bancária minimalista, com navegação dinâmica e foco em operações rápidas e seguras.",
       ],
+      next: { label: "Próximo: TrustHub →", path: "/cases/trusthub" },
+    },
+    trusthub: {
+      id: "trusthub",
+      path: "/cases/trusthub",
+      accent: "#EC2A86",
+      breadcrumb: "TrustHub · Tritone · 2017 — 2018",
+      kicker: "Estudo de caso · UX / UI",
+      title: "Trust",
+      titleAccent: "Hub",
+      subtitle:
+        "Conta 100% digital para simplificar a gestão financeira de pequenas e médias empresas.",
+      tags: ["UX", "UI", "Fintech", "Arquitetura da Informação", "Tritone"],
+      meta: [
+        { k: "Papel", v: "UX/UI Designer" },
+        { k: "Cliente", v: "TrustHub" },
+        { k: "Empresa", v: "Tritone" },
+        { k: "Período", v: "2017 — 2018" },
+        {
+          k: "Entregáveis",
+          v: "Arquitetura da Informação · Design de Interface Web",
+        },
+      ],
+      about: [
+        "Na Tritone, atuei como UX/UI Designer, conduzindo a arquitetura da informação e o design da interface do site institucional e dos fluxos histórico de movimentações e gestão de favorecidos.",
+        "A TrustHub é uma plataforma de conta 100% digital desenvolvida para simplificar a gestão financeira de pequenas empresas.",
+      ],
       next: { label: "Ver: Cashlog (Raízen) →", path: "/cases/cashlog" },
     },
   },
@@ -278,6 +311,33 @@ export const caseStudyConfigs: Record<
       about: [
         "BBNK — THE BANK, an integrated digital banking-as-a-service and white-label platform with fast delivery of banking products.",
         "I worked as an innovation, UX, and UI consultant designing a minimal banking experience with dynamic navigation and a focus on fast, secure operations.",
+      ],
+      next: { label: "Next: TrustHub →", path: "/cases/trusthub" },
+    },
+    trusthub: {
+      id: "trusthub",
+      path: "/cases/trusthub",
+      accent: "#EC2A86",
+      breadcrumb: "TrustHub · Tritone · 2017 — 2018",
+      kicker: "Case study · UX / UI",
+      title: "Trust",
+      titleAccent: "Hub",
+      subtitle:
+        "A fully digital account built to simplify financial management for small and mid-sized businesses.",
+      tags: ["UX", "UI", "Fintech", "Information Architecture", "Tritone"],
+      meta: [
+        { k: "Role", v: "UX/UI Designer" },
+        { k: "Client", v: "TrustHub" },
+        { k: "Company", v: "Tritone" },
+        { k: "Period", v: "2017 — 2018" },
+        {
+          k: "Deliverables",
+          v: "Information Architecture · Web Interface Design",
+        },
+      ],
+      about: [
+        "At Tritone, I worked as UX/UI Designer, leading information architecture and interface design for the institutional site and the transaction history and recipient-management flows.",
+        "TrustHub is a fully digital account platform designed to simplify financial management for small businesses.",
       ],
       next: { label: "View: Cashlog (Raízen) →", path: "/cases/cashlog" },
     },

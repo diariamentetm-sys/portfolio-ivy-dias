@@ -164,6 +164,16 @@ export const en: Dictionary = {
           "Integrated digital banking-as-a-service and white-label platform for rapid banking product delivery, with a minimal, navigable experience.",
         path: "/cases/bbnk",
       },
+      {
+        id: "trusthub",
+        n: "06",
+        kicker: "TrustHub · SME digital account",
+        subtitle: "UX/UI Designer · Tritone · 2017 — 2018",
+        title: "TrustHub",
+        description:
+          "A fully digital account to simplify financial management for small businesses — clear, modern information architecture and web interface design.",
+        path: "/cases/trusthub",
+      },
     ],
   },
   testimonials: {

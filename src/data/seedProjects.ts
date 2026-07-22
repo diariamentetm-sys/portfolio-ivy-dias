@@ -27,6 +27,7 @@ export const SEED_PROJECT_IDS: Record<CaseStudyId, string> = {
   abtest: "11111111-1111-4111-8111-111111111103",
   etitulo: "11111111-1111-4111-8111-111111111104",
   bbnk: "11111111-1111-4111-8111-111111111105",
+  trusthub: "11111111-1111-4111-8111-111111111106",
 };
 
 const workPreviewByLocale = {
@@ -373,6 +374,100 @@ function buildBbnkLocale(locale: Locale): ProjectLocaleContent {
   };
 }
 
+function buildTrusthubLocale(locale: Locale): ProjectLocaleContent {
+  const config = caseStudyConfigs[locale].trusthub;
+  const preview = workPreviewByLocale[locale].find((item) => item.id === "trusthub")!;
+
+  const sections =
+    locale === "pt"
+      ? [
+          {
+            number: "01",
+            kicker: "Visão geral",
+            title: "Conta digital para pequenas empresas",
+            body: "A TrustHub reúne as principais funcionalidades de uma conta digital em uma única plataforma, oferecendo uma experiência simples e intuitiva para a gestão financeira de pequenas empresas. O projeto contemplou o desenvolvimento da landing page institucional e da interface da plataforma, abrangendo funcionalidades como pagamentos, depósitos, transferências, extratos consolidados e área de suporte, com foco em uma navegação organizada, consistente e de fácil utilização.",
+            images: [
+              {
+                src: "/images/trusthub-overview.jpg",
+                alt: "TrustHub — Conta Pag Digital",
+              },
+            ],
+          },
+          {
+            number: "02",
+            kicker: "Interface",
+            title: "Transferências na Conta Pag Digital",
+            body: "Telas da área de transferências — histórico de movimentações e gestão de favorecidos — com navegação clara e leitura rápida dos dados financeiros.",
+            images: [
+              {
+                src: "/images/trusthub-transferencias.png",
+                alt: "TrustHub — Minhas Transferências",
+              },
+              {
+                src: "/images/trusthub-favorecidos.png",
+                alt: "TrustHub — Favorecidos",
+              },
+            ],
+          },
+          {
+            number: "03",
+            kicker: "Desafio",
+            title: "Desafio",
+            body: "Meu desafio foi transformar processos financeiros em uma experiência digital simples, intuitiva e acessível, organizando diferentes funcionalidades em uma interface capaz de proporcionar mais clareza e agilidade na rotina das pequenas empresas.",
+          },
+        ]
+      : [
+          {
+            number: "01",
+            kicker: "Overview",
+            title: "A digital account for small businesses",
+            body: "TrustHub brings the core features of a digital account into a single platform, offering a simple and intuitive experience for small-business financial management. The project covered the institutional landing page and the platform interface — payments, deposits, transfers, consolidated statements, and support — with organized, consistent, easy-to-use navigation.",
+            images: [
+              {
+                src: "/images/trusthub-overview.jpg",
+                alt: "TrustHub — Conta Pag Digital",
+              },
+            ],
+          },
+          {
+            number: "02",
+            kicker: "Interface",
+            title: "Transfers in Conta Pag Digital",
+            body: "Screens from the transfers area — transaction history and recipient management — with clear navigation and fast scanning of financial data.",
+            images: [
+              {
+                src: "/images/trusthub-transferencias.png",
+                alt: "TrustHub — My Transfers",
+              },
+              {
+                src: "/images/trusthub-favorecidos.png",
+                alt: "TrustHub — Recipients",
+              },
+            ],
+          },
+          {
+            number: "03",
+            kicker: "Challenge",
+            title: "Challenge",
+            body: "My challenge was to turn financial processes into a simple, intuitive, accessible digital experience — organizing many features in an interface that brings more clarity and agility to small-business routines.",
+          },
+        ];
+
+  return {
+    kicker: preview.kicker,
+    subtitle: preview.subtitle,
+    title: config.title,
+    titleAccent: config.titleAccent,
+    description: preview.description,
+    breadcrumb: config.breadcrumb,
+    caseKicker: config.kicker,
+    tags: config.tags,
+    meta: config.meta,
+    about: config.about,
+    sections,
+  };
+}
+
 function buildSeedProject(
   id: CaseStudyId,
   n: string,
@@ -397,6 +492,12 @@ export const seedProjects: ManagedProject[] = [
   buildSeedProject("abtest", "03", abtestData.tests[0].image, buildAbtestLocale),
   buildSeedProject("etitulo", "04", etituloData.overviewImg, buildEtituloLocale),
   buildSeedProject("bbnk", "05", "", buildBbnkLocale),
+  buildSeedProject(
+    "trusthub",
+    "06",
+    "/images/trusthub-overview.jpg",
+    buildTrusthubLocale,
+  ),
 ];
 
 function sectionNeedsImages(

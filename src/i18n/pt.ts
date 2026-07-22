@@ -164,6 +164,16 @@ export const pt: Dictionary = {
           "Plataforma digital integrada de banking as a service e white label, com entregas rápidas de produtos bancários e uma experiência minimalista e navegável.",
         path: "/cases/bbnk",
       },
+      {
+        id: "trusthub",
+        n: "06",
+        kicker: "TrustHub · Conta digital PME",
+        subtitle: "UX/UI Designer · Tritone · 2017 — 2018",
+        title: "TrustHub",
+        description:
+          "Conta 100% digital para simplificar a gestão financeira de pequenas empresas — arquitetura da informação e interface web claras, modernas e intuitivas.",
+        path: "/cases/trusthub",
+      },
     ],
   },
   testimonials: {

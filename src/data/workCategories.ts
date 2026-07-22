@@ -15,6 +15,7 @@ export const WORK_CATEGORY_BY_SLUG: Record<string, WorkCategory> = {
   abtest: "continuous-improvement",
   cashlog: "ux-ui",
   bbnk: "ux-ui",
+  trusthub: "ux-ui",
 };
 
 export function resolveWorkCategory(
