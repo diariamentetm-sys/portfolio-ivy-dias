@@ -174,6 +174,16 @@ export const pt: Dictionary = {
           "Conta 100% digital para simplificar a gestão financeira de pequenas empresas — arquitetura da informação e interface web claras, modernas e intuitivas.",
         path: "/cases/trusthub",
       },
+      {
+        id: "policia-federal",
+        n: "07",
+        kicker: "Polícia Federal · Design de Serviço",
+        subtitle: "Roteirização · Facilitação · Design de Serviço · 2019",
+        title: "Padronização de Computadores",
+        description:
+          "Workshop nacional para revisar a disponibilização de computadores da Polícia Federal — do AS IS ao TO BE, com consenso entre regiões e backlog de evolução.",
+        path: "/cases/policia-federal",
+      },
     ],
   },
   testimonials: {

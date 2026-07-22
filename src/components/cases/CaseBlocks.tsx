@@ -83,10 +83,12 @@ export function CaseQuote({
   label = "Aprendizado",
   quote,
   maxWidth = "max-w-xl",
+  children,
 }: {
   label?: string;
   quote: string;
   maxWidth?: string;
+  children?: ReactNode;
 }) {
   return (
     <section className="section-inverted py-16 md:py-28">
@@ -97,6 +99,13 @@ export function CaseQuote({
         >
           “{quote}”
         </blockquote>
+        {children ? (
+          <div
+            className={`mt-8 ${maxWidth} text-base md:text-lg leading-relaxed text-white/70`}
+          >
+            {children}
+          </div>
+        ) : null}
       </div>
     </section>
   );

@@ -18,7 +18,8 @@ export type CaseStudyId =
   | "abtest"
   | "etitulo"
   | "bbnk"
-  | "trusthub";
+  | "trusthub"
+  | "policia-federal";
 
 // ---------------------------------------------------------------------------
 // Case study layout configs (header, meta, about, next)
@@ -182,6 +183,41 @@ export const caseStudyConfigs: Record<
         "Na Tritone, atuei como UX/UI Designer, conduzindo a arquitetura da informação e o design da interface do site institucional e dos fluxos histórico de movimentações e gestão de favorecidos.",
         "A TrustHub é uma plataforma de conta 100% digital desenvolvida para simplificar a gestão financeira de pequenas empresas.",
       ],
+      next: {
+        label: "Próximo: Polícia Federal →",
+        path: "/cases/policia-federal",
+      },
+    },
+    "policia-federal": {
+      id: "policia-federal",
+      path: "/cases/policia-federal",
+      accent: "#EC2A86",
+      breadcrumb: "Polícia Federal · 2019",
+      kicker: "Estudo de caso · Design de Serviço",
+      title: "Polícia ",
+      titleAccent: "Federal",
+      subtitle:
+        "Workshop de padronização nacional de computadores — do AS IS ao TO BE com representantes de diversas regiões do Brasil.",
+      tags: [
+        "Design de Serviço",
+        "Facilitação",
+        "Workshop",
+        "Jornada AS IS / TO BE",
+        "Polícia Federal",
+      ],
+      meta: [
+        { k: "Papel", v: "Roteirização · Facilitação · Design de Serviço" },
+        { k: "Cliente", v: "Polícia Federal" },
+        { k: "Período", v: "2019" },
+        {
+          k: "Entregáveis",
+          v: "Jornada AS IS · How Might We · Jornada TO BE · Backlog",
+        },
+      ],
+      about: [
+        "Atuei na roteirização e facilitação do Workshop de Padronização de Computadores da Polícia Federal, conduzindo o Design de Serviço para alinhar especialistas de diversas regiões em torno de um modelo nacional de disponibilização de equipamentos.",
+        "O workshop reuniu representantes da instituição para revisar o processo atual, identificar oportunidades e construir, de forma colaborativa, a jornada futura de recebimento, distribuição e renovação de computadores.",
+      ],
       next: { label: "Ver: Cashlog (Raízen) →", path: "/cases/cashlog" },
     },
   },
@@ -338,6 +374,41 @@ export const caseStudyConfigs: Record<
       about: [
         "At Tritone, I worked as UX/UI Designer, leading information architecture and interface design for the institutional site and the transaction history and recipient-management flows.",
         "TrustHub is a fully digital account platform designed to simplify financial management for small businesses.",
+      ],
+      next: {
+        label: "Next: Federal Police →",
+        path: "/cases/policia-federal",
+      },
+    },
+    "policia-federal": {
+      id: "policia-federal",
+      path: "/cases/policia-federal",
+      accent: "#EC2A86",
+      breadcrumb: "Federal Police · 2019",
+      kicker: "Case study · Service Design",
+      title: "Federal ",
+      titleAccent: "Police",
+      subtitle:
+        "National computer standardization workshop — from AS-IS to TO-BE with representatives from regions across Brazil.",
+      tags: [
+        "Service Design",
+        "Facilitation",
+        "Workshop",
+        "AS-IS / TO-BE Journey",
+        "Federal Police",
+      ],
+      meta: [
+        { k: "Role", v: "Scripting · Facilitation · Service Design" },
+        { k: "Client", v: "Federal Police" },
+        { k: "Period", v: "2019" },
+        {
+          k: "Deliverables",
+          v: "AS-IS Journey · How Might We · TO-BE Journey · Backlog",
+        },
+      ],
+      about: [
+        "I led scripting and facilitation for the Federal Police Computer Standardization Workshop, using Service Design to align specialists from many regions around a national model for making equipment available.",
+        "The workshop brought institutional representatives together to review the current process, identify opportunities, and collaboratively build the future journey for receiving, distributing, and renewing computers.",
       ],
       next: { label: "View: Cashlog (Raízen) →", path: "/cases/cashlog" },
     },

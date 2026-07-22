@@ -28,6 +28,7 @@ export const SEED_PROJECT_IDS: Record<CaseStudyId, string> = {
   etitulo: "11111111-1111-4111-8111-111111111104",
   bbnk: "11111111-1111-4111-8111-111111111105",
   trusthub: "11111111-1111-4111-8111-111111111106",
+  "policia-federal": "11111111-1111-4111-8111-111111111107",
 };
 
 const workPreviewByLocale = {
@@ -468,6 +469,130 @@ function buildTrusthubLocale(locale: Locale): ProjectLocaleContent {
   };
 }
 
+function buildPoliciaFederalLocale(locale: Locale): ProjectLocaleContent {
+  const config = caseStudyConfigs[locale]["policia-federal"];
+  const preview = workPreviewByLocale[locale].find(
+    (item) => item.id === "policia-federal",
+  )!;
+
+  const sections =
+    locale === "pt"
+      ? [
+          {
+            number: "01",
+            kicker: "Visão geral",
+            title: "Padronização nacional de computadores",
+            body: "O Workshop de Padronização de Computadores reuniu representantes da Polícia Federal de diversas regiões do Brasil para revisar o processo de disponibilização de equipamentos e construir uma proposta de padronização nacional. O encontro combinou facilitação, roteirização e Design de Serviço para transformar conhecimento operacional disperso em um modelo compartilhado, mais eficiente e aderente às diferentes realidades da instituição.",
+            images: [
+              {
+                src: "/images/policia-federal-overview.png",
+                alt: "Workshop de Padronização de Computadores — Polícia Federal",
+              },
+            ],
+          },
+          {
+            number: "02",
+            kicker: "Desafio",
+            title: "Desafio",
+            body: "Meu desafio foi conduzir especialistas de diferentes regiões a responderem, juntos: como podemos melhorar o modelo atual de disponibilização de computadores da Polícia Federal? — convertendo fricções operacionais em um processo padronizado, eficiente e alinhado às múltiplas realidades da instituição.",
+          },
+          {
+            number: "03",
+            kicker: "Discovery",
+            title: "Alinhamento do desafio e jornada AS IS",
+            body: "A primeira etapa consistiu no alinhamento coletivo do desafio e no entendimento do cenário atual. Em seguida, mapeamos a jornada AS IS em três frentes críticas: recebimento de equipamentos, distribuição e renovação. Especialistas compartilharam o funcionamento real do processo — com suas variações regionais e exceções do dia a dia — enquanto os demais participantes registravam dificuldades, gargalos e oportunidades. O Discovery não buscou apenas descrever o fluxo oficial, mas revelar como a disponibilização de computadores acontecia na prática.",
+          },
+          {
+            number: "04",
+            kicker: "Oportunidades",
+            title: "Do problema à pergunta How Might We",
+            body: "Com o AS IS consolidado, usamos a dinâmica How Might We (Como Podemos?) para converter problemas em oportunidades de inovação. As fricções do processo viraram perguntas abertas: como justificar equipamentos de maior custo quando a necessidade for real; como flexibilizar a MOC sem perder controle; quais critérios devem orientar a distribuição; como identificar a real necessidade do usuário a partir de função, competências e requisitos de TI; como definir cenários de uso com mais clareza; e em que condições a obrigatoriedade de determinados equipamentos deixa de fazer sentido. A dinâmica deslocou o grupo do diagnóstico para o espaço de solução, sem perder o rigor institucional.",
+          },
+          {
+            number: "05",
+            kicker: "Solução",
+            title: "Jornada TO BE em dois fluxos estruturantes",
+            body: "Após consolidar os insights do Discovery, conduzimos uma sessão colaborativa de Design de Serviços para desenhar a jornada futura (TO BE). Estruturamos dois grandes fluxos: recebimento e distribuição de computadores, e renovação dos equipamentos. Neles passaram a constar responsabilidades claras entre áreas, comunicação estruturada com o usuário, padronização da distribuição, formulários para novas necessidades, recolhimento do equipamento antigo e alinhamento explícito com a MOC. A solução não foi um fluxograma isolado — foi um acordo operacional construído em conjunto.",
+          },
+          {
+            number: "06",
+            kicker: "Resultado",
+            title: "Consenso operacional e modelo compartilhado",
+            body: "O workshop resultou em alinhamento entre diferentes áreas da Polícia Federal, consolidação da jornada futura, definição de um modelo padronizado de disponibilização, backlog de melhorias e uma visão compartilhada do processo. O principal valor não foi apenas desenhar um fluxo: foi criar consenso entre especialistas e transformar conhecimento operacional tácito em um processo estruturado, legível e acionável para a instituição.",
+          },
+          {
+            number: "07",
+            kicker: "Próximos passos",
+            title: "Backlog para evolução contínua",
+            body: "As oportunidades registradas no workshop formaram o backlog do projeto: gestão do ciclo de vida dos equipamentos, critérios de substituição, gestão patrimonial, reaproveitamento de ativos, aumento da vida útil e classificação para reutilização, manutenção ou descarte. Esses temas mantêm o desenho TO BE vivo — como uma agenda de evolução, e não como um entregável estático.",
+          },
+        ]
+      : [
+          {
+            number: "01",
+            kicker: "Overview",
+            title: "National computer standardization",
+            body: "The Computer Standardization Workshop brought together Federal Police representatives from regions across Brazil to review how equipment is made available and to build a national standardization proposal. Facilitation, workshop scripting, and Service Design turned scattered operational knowledge into a shared model — more efficient and better aligned with the institution’s diverse realities.",
+            images: [
+              {
+                src: "/images/policia-federal-overview.png",
+                alt: "Computer Standardization Workshop — Federal Police",
+              },
+            ],
+          },
+          {
+            number: "02",
+            kicker: "Challenge",
+            title: "Challenge",
+            body: "My challenge was to guide specialists from different regions to answer, together: how might we improve the Federal Police’s current model for making computers available? — turning operational friction into a standardized, efficient process that fits the institution’s many realities.",
+          },
+          {
+            number: "03",
+            kicker: "Discovery",
+            title: "Challenge alignment and the AS-IS journey",
+            body: "We began by aligning on the challenge and building a shared view of the current scenario. Then we mapped the AS-IS journey across three critical fronts: receiving equipment, distribution, and renewal. Specialists described how the process actually worked — including regional variations and day-to-day exceptions — while other participants captured pain points and opportunities. Discovery was not about the official flow alone; it revealed how computer provisioning happened in practice.",
+          },
+          {
+            number: "04",
+            kicker: "Opportunities",
+            title: "From problems to How Might We questions",
+            body: "With the AS-IS map in place, we used How Might We to turn problems into innovation opportunities. Process friction became open questions: how to justify higher-cost equipment when the need is real; how to make the MOC more flexible without losing control; which criteria should guide distribution; how to identify users’ real needs from role, skills, and IT requirements; how to define usage scenarios more clearly; and when mandatory equipment rules stop making sense. The exercise moved the group from diagnosis into solution space — without losing institutional rigor.",
+          },
+          {
+            number: "05",
+            kicker: "Solution",
+            title: "TO-BE journey in two structuring flows",
+            body: "After consolidating Discovery insights, we ran a collaborative Service Design session to shape the future (TO-BE) journey. We structured two major flows: receiving and distributing computers, and renewing equipment. They incorporated clear cross-area responsibilities, structured user communication, standardized distribution, forms for new needs, collection of old equipment, and explicit alignment with the MOC. The solution was not an isolated flowchart — it was an operational agreement built together.",
+          },
+          {
+            number: "06",
+            kicker: "Outcome",
+            title: "Operational consensus and a shared model",
+            body: "The workshop produced alignment across Federal Police areas, a consolidated future journey, a standardized provisioning model, an improvement backlog, and a shared process vision. The main value was not only drawing a flow: it was building consensus among specialists and turning tacit operational knowledge into a structured, readable, actionable process for the institution.",
+          },
+          {
+            number: "07",
+            kicker: "Next steps",
+            title: "A backlog for continuous evolution",
+            body: "Opportunities captured in the workshop became the project backlog: equipment lifecycle management, replacement criteria, asset management, equipment reuse, longer asset lifespan, and classification for reuse, maintenance, or disposal. These themes keep the TO-BE design alive — as an evolution agenda, not a static deliverable.",
+          },
+        ];
+
+  return {
+    kicker: preview.kicker,
+    subtitle: preview.subtitle,
+    title: config.title,
+    titleAccent: config.titleAccent,
+    description: preview.description,
+    breadcrumb: config.breadcrumb,
+    caseKicker: config.kicker,
+    tags: config.tags,
+    meta: config.meta,
+    about: config.about,
+    sections,
+  };
+}
+
 function buildSeedProject(
   id: CaseStudyId,
   n: string,
@@ -497,6 +622,12 @@ export const seedProjects: ManagedProject[] = [
     "06",
     "/images/trusthub-overview.jpg",
     buildTrusthubLocale,
+  ),
+  buildSeedProject(
+    "policia-federal",
+    "07",
+    "/images/policia-federal-overview.png",
+    buildPoliciaFederalLocale,
   ),
 ];
 

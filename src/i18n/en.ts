@@ -174,6 +174,16 @@ export const en: Dictionary = {
           "A fully digital account to simplify financial management for small businesses — clear, modern information architecture and web interface design.",
         path: "/cases/trusthub",
       },
+      {
+        id: "policia-federal",
+        n: "07",
+        kicker: "Federal Police · Service Design",
+        subtitle: "Scripting · Facilitation · Service Design · 2019",
+        title: "Computer Standardization",
+        description:
+          "National workshop to review how the Federal Police makes computers available — from AS-IS to TO-BE, with cross-region consensus and an evolution backlog.",
+        path: "/cases/policia-federal",
+      },
     ],
   },
   testimonials: {
