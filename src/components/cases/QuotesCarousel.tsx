@@ -11,6 +11,7 @@ type QuotesCarouselProps = {
   quotes: readonly QuoteSlide[];
   prevLabel: string;
   nextLabel: string;
+  className?: string;
 };
 
 function initialsFromName(name: string) {
@@ -27,6 +28,7 @@ export function QuotesCarousel({
   quotes,
   prevLabel,
   nextLabel,
+  className = "",
 }: QuotesCarouselProps) {
   const [index, setIndex] = useState(0);
   const total = quotes.length;
@@ -44,7 +46,9 @@ export function QuotesCarousel({
   }
 
   return (
-    <div className="bg-[#f2f2f2] px-5 py-12 md:px-10 md:py-16 lg:py-20">
+    <div
+      className={`bg-[#f2f2f2] px-5 py-12 md:px-10 md:py-16 lg:py-20 ${className}`.trim()}
+    >
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[auto_minmax(0,1fr)] md:gap-14 lg:gap-20 items-start">
         <div className="flex gap-2 md:pt-1">
           <button
