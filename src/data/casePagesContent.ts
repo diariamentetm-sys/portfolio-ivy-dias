@@ -20,7 +20,7 @@ export type CaseStudyId =
   | "bbnk"
   | "trusthub"
   | "policia-federal"
-  | "riskai";
+  | "gerenciador-de-riscos-com-ai";
 
 // ---------------------------------------------------------------------------
 // Case study layout configs (header, meta, about, next)
@@ -219,11 +219,14 @@ export const caseStudyConfigs: Record<
         "Atuei na roteirização e facilitação do Workshop de Padronização de Computadores da Polícia Federal, conduzindo o Design de Serviço para alinhar especialistas de diversas regiões em torno de um modelo nacional de disponibilização de equipamentos.",
         "O workshop reuniu representantes da instituição para revisar o processo atual, identificar oportunidades e construir, de forma colaborativa, a jornada futura de recebimento, distribuição e renovação de computadores.",
       ],
-      next: { label: "Próximo: Gerenciador de riscos com AI →", path: "/cases/riskai" },
+      next: {
+        label: "Próximo: Gerenciador de riscos com AI →",
+        path: "/cases/gerenciador-de-riscos-com-ai",
+      },
     },
-    riskai: {
-      id: "riskai",
-      path: "/cases/riskai",
+    "gerenciador-de-riscos-com-ai": {
+      id: "gerenciador-de-riscos-com-ai",
+      path: "/cases/gerenciador-de-riscos-com-ai",
       accent: "#EC2A86",
       breadcrumb: "Gerenciador de riscos com AI · Petrobras · HITSS · 2025",
       kicker: "Estudo de caso · Service Design",
@@ -448,11 +451,14 @@ export const caseStudyConfigs: Record<
         "I led scripting and facilitation for the Federal Police Computer Standardization Workshop, using Service Design to align specialists from many regions around a national model for making equipment available.",
         "The workshop brought institutional representatives together to review the current process, identify opportunities, and collaboratively build the future journey for receiving, distributing, and renewing computers.",
       ],
-      next: { label: "Next: Risk Manager with AI →", path: "/cases/riskai" },
+      next: {
+        label: "Next: Risk Manager with AI →",
+        path: "/cases/gerenciador-de-riscos-com-ai",
+      },
     },
-    riskai: {
-      id: "riskai",
-      path: "/cases/riskai",
+    "gerenciador-de-riscos-com-ai": {
+      id: "gerenciador-de-riscos-com-ai",
+      path: "/cases/gerenciador-de-riscos-com-ai",
       accent: "#EC2A86",
       breadcrumb: "Risk Manager with AI · Petrobras · HITSS · 2025",
       kicker: "Case study · Service Design",

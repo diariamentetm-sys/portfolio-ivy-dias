@@ -46,6 +46,7 @@ export function CaseStudyLayout({
         image={resolvedOgImage}
         type="article"
         locale={locale}
+        robots={pageSeo?.robots}
         jsonLd={buildCaseJsonLd({
           title: seoTitle,
           description: seoDescription,

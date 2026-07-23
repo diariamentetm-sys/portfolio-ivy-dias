@@ -29,7 +29,7 @@ export const SEED_PROJECT_IDS: Record<CaseStudyId, string> = {
   bbnk: "11111111-1111-4111-8111-111111111105",
   trusthub: "11111111-1111-4111-8111-111111111106",
   "policia-federal": "11111111-1111-4111-8111-111111111107",
-  riskai: "11111111-1111-4111-8111-111111111108",
+  "gerenciador-de-riscos-com-ai": "11111111-1111-4111-8111-111111111108",
 };
 
 const workPreviewByLocale = {
@@ -595,8 +595,10 @@ function buildPoliciaFederalLocale(locale: Locale): ProjectLocaleContent {
 }
 
 function buildRiskaiLocale(locale: Locale): ProjectLocaleContent {
-  const config = caseStudyConfigs[locale].riskai;
-  const preview = workPreviewByLocale[locale].find((item) => item.id === "riskai")!;
+  const config = caseStudyConfigs[locale]["gerenciador-de-riscos-com-ai"];
+  const preview = workPreviewByLocale[locale].find(
+    (item) => item.id === "gerenciador-de-riscos-com-ai",
+  )!;
 
   const sections =
     locale === "pt"
@@ -687,7 +689,7 @@ function buildSeedProject(
 }
 
 export const seedProjects: ManagedProject[] = [
-  buildSeedProject("riskai", "01", "", buildRiskaiLocale),
+  buildSeedProject("gerenciador-de-riscos-com-ai", "01", "", buildRiskaiLocale),
   buildSeedProject("cashlog", "02", cashlogData.researchImg, buildCashlogLocale),
   buildSeedProject("claro", "03", claroData.overviewImg, buildClaroLocale),
   buildSeedProject("abtest", "04", abtestData.tests[0].image, buildAbtestLocale),

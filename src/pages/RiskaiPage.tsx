@@ -1,4 +1,5 @@
 import { CaseBlockSection, CaseImage, CaseQuote } from "../components/cases/CaseBlocks";
+import { CasePasswordGate } from "../components/cases/CasePasswordGate";
 import { ProductCanvas } from "../components/cases/ProductCanvas";
 import { ServiceBlueprint } from "../components/cases/ServiceBlueprint";
 import { CaseStudyLayout } from "../components/layout/CaseStudyLayout";
@@ -1125,10 +1126,19 @@ export function RiskaiPage() {
   const { locale } = useLocale();
   const { content } = useContent();
   const copy = pageCopy[locale];
-  const config = resolveCaseStudyConfig("riskai", locale, content.projects);
+  const config = resolveCaseStudyConfig(
+    "gerenciador-de-riscos-com-ai",
+    locale,
+    content.projects,
+  );
 
   return (
-    <CaseStudyLayout config={config}>
+    <CasePasswordGate
+      caseId="gerenciador-de-riscos-com-ai"
+      path={config.path}
+      title={config.title}
+    >
+      <CaseStudyLayout config={config}>
       <section className="max-w-5xl mx-auto px-5 md:px-16 pb-4">
         <figure>
           <CaseImage
@@ -1448,5 +1458,6 @@ export function RiskaiPage() {
         <p>{copy.closeBody}</p>
       </CaseQuote>
     </CaseStudyLayout>
+    </CasePasswordGate>
   );
 }

@@ -5,6 +5,7 @@ export type PageSeoCopy = {
   title: string;
   description: string;
   ogImage?: string;
+  robots?: string;
   related?: { label: string; path: string }[];
 };
 
@@ -110,15 +111,16 @@ export const casePageSeo: Record<
       related: [
         {
           label: "Gerenciador de riscos com AI — Petrobras",
-          path: "/cases/riskai",
+          path: "/cases/gerenciador-de-riscos-com-ai",
         },
         { label: "e-Título TSE — Service Design", path: "/cases/etitulo" },
       ],
     },
-    riskai: {
+    "gerenciador-de-riscos-com-ai": {
       title: "Gerenciador de riscos com AI | Petrobras | Ivy DC",
       description:
         "Case Petrobras: Gerenciador de riscos com AI — discovery em 5 torres, Product Canvas, blueprint TO-BE conversacional e validação com CES 6,2.",
+      robots: "noindex, nofollow",
       related: [
         {
           label: "Polícia Federal — Design de Serviço",
@@ -199,15 +201,16 @@ export const casePageSeo: Record<
       related: [
         {
           label: "Risk Manager with AI — Petrobras",
-          path: "/cases/riskai",
+          path: "/cases/gerenciador-de-riscos-com-ai",
         },
         { label: "e-Título TSE — Service Design", path: "/cases/etitulo" },
       ],
     },
-    riskai: {
+    "gerenciador-de-riscos-com-ai": {
       title: "Risk Manager with AI | Petrobras | Ivy DC",
       description:
         "Petrobras case: Risk Manager with AI — discovery across 5 towers, Product Canvas, conversational TO-BE blueprint and CES 6.2 validation.",
+      robots: "noindex, nofollow",
       related: [
         {
           label: "Federal Police — Service Design",

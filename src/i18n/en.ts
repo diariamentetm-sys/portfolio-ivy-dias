@@ -115,14 +115,14 @@ export const en: Dictionary = {
     ],
     cases: [
       {
-        id: "riskai",
+        id: "gerenciador-de-riscos-com-ai",
         n: "01",
         kicker: "Petrobras · Service Design",
         subtitle: "CX Lead · Service Design · HITSS · 2025",
         title: "Risk Manager with AI",
         description:
           "An intelligent assistant to unify risk management across five towers — discovery, Product Canvas, conversational TO-BE blueprint and CES 6.2 validation.",
-        path: "/cases/riskai",
+        path: "/cases/gerenciador-de-riscos-com-ai",
       },
       {
         id: "cashlog",

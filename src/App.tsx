@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ScrollToTop } from "./components/layout/ScrollToTop";
 import { ContentProvider } from "./content/ContentContext";
 import { LocaleProvider } from "./i18n/LocaleContext";
@@ -33,7 +33,16 @@ function App() {
               path="/cases/policia-federal"
               element={<PoliciaFederalPage />}
             />
-            <Route path="/cases/riskai" element={<RiskaiPage />} />
+            <Route
+              path="/cases/gerenciador-de-riscos-com-ai"
+              element={<RiskaiPage />}
+            />
+            <Route
+              path="/cases/riskai"
+              element={
+                <Navigate to="/cases/gerenciador-de-riscos-com-ai" replace />
+              }
+            />
             <Route path="/cases/:slug" element={<DynamicCasePage />} />
           </Routes>
         </BrowserRouter>
