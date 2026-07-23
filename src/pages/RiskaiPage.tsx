@@ -142,7 +142,7 @@ const pageCopy = {
     discoveryImageAlt:
       "Quadro Miro do discovery: personas entrevistadas, observações transversais e jornadas AS-IS mapeadas com as torres de risco da Petrobras.",
     discoveryImageCaption:
-      "Extrato do board de discovery — personas, observações transversais e jornada AS-IS.",
+      "Board Miro Petrobras — personas, observações transversais e jornadas AS-IS do discovery.",
     discovery: [
       {
         n: "01",
@@ -602,7 +602,7 @@ const pageCopy = {
     discoveryImageAlt:
       "Miro discovery board: interviewed personas, cross-cutting observations and AS-IS journeys mapped with Petrobras risk towers.",
     discoveryImageCaption:
-      "Extract from the discovery board — personas, cross-cutting observations and AS-IS journey.",
+      "Petrobras Miro board — personas, cross-cutting observations and AS-IS journeys from discovery.",
     discovery: [
       {
         n: "01",
