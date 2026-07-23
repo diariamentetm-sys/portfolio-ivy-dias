@@ -1,0 +1,7 @@
+# https://ivydc.cx/robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+Sitemap: https://ivydc.cx/sitemap.xml

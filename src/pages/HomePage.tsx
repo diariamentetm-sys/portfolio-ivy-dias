@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Navbar } from "../components/layout/Navbar";
 import { SpecialtyStack } from "../components/home/SpecialtyStack";
+import { SeoHead } from "../components/seo/SeoHead";
 import { PostItTag } from "../components/ui/PostItTag";
 import { Reveal } from "../components/ui/Reveal";
 import { useContent } from "../content/ContentContext";
@@ -14,6 +15,10 @@ import {
 } from "../data/workCategories";
 import { useLocale } from "../i18n/LocaleContext";
 import { sendContactMessage } from "../lib/sendContact";
+import {
+  buildPersonWebsiteJsonLd,
+  homeSeoByLocale,
+} from "../seo/siteConfig";
 
 const heroTagStyles = [
   { tone: "post-it-yellow", rotate: "-rotate-2" },
@@ -117,21 +122,37 @@ export function HomePage() {
 
   return (
     <div className="bg-neutral-50 relative">
+      <SeoHead
+        title={homeSeoByLocale[locale].title}
+        description={homeSeoByLocale[locale].description}
+        path="/"
+        image={content.heroImage}
+        type="website"
+        locale={locale}
+        jsonLd={buildPersonWebsiteJsonLd(locale)}
+      />
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-neutral-950 focus:px-4 focus:py-2 focus:text-sm focus:text-white"
+      >
+        {locale === "en" ? "Skip to content" : "Ir para o conteúdo"}
+      </a>
       <Navbar />
 
+      <main id="conteudo">
       <header
         id="top"
         className="relative isolate overflow-hidden border-b border-neutral-200"
       >
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-y-0 right-0 w-full md:w-[58%] lg:w-[52%]"
-        >
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-full md:w-[58%] lg:w-[52%]">
           <img
             src={content.heroImage}
-            alt=""
+            alt={t.hero.imageAlt}
+            width={1600}
+            height={1200}
             className="h-full w-full object-cover object-[center_18%] scale-x-[-1] opacity-90 md:opacity-100"
             loading="eager"
+            fetchPriority="high"
             decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-50 via-neutral-50/85 to-neutral-50/20 md:from-neutral-50 md:via-neutral-50/70 md:to-transparent" />
@@ -192,8 +213,6 @@ export function HomePage() {
             ))}
           </Reveal>
         </div>
-
-        <span className="sr-only">{t.hero.imageAlt}</span>
       </header>
 
       <section id="sobre" className="section-narrative bg-white">
@@ -613,6 +632,7 @@ export function HomePage() {
         </div>
         <Footer inverted />
       </section>
+      </main>
     </div>
   );
 }

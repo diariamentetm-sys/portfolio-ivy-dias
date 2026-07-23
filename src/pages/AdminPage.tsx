@@ -1,6 +1,7 @@
 import { FormEvent, type ReactNode, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ImageField } from "../components/admin/ImageField";
+import { SeoHead } from "../components/seo/SeoHead";
 import { useContent } from "../content/ContentContext";
 import {
   type ManagedProject,
@@ -55,6 +56,13 @@ export function AdminPage() {
   if (!isAdmin) {
     return (
       <div className="min-h-screen bg-neutral-50 flex items-center justify-center px-5">
+        <SeoHead
+          title="Admin"
+          description="Private CMS login for Ivy Dias portfolio."
+          path="/admin"
+          robots="noindex, nofollow"
+          locale={locale}
+        />
         <form
           onSubmit={handleLogin}
           className="card w-full max-w-md p-8 flex flex-col gap-4"
@@ -86,6 +94,13 @@ export function AdminPage() {
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-950">
+      <SeoHead
+        title="Admin"
+        description="Private CMS for Ivy Dias portfolio."
+        path="/admin"
+        robots="noindex, nofollow"
+        locale={locale}
+      />
       <header className="sticky top-0 z-40 border-b border-neutral-200 bg-neutral-50/95 backdrop-blur-md px-5 md:px-10 py-4 flex flex-wrap gap-4 items-center justify-between">
         <div>
           <p className="eyebrow text-accent">{t.admin.title}</p>
