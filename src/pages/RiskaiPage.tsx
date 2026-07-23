@@ -514,6 +514,8 @@ const pageCopy = {
           "Sem compreensão rápida do “o que é / para que serve”, a navegação trava — reforçar onboarding conceitual.",
       },
     ],
+    quotesSectionLabel: "Depoimentos",
+    quotesSectionTitle: "O que os participantes disseram",
     quotesLabel: "O que os participantes disseram:",
     quotesPrev: "Depoimento anterior",
     quotesNext: "Próximo depoimento",
@@ -1042,6 +1044,8 @@ const pageCopy = {
           "Without a quick grasp of “what it is / what it’s for”, navigation stalls — strengthen conceptual onboarding.",
       },
     ],
+    quotesSectionLabel: "Testimonials",
+    quotesSectionTitle: "What participants said",
     quotesLabel: "What participants said:",
     quotesPrev: "Previous quote",
     quotesNext: "Next quote",
@@ -1470,15 +1474,21 @@ export function RiskaiPage() {
             />
           ))}
         </div>
+        <p className="mt-10 max-w-3xl body-md font-medium text-neutral-950">
+          {copy.validationInsight}
+        </p>
+      </CaseBlockSection>
+
+      <CaseBlockSection
+        label={copy.quotesSectionLabel}
+        title={copy.quotesSectionTitle}
+      >
         <QuotesCarousel
           label={copy.quotesLabel}
           quotes={copy.quotes}
           prevLabel={copy.quotesPrev}
           nextLabel={copy.quotesNext}
         />
-        <p className="mt-10 max-w-3xl body-md font-medium text-neutral-950">
-          {copy.validationInsight}
-        </p>
       </CaseBlockSection>
 
       <CaseBlockSection

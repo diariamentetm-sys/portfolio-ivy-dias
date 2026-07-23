@@ -44,8 +44,8 @@ export function QuotesCarousel({
   }
 
   return (
-    <div className="mt-12 rounded-2xl bg-neutral-100/80 px-5 py-10 md:px-10 md:py-14">
-      <div className="grid gap-8 md:grid-cols-[auto_minmax(0,1fr)] md:gap-12 lg:gap-16 items-start">
+    <div className="mt-8 bg-neutral-100/90 -mx-5 px-5 py-10 md:mx-0 md:rounded-2xl md:px-10 md:py-14">
+      <div className="grid gap-8 md:grid-cols-[auto_minmax(0,1fr)] md:gap-12 lg:gap-20 items-start">
         <div className="flex gap-2 md:pt-1">
           <button
             type="button"
@@ -69,17 +69,14 @@ export function QuotesCarousel({
           </button>
         </div>
 
-        <div className="min-w-0">
+        <div className="min-w-0 md:max-w-3xl md:ml-auto md:mr-0 lg:max-w-4xl">
           <p className="font-mono text-xs tracking-[0.08em] text-accent">
             <span className="tabular-nums">{counter}</span>
             <span className="mx-2">·</span>
             <span>{label}</span>
           </p>
 
-          <blockquote
-            key={current.text}
-            className="mt-6 md:mt-8"
-          >
+          <blockquote key={current.text} className="mt-6 md:mt-8">
             <p className="text-[1.65rem] sm:text-3xl md:text-4xl lg:text-[2.75rem] font-bold leading-[1.15] tracking-tight text-neutral-950 text-pretty">
               “{current.text}”
             </p>
