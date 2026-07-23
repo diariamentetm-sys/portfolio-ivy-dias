@@ -19,7 +19,8 @@ export type CaseStudyId =
   | "etitulo"
   | "bbnk"
   | "trusthub"
-  | "policia-federal";
+  | "policia-federal"
+  | "riskai";
 
 // ---------------------------------------------------------------------------
 // Case study layout configs (header, meta, about, next)
@@ -218,6 +219,43 @@ export const caseStudyConfigs: Record<
         "Atuei na roteirização e facilitação do Workshop de Padronização de Computadores da Polícia Federal, conduzindo o Design de Serviço para alinhar especialistas de diversas regiões em torno de um modelo nacional de disponibilização de equipamentos.",
         "O workshop reuniu representantes da instituição para revisar o processo atual, identificar oportunidades e construir, de forma colaborativa, a jornada futura de recebimento, distribuição e renovação de computadores.",
       ],
+      next: { label: "Próximo: RiskAI Petrobras →", path: "/cases/riskai" },
+    },
+    riskai: {
+      id: "riskai",
+      path: "/cases/riskai",
+      accent: "#EC2A86",
+      breadcrumb: "RiskAI · Petrobras · HITSS · 2025",
+      kicker: "Estudo de caso · Service Design",
+      title: "RiskAI",
+      titleAccent: " — Petrobras",
+      subtitle:
+        "Um assistente inteligente para transformar a gestão de riscos em uma experiência ágil, integrada e humana — cinco torres, um discovery estruturado.",
+      tags: [
+        "Service Design",
+        "Lean Inception",
+        "Product Canvas",
+        "IA / RAG",
+        "Petrobras",
+        "HITSS",
+      ],
+      meta: [
+        { k: "Papel", v: "Service Design · Discovery" },
+        { k: "Squad", v: "Centro de Competência CX · HITSS" },
+        { k: "Cliente", v: "Petrobras" },
+        { k: "Período", v: "2025" },
+        { k: "Torres", v: "GIR · Projetos · Estocásticos · Operacional · Crédito" },
+        { k: "Validação", v: "CES 6,2 / 7" },
+      ],
+      headerStats: [
+        { value: "5", label: "Torres de risco" },
+        { value: "15", label: "Personas" },
+        { value: "6,2", label: "CES médio" },
+      ],
+      about: [
+        "Atuei em squad com Gabriela Faustino (CX), Ivan Gutjahr (Agile Master), Julliene Oliveira (UX), Vinícius Giorge (Consumer Insights) e Ricardo Leopoldo (Cientista de Dados) — Centro de Competência CX e Gerência de Data Analytics & IA, HITSS.",
+        "O RiskAI nasceu para unificar a gestão de riscos da Petrobras: discovery com as cinco torres, Product Canvas, blueprint TO-BE conversacional e validação com CES 6,2 — seguido de um roadmap evolutivo de 60+ épicos.",
+      ],
       next: { label: "Ver: Cashlog (Raízen) →", path: "/cases/cashlog" },
     },
   },
@@ -409,6 +447,46 @@ export const caseStudyConfigs: Record<
       about: [
         "I led scripting and facilitation for the Federal Police Computer Standardization Workshop, using Service Design to align specialists from many regions around a national model for making equipment available.",
         "The workshop brought institutional representatives together to review the current process, identify opportunities, and collaboratively build the future journey for receiving, distributing, and renewing computers.",
+      ],
+      next: { label: "Next: RiskAI Petrobras →", path: "/cases/riskai" },
+    },
+    riskai: {
+      id: "riskai",
+      path: "/cases/riskai",
+      accent: "#EC2A86",
+      breadcrumb: "RiskAI · Petrobras · HITSS · 2025",
+      kicker: "Case study · Service Design",
+      title: "RiskAI",
+      titleAccent: " — Petrobras",
+      subtitle:
+        "An intelligent assistant to turn risk management into an agile, integrated and human experience — five towers, one structured discovery.",
+      tags: [
+        "Service Design",
+        "Lean Inception",
+        "Product Canvas",
+        "AI / RAG",
+        "Petrobras",
+        "HITSS",
+      ],
+      meta: [
+        { k: "Role", v: "Service Design · Discovery" },
+        { k: "Squad", v: "CX Competence Center · HITSS" },
+        { k: "Client", v: "Petrobras" },
+        { k: "Period", v: "2025" },
+        {
+          k: "Towers",
+          v: "GIR · Projects · Stochastic · Operational · Credit",
+        },
+        { k: "Validation", v: "CES 6.2 / 7" },
+      ],
+      headerStats: [
+        { value: "5", label: "Risk towers" },
+        { value: "15", label: "Personas" },
+        { value: "6.2", label: "Avg. CES" },
+      ],
+      about: [
+        "I worked in a squad with Gabriela Faustino (CX), Ivan Gutjahr (Agile Master), Julliene Oliveira (UX), Vinícius Giorge (Consumer Insights) and Ricardo Leopoldo (Data Scientist) — CX Competence Center and Data Analytics & AI Management, HITSS.",
+        "RiskAI was built to unify Petrobras risk management: discovery across five towers, Product Canvas, conversational TO-BE blueprint and CES 6.2 validation — followed by an evolutionary roadmap of 60+ epics.",
       ],
       next: { label: "View: Cashlog (Raízen) →", path: "/cases/cashlog" },
     },

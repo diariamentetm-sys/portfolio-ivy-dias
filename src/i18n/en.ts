@@ -184,6 +184,16 @@ export const en: Dictionary = {
           "National workshop to review how the Federal Police makes computers available — from AS-IS to TO-BE, with cross-region consensus and an evolution backlog.",
         path: "/cases/policia-federal",
       },
+      {
+        id: "riskai",
+        n: "08",
+        kicker: "RiskAI · Petrobras · Service Design",
+        subtitle: "Service Design · Discovery · HITSS · 2025",
+        title: "RiskAI — Petrobras",
+        description:
+          "An intelligent assistant to unify risk management across five towers — discovery, Product Canvas, conversational TO-BE blueprint and CES 6.2 validation.",
+        path: "/cases/riskai",
+      },
     ],
   },
   testimonials: {

@@ -29,6 +29,7 @@ export const SEED_PROJECT_IDS: Record<CaseStudyId, string> = {
   bbnk: "11111111-1111-4111-8111-111111111105",
   trusthub: "11111111-1111-4111-8111-111111111106",
   "policia-federal": "11111111-1111-4111-8111-111111111107",
+  riskai: "11111111-1111-4111-8111-111111111108",
 };
 
 const workPreviewByLocale = {
@@ -593,6 +594,80 @@ function buildPoliciaFederalLocale(locale: Locale): ProjectLocaleContent {
   };
 }
 
+function buildRiskaiLocale(locale: Locale): ProjectLocaleContent {
+  const config = caseStudyConfigs[locale].riskai;
+  const preview = workPreviewByLocale[locale].find((item) => item.id === "riskai")!;
+
+  const sections =
+    locale === "pt"
+      ? [
+          {
+            number: "01",
+            kicker: "Desafio",
+            title: "Cinco torres, um processo fragmentado",
+            body: "A Petrobras gerencia riscos em cinco frentes — GIR, Projetos, Estocásticos, Operacional e Crédito — com informação espalhada e retrabalho constante. O RiskAI nasceu para unificar essa gestão em uma experiência ágil, integrada e inteligente.",
+          },
+          {
+            number: "02",
+            kicker: "Discovery",
+            title: "Imersão, definição, ideação, validação e melhoria contínua",
+            body: "Discovery estruturado com entrevistas nas cinco torres, 15 personas, Lean Inception, Product Canvas, blueprint TO-BE conversacional e validação qualitativa com CES médio 6,2.",
+          },
+          {
+            number: "03",
+            kicker: "Solução",
+            title: "Assistente conversacional com RAG",
+            body: "Interface conversacional integrada a SAP, normativos e bases RAG — mesma cadência de interação para inspeções, Beacon/EPSC, CSB/ANP e Marsh, com síntese técnica e CTAs de validação.",
+          },
+          {
+            number: "04",
+            kicker: "Roadmap",
+            title: "Sete ondas e três fases estratégicas",
+            body: "De 80 funcionalidades a 21 épicos priorizados e um roadmap contínuo com 60+ épicos — do MVP operacional à visão futura com decisão assistida por IA.",
+          },
+        ]
+      : [
+          {
+            number: "01",
+            kicker: "Challenge",
+            title: "Five towers, one fragmented process",
+            body: "Petrobras manages risk across five fronts — GIR, Projects, Stochastic, Operational and Credit — with scattered information and constant rework. RiskAI was built to unify that management into an agile, integrated and intelligent experience.",
+          },
+          {
+            number: "02",
+            kicker: "Discovery",
+            title: "Immersion, definition, ideation, validation and continuous improvement",
+            body: "Structured discovery with interviews across five towers, 15 personas, Lean Inception, Product Canvas, conversational TO-BE blueprint and qualitative validation with average CES 6.2.",
+          },
+          {
+            number: "03",
+            kicker: "Solution",
+            title: "Conversational assistant with RAG",
+            body: "Conversational UI integrated with SAP, standards and RAG bases — the same interaction cadence for inspections, Beacon/EPSC, CSB/ANP and Marsh, with technical synthesis and validation CTAs.",
+          },
+          {
+            number: "04",
+            kicker: "Roadmap",
+            title: "Seven waves and three strategic phases",
+            body: "From 80 features to 21 prioritized epics and a continuous roadmap with 60+ epics — from the operational MVP to a future vision with AI-assisted decisions.",
+          },
+        ];
+
+  return {
+    kicker: preview.kicker,
+    subtitle: preview.subtitle,
+    title: config.title,
+    titleAccent: config.titleAccent,
+    description: preview.description,
+    breadcrumb: config.breadcrumb,
+    caseKicker: config.kicker,
+    tags: config.tags,
+    meta: config.meta,
+    about: config.about,
+    sections,
+  };
+}
+
 function buildSeedProject(
   id: CaseStudyId,
   n: string,
@@ -629,6 +704,7 @@ export const seedProjects: ManagedProject[] = [
     "/images/policia-federal-overview.png",
     buildPoliciaFederalLocale,
   ),
+  buildSeedProject("riskai", "08", "", buildRiskaiLocale),
 ];
 
 function sectionNeedsImages(

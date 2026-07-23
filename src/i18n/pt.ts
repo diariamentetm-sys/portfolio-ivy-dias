@@ -184,6 +184,16 @@ export const pt: Dictionary = {
           "Workshop nacional para revisar a disponibilização de computadores da Polícia Federal — do AS IS ao TO BE, com consenso entre regiões e backlog de evolução.",
         path: "/cases/policia-federal",
       },
+      {
+        id: "riskai",
+        n: "08",
+        kicker: "RiskAI · Petrobras · Service Design",
+        subtitle: "Service Design · Discovery · HITSS · 2025",
+        title: "RiskAI — Petrobras",
+        description:
+          "Assistente inteligente para unificar a gestão de riscos em cinco torres — discovery, Product Canvas, blueprint TO-BE conversacional e validação com CES 6,2.",
+        path: "/cases/riskai",
+      },
     ],
   },
   testimonials: {
