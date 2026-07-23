@@ -115,8 +115,18 @@ export const pt: Dictionary = {
     ],
     cases: [
       {
-        id: "cashlog",
+        id: "riskai",
         n: "01",
+        kicker: "RiskAI · Petrobras · Service Design",
+        subtitle: "CX Lead · Service Design · HITSS · 2025",
+        title: "RiskAI — Petrobras",
+        description:
+          "Assistente inteligente para unificar a gestão de riscos em cinco torres — discovery, Product Canvas, blueprint TO-BE conversacional e validação com CES 6,2.",
+        path: "/cases/riskai",
+      },
+      {
+        id: "cashlog",
+        n: "02",
         kicker: "Raízen · Fintech B2B",
         subtitle: "Consultora de Inovação / UX · MJV Technology",
         title: "Cashlog",
@@ -126,7 +136,7 @@ export const pt: Dictionary = {
       },
       {
         id: "claro",
-        n: "02",
+        n: "03",
         kicker: "Claro AMX · Service Design",
         subtitle: "CX na Claro · CoE CX / Portal Claro.com.br",
         title: "Cards de oferta no e-commerce",
@@ -136,7 +146,7 @@ export const pt: Dictionary = {
       },
       {
         id: "abtest",
-        n: "03",
+        n: "04",
         kicker: "Claro · CRO / Experimentação",
         subtitle: "Raciocínio orientado a dados e resultado de negócio",
         title: "Testes A/B orientados a dados",
@@ -146,7 +156,7 @@ export const pt: Dictionary = {
       },
       {
         id: "etitulo",
-        n: "04",
+        n: "05",
         kicker: "TSE · Serviço público digital",
         subtitle: "CX aplicado a cidadania e acessibilidade",
         title: "Onboarding do e-Título",
@@ -156,7 +166,7 @@ export const pt: Dictionary = {
       },
       {
         id: "bbnk",
-        n: "05",
+        n: "06",
         kicker: "BBNK · Banking as a Service",
         subtitle: "Consultora de inovação, UX, UI · 2018 — 2019",
         title: "Banco BBNK",
@@ -166,7 +176,7 @@ export const pt: Dictionary = {
       },
       {
         id: "trusthub",
-        n: "06",
+        n: "07",
         kicker: "TrustHub · Conta digital PME",
         subtitle: "UX/UI Designer · Tritone · 2017 — 2018",
         title: "TrustHub",
@@ -176,23 +186,13 @@ export const pt: Dictionary = {
       },
       {
         id: "policia-federal",
-        n: "07",
+        n: "08",
         kicker: "Polícia Federal · Design de Serviço",
         subtitle: "Roteirização · Facilitação · Design de Serviço · 2019",
         title: "Padronização de Computadores",
         description:
           "Workshop nacional para revisar a disponibilização de computadores da Polícia Federal — do AS IS ao TO BE, com consenso entre regiões e backlog de evolução.",
         path: "/cases/policia-federal",
-      },
-      {
-        id: "riskai",
-        n: "08",
-        kicker: "RiskAI · Petrobras · Service Design",
-        subtitle: "Service Design · Discovery · HITSS · 2025",
-        title: "RiskAI — Petrobras",
-        description:
-          "Assistente inteligente para unificar a gestão de riscos em cinco torres — discovery, Product Canvas, blueprint TO-BE conversacional e validação com CES 6,2.",
-        path: "/cases/riskai",
       },
     ],
   },

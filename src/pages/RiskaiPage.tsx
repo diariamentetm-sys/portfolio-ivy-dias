@@ -210,7 +210,7 @@ const pageCopy = {
           "A IA precisa entregar um V0 comprovado — citações em API/NFPA/ABNT, lições aprendidas e casos similares, separando fato de sugestão.",
       },
       {
-        name: "Felipe Petit",
+        name: "Felipe",
         tower: "Operacional",
         quote:
           "Buscar uma recomendação, cruzar com as normas API e consultar o histórico — a AP 74 passou pela mesma situação.",
@@ -228,13 +228,13 @@ const pageCopy = {
           "Eu vejo o sucesso quando acontece uma entrega, quando um trabalho que está na minha mão passa pra mão da outra pessoa e anda com aquilo pra frente.",
       },
       {
-        name: "Eduardo Pavinatto",
+        name: "Eduardo",
         tower: "Crédito",
         quote:
           "Nosso problema maior é extração de dados de PDFs e pesquisas bibliográficas.",
       },
       {
-        name: "Lucas Negrão",
+        name: "Lucas",
         tower: "Crédito",
         quote:
           "Pedir no Teams para o analista de crédito rodar um modelo e já receber o PDF pronto.",
@@ -251,10 +251,10 @@ const pageCopy = {
       "Daniel · Projetos",
       "Renan (coord.) · Investimentos",
       "Vanessa · F&A",
-      "Alexandre Bonnet · Estocásticos",
-      "Marcus Vinicius · Estocásticos",
-      "Roberta Monteiro · Crédito",
-      "Igor Nascimento · Crédito",
+      "Alexandre · Estocásticos",
+      "Marcus · Estocásticos",
+      "Roberta · Crédito",
+      "Igor · Crédito",
     ],
     visionLabel: "Visão de produto",
     visionTitle: "O que estávamos construindo, em uma frase",
@@ -421,7 +421,7 @@ const pageCopy = {
           "Postura exploratória validou o modelo conversacional para perfis digitais, sem fricções relevantes.",
       },
       {
-        name: "Petit",
+        name: "Felipe",
         score: "6,8",
         insight:
           "Leu status e relações entre dados com facilidade — ajustes finos de clareza visual restantes.",
@@ -646,7 +646,7 @@ const pageCopy = {
           "AI needs to deliver a proven V0 — citations in API/NFPA/ABNT, lessons learned and similar cases, separating fact from suggestion.",
       },
       {
-        name: "Felipe Petit",
+        name: "Felipe",
         tower: "Operational",
         quote:
           "Find a recommendation, cross it with API standards and check history — AP 74 went through the same situation.",
@@ -664,13 +664,13 @@ const pageCopy = {
           "I see success when a delivery happens — when work leaves my hands and moves forward in someone else’s.",
       },
       {
-        name: "Eduardo Pavinatto",
+        name: "Eduardo",
         tower: "Credit",
         quote:
           "Our biggest problem is extracting data from PDFs and bibliographic research.",
       },
       {
-        name: "Lucas Negrão",
+        name: "Lucas",
         tower: "Credit",
         quote:
           "Ask on Teams for the credit analyst to run a model and already receive the finished PDF.",
@@ -687,10 +687,10 @@ const pageCopy = {
       "Daniel · Projects",
       "Renan (coord.) · Investments",
       "Vanessa · F&A",
-      "Alexandre Bonnet · Stochastic",
-      "Marcus Vinicius · Stochastic",
-      "Roberta Monteiro · Credit",
-      "Igor Nascimento · Credit",
+      "Alexandre · Stochastic",
+      "Marcus · Stochastic",
+      "Roberta · Credit",
+      "Igor · Credit",
     ],
     visionLabel: "Product vision",
     visionTitle: "What we were building, in one sentence",
@@ -857,7 +857,7 @@ const pageCopy = {
           "Exploratory stance validated the conversational model for digital profiles, with no major friction.",
       },
       {
-        name: "Petit",
+        name: "Felipe",
         score: "6.8",
         insight:
           "Read status and data relationships easily — only fine visual clarity tweaks left.",

@@ -687,24 +687,24 @@ function buildSeedProject(
 }
 
 export const seedProjects: ManagedProject[] = [
-  buildSeedProject("cashlog", "01", cashlogData.researchImg, buildCashlogLocale),
-  buildSeedProject("claro", "02", claroData.overviewImg, buildClaroLocale),
-  buildSeedProject("abtest", "03", abtestData.tests[0].image, buildAbtestLocale),
-  buildSeedProject("etitulo", "04", etituloData.overviewImg, buildEtituloLocale),
-  buildSeedProject("bbnk", "05", "", buildBbnkLocale),
+  buildSeedProject("riskai", "01", "", buildRiskaiLocale),
+  buildSeedProject("cashlog", "02", cashlogData.researchImg, buildCashlogLocale),
+  buildSeedProject("claro", "03", claroData.overviewImg, buildClaroLocale),
+  buildSeedProject("abtest", "04", abtestData.tests[0].image, buildAbtestLocale),
+  buildSeedProject("etitulo", "05", etituloData.overviewImg, buildEtituloLocale),
+  buildSeedProject("bbnk", "06", "", buildBbnkLocale),
   buildSeedProject(
     "trusthub",
-    "06",
+    "07",
     "/images/trusthub-overview.jpg",
     buildTrusthubLocale,
   ),
   buildSeedProject(
     "policia-federal",
-    "07",
+    "08",
     "/images/policia-federal-overview.png",
     buildPoliciaFederalLocale,
   ),
-  buildSeedProject("riskai", "08", "", buildRiskaiLocale),
 ];
 
 function sectionNeedsImages(

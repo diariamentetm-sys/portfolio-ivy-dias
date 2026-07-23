@@ -240,7 +240,7 @@ export const caseStudyConfigs: Record<
         "HITSS",
       ],
       meta: [
-        { k: "Papel", v: "Service Design · Discovery" },
+        { k: "Papel", v: "CX Lead · Service Design" },
         { k: "Squad", v: "Centro de Competência CX · HITSS" },
         { k: "Cliente", v: "Petrobras" },
         { k: "Período", v: "2025" },
@@ -253,7 +253,7 @@ export const caseStudyConfigs: Record<
         { value: "6,2", label: "CES médio" },
       ],
       about: [
-        "Atuei em squad com Gabriela Faustino (CX), Ivan Gutjahr (Agile Master), Julliene Oliveira (UX), Vinícius Giorge (Consumer Insights) e Ricardo Leopoldo (Cientista de Dados) — Centro de Competência CX e Gerência de Data Analytics & IA, HITSS.",
+        "Liderei a squad como CX Lead do projeto RiskAI, no Centro de Competência CX e na Gerência de Data Analytics & IA da HITSS. O time reuniu CX, Agile Master, UX, Consumer Insights e Ciência de Dados para transformar a gestão de riscos da Petrobras.",
         "O RiskAI nasceu para unificar a gestão de riscos da Petrobras: discovery com as cinco torres, Product Canvas, blueprint TO-BE conversacional e validação com CES 6,2 — seguido de um roadmap evolutivo de 60+ épicos.",
       ],
       next: { label: "Ver: Cashlog (Raízen) →", path: "/cases/cashlog" },
@@ -469,7 +469,7 @@ export const caseStudyConfigs: Record<
         "HITSS",
       ],
       meta: [
-        { k: "Role", v: "Service Design · Discovery" },
+        { k: "Role", v: "CX Lead · Service Design" },
         { k: "Squad", v: "CX Competence Center · HITSS" },
         { k: "Client", v: "Petrobras" },
         { k: "Period", v: "2025" },
@@ -485,7 +485,7 @@ export const caseStudyConfigs: Record<
         { value: "6.2", label: "Avg. CES" },
       ],
       about: [
-        "I worked in a squad with Gabriela Faustino (CX), Ivan Gutjahr (Agile Master), Julliene Oliveira (UX), Vinícius Giorge (Consumer Insights) and Ricardo Leopoldo (Data Scientist) — CX Competence Center and Data Analytics & AI Management, HITSS.",
+        "I led the squad as CX Lead on the RiskAI project, at HITSS’s CX Competence Center and Data Analytics & AI Management. The team brought together CX, Agile Master, UX, Consumer Insights and Data Science to transform Petrobras risk management.",
         "RiskAI was built to unify Petrobras risk management: discovery across five towers, Product Canvas, conversational TO-BE blueprint and CES 6.2 validation — followed by an evolutionary roadmap of 60+ epics.",
       ],
       next: { label: "View: Cashlog (Raízen) →", path: "/cases/cashlog" },

@@ -115,8 +115,18 @@ export const en: Dictionary = {
     ],
     cases: [
       {
-        id: "cashlog",
+        id: "riskai",
         n: "01",
+        kicker: "RiskAI · Petrobras · Service Design",
+        subtitle: "CX Lead · Service Design · HITSS · 2025",
+        title: "RiskAI — Petrobras",
+        description:
+          "An intelligent assistant to unify risk management across five towers — discovery, Product Canvas, conversational TO-BE blueprint and CES 6.2 validation.",
+        path: "/cases/riskai",
+      },
+      {
+        id: "cashlog",
+        n: "02",
         kicker: "Raízen · B2B Fintech",
         subtitle: "Innovation / UX Consultant · MJV Technology",
         title: "Cashlog",
@@ -126,7 +136,7 @@ export const en: Dictionary = {
       },
       {
         id: "claro",
-        n: "02",
+        n: "03",
         kicker: "Claro AMX · Service Design",
         subtitle: "CX at Claro · CX CoE / Portal Claro.com.br",
         title: "Offer cards in e-commerce",
@@ -136,7 +146,7 @@ export const en: Dictionary = {
       },
       {
         id: "abtest",
-        n: "03",
+        n: "04",
         kicker: "Claro · CRO / Experimentation",
         subtitle: "Data-driven reasoning and business outcomes",
         title: "Data-oriented A/B tests",
@@ -146,7 +156,7 @@ export const en: Dictionary = {
       },
       {
         id: "etitulo",
-        n: "04",
+        n: "05",
         kicker: "TSE · Public digital service",
         subtitle: "CX applied to citizenship and accessibility",
         title: "e-Título onboarding",
@@ -156,7 +166,7 @@ export const en: Dictionary = {
       },
       {
         id: "bbnk",
-        n: "05",
+        n: "06",
         kicker: "BBNK · Banking as a Service",
         subtitle: "Innovation, UX & UI consultant · 2018 — 2019",
         title: "BBNK Bank",
@@ -166,7 +176,7 @@ export const en: Dictionary = {
       },
       {
         id: "trusthub",
-        n: "06",
+        n: "07",
         kicker: "TrustHub · SME digital account",
         subtitle: "UX/UI Designer · Tritone · 2017 — 2018",
         title: "TrustHub",
@@ -176,23 +186,13 @@ export const en: Dictionary = {
       },
       {
         id: "policia-federal",
-        n: "07",
+        n: "08",
         kicker: "Federal Police · Service Design",
         subtitle: "Scripting · Facilitation · Service Design · 2019",
         title: "Computer Standardization",
         description:
           "National workshop to review how the Federal Police makes computers available — from AS-IS to TO-BE, with cross-region consensus and an evolution backlog.",
         path: "/cases/policia-federal",
-      },
-      {
-        id: "riskai",
-        n: "08",
-        kicker: "RiskAI · Petrobras · Service Design",
-        subtitle: "Service Design · Discovery · HITSS · 2025",
-        title: "RiskAI — Petrobras",
-        description:
-          "An intelligent assistant to unify risk management across five towers — discovery, Product Canvas, conversational TO-BE blueprint and CES 6.2 validation.",
-        path: "/cases/riskai",
       },
     ],
   },

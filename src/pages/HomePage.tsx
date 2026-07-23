@@ -72,7 +72,8 @@ export function HomePage() {
           path: `/cases/${project.slug}`,
           category: resolveWorkCategory(project.slug, project.category),
         };
-      });
+      })
+      .sort((a, b) => a.n.localeCompare(b.n, undefined, { numeric: true }));
     const legacy = t.work.cases
       .filter((item) => !publishedSlugs.has(item.id))
       .map((item) => ({
