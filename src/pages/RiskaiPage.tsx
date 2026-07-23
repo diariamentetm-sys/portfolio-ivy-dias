@@ -107,6 +107,10 @@ function PhaseRoadmap({
 
 const pageCopy = {
   pt: {
+    overviewImageAlt:
+      "Wireframe da home do Gerenciador de riscos com AI: sidebar, cards de acesso rápido e barra de conversa com o assistente.",
+    overviewImageCaption:
+      "Wireframe da home — navegação lateral, atalhos e entrada conversacional do assistente.",
     challengeLabel: "O desafio",
     challengeTitle: "Cinco torres, um processo fragmentado",
     challengeTool: "Briefing + alinhamento de motivadores do negócio",
@@ -563,6 +567,10 @@ const pageCopy = {
       "Do desafio de unificar cinco torres fragmentadas até um roadmap de mais de 60 iniciativas futuras, o Gerenciador de riscos com AI nasceu da escuta. A validação confirmou a leitura; o roadmap garante que o produto continue evoluindo com a mesma disciplina.",
   },
   en: {
+    overviewImageAlt:
+      "Risk Manager with AI home wireframe: sidebar, quick-access cards and conversational assistant input bar.",
+    overviewImageCaption:
+      "Home wireframe — side navigation, shortcuts and conversational assistant entry.",
     challengeLabel: "The challenge",
     challengeTitle: "Five towers, one fragmented process",
     challengeTool: "Briefing + business-driver alignment",
@@ -1027,6 +1035,19 @@ export function RiskaiPage() {
 
   return (
     <CaseStudyLayout config={config}>
+      <section className="max-w-5xl mx-auto px-5 md:px-16 pb-4">
+        <figure>
+          <CaseImage
+            src="/images/gerenciador-riscos-home-skeleton.png"
+            alt={copy.overviewImageAlt}
+            priority
+          />
+          <figcaption className="mt-3 text-sm text-neutral-500 text-pretty">
+            {copy.overviewImageCaption}
+          </figcaption>
+        </figure>
+      </section>
+
       <CaseBlockSection
         label={copy.challengeLabel}
         title={copy.challengeTitle}
