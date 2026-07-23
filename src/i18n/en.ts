@@ -118,7 +118,7 @@ export const en: Dictionary = {
         id: "gerenciador-de-riscos-com-ai",
         n: "01",
         kicker: "Petrobras · Service Design",
-        subtitle: "CX Lead · Service Design · HITSS · 2025",
+        subtitle: "CX Lead · Service Design · HITSS / Claro Empresas · 2025",
         title: "RiskAI",
         description:
           "An intelligent assistant to unify risk management across five towers — discovery, Product Canvas, conversational TO-BE blueprint and CES 6.2 validation.",
