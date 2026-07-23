@@ -1209,6 +1209,7 @@ export function RiskaiPage() {
       </section>
 
       <CaseBlockSection
+        number="01"
         label={copy.challengeLabel}
         title={copy.challengeTitle}
         tool={copy.challengeTool}
@@ -1232,6 +1233,7 @@ export function RiskaiPage() {
       </CaseBlockSection>
 
       <CaseBlockSection
+        number="02"
         label={copy.discoveryLabel}
         title={copy.discoveryTitle}
         tool={copy.discoveryTool}
@@ -1264,6 +1266,7 @@ export function RiskaiPage() {
       </CaseBlockSection>
 
       <CaseBlockSection
+        number="03"
         label={copy.immersionLabel}
         title={copy.immersionTitle}
         tool={copy.immersionTool}
@@ -1319,6 +1322,7 @@ export function RiskaiPage() {
       </CaseBlockSection>
 
       <CaseBlockSection
+        number="04"
         label={copy.personasLabel}
         title={copy.personasTitle}
         tool={copy.personasTool}
@@ -1377,6 +1381,7 @@ export function RiskaiPage() {
       </CaseQuote>
 
       <CaseBlockSection
+        number="05"
         label={copy.canvasLabel}
         title={copy.canvasTitle}
         tool={copy.canvasTool}
@@ -1386,6 +1391,7 @@ export function RiskaiPage() {
       </CaseBlockSection>
 
       <CaseBlockSection
+        number="06"
         label={copy.ideationLabel}
         title={copy.ideationTitle}
         tool={copy.ideationTool}
@@ -1405,6 +1411,7 @@ export function RiskaiPage() {
       </CaseBlockSection>
 
       <CaseBlockSection
+        number="07"
         label={copy.flowsLabel}
         title={copy.flowsTitle}
         tool={copy.flowsTool}
@@ -1430,6 +1437,7 @@ export function RiskaiPage() {
       </CaseBlockSection>
 
       <CaseBlockSection
+        number="08"
         label={copy.validationLabel}
         title={copy.validationTitle}
         tool={copy.validationTool}
@@ -1483,6 +1491,7 @@ export function RiskaiPage() {
       </CaseBlockSection>
 
       <CaseBlockSection
+        number="09"
         label={copy.roadmapLabel}
         title={copy.roadmapTitle}
         tool={copy.roadmapTool}
@@ -1493,6 +1502,7 @@ export function RiskaiPage() {
       </CaseBlockSection>
 
       <CaseBlockSection
+        number="10"
         label={copy.phasesLabel}
         title={copy.phasesTitle}
         tool={copy.phasesTool}

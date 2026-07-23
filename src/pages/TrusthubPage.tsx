@@ -86,7 +86,7 @@ export function TrusthubPage() {
 
   return (
     <CaseStudyLayout config={config}>
-      <CaseBlockSection label={copy.overviewLabel} title={copy.overviewTitle}>
+      <CaseBlockSection number="01" label={copy.overviewLabel} title={copy.overviewTitle}>
         <p className="max-w-3xl body-md">{copy.overviewBody}</p>
         {heroSrc ? (
           <div className="mt-8">
@@ -101,7 +101,7 @@ export function TrusthubPage() {
         ) : null}
       </CaseBlockSection>
 
-      <CaseBlockSection label={copy.uiLabel} title={copy.uiTitle}>
+      <CaseBlockSection number="02" label={copy.uiLabel} title={copy.uiTitle}>
         <p className="max-w-3xl body-md">{copy.uiBody}</p>
         <div className="mt-8 flex flex-col gap-6">
           {PLATFORM_SCREENS.map((screen) => (

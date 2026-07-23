@@ -354,7 +354,7 @@ export function PoliciaFederalPage() {
 
   return (
     <CaseStudyLayout config={config}>
-      <CaseBlockSection label={copy.overviewLabel} title={copy.overviewTitle}>
+      <CaseBlockSection number="01" label={copy.overviewLabel} title={copy.overviewTitle}>
         <p className="max-w-3xl body-md">{copy.overviewBody}</p>
         {heroSrc ? (
           <div className="mt-8">
@@ -369,7 +369,7 @@ export function PoliciaFederalPage() {
         ) : null}
       </CaseBlockSection>
 
-      <CaseBlockSection label={copy.agendaLabel} title={copy.agendaTitle}>
+      <CaseBlockSection number="02" label={copy.agendaLabel} title={copy.agendaTitle}>
         <p className="max-w-3xl body-md">{copy.agendaBody}</p>
         <div className="mt-8 grid md:grid-cols-3 gap-4">
           {copy.agenda.map((item, index) => (
@@ -394,7 +394,7 @@ export function PoliciaFederalPage() {
         <p>{copy.challengeContext}</p>
       </CaseQuote>
 
-      <CaseBlockSection label={copy.asIsLabel} title={copy.asIsTitle}>
+      <CaseBlockSection number="03" label={copy.asIsLabel} title={copy.asIsTitle}>
         <p className="max-w-3xl body-md">{copy.asIsBody}</p>
         <div className="mt-8 grid md:grid-cols-3 gap-4">
           {copy.asIs.map((item, index) => (
@@ -408,7 +408,7 @@ export function PoliciaFederalPage() {
         </div>
       </CaseBlockSection>
 
-      <CaseBlockSection label={copy.hmwLabel} title={copy.hmwTitle}>
+      <CaseBlockSection number="04" label={copy.hmwLabel} title={copy.hmwTitle}>
         <p className="max-w-3xl body-md">{copy.hmwBody}</p>
         <div className="mt-8 grid sm:grid-cols-2 gap-4">
           {copy.hmw.map((item, index) => (
@@ -424,7 +424,7 @@ export function PoliciaFederalPage() {
         </div>
       </CaseBlockSection>
 
-      <CaseBlockSection label={copy.solutionLabel} title={copy.solutionTitle}>
+      <CaseBlockSection number="05" label={copy.solutionLabel} title={copy.solutionTitle}>
         <p className="max-w-3xl body-md">{copy.solutionBody}</p>
         <div className="mt-10 flex flex-col gap-16">
           {copy.flows.map((flow, flowIndex) => (
@@ -440,7 +440,7 @@ export function PoliciaFederalPage() {
         </div>
       </CaseBlockSection>
 
-      <CaseBlockSection label={copy.resultsLabel} title={copy.resultsTitle}>
+      <CaseBlockSection number="06" label={copy.resultsLabel} title={copy.resultsTitle}>
         <p className="max-w-3xl body-md">{copy.resultsBody}</p>
         <div className="mt-8 flex flex-wrap gap-3">
           {copy.results.map((item, index) => (
@@ -455,7 +455,7 @@ export function PoliciaFederalPage() {
         </div>
       </CaseBlockSection>
 
-      <CaseBlockSection label={copy.nextLabel} title={copy.nextTitle}>
+      <CaseBlockSection number="07" label={copy.nextLabel} title={copy.nextTitle}>
         <p className="max-w-3xl body-md">{copy.nextBody}</p>
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {copy.backlog.map((item, index) => (

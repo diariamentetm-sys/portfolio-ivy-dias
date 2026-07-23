@@ -1,4 +1,4 @@
-import { CaseImage } from "../components/cases/CaseBlocks";
+import { CaseImage, CaseSection } from "../components/cases/CaseBlocks";
 import { CaseStudyLayout } from "../components/layout/CaseStudyLayout";
 import { PostItNote, PostItTag } from "../components/ui/PostItTag";
 import { useContent } from "../content/ContentContext";
@@ -18,13 +18,14 @@ import {
 
 import type { AbTestBlock } from "../types/cases";
 
-type TestDetailProps = AbTestBlock & {
+type TestDetailProps = Pick<
+  AbTestBlock,
+  "duration" | "device" | "metric" | "result" | "resultLabel" | "image" | "imageAlt" | "imageFirst"
+> & {
   detailLabels: { duration: string; device: string; metric: string };
 };
 
 function TestDetail({
-  label,
-  title,
   duration,
   device,
   metric,
@@ -45,19 +46,13 @@ function TestDetail({
 
   const contentBlock = (
     <div className="p-8 md:p-12">
-      <PostItTag index={0} className="mb-4">
-        {label}
-      </PostItTag>
-      <h2 className="text-2xl md:text-3xl font-bold leading-snug text-neutral-950">
-        {title}
-      </h2>
-      <div className="mt-6 flex flex-wrap gap-2.5">
+      <div className="flex flex-wrap gap-2.5">
         {[
           [detailLabels.duration, duration],
           [detailLabels.device, device],
           [detailLabels.metric, metric],
         ].map(([key, value], index) => (
-          <PostItTag key={key} index={index + 1}>
+          <PostItTag key={key} index={index}>
             {`${key}: ${value}`}
           </PostItTag>
         ))}
@@ -124,20 +119,25 @@ export function AbtestPage() {
         </section>
       ) : null}
 
-      <section className="max-w-5xl mx-auto px-5 md:px-16 pb-12 md:pb-16 space-y-6">
-        {tests.map((test) => (
-          <TestDetail
-            key={test.label}
-            {...test}
-            detailLabels={page.testDetailLabels}
-          />
-        ))}
+      {tests.map((test, index) => (
+        <CaseSection
+          key={test.label}
+          number={String(index + 1).padStart(2, "0")}
+          kicker={test.label}
+          title={test.title}
+        >
+          <TestDetail {...test} detailLabels={page.testDetailLabels} />
+        </CaseSection>
+      ))}
 
-        <PostItNote index={2} className="mt-10 p-8 md:p-12">
-          <p className="text-2xl md:text-4xl font-bold leading-snug text-neutral-950 max-w-xl text-pretty">
-            {caseData.closingQuote}
-          </p>
-        </PostItNote>
+      <section className="section-narrative">
+        <div className="max-w-5xl mx-auto">
+          <PostItNote index={2} className="p-8 md:p-12">
+            <p className="text-2xl md:text-4xl font-bold leading-snug text-neutral-950 max-w-xl text-pretty">
+              {caseData.closingQuote}
+            </p>
+          </PostItNote>
+        </div>
       </section>
     </CaseStudyLayout>
   );

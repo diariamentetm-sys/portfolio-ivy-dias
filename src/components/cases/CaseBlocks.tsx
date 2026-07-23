@@ -6,6 +6,8 @@ type CaseSectionProps = {
   title: string;
   children: ReactNode;
   inverted?: boolean;
+  tool?: string;
+  toolLabel?: string;
 };
 
 export function CaseSection({
@@ -14,48 +16,78 @@ export function CaseSection({
   title,
   children,
   inverted = false,
+  tool,
+  toolLabel = "Ferramenta",
 }: CaseSectionProps) {
   return (
     <section
       className={`section-narrative ${inverted ? "section-inverted border-neutral-800" : ""}`}
     >
-      <div className="max-w-5xl mx-auto grid grid-cols-[minmax(0,80px)_1fr] md:grid-cols-[minmax(0,120px)_1fr] gap-4 md:gap-10">
-        <div
-          className={`text-5xl md:text-7xl font-extrabold leading-[0.8] ${
-            inverted ? "text-white/10" : "text-neutral-200"
-          }`}
-        >
-          {number}
-        </div>
-        <div>
-          <p className={`eyebrow mb-3.5 ${inverted ? "text-white/50" : "text-accent"}`}>
-            {kicker}
-          </p>
-          <h2
-            className={`text-section-title max-w-3xl ${
-              inverted ? "text-white" : "text-neutral-950"
+      <div className="max-w-5xl mx-auto">
+        <div className="grid grid-cols-[minmax(0,80px)_1fr] md:grid-cols-[minmax(0,120px)_1fr] gap-4 md:gap-10">
+          <div
+            className={`text-5xl md:text-7xl font-extrabold leading-[0.8] ${
+              inverted ? "text-white/10" : "text-neutral-200"
             }`}
           >
-            {title}
-          </h2>
-          <div className="mt-5">{children}</div>
+            {number}
+          </div>
+          <div className="min-w-0">
+            <p className={`eyebrow mb-3.5 ${inverted ? "text-white/50" : "text-accent"}`}>
+              {kicker}
+            </p>
+            <h2
+              className={`text-section-title ${
+                inverted ? "text-white" : "text-neutral-950"
+              }`}
+            >
+              {title}
+            </h2>
+            {tool ? (
+              <p
+                className={`mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm ${
+                  inverted ? "text-white/65" : "text-neutral-600"
+                }`}
+              >
+                <span
+                  className={`eyebrow shrink-0 ${inverted ? "text-white/45" : "text-neutral-500"}`}
+                >
+                  {toolLabel}
+                </span>
+                <span className="font-medium text-pretty">{tool}</span>
+              </p>
+            ) : null}
+          </div>
         </div>
+        <div className="mt-8">{children}</div>
       </div>
     </section>
   );
 }
 
+/** Parses "01 / 04 · Overview" (or "01 · Overview") into number + kicker. */
+export function splitCaseLabel(label: string): { number?: string; kicker: string } {
+  const withTotal = label.match(/^(\d{2})\s*\/\s*\d{2}\s*[·•\-–—]\s*(.+)$/u);
+  if (withTotal) return { number: withTotal[1], kicker: withTotal[2].trim() };
+  const plain = label.match(/^(\d{2})\s*[·•\-–—]\s*(.+)$/u);
+  if (plain) return { number: plain[1], kicker: plain[2].trim() };
+  return { kicker: label };
+}
+
 type CaseBlockSectionProps = {
+  /** Section index, e.g. "01". Optional when `label` already starts with "01 / … ·". */
+  number?: string;
   label: string;
   title: string;
   children: ReactNode;
   inverted?: boolean;
-  /** Design tool / method that produced this section extract */
   tool?: string;
   toolLabel?: string;
 };
 
+/** Same diagramation as CaseSection — kept for pages that still pass a combined label. */
 export function CaseBlockSection({
+  number,
   label,
   title,
   children,
@@ -63,38 +95,25 @@ export function CaseBlockSection({
   tool,
   toolLabel = "Ferramenta",
 }: CaseBlockSectionProps) {
+  const parsed = splitCaseLabel(label);
+  const resolvedNumber = number ?? parsed.number;
+  if (!resolvedNumber) {
+    throw new Error(
+      `CaseBlockSection "${label}" needs a number prop (e.g. number="01").`,
+    );
+  }
+
   return (
-    <section
-      className={`section-narrative ${inverted ? "section-inverted border-neutral-800" : ""}`}
+    <CaseSection
+      number={resolvedNumber}
+      kicker={parsed.number ? parsed.kicker : label}
+      title={title}
+      inverted={inverted}
+      tool={tool}
+      toolLabel={toolLabel}
     >
-      <div className="max-w-5xl mx-auto">
-        <p className={`eyebrow mb-3.5 ${inverted ? "text-white/50" : ""}`}>
-          {label}
-        </p>
-        <h2
-          className={`text-section-title max-w-2xl ${
-            inverted ? "text-white" : "text-neutral-950"
-          }`}
-        >
-          {title}
-        </h2>
-        {tool ? (
-          <p
-            className={`mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm ${
-              inverted ? "text-white/65" : "text-neutral-600"
-            }`}
-          >
-            <span
-              className={`eyebrow shrink-0 ${inverted ? "text-white/45" : "text-neutral-500"}`}
-            >
-              {toolLabel}
-            </span>
-            <span className="font-medium text-pretty">{tool}</span>
-          </p>
-        ) : null}
-        <div className="mt-8">{children}</div>
-      </div>
-    </section>
+      {children}
+    </CaseSection>
   );
 }
 

@@ -23,7 +23,7 @@ import {
 } from "../utils/projectMedia";
 
 /** Bump whenever the Cashlog embed is rebuilt — forces a fresh iframe shell. */
-const EMBED_SRC = "/embeds/cashlog/index.html?v=20260723";
+const EMBED_SRC = "/embeds/cashlog/index.html?v=20260723e";
 
 const statStyles = [
   { tone: "post-it-mint" as const, rotate: "rotate-1" },
