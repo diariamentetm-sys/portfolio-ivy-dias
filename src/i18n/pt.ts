@@ -297,6 +297,7 @@ export const pt: Dictionary = {
     back: "← Voltar aos trabalhos",
     allWork: "← Todos os trabalhos",
     aboutProject: "Sobre o projeto",
+    alsoSee: "Veja também",
   },
   admin: {
     title: "Admin do portfólio",

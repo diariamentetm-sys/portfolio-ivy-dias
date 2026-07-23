@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { useContent } from "../../content/ContentContext";
 import { useLocale } from "../../i18n/LocaleContext";
+import { getCasePageSeo } from "../../seo/pageMeta";
 import { buildCaseJsonLd } from "../../seo/siteConfig";
 import type { CaseStudyConfig } from "../../types/portfolio";
 import { getManagedProject } from "../../utils/projectMedia";
@@ -24,27 +25,33 @@ export function CaseStudyLayout({
   const { locale, t } = useLocale();
   const { content } = useContent();
   const project = getManagedProject(content.projects, config.id);
+  const pageSeo = getCasePageSeo(config.id, locale);
   const resolvedOgImage =
-    ogImage?.trim() || project?.overviewImage?.trim() || undefined;
-  const fullTitle = `${config.title}${config.titleAccent ?? ""}`.trim();
-  const description =
-    config.about.find((paragraph) => paragraph.trim().length > 40)?.trim() ||
+    pageSeo?.ogImage?.trim() ||
+    ogImage?.trim() ||
+    project?.overviewImage?.trim() ||
+    undefined;
+  const seoTitle = pageSeo?.title ?? `${config.title}${config.titleAccent ?? ""}`.trim();
+  const seoDescription =
+    pageSeo?.description ??
+    config.about.find((paragraph) => paragraph.trim().length > 40)?.trim() ??
     config.subtitle;
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-950">
       <SeoHead
-        title={fullTitle}
-        description={description}
+        title={seoTitle}
+        description={seoDescription}
         path={config.path}
         image={resolvedOgImage}
         type="article"
         locale={locale}
         jsonLd={buildCaseJsonLd({
-          title: fullTitle,
-          description,
+          title: seoTitle,
+          description: seoDescription,
           path: config.path,
           image: resolvedOgImage,
+          locale,
         })}
       />
 
@@ -126,19 +133,39 @@ export function CaseStudyLayout({
         </article>
 
         <nav
-          className="max-w-5xl mx-auto px-5 md:px-16 py-12 flex flex-wrap gap-3 border-t border-neutral-200"
+          className="max-w-5xl mx-auto px-5 md:px-16 py-12 border-t border-neutral-200"
           aria-label={
             locale === "en" ? "Related work" : "Trabalhos relacionados"
           }
         >
-          <Link to="/#trabalhos" className="btn-ghost">
-            {t.caseChrome.allWork}
-          </Link>
-          {config.next && (
-            <Link to={config.next.path} className="btn-primary">
-              {config.next.label}
+          <div className="flex flex-wrap gap-3">
+            <Link to="/#trabalhos" className="btn-ghost">
+              {t.caseChrome.allWork}
             </Link>
-          )}
+            {config.next && (
+              <Link to={config.next.path} className="btn-primary">
+                {config.next.label}
+              </Link>
+            )}
+          </div>
+          {pageSeo?.related?.length ? (
+            <p className="mt-6 text-sm text-neutral-500">
+              <span className="font-medium text-neutral-700">
+                {t.caseChrome.alsoSee}:{" "}
+              </span>
+              {pageSeo.related.map((item, index) => (
+                <span key={item.path}>
+                  {index > 0 ? " · " : null}
+                  <Link
+                    to={item.path}
+                    className="text-neutral-700 underline-offset-2 hover:text-accent hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  >
+                    {item.label}
+                  </Link>
+                </span>
+              ))}
+            </p>
+          ) : null}
         </nav>
       </main>
 

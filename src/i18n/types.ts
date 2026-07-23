@@ -108,6 +108,7 @@ export type Dictionary = {
     back: string;
     allWork: string;
     aboutProject: string;
+    alsoSee: string;
   };
   admin: {
     title: string;

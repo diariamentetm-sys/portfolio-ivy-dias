@@ -294,6 +294,7 @@ export const en: Dictionary = {
     back: "← Back to work",
     allWork: "← All work",
     aboutProject: "About the project",
+    alsoSee: "Also see",
   },
   admin: {
     title: "Portfolio admin",

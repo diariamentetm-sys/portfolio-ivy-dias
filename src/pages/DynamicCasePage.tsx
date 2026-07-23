@@ -5,6 +5,7 @@ import { SeoHead } from "../components/seo/SeoHead";
 import { PostItTag } from "../components/ui/PostItTag";
 import { useContent } from "../content/ContentContext";
 import { useLocale } from "../i18n/LocaleContext";
+import { getCasePageSeo } from "../seo/pageMeta";
 import { buildCaseJsonLd } from "../seo/siteConfig";
 
 export function DynamicCasePage() {
@@ -21,11 +22,16 @@ export function DynamicCasePage() {
   }
 
   const copy = project[locale];
-  const fullTitle = `${copy.title}${copy.titleAccent ?? ""}`.trim();
+  const pageSeo = getCasePageSeo(project.slug, locale);
+  const fullTitle =
+    pageSeo?.title ?? `${copy.title}${copy.titleAccent ?? ""}`.trim();
   const description =
-    copy.about.find((paragraph) => paragraph.trim().length > 40)?.trim() ||
+    pageSeo?.description ??
+    copy.about.find((paragraph) => paragraph.trim().length > 40)?.trim() ??
     copy.description;
   const path = `/cases/${project.slug}`;
+  const ogImage =
+    pageSeo?.ogImage?.trim() || project.overviewImage?.trim() || undefined;
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-950">
@@ -33,14 +39,15 @@ export function DynamicCasePage() {
         title={fullTitle}
         description={description}
         path={path}
-        image={project.overviewImage}
+        image={ogImage}
         type="article"
         locale={locale}
         jsonLd={buildCaseJsonLd({
           title: fullTitle,
           description,
           path,
-          image: project.overviewImage,
+          image: ogImage,
+          locale,
         })}
       />
 
@@ -110,10 +117,16 @@ export function DynamicCasePage() {
             <section className="max-w-5xl mx-auto px-5 md:px-16 pb-4">
               <img
                 src={project.overviewImage}
-                alt={copy.title}
+                alt={
+                  locale === "en"
+                    ? `${fullTitle.replace(/\s*\|\s*Ivy DC\s*$/i, "").trim()} case overview`
+                    : `Visão geral do case ${copy.title}${copy.titleAccent ?? ""}`
+                }
                 className="block h-auto w-full rounded-2xl shadow-card bg-white"
                 loading="eager"
                 decoding="async"
+                width={1600}
+                height={900}
               />
             </section>
           ) : null}
@@ -144,14 +157,34 @@ export function DynamicCasePage() {
         </article>
 
         <nav
-          className="max-w-5xl mx-auto px-5 md:px-16 py-12 flex flex-wrap gap-3 border-t border-neutral-200"
+          className="max-w-5xl mx-auto px-5 md:px-16 py-12 border-t border-neutral-200"
           aria-label={
             locale === "en" ? "Related work" : "Trabalhos relacionados"
           }
         >
-          <Link to="/#trabalhos" className="btn-ghost">
-            {t.caseChrome.allWork}
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <Link to="/#trabalhos" className="btn-ghost">
+              {t.caseChrome.allWork}
+            </Link>
+          </div>
+          {pageSeo?.related?.length ? (
+            <p className="mt-6 text-sm text-neutral-500">
+              <span className="font-medium text-neutral-700">
+                {t.caseChrome.alsoSee}:{" "}
+              </span>
+              {pageSeo.related.map((item, index) => (
+                <span key={item.path}>
+                  {index > 0 ? " · " : null}
+                  <Link
+                    to={item.path}
+                    className="text-neutral-700 underline-offset-2 hover:text-accent hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  >
+                    {item.label}
+                  </Link>
+                </span>
+              ))}
+            </p>
+          ) : null}
         </nav>
       </main>
 

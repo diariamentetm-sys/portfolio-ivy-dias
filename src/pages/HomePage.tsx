@@ -15,10 +15,8 @@ import {
 } from "../data/workCategories";
 import { useLocale } from "../i18n/LocaleContext";
 import { sendContactMessage } from "../lib/sendContact";
-import {
-  buildPersonWebsiteJsonLd,
-  homeSeoByLocale,
-} from "../seo/siteConfig";
+import { homePageSeo } from "../seo/pageMeta";
+import { buildPersonWebsiteJsonLd } from "../seo/siteConfig";
 
 const heroTagStyles = [
   { tone: "post-it-yellow", rotate: "-rotate-2" },
@@ -123,13 +121,17 @@ export function HomePage() {
   return (
     <div className="bg-neutral-50 relative">
       <SeoHead
-        title={homeSeoByLocale[locale].title}
-        description={homeSeoByLocale[locale].description}
+        title={homePageSeo[locale].title}
+        description={homePageSeo[locale].description}
         path="/"
-        image={content.heroImage}
+        image={homePageSeo[locale].ogImage ?? content.heroImage}
         type="website"
         locale={locale}
-        jsonLd={buildPersonWebsiteJsonLd(locale)}
+        jsonLd={buildPersonWebsiteJsonLd({
+          locale,
+          title: homePageSeo[locale].title,
+          description: homePageSeo[locale].description,
+        })}
       />
       <a
         href="#conteudo"

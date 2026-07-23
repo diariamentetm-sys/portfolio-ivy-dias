@@ -118,6 +118,8 @@ export function CaseImage({
   fill = false,
   aspect = "aspect-video",
   priority = false,
+  width,
+  height,
 }: {
   src: string;
   alt: string;
@@ -125,6 +127,8 @@ export function CaseImage({
   fill?: boolean;
   aspect?: string;
   priority?: boolean;
+  width?: number;
+  height?: number;
 }) {
   if (fill) {
     return (
@@ -137,6 +141,8 @@ export function CaseImage({
           className="absolute inset-0 block h-full w-full object-cover object-center"
           loading={priority ? "eager" : "lazy"}
           decoding="async"
+          width={width}
+          height={height}
         />
       </div>
     );
@@ -149,6 +155,8 @@ export function CaseImage({
       className={`block h-auto w-full rounded-2xl shadow-card bg-white ${className}`}
       loading={priority ? "eager" : "lazy"}
       decoding="async"
+      width={width ?? 1600}
+      height={height ?? 900}
     />
   );
 }

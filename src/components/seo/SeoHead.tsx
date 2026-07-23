@@ -2,27 +2,11 @@ import { useEffect } from "react";
 import {
   absoluteImageUrl,
   absoluteUrl,
-  SITE_NAME,
+  SITE_BRAND,
   TWITTER_HANDLE,
   type SeoPageConfig,
 } from "../../seo/siteConfig";
-
-const MANAGED_META = [
-  "description",
-  "robots",
-  "og:title",
-  "og:description",
-  "og:url",
-  "og:type",
-  "og:image",
-  "og:site_name",
-  "og:locale",
-  "twitter:card",
-  "twitter:title",
-  "twitter:description",
-  "twitter:image",
-  "twitter:site",
-] as const;
+import { withIvyDcTitle } from "../../seo/pageMeta";
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(
@@ -75,18 +59,19 @@ export function SeoHead({
   useEffect(() => {
     const url = absoluteUrl(path);
     const imageUrl = absoluteImageUrl(image);
-    const fullTitle = title.includes(SITE_NAME) ? title : `${title} · ${SITE_NAME}`;
+    const fullTitle = withIvyDcTitle(title);
 
     document.title = fullTitle;
 
     upsertMeta("name", "description", description);
     upsertMeta("name", "robots", robots);
+    upsertMeta("name", "author", "Ivy Dias de Campos");
     upsertMeta("property", "og:title", fullTitle);
     upsertMeta("property", "og:description", description);
     upsertMeta("property", "og:url", url);
     upsertMeta("property", "og:type", type);
     upsertMeta("property", "og:image", imageUrl);
-    upsertMeta("property", "og:site_name", SITE_NAME);
+    upsertMeta("property", "og:site_name", SITE_BRAND);
     upsertMeta(
       "property",
       "og:locale",
@@ -103,23 +88,7 @@ export function SeoHead({
     if (jsonLd) {
       upsertJsonLd("seo-json-ld", Array.isArray(jsonLd) ? jsonLd : [jsonLd]);
     }
-
-    return () => {
-      // Keep last page tags; next route will overwrite. Remove JSON-LD if none provided next.
-    };
   }, [title, description, path, image, type, robots, jsonLd, locale]);
 
   return null;
-}
-
-/** Ensures default head tags exist even before React hydrates a route. */
-export function ensureBaselineHeadTags() {
-  for (const key of MANAGED_META) {
-    const attr = key.startsWith("og:") ? "property" : "name";
-    if (!document.head.querySelector(`meta[${attr}="${key}"]`)) {
-      const el = document.createElement("meta");
-      el.setAttribute(attr, key);
-      document.head.appendChild(el);
-    }
-  }
 }
