@@ -1,5 +1,6 @@
 import { FormEvent, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { QuotesCarousel } from "../components/cases/QuotesCarousel";
 import { Footer } from "../components/layout/Footer";
 import { Navbar } from "../components/layout/Navbar";
 import { SpecialtyStack } from "../components/home/SpecialtyStack";
@@ -362,79 +363,28 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="depoimentos" className="section-narrative">
-        <div className="max-w-7xl mx-auto">
+      <section id="depoimentos" className="section-narrative !py-0">
+        <div className="max-w-7xl mx-auto px-5 md:px-8 pt-16 md:pt-24 pb-8">
           <Reveal className="max-w-3xl">
             <p className="eyebrow mb-5">{t.testimonials.eyebrow}</p>
             <h2 className="section-h2">{t.testimonials.title}</h2>
             <p className="mt-5 body-md">{t.testimonials.intro}</p>
           </Reveal>
+        </div>
 
-          <div className="mt-14 flex flex-col gap-5">
-            {testimonials
-              .filter((item) => item.featured)
-              .map((item) => (
-                <Reveal key={item.name}>
-                  <blockquote className="card p-8 md:p-12 lg:p-14">
-                    <div className="lg:grid lg:grid-cols-12 lg:gap-12 lg:items-end">
-                      <div className="lg:col-span-8">
-                        <span
-                          aria-hidden
-                          className="font-serif text-6xl md:text-7xl leading-none text-accent select-none"
-                        >
-                          “
-                        </span>
-                        <p className="mt-4 text-lg md:text-xl leading-relaxed text-neutral-600 text-pretty">
-                          {item.quote}
-                        </p>
-                      </div>
-                      <footer className="mt-8 lg:mt-0 lg:col-span-4 lg:border-l lg:border-neutral-200 lg:pl-10">
-                        <cite className="not-italic">
-                          <p className="text-lg font-semibold text-neutral-950">
-                            {item.name}
-                          </p>
-                          <p className="eyebrow mt-2 normal-case tracking-normal text-neutral-500">
-                            {item.role}
-                          </p>
-                        </cite>
-                      </footer>
-                    </div>
-                  </blockquote>
-                </Reveal>
-              ))}
+        <QuotesCarousel
+          label={t.testimonials.carouselLabel}
+          quotes={testimonials.map((item) => ({
+            text: item.quote,
+            name: item.name,
+            role: item.role,
+          }))}
+          prevLabel={t.testimonials.prevLabel}
+          nextLabel={t.testimonials.nextLabel}
+        />
 
-            <div className="grid md:grid-cols-2 gap-5">
-              {testimonials
-                .filter((item) => !item.featured)
-                .map((item, index) => (
-                  <Reveal key={item.name} delay={index * 60}>
-                    <blockquote className="card h-full p-8 md:p-10 flex flex-col">
-                      <span
-                        aria-hidden
-                        className="font-serif text-5xl leading-none text-accent select-none"
-                      >
-                        “
-                      </span>
-                      <p className="mt-4 flex-1 text-[15px] leading-relaxed text-neutral-600 text-pretty">
-                        {item.quote}
-                      </p>
-                      <footer className="mt-8 pt-6 border-t border-neutral-200">
-                        <cite className="not-italic">
-                          <p className="text-base font-semibold text-neutral-950">
-                            {item.name}
-                          </p>
-                          <p className="eyebrow mt-2 normal-case tracking-normal text-neutral-500">
-                            {item.role}
-                          </p>
-                        </cite>
-                      </footer>
-                    </blockquote>
-                  </Reveal>
-                ))}
-            </div>
-          </div>
-
-          <Reveal className="mt-10">
+        <div className="max-w-7xl mx-auto px-5 md:px-8 pb-16 md:pb-24 pt-8">
+          <Reveal>
             <a
               href="https://www.linkedin.com/in/ivydiasdecampos"
               target="_blank"

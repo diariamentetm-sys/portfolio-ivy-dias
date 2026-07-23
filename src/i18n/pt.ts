@@ -201,6 +201,9 @@ export const pt: Dictionary = {
     title: "O que colegas e parceiros dizem sobre trabalhar comigo.",
     intro:
       "Recomendações recebidas no LinkedIn ao longo de mais de duas décadas de colaboração em produto, design e tecnologia.",
+    carouselLabel: "O que colegas e parceiros dizem:",
+    prevLabel: "Depoimento anterior",
+    nextLabel: "Próximo depoimento",
     linkedinCta: "Ver recomendações no LinkedIn →",
     items: [
       {

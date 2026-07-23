@@ -201,6 +201,9 @@ export const en: Dictionary = {
     title: "What colleagues and partners say about working with me.",
     intro:
       "LinkedIn recommendations gathered across more than two decades of collaboration in product, design and technology.",
+    carouselLabel: "What colleagues and partners say:",
+    prevLabel: "Previous testimonial",
+    nextLabel: "Next testimonial",
     linkedinCta: "See recommendations on LinkedIn →",
     items: [
       {

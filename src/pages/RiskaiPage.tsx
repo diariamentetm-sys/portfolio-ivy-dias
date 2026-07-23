@@ -1,7 +1,6 @@
 import { CaseBlockSection, CaseImage, CaseQuote } from "../components/cases/CaseBlocks";
 import { CasePasswordGate } from "../components/cases/CasePasswordGate";
 import { ProductCanvas } from "../components/cases/ProductCanvas";
-import { QuotesCarousel } from "../components/cases/QuotesCarousel";
 import { ServiceBlueprint } from "../components/cases/ServiceBlueprint";
 import { CaseStudyLayout } from "../components/layout/CaseStudyLayout";
 import { PostItNote, PostItTag } from "../components/ui/PostItTag";
@@ -514,37 +513,13 @@ const pageCopy = {
           "Sem compreensão rápida do “o que é / para que serve”, a navegação trava — reforçar onboarding conceitual.",
       },
     ],
-    quotesSectionLabel: "Depoimentos",
-    quotesSectionTitle: "O que os participantes disseram",
-    quotesLabel: "O que os participantes disseram:",
-    quotesPrev: "Depoimento anterior",
-    quotesNext: "Próximo depoimento",
+    quotesLabel: "Falas espontâneas",
     quotes: [
-      {
-        text: "Foi muito tranquilo, foi uma navegação muito bacana e tô bem contente com as percepções.",
-        name: "Humberto",
-        role: "Participante · Validação CES",
-      },
-      {
-        text: "No geral, minha percepção é muito igual ao ChatGPT… e isso é bom, porque é o que a gente já usa.",
-        name: "Cassiano",
-        role: "Participante · Validação CES",
-      },
-      {
-        text: "É uma forma rápida de obter informações relacionadas às inspeções de seguro.",
-        name: "Lucas",
-        role: "Participante · Validação CES",
-      },
-      {
-        text: "É intuitivo — vocês estão com uma solução que é bem intuitiva.",
-        name: "Felipe",
-        role: "Participante · Validação CES",
-      },
-      {
-        text: "Não vejo dificuldades de usar a interface.",
-        name: "Daniel",
-        role: "Participante · Validação CES",
-      },
+      "Foi muito tranquilo, foi uma navegação muito bacana e tô bem contente com as percepções.",
+      "No geral, minha percepção é muito igual ao ChatGPT… e isso é bom, porque é o que a gente já usa.",
+      "É uma forma rápida de obter informações relacionadas às inspeções de seguro.",
+      "É intuitivo — vocês estão com uma solução que é bem intuitiva.",
+      "Não vejo dificuldades de usar a interface.",
     ],
     validationInsight:
       "O RiskAI saiu validado em essência. As fricções não estavam no valor da solução, e sim na necessidade de reforçar clareza conceitual, orientação de navegação e transparência da informação para perfis mais conservadores.",
@@ -1044,37 +1019,13 @@ const pageCopy = {
           "Without a quick grasp of “what it is / what it’s for”, navigation stalls — strengthen conceptual onboarding.",
       },
     ],
-    quotesSectionLabel: "Testimonials",
-    quotesSectionTitle: "What participants said",
-    quotesLabel: "What participants said:",
-    quotesPrev: "Previous quote",
-    quotesNext: "Next quote",
+    quotesLabel: "Spontaneous quotes",
     quotes: [
-      {
-        text: "It was very smooth — really nice navigation and I’m happy with the perceptions.",
-        name: "Humberto",
-        role: "Participant · CES validation",
-      },
-      {
-        text: "Overall my perception is a lot like ChatGPT… and that’s good, because it’s what we already use.",
-        name: "Cassiano",
-        role: "Participant · CES validation",
-      },
-      {
-        text: "It’s a fast way to get information related to insurance inspections.",
-        name: "Lucas",
-        role: "Participant · CES validation",
-      },
-      {
-        text: "It’s intuitive — you have a solution that’s really intuitive.",
-        name: "Felipe",
-        role: "Participant · CES validation",
-      },
-      {
-        text: "I don’t see difficulties using the interface.",
-        name: "Daniel",
-        role: "Participant · CES validation",
-      },
+      "It was very smooth — really nice navigation and I’m happy with the perceptions.",
+      "Overall my perception is a lot like ChatGPT… and that’s good, because it’s what we already use.",
+      "It’s a fast way to get information related to insurance inspections.",
+      "It’s intuitive — you have a solution that’s really intuitive.",
+      "I don’t see difficulties using the interface.",
     ],
     validationInsight:
       "RiskAI left validated in essence. Friction wasn’t in the solution’s value, but in reinforcing conceptual clarity, navigation guidance and information transparency for more conservative profiles.",
@@ -1474,21 +1425,19 @@ export function RiskaiPage() {
             />
           ))}
         </div>
+        <p className="eyebrow mt-12 mb-4 text-accent">{copy.quotesLabel}</p>
+        <div className="grid sm:grid-cols-2 gap-3">
+          {copy.quotes.map((quote, index) => (
+            <PostItNote key={quote} index={index} tone="post-it-peach" compact>
+              <p className="text-sm leading-relaxed text-neutral-900 italic text-pretty">
+                “{quote}”
+              </p>
+            </PostItNote>
+          ))}
+        </div>
         <p className="mt-10 max-w-3xl body-md font-medium text-neutral-950">
           {copy.validationInsight}
         </p>
-      </CaseBlockSection>
-
-      <CaseBlockSection
-        label={copy.quotesSectionLabel}
-        title={copy.quotesSectionTitle}
-      >
-        <QuotesCarousel
-          label={copy.quotesLabel}
-          quotes={copy.quotes}
-          prevLabel={copy.quotesPrev}
-          nextLabel={copy.quotesNext}
-        />
       </CaseBlockSection>
 
       <CaseBlockSection

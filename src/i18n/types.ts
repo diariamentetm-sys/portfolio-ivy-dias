@@ -69,6 +69,9 @@ export type Dictionary = {
     eyebrow: string;
     title: string;
     intro: string;
+    carouselLabel: string;
+    prevLabel: string;
+    nextLabel: string;
     linkedinCta: string;
     items: {
       name: string;

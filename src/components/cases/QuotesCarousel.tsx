@@ -33,7 +33,7 @@ export function QuotesCarousel({
   if (!total) return null;
 
   const current = quotes[index];
-  const counter = `${String(index + 1).padStart(1, "0")} / ${total}`;
+  const counter = `${index + 1} / ${total}`;
 
   function goPrev() {
     setIndex((value) => (value - 1 + total) % total);
@@ -44,8 +44,8 @@ export function QuotesCarousel({
   }
 
   return (
-    <div className="mt-8 bg-neutral-100/90 -mx-5 px-5 py-10 md:mx-0 md:rounded-2xl md:px-10 md:py-14">
-      <div className="grid gap-8 md:grid-cols-[auto_minmax(0,1fr)] md:gap-12 lg:gap-20 items-start">
+    <div className="bg-[#f2f2f2] px-5 py-12 md:px-10 md:py-16 lg:py-20">
+      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[auto_minmax(0,1fr)] md:gap-14 lg:gap-20 items-start">
         <div className="flex gap-2 md:pt-1">
           <button
             type="button"
@@ -69,7 +69,7 @@ export function QuotesCarousel({
           </button>
         </div>
 
-        <div className="min-w-0 md:max-w-3xl md:ml-auto md:mr-0 lg:max-w-4xl">
+        <div className="min-w-0 md:max-w-3xl lg:max-w-4xl md:justify-self-end">
           <p className="font-mono text-xs tracking-[0.08em] text-accent">
             <span className="tabular-nums">{counter}</span>
             <span className="mx-2">·</span>
@@ -77,7 +77,7 @@ export function QuotesCarousel({
           </p>
 
           <blockquote key={current.text} className="mt-6 md:mt-8">
-            <p className="text-[1.65rem] sm:text-3xl md:text-4xl lg:text-[2.75rem] font-bold leading-[1.15] tracking-tight text-neutral-950 text-pretty">
+            <p className="text-[1.65rem] sm:text-3xl md:text-4xl lg:text-[2.65rem] font-bold leading-[1.15] tracking-tight text-neutral-950 text-pretty">
               “{current.text}”
             </p>
           </blockquote>
@@ -93,7 +93,9 @@ export function QuotesCarousel({
               <p className="text-base font-medium text-neutral-950">
                 {current.name}
               </p>
-              <p className="text-sm text-neutral-500">{current.role}</p>
+              <p className="text-sm text-neutral-500 text-pretty">
+                {current.role}
+              </p>
             </div>
           </div>
         </div>
