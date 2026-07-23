@@ -81,26 +81,37 @@ function PhaseRoadmap({
   }[];
 }) {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="grid gap-6 md:grid-cols-3 md:gap-5 lg:gap-6">
       {phases.map((phase, phaseIndex) => (
-        <div key={phase.n}>
-          <div className="flex flex-wrap items-end gap-3 mb-4">
-            <p className="font-mono text-xs text-accent">{phase.n}</p>
-            <h3 className="text-xl font-bold text-neutral-950">{phase.title}</h3>
-          </div>
-          <p className="max-w-3xl body-md mb-5">{phase.goal}</p>
-          <div className="flex flex-wrap gap-3">
+        <article
+          key={phase.n}
+          className="flex flex-col border-t-2 border-neutral-950 pt-5"
+        >
+          <p className="font-mono text-xs tracking-wide text-accent">
+            {phase.n}
+          </p>
+          <h3 className="mt-2 text-lg font-bold leading-snug text-neutral-950 text-pretty">
+            {phase.title}
+          </h3>
+          <p className="mt-3 text-sm leading-relaxed text-neutral-700 text-pretty">
+            {phase.goal}
+          </p>
+          <ul className="mt-5 flex flex-1 flex-col gap-2.5">
             {phase.items.map((item, index) => (
-              <PostItTag
-                key={item}
-                index={phaseIndex + index}
-                className="max-w-full whitespace-normal text-left leading-snug"
-              >
-                {item}
-              </PostItTag>
+              <li key={item}>
+                <PostItNote
+                  index={phaseIndex + index}
+                  compact
+                  className="!rotate-0 w-full"
+                >
+                  <p className="text-sm leading-snug text-neutral-950 text-pretty">
+                    {item}
+                  </p>
+                </PostItNote>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </article>
       ))}
     </div>
   );
@@ -109,7 +120,7 @@ function PhaseRoadmap({
 const pageCopy = {
   pt: {
     overviewImageAlt:
-      "Wireframe da home do Gerenciador de riscos com AI: sidebar, cards de acesso rápido e barra de conversa com o assistente.",
+      "Wireframe da home do RiskAI: sidebar, cards de acesso rápido e barra de conversa com o assistente.",
     overviewImageCaption:
       "Wireframe da home — navegação lateral, atalhos e entrada conversacional do assistente.",
     challengeLabel: "O desafio",
@@ -301,7 +312,7 @@ const pageCopy = {
     canvasLabel: "Product Canvas",
     canvasTitle: "Doze blocos para dar corpo à visão",
     canvasTool: "Product Canvas (12 blocos)",
-    canvasName: "Gerenciador de riscos com AI · Product Canvas",
+    canvasName: "RiskAI · Product Canvas",
     canvas: [
       {
         label: "Segmento de usuário",
@@ -313,7 +324,7 @@ const pageCopy = {
       },
       {
         label: "Canais",
-        body: "Interface conversacional do Gerenciador de riscos com AI integrada a SAP, normativos, relatórios e bases RAG no desktop corporativo.",
+        body: "Interface conversacional do RiskAI integrada a SAP, normativos, relatórios e bases RAG no desktop corporativo.",
       },
       {
         label: "Engajamento",
@@ -511,7 +522,7 @@ const pageCopy = {
       "Não vejo dificuldades de usar a interface.",
     ],
     validationInsight:
-      "O Gerenciador de riscos com AI saiu validado em essência. As fricções não estavam no valor da solução, e sim na necessidade de reforçar clareza conceitual, orientação de navegação e transparência da informação para perfis mais conservadores.",
+      "O RiskAI saiu validado em essência. As fricções não estavam no valor da solução, e sim na necessidade de reforçar clareza conceitual, orientação de navegação e transparência da informação para perfis mais conservadores.",
     roadmapLabel: "Melhoria contínua",
     roadmapTitle: "Sete ondas até a visão futura",
     roadmapTool: "Matriz impacto × esforço · Sequenciamento de épicos",
@@ -612,11 +623,11 @@ const pageCopy = {
     closeQuote:
       "A tecnologia só ajuda de verdade quando resolve a dor de quem está no dia a dia — seja o Humberto que só confia no que já é padrão, seja o Eduardo que só quer parar de brigar com PDFs.",
     closeBody:
-      "Do desafio de unificar cinco torres fragmentadas até um roadmap de mais de 60 iniciativas futuras, o Gerenciador de riscos com AI nasceu da escuta. A validação confirmou a leitura; o roadmap garante que o produto continue evoluindo com a mesma disciplina.",
+      "Do desafio de unificar cinco torres fragmentadas até um roadmap de mais de 60 iniciativas futuras, o RiskAI nasceu da escuta. A validação confirmou a leitura; o roadmap garante que o produto continue evoluindo com a mesma disciplina.",
   },
   en: {
     overviewImageAlt:
-      "Risk Manager with AI home wireframe: sidebar, quick-access cards and conversational assistant input bar.",
+      "RiskAI home wireframe: sidebar, quick-access cards and conversational assistant input bar.",
     overviewImageCaption:
       "Home wireframe — side navigation, shortcuts and conversational assistant entry.",
     challengeLabel: "The challenge",
@@ -807,7 +818,7 @@ const pageCopy = {
     canvasLabel: "Product Canvas",
     canvasTitle: "Twelve blocks to embody the vision",
     canvasTool: "Product Canvas (12 blocks)",
-    canvasName: "Risk Manager with AI · Product Canvas",
+    canvasName: "RiskAI · Product Canvas",
     canvas: [
       {
         label: "User segment",
@@ -819,7 +830,7 @@ const pageCopy = {
       },
       {
         label: "Channels",
-        body: "Risk Manager with AI conversational UI integrated with SAP, standards, reports and RAG bases on the corporate desktop.",
+        body: "RiskAI conversational UI integrated with SAP, standards, reports and RAG bases on the corporate desktop.",
       },
       {
         label: "Engagement",
@@ -1017,7 +1028,7 @@ const pageCopy = {
       "I don’t see difficulties using the interface.",
     ],
     validationInsight:
-      "Risk Manager with AI left validated in essence. Friction wasn’t in the solution’s value, but in reinforcing conceptual clarity, navigation guidance and information transparency for more conservative profiles.",
+      "RiskAI left validated in essence. Friction wasn’t in the solution’s value, but in reinforcing conceptual clarity, navigation guidance and information transparency for more conservative profiles.",
     roadmapLabel: "Continuous improvement",
     roadmapTitle: "Seven waves to the future vision",
     roadmapTool: "Impact × effort matrix · Epic sequencing",
@@ -1118,7 +1129,7 @@ const pageCopy = {
     closeQuote:
       "Technology only truly helps when it solves the pain of people in the day-to-day — whether Humberto, who only trusts what’s already standard, or Eduardo, who just wants to stop fighting PDFs.",
     closeBody:
-      "From unifying five fragmented towers to a roadmap of 60+ future initiatives, Risk Manager with AI was born from listening. Validation confirmed the reading; the roadmap keeps the product evolving with the same discipline.",
+      "From unifying five fragmented towers to a roadmap of 60+ future initiatives, RiskAI was born from listening. Validation confirmed the reading; the roadmap keeps the product evolving with the same discipline.",
   },
 } as const;
 

@@ -110,16 +110,16 @@ export const casePageSeo: Record<
       ogImage: "/images/policia-federal-overview.png",
       related: [
         {
-          label: "Gerenciador de riscos com AI — Petrobras",
+          label: "RiskAI — Petrobras",
           path: "/cases/gerenciador-de-riscos-com-ai",
         },
         { label: "e-Título TSE — Service Design", path: "/cases/etitulo" },
       ],
     },
     "gerenciador-de-riscos-com-ai": {
-      title: "Gerenciador de riscos com AI | Petrobras | Ivy DC",
+      title: "RiskAI | Petrobras | Ivy DC",
       description:
-        "Case Petrobras: Gerenciador de riscos com AI — discovery em 5 torres, Product Canvas, blueprint TO-BE conversacional e validação com CES 6,2.",
+        "Case Petrobras RiskAI: discovery em 5 torres, Product Canvas, blueprint TO-BE conversacional e validação com CES 6,2.",
       robots: "noindex, nofollow",
       related: [
         {
@@ -200,16 +200,16 @@ export const casePageSeo: Record<
       ogImage: "/images/policia-federal-overview.png",
       related: [
         {
-          label: "Risk Manager with AI — Petrobras",
+          label: "RiskAI — Petrobras",
           path: "/cases/gerenciador-de-riscos-com-ai",
         },
         { label: "e-Título TSE — Service Design", path: "/cases/etitulo" },
       ],
     },
     "gerenciador-de-riscos-com-ai": {
-      title: "Risk Manager with AI | Petrobras | Ivy DC",
+      title: "RiskAI | Petrobras | Ivy DC",
       description:
-        "Petrobras case: Risk Manager with AI — discovery across 5 towers, Product Canvas, conversational TO-BE blueprint and CES 6.2 validation.",
+        "Petrobras RiskAI case: discovery across 5 towers, Product Canvas, conversational TO-BE blueprint and CES 6.2 validation.",
       robots: "noindex, nofollow",
       related: [
         {

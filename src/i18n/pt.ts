@@ -119,7 +119,7 @@ export const pt: Dictionary = {
         n: "01",
         kicker: "Petrobras · Service Design",
         subtitle: "CX Lead · Service Design · HITSS · 2025",
-        title: "Gerenciador de riscos com AI",
+        title: "RiskAI",
         description:
           "Assistente inteligente para unificar a gestão de riscos em cinco torres — discovery, Product Canvas, blueprint TO-BE conversacional e validação com CES 6,2.",
         path: "/cases/gerenciador-de-riscos-com-ai",

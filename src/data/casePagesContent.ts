@@ -220,7 +220,7 @@ export const caseStudyConfigs: Record<
         "O workshop reuniu representantes da instituição para revisar o processo atual, identificar oportunidades e construir, de forma colaborativa, a jornada futura de recebimento, distribuição e renovação de computadores.",
       ],
       next: {
-        label: "Próximo: Gerenciador de riscos com AI →",
+        label: "Próximo: RiskAI →",
         path: "/cases/gerenciador-de-riscos-com-ai",
       },
     },
@@ -228,9 +228,9 @@ export const caseStudyConfigs: Record<
       id: "gerenciador-de-riscos-com-ai",
       path: "/cases/gerenciador-de-riscos-com-ai",
       accent: "#EC2A86",
-      breadcrumb: "Gerenciador de riscos com AI · Petrobras · HITSS · 2025",
+      breadcrumb: "RiskAI · Petrobras · HITSS · 2025",
       kicker: "Estudo de caso · Service Design",
-      title: "Gerenciador de riscos com AI",
+      title: "RiskAI",
       titleAccent: " — Petrobras",
       subtitle:
         "Um assistente inteligente para transformar a gestão de riscos em uma experiência ágil, integrada e humana — cinco torres, um discovery estruturado.",
@@ -256,8 +256,8 @@ export const caseStudyConfigs: Record<
         { value: "6,2", label: "CES médio" },
       ],
       about: [
-        "Liderei a squad como CX Lead do Gerenciador de riscos com AI, no Centro de Competência CX e na Gerência de Data Analytics & IA da HITSS. O time reuniu CX, Agile Master, UX, Consumer Insights e Ciência de Dados — e engajou cerca de 20 participantes da Petrobras entre personas, sponsors, PMs, tech leads e stakeholders em geral — para transformar a gestão de riscos da companhia.",
-        "O Gerenciador de riscos com AI nasceu para unificar a gestão de riscos da Petrobras: discovery com as cinco torres, Product Canvas, blueprint TO-BE conversacional e validação com CES 6,2 — seguido de um roadmap evolutivo de 60+ épicos.",
+        "Liderei a squad como CX Lead do RiskAI, no Centro de Competência CX e na Gerência de Data Analytics & IA da HITSS. O time reuniu CX, Agile Master, UX, Consumer Insights e Ciência de Dados — e engajou cerca de 20 participantes da Petrobras entre personas, sponsors, PMs, tech leads e stakeholders em geral — para transformar a gestão de riscos da companhia.",
+        "O RiskAI nasceu para unificar a gestão de riscos da Petrobras: discovery com as cinco torres, Product Canvas, blueprint TO-BE conversacional e validação com CES 6,2 — seguido de um roadmap evolutivo de 60+ épicos.",
       ],
       next: { label: "Ver: Cashlog (Raízen) →", path: "/cases/cashlog" },
     },
@@ -452,7 +452,7 @@ export const caseStudyConfigs: Record<
         "The workshop brought institutional representatives together to review the current process, identify opportunities, and collaboratively build the future journey for receiving, distributing, and renewing computers.",
       ],
       next: {
-        label: "Next: Risk Manager with AI →",
+        label: "Next: RiskAI →",
         path: "/cases/gerenciador-de-riscos-com-ai",
       },
     },
@@ -460,9 +460,9 @@ export const caseStudyConfigs: Record<
       id: "gerenciador-de-riscos-com-ai",
       path: "/cases/gerenciador-de-riscos-com-ai",
       accent: "#EC2A86",
-      breadcrumb: "Risk Manager with AI · Petrobras · HITSS · 2025",
+      breadcrumb: "RiskAI · Petrobras · HITSS · 2025",
       kicker: "Case study · Service Design",
-      title: "Risk Manager with AI",
+      title: "RiskAI",
       titleAccent: " — Petrobras",
       subtitle:
         "An intelligent assistant to turn risk management into an agile, integrated and human experience — five towers, one structured discovery.",
@@ -491,8 +491,8 @@ export const caseStudyConfigs: Record<
         { value: "6.2", label: "Avg. CES" },
       ],
       about: [
-        "I led the squad as CX Lead on Risk Manager with AI, at HITSS’s CX Competence Center and Data Analytics & AI Management. The team brought together CX, Agile Master, UX, Consumer Insights and Data Science — and engaged about 20 Petrobras participants across personas, sponsors, PMs, tech leads and stakeholders — to transform the company’s risk management.",
-        "Risk Manager with AI was built to unify Petrobras risk management: discovery across five towers, Product Canvas, conversational TO-BE blueprint and CES 6.2 validation — followed by an evolutionary roadmap of 60+ epics.",
+        "I led the squad as CX Lead on RiskAI, at HITSS’s CX Competence Center and Data Analytics & AI Management. The team brought together CX, Agile Master, UX, Consumer Insights and Data Science — and engaged about 20 Petrobras participants across personas, sponsors, PMs, tech leads and stakeholders — to transform the company’s risk management.",
+        "RiskAI was built to unify Petrobras risk management: discovery across five towers, Product Canvas, conversational TO-BE blueprint and CES 6.2 validation — followed by an evolutionary roadmap of 60+ epics.",
       ],
       next: { label: "View: Cashlog (Raízen) →", path: "/cases/cashlog" },
     },
