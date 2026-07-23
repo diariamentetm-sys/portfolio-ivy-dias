@@ -108,14 +108,17 @@ export const casePageSeo: Record<
         "Workshop de padronização de computadores da Polícia Federal: facilitação, jornadas AS IS/TO BE, How Might We e backlog priorizado de melhorias de serviço.",
       ogImage: "/images/policia-federal-overview.png",
       related: [
-        { label: "RiskAI Petrobras — Service Design", path: "/cases/riskai" },
+        {
+          label: "Gerenciador de riscos com AI — Petrobras",
+          path: "/cases/riskai",
+        },
         { label: "e-Título TSE — Service Design", path: "/cases/etitulo" },
       ],
     },
     riskai: {
-      title: "RiskAI Petrobras | Service Design & IA | Ivy DC",
+      title: "Gerenciador de riscos com AI | Petrobras | Ivy DC",
       description:
-        "Case RiskAI (Petrobras): assistente de gestão de riscos com discovery em 5 torres, Product Canvas, blueprint TO-BE conversacional e CES 6,2 de validação.",
+        "Case Petrobras: Gerenciador de riscos com AI — discovery em 5 torres, Product Canvas, blueprint TO-BE conversacional e validação com CES 6,2.",
       related: [
         {
           label: "Polícia Federal — Design de Serviço",
@@ -194,14 +197,17 @@ export const casePageSeo: Record<
         "Federal Police computer-standardization workshop: facilitation, AS-IS/TO-BE journeys, How Might We prompts and a prioritized Service Design backlog.",
       ogImage: "/images/policia-federal-overview.png",
       related: [
-        { label: "RiskAI Petrobras — Service Design", path: "/cases/riskai" },
+        {
+          label: "Risk Manager with AI — Petrobras",
+          path: "/cases/riskai",
+        },
         { label: "e-Título TSE — Service Design", path: "/cases/etitulo" },
       ],
     },
     riskai: {
-      title: "RiskAI Petrobras | Service Design & AI | Ivy DC",
+      title: "Risk Manager with AI | Petrobras | Ivy DC",
       description:
-        "RiskAI (Petrobras) case: risk-management assistant with discovery across 5 towers, Product Canvas, conversational TO-BE blueprint and CES 6.2 validation.",
+        "Petrobras case: Risk Manager with AI — discovery across 5 towers, Product Canvas, conversational TO-BE blueprint and CES 6.2 validation.",
       related: [
         {
           label: "Federal Police — Service Design",

@@ -292,7 +292,7 @@ const pageCopy = {
     canvasLabel: "Product Canvas",
     canvasTitle: "Doze blocos para dar corpo à visão",
     canvasTool: "Product Canvas (12 blocos)",
-    canvasName: "RiskAI · Product Canvas",
+    canvasName: "Gerenciador de riscos com AI · Product Canvas",
     canvas: [
       {
         label: "Segmento de usuário",
@@ -304,7 +304,7 @@ const pageCopy = {
       },
       {
         label: "Canais",
-        body: "Interface conversacional RiskAI integrada a SAP, normativos, relatórios e bases RAG no desktop corporativo.",
+        body: "Interface conversacional do Gerenciador de riscos com AI integrada a SAP, normativos, relatórios e bases RAG no desktop corporativo.",
       },
       {
         label: "Engajamento",
@@ -350,7 +350,7 @@ const pageCopy = {
       "Mais de 25 funcionalidades idealizadas, 40+ referências de mercado e 12 fluxos priorizados. O centro: desenhar passo a passo a jornada to-be do MVP.",
     journeyLane: "Usuário",
     systemLane: "Sistema",
-    blueprintTitle: "Blueprint TO-BE · MVP RiskAI",
+    blueprintTitle: "Blueprint TO-BE · MVP Gerenciador de riscos com AI",
     blueprintStages: [
       {
         journey: "Login via URL Petrobras",
@@ -455,7 +455,7 @@ const pageCopy = {
       "Não vejo dificuldades de usar a interface.",
     ],
     validationInsight:
-      "O RiskAI saiu validado em essência. As fricções não estavam no valor da solução, e sim na necessidade de reforçar clareza conceitual, orientação de navegação e transparência da informação para perfis mais conservadores.",
+      "O Gerenciador de riscos com AI saiu validado em essência. As fricções não estavam no valor da solução, e sim na necessidade de reforçar clareza conceitual, orientação de navegação e transparência da informação para perfis mais conservadores.",
     roadmapLabel: "Melhoria contínua",
     roadmapTitle: "Sete ondas até a visão futura",
     roadmapTool: "Matriz impacto × esforço · Sequenciamento de épicos",
@@ -556,7 +556,7 @@ const pageCopy = {
     closeQuote:
       "A tecnologia só ajuda de verdade quando resolve a dor de quem está no dia a dia — seja o Humberto que só confia no que já é padrão, seja o Eduardo que só quer parar de brigar com PDFs.",
     closeBody:
-      "Do desafio de unificar cinco torres fragmentadas até um roadmap de mais de 60 iniciativas futuras, o RiskAI nasceu da escuta. A validação confirmou a leitura; o roadmap garante que o produto continue evoluindo com a mesma disciplina.",
+      "Do desafio de unificar cinco torres fragmentadas até um roadmap de mais de 60 iniciativas futuras, o Gerenciador de riscos com AI nasceu da escuta. A validação confirmou a leitura; o roadmap garante que o produto continue evoluindo com a mesma disciplina.",
   },
   en: {
     challengeLabel: "The challenge",
@@ -743,7 +743,7 @@ const pageCopy = {
     canvasLabel: "Product Canvas",
     canvasTitle: "Twelve blocks to embody the vision",
     canvasTool: "Product Canvas (12 blocks)",
-    canvasName: "RiskAI · Product Canvas",
+    canvasName: "Risk Manager with AI · Product Canvas",
     canvas: [
       {
         label: "User segment",
@@ -755,7 +755,7 @@ const pageCopy = {
       },
       {
         label: "Channels",
-        body: "RiskAI conversational UI integrated with SAP, standards, reports and RAG bases on the corporate desktop.",
+        body: "Risk Manager with AI conversational UI integrated with SAP, standards, reports and RAG bases on the corporate desktop.",
       },
       {
         label: "Engagement",
@@ -801,7 +801,7 @@ const pageCopy = {
       "25+ idealized features, 40+ market references and 12 prioritized flows. The centerpiece: drawing the MVP to-be journey step by step.",
     journeyLane: "User",
     systemLane: "System",
-    blueprintTitle: "TO-BE Blueprint · RiskAI MVP",
+    blueprintTitle: "TO-BE Blueprint · Risk Manager with AI MVP",
     blueprintStages: [
       {
         journey: "Login via Petrobras URL",
@@ -906,7 +906,7 @@ const pageCopy = {
       "I don’t see difficulties using the interface.",
     ],
     validationInsight:
-      "RiskAI left validated in essence. Friction wasn’t in the solution’s value, but in reinforcing conceptual clarity, navigation guidance and information transparency for more conservative profiles.",
+      "Risk Manager with AI left validated in essence. Friction wasn’t in the solution’s value, but in reinforcing conceptual clarity, navigation guidance and information transparency for more conservative profiles.",
     roadmapLabel: "Continuous improvement",
     roadmapTitle: "Seven waves to the future vision",
     roadmapTool: "Impact × effort matrix · Epic sequencing",
@@ -1007,7 +1007,7 @@ const pageCopy = {
     closeQuote:
       "Technology only truly helps when it solves the pain of people in the day-to-day — whether Humberto, who only trusts what’s already standard, or Eduardo, who just wants to stop fighting PDFs.",
     closeBody:
-      "From unifying five fragmented towers to a roadmap of 60+ future initiatives, RiskAI was born from listening. Validation confirmed the reading; the roadmap keeps the product evolving with the same discipline.",
+      "From unifying five fragmented towers to a roadmap of 60+ future initiatives, Risk Manager with AI was born from listening. Validation confirmed the reading; the roadmap keeps the product evolving with the same discipline.",
   },
 } as const;
 

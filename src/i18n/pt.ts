@@ -117,9 +117,9 @@ export const pt: Dictionary = {
       {
         id: "riskai",
         n: "01",
-        kicker: "RiskAI · Petrobras · Service Design",
+        kicker: "Petrobras · Service Design",
         subtitle: "CX Lead · Service Design · HITSS · 2025",
-        title: "RiskAI — Petrobras",
+        title: "Gerenciador de riscos com AI",
         description:
           "Assistente inteligente para unificar a gestão de riscos em cinco torres — discovery, Product Canvas, blueprint TO-BE conversacional e validação com CES 6,2.",
         path: "/cases/riskai",

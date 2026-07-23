@@ -605,7 +605,7 @@ function buildRiskaiLocale(locale: Locale): ProjectLocaleContent {
             number: "01",
             kicker: "Desafio",
             title: "Cinco torres, um processo fragmentado",
-            body: "A Petrobras gerencia riscos em cinco frentes — GIR, Projetos, Estocásticos, Operacional e Crédito — com informação espalhada e retrabalho constante. O RiskAI nasceu para unificar essa gestão em uma experiência ágil, integrada e inteligente.",
+            body: "A Petrobras gerencia riscos em cinco frentes — GIR, Projetos, Estocásticos, Operacional e Crédito — com informação espalhada e retrabalho constante. O Gerenciador de riscos com AI nasceu para unificar essa gestão em uma experiência ágil, integrada e inteligente.",
           },
           {
             number: "02",
@@ -631,7 +631,7 @@ function buildRiskaiLocale(locale: Locale): ProjectLocaleContent {
             number: "01",
             kicker: "Challenge",
             title: "Five towers, one fragmented process",
-            body: "Petrobras manages risk across five fronts — GIR, Projects, Stochastic, Operational and Credit — with scattered information and constant rework. RiskAI was built to unify that management into an agile, integrated and intelligent experience.",
+            body: "Petrobras manages risk across five fronts — GIR, Projects, Stochastic, Operational and Credit — with scattered information and constant rework. Risk Manager with AI was built to unify that management into an agile, integrated and intelligent experience.",
           },
           {
             number: "02",
