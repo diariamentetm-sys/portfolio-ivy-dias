@@ -253,7 +253,7 @@ export const caseStudyConfigs: Record<
         { value: "6,2", label: "CES médio" },
       ],
       about: [
-        "Liderei a squad como CX Lead do projeto RiskAI, no Centro de Competência CX e na Gerência de Data Analytics & IA da HITSS. O time reuniu CX, Agile Master, UX, Consumer Insights e Ciência de Dados para transformar a gestão de riscos da Petrobras.",
+        "Liderei a squad como CX Lead do projeto RiskAI, no Centro de Competência CX e na Gerência de Data Analytics & IA da HITSS. O time reuniu CX, Agile Master, UX, Consumer Insights e Ciência de Dados — e engajou cerca de 20 participantes da Petrobras entre personas, sponsors, PMs, tech leads e stakeholders em geral — para transformar a gestão de riscos da companhia.",
         "O RiskAI nasceu para unificar a gestão de riscos da Petrobras: discovery com as cinco torres, Product Canvas, blueprint TO-BE conversacional e validação com CES 6,2 — seguido de um roadmap evolutivo de 60+ épicos.",
       ],
       next: { label: "Ver: Cashlog (Raízen) →", path: "/cases/cashlog" },
@@ -485,7 +485,7 @@ export const caseStudyConfigs: Record<
         { value: "6.2", label: "Avg. CES" },
       ],
       about: [
-        "I led the squad as CX Lead on the RiskAI project, at HITSS’s CX Competence Center and Data Analytics & AI Management. The team brought together CX, Agile Master, UX, Consumer Insights and Data Science to transform Petrobras risk management.",
+        "I led the squad as CX Lead on the RiskAI project, at HITSS’s CX Competence Center and Data Analytics & AI Management. The team brought together CX, Agile Master, UX, Consumer Insights and Data Science — and engaged about 20 Petrobras participants across personas, sponsors, PMs, tech leads and stakeholders — to transform the company’s risk management.",
         "RiskAI was built to unify Petrobras risk management: discovery across five towers, Product Canvas, conversational TO-BE blueprint and CES 6.2 validation — followed by an evolutionary roadmap of 60+ epics.",
       ],
       next: { label: "View: Cashlog (Raízen) →", path: "/cases/cashlog" },
