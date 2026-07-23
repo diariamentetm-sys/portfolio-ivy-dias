@@ -1,4 +1,4 @@
-import { CaseBlockSection, CaseQuote } from "../components/cases/CaseBlocks";
+import { CaseBlockSection, CaseImage, CaseQuote } from "../components/cases/CaseBlocks";
 import { ProductCanvas } from "../components/cases/ProductCanvas";
 import { ServiceBlueprint } from "../components/cases/ServiceBlueprint";
 import { CaseStudyLayout } from "../components/layout/CaseStudyLayout";
@@ -135,6 +135,10 @@ const pageCopy = {
     discoveryTool: "Roteiro de Discovery (Imersão → Melhoria Contínua)",
     discoveryBody:
       "Para chegar lá, desenhamos um discovery em cinco movimentos — da escuta profunda ao roadmap evolutivo.",
+    discoveryImageAlt:
+      "Quadro Miro do discovery: personas entrevistadas, observações transversais e jornadas AS-IS mapeadas com as torres de risco da Petrobras.",
+    discoveryImageCaption:
+      "Extrato do board de discovery — personas, observações transversais e jornada AS-IS.",
     discovery: [
       {
         n: "01",
@@ -587,6 +591,10 @@ const pageCopy = {
     discoveryTool: "Discovery roadmap (Immersion → Continuous improvement)",
     discoveryBody:
       "We designed discovery in five moves — from deep listening to an evolutionary roadmap.",
+    discoveryImageAlt:
+      "Miro discovery board: interviewed personas, cross-cutting observations and AS-IS journeys mapped with Petrobras risk towers.",
+    discoveryImageCaption:
+      "Extract from the discovery board — personas, cross-cutting observations and AS-IS journey.",
     discovery: [
       {
         n: "01",
@@ -1062,6 +1070,16 @@ export function RiskaiPage() {
             </PostItNote>
           ))}
         </div>
+        <figure className="mt-10">
+          <CaseImage
+            src="/images/gerenciador-riscos-discovery-miro.png"
+            alt={copy.discoveryImageAlt}
+            priority
+          />
+          <figcaption className="mt-3 text-sm text-neutral-500 text-pretty">
+            {copy.discoveryImageCaption}
+          </figcaption>
+        </figure>
       </CaseBlockSection>
 
       <CaseBlockSection
