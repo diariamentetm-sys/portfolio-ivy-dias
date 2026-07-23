@@ -356,38 +356,85 @@ const pageCopy = {
     ideationTool: "Cocriação · Blueprint TO-BE do MVP",
     ideationBody:
       "Mais de 25 funcionalidades idealizadas, 40+ referências de mercado e 12 fluxos priorizados. O centro: desenhar passo a passo a jornada to-be do MVP.",
-    journeyLane: "Usuário",
-    systemLane: "Sistema",
-    blueprintTitle: "Blueprint TO-BE · MVP Gerenciador de riscos com AI",
+    journeyLane: "Momento",
+    userActionLane: "Ações do usuário",
+    systemLane: "Frontstage (interface)",
+    backstageLane: "Backstage (ação interna)",
+    blueprintTitle: "Blue Print To Be – Fluxo do MVP",
     blueprintStages: [
       {
-        journey: "Login via URL Petrobras",
-        frontstage: "SSO + token de sessão",
+        journey: "Login",
+        userAction:
+          "Usuário acessa url do RiskAI que redireciona pro sistema de login próprio da Petrobras.",
+        frontstage:
+          "URL é um redirecionador para o sistema de login da Petrobras. Token via api como sessão do usuário.",
+        backstage:
+          "Token é garantido durante sessão do usuário. Inatividade gera necessidade de novo login.",
         tone: "blue" as const,
       },
       {
-        journey: "Abre o chat e pergunta sobre uma recomendação",
-        frontstage: "NLU identifica intenção e confirma torre",
+        journey: "Solicitação de consulta aos relatórios de inspeções",
+        userAction:
+          "Já logado, usuário utiliza caixa de diálogo para solicitar informações sobre uma recomendação específica",
+        frontstage:
+          "Sistema identifica a intenção da solicitação e confirma o contexto da torre (Operacional).",
+        backstage:
+          "Orquestrador detecta a requisição e aciona a RAG base solicitada.",
         tone: "blue" as const,
       },
       {
-        journey: "Confirma contexto (ex.: Operacional)",
-        frontstage: "Orquestrador aciona base RAG correta",
+        journey: "Caso 1) Consulta a relatórios de inspeções",
+        userAction: "Usuário consulta a relatórios de inspeção.",
+        frontstage:
+          "Interface mostra que em instantes irá trazer a resposta a consulta. Ao responder, indaga se usuário gostaria de realizar ações relacionadas ao conteúdo e fornece ctas de validação a resposta.",
+        frontstageSpan: 4,
+        backstage:
+          "Sistema lê informações da AIDA e databricks, buscando relatórios de inspeção.",
         tone: "mint" as const,
       },
       {
-        journey: "Recebe status “resposta a caminho” + CTAs",
-        frontstage: "Leitura AIDA / Databricks por fonte",
+        journey:
+          "Caso 2) Consulta a relatórios: Beacon do CCPS e Learning Sheets do EPSC",
+        userAction:
+          "Usuário consulta a relatório Beacon do ccps e learning sheets do epsc.",
+        frontstage: null,
+        backstage:
+          "Sistema lê informações da AIDA e databricks, buscando relatórios do Beacon do ccps e learning sheets do epsc.",
         tone: "mint" as const,
       },
       {
-        journey: "Revisa diagnóstico e síntese técnica",
-        frontstage: "RAG semântico + NLP + metadados de integridade",
+        journey: "Caso 3) Consulta a relatórios: CSB e ANP",
+        userAction: "Usuário consulta a relatórios CSB e ANP.",
+        frontstage: null,
+        backstage:
+          "Sistema lê informações da AIDA e databricks, buscando relatórios do CSB e ANP.",
+        tone: "mint" as const,
+      },
+      {
+        journey: "Caso 4) Consulta a relatórios: Position Papers da Marsh",
+        userAction: "Usuário consulta a relatórios Position papers da marsh.",
+        frontstage: null,
+        backstage:
+          "Sistema lê informações da AIDA e databricks, buscando relatórios do Position papers da marsh.",
+        tone: "mint" as const,
+      },
+      {
+        journey: "Busca de informações",
+        userAction: "Usuário aguarda o retorno dos resultados.",
+        frontstage:
+          "Sistema consulta os relatórios técnicos, planos de ação e histórico de tratativas.",
+        backstage:
+          "Pipelines de ingestão acessam arquivos de uma base única. Motor RAG executa busca semântica e ranqueia resultados por relevância.",
         tone: "lavender" as const,
       },
       {
-        journey: "Valida e gera relatório / e-mail / histórico",
-        frontstage: "Registro na torre + exportação",
+        journey: "Revisão de diagnóstico",
+        userAction:
+          "Usuário lê o resumo apresentado e pede detalhes adicionais ou um resumo completo.",
+        frontstage:
+          "Sistema consolida informações e apresenta resumo técnico da recomendação em texto dissertativo.",
+        backstage:
+          "NLP realiza extração e sumarização. Metadados são validados com o banco de integridade.",
         tone: "lavender" as const,
       },
     ],
@@ -815,38 +862,85 @@ const pageCopy = {
     ideationTool: "Co-creation · MVP TO-BE Blueprint",
     ideationBody:
       "25+ idealized features, 40+ market references and 12 prioritized flows. The centerpiece: drawing the MVP to-be journey step by step.",
-    journeyLane: "User",
-    systemLane: "System",
-    blueprintTitle: "TO-BE Blueprint · Risk Manager with AI MVP",
+    journeyLane: "Moment",
+    userActionLane: "User actions",
+    systemLane: "Frontstage (interface)",
+    backstageLane: "Backstage (internal action)",
+    blueprintTitle: "Blue Print To Be – MVP Flow",
     blueprintStages: [
       {
-        journey: "Login via Petrobras URL",
-        frontstage: "SSO + session token",
+        journey: "Login",
+        userAction:
+          "User accesses the RiskAI URL, which redirects to Petrobras’ own login system.",
+        frontstage:
+          "URL is a redirector to the Petrobras login system. Token via API as the user session.",
+        backstage:
+          "Token is guaranteed during the user session. Inactivity requires a new login.",
         tone: "blue" as const,
       },
       {
-        journey: "Opens chat and asks about a recommendation",
-        frontstage: "NLU detects intent and confirms tower",
+        journey: "Request to consult inspection reports",
+        userAction:
+          "Once logged in, the user uses the dialog box to request information about a specific recommendation",
+        frontstage:
+          "The system identifies the request intent and confirms the tower context (Operational).",
+        backstage:
+          "Orchestrator detects the request and triggers the requested RAG base.",
         tone: "blue" as const,
       },
       {
-        journey: "Confirms context (e.g. Operational)",
-        frontstage: "Orchestrator hits the correct RAG base",
+        journey: "Case 1) Consult inspection reports",
+        userAction: "User consults inspection reports.",
+        frontstage:
+          "Interface shows that the query answer will arrive shortly. When responding, it asks if the user would like related actions and provides CTAs to validate the answer.",
+        frontstageSpan: 4,
+        backstage:
+          "System reads information from AIDA and Databricks, searching inspection reports.",
         tone: "mint" as const,
       },
       {
-        journey: "Gets “answer on the way” status + CTAs",
-        frontstage: "AIDA / Databricks read per source",
+        journey:
+          "Case 2) Consult reports: CCPS Beacon and EPSC Learning Sheets",
+        userAction:
+          "User consults Beacon CCPS report and EPSC learning sheets.",
+        frontstage: null,
+        backstage:
+          "System reads information from AIDA and Databricks, searching Beacon CCPS reports and EPSC learning sheets.",
         tone: "mint" as const,
       },
       {
-        journey: "Reviews diagnosis and technical synthesis",
-        frontstage: "Semantic RAG + NLP + integrity metadata",
+        journey: "Case 3) Consult reports: CSB and ANP",
+        userAction: "User consults CSB and ANP reports.",
+        frontstage: null,
+        backstage:
+          "System reads information from AIDA and Databricks, searching CSB and ANP reports.",
+        tone: "mint" as const,
+      },
+      {
+        journey: "Case 4) Consult reports: Marsh Position Papers",
+        userAction: "User consults Marsh Position Papers.",
+        frontstage: null,
+        backstage:
+          "System reads information from AIDA and Databricks, searching Marsh Position Papers.",
+        tone: "mint" as const,
+      },
+      {
+        journey: "Information search",
+        userAction: "User waits for the results to return.",
+        frontstage:
+          "System consults technical reports, action plans and treatment history.",
+        backstage:
+          "Ingestion pipelines access files from a single base. RAG engine runs semantic search and ranks results by relevance.",
         tone: "lavender" as const,
       },
       {
-        journey: "Validates and generates report / email / history",
-        frontstage: "Tower log + export",
+        journey: "Diagnosis review",
+        userAction:
+          "User reads the presented summary and asks for additional details or a full summary.",
+        frontstage:
+          "System consolidates information and presents a technical summary of the recommendation in discursive text.",
+        backstage:
+          "NLP performs extraction and summarization. Metadata is validated against the integrity database.",
         tone: "lavender" as const,
       },
     ],
@@ -1236,7 +1330,9 @@ export function RiskaiPage() {
           <ServiceBlueprint
             title={copy.blueprintTitle}
             journeyLane={copy.journeyLane}
+            userActionLane={copy.userActionLane}
             frontstageLane={copy.systemLane}
+            backstageLane={copy.backstageLane}
             stages={copy.blueprintStages}
           />
         </div>
