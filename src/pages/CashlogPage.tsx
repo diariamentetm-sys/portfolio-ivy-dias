@@ -4,6 +4,7 @@ import {
   CaseQuote,
   CaseSection,
 } from "../components/cases/CaseBlocks";
+import { CaseEmbed } from "../components/cases/CaseEmbed";
 import { CaseStudyLayout } from "../components/layout/CaseStudyLayout";
 import { PostItNote } from "../components/ui/PostItTag";
 import { useContent } from "../content/ContentContext";
@@ -20,6 +21,9 @@ import {
   mapManagedOrFallback,
   resolveOverviewSrc,
 } from "../utils/projectMedia";
+
+/** Bump whenever the Cashlog embed is rebuilt — forces a fresh iframe shell. */
+const EMBED_SRC = "/embeds/cashlog/index.html?v=20260723";
 
 const statStyles = [
   { tone: "post-it-mint" as const, rotate: "rotate-1" },
@@ -192,6 +196,17 @@ export function CashlogPage() {
         <ImageGrid
           label={page.sections.s05.uiScreensLabel}
           images={uiScreens}
+        />
+        <p className="mt-10 eyebrow mb-3.5">{page.sections.s05.protoLabel}</p>
+        <p className="max-w-3xl body-md mb-6">{page.sections.s05.protoBody}</p>
+        <CaseEmbed
+          src={EMBED_SRC}
+          title={
+            locale === "en"
+              ? "Cashlog Raízen — navigable prototype"
+              : "Cashlog Raízen — protótipo navegável"
+          }
+          heightClassName="aspect-[1200/857] h-auto min-h-0"
         />
       </CaseSection>
 

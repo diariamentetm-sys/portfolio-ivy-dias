@@ -1387,6 +1387,8 @@ export type CashlogPageContent = {
       body: string;
       paletteLabel: string;
       uiScreensLabel: string;
+      protoLabel: string;
+      protoBody: string;
     };
   };
 };
@@ -1428,6 +1430,9 @@ export const cashlogPageContent: Record<Locale, CashlogPageContent> = {
         body: "Fluxos em alta fidelidade, sistema de design e handoff. O dashboard reúne indicadores de solicitações em aprovação, holding e aprovadas, gráficos de dispêndio x plano e a rede de colaboradores — dando visibilidade completa do pipeline de investimento.",
         paletteLabel: "Paleta do produto",
         uiScreensLabel: "Telas em alta fidelidade",
+        protoLabel: "Protótipo navegável",
+        protoBody:
+          "Interaja com o protótipo abaixo — dashboard e fluxo de nova demanda (Demand Gen).",
       },
     },
   },
@@ -1467,6 +1472,9 @@ export const cashlogPageContent: Record<Locale, CashlogPageContent> = {
         body: "High-fidelity flows, design system, and handoff. The dashboard brings together indicators for requests in approval, on hold, and approved, spend vs. plan charts, and the collaborator network — providing full visibility into the investment pipeline.",
         paletteLabel: "Product palette",
         uiScreensLabel: "High-fidelity screens",
+        protoLabel: "Navigable prototype",
+        protoBody:
+          "Interact with the prototype below — dashboard and new demand flow (Demand Gen).",
       },
     },
   },
