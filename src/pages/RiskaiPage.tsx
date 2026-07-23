@@ -109,6 +109,8 @@ const pageCopy = {
   pt: {
     challengeLabel: "O desafio",
     challengeTitle: "Cinco torres, um processo fragmentado",
+    challengeTool: "Briefing + alinhamento de motivadores do negócio",
+    toolLabel: "Ferramenta",
     challengeBody:
       "A Petrobras gerencia riscos em cinco frentes — GIR, Projetos, Estocásticos, Operacional e Crédito — e cada torre havia desenvolvido seu próprio jeito de lidar com normas, inspeções, recomendações de seguradoras e históricos de decisão. O trabalho era tecnicamente sólido, mas operacionalmente fragmentado: informação espalhada, retrabalho constante e decisões que dependiam demais da memória de especialistas.",
     challengeInvite:
@@ -130,6 +132,7 @@ const pageCopy = {
     ],
     discoveryLabel: "Discovery",
     discoveryTitle: "Cinco movimentos estruturados",
+    discoveryTool: "Roteiro de Discovery (Imersão → Melhoria Contínua)",
     discoveryBody:
       "Para chegar lá, desenhamos um discovery em cinco movimentos — da escuta profunda ao roadmap evolutivo.",
     discovery: [
@@ -161,6 +164,8 @@ const pageCopy = {
     ],
     immersionLabel: "Imersão",
     immersionTitle: "Ouvindo as cinco torres",
+    immersionTool:
+      "Entrevistas em profundidade · Jornadas AS-IS · Microjornadas",
     immersionBody:
       "Campo com GIR, Projetos, Estocásticos, Operacional e Crédito gerou um volume que confirmou a hipótese: o problema não era falta de dado — era falta de conexão entre eles.",
     stats: [
@@ -169,6 +174,7 @@ const pageCopy = {
       { v: "100+", l: "Oportunidades" },
     ],
     painsLabel: "Dores recorrentes",
+    painsTool: "Síntese de dores (Lean Inception por torre)",
     pains: [
       "Vasculhar múltiplas bases internas e externas para achar informação crítica",
       "Consolidar recomendações e checar histórico com esforço desproporcional",
@@ -180,6 +186,7 @@ const pageCopy = {
       "Lacunas de integração com crédito, performance e vendas",
     ],
     opportunitiesLabel: "Oportunidades",
+    opportunitiesTool: "Mapa de oportunidades a partir das jornadas AS-IS",
     opportunities: [
       "Hub unificado de consulta a inspeções e bases técnicas",
       "Interpretação automática de PDFs e ingestão estruturada",
@@ -194,6 +201,7 @@ const pageCopy = {
     ],
     personasLabel: "Definição",
     personasTitle: "Quinze pessoas, uma dor comum",
+    personasTool: "Personas (extraídas das entrevistas reais)",
     personasBody:
       "Construímos 15 personas a partir de entrevistas reais. Em contextos diferentes, as frustrações convergem: confiança, tempo e retrabalho.",
     featuredPersonas: [
@@ -258,6 +266,7 @@ const pageCopy = {
     ],
     visionLabel: "Visão de produto",
     visionTitle: "O que estávamos construindo, em uma frase",
+    visionTool: "Lean UX — declaração de visão (Para / Que / É um / Diferente)",
     lean: [
       {
         k: "Para",
@@ -282,6 +291,7 @@ const pageCopy = {
     ],
     canvasLabel: "Product Canvas",
     canvasTitle: "Doze blocos para dar corpo à visão",
+    canvasTool: "Product Canvas (12 blocos)",
     canvasName: "RiskAI · Product Canvas",
     canvas: [
       {
@@ -335,6 +345,7 @@ const pageCopy = {
     ],
     ideationLabel: "Ideação",
     ideationTitle: "Da conversa ao Blueprint TO-BE",
+    ideationTool: "Cocriação · Blueprint TO-BE do MVP",
     ideationBody:
       "Mais de 25 funcionalidades idealizadas, 40+ referências de mercado e 12 fluxos priorizados. O centro: desenhar passo a passo a jornada to-be do MVP.",
     journeyLane: "Usuário",
@@ -374,6 +385,7 @@ const pageCopy = {
     ],
     flowsLabel: "Fluxos conversacionais",
     flowsTitle: "Mesma cadência, quatro fontes",
+    flowsTool: "Roteiros conversacionais Usuário ↔ Sistema · Protótipo Figma",
     flowsBody:
       "Quatro roteiros com a mesma narrativa Usuário ↔ Sistema — só muda a base consultada. O produto não reinventa a interação a cada conhecimento.",
     flows: [
@@ -396,6 +408,7 @@ const pageCopy = {
     ],
     validationLabel: "Validação",
     validationTitle: "Testando com quem vive o problema",
+    validationTool: "Testes de usabilidade qualitativos · CES (Customer Effort Score)",
     validationBody:
       "Cinco entrevistas qualitativas — escolha deliberada. Como defende Nielsen, 5–6 usuários capturam cerca de 85% dos problemas críticos em testes qualitativos. A métrica: CES de 1 a 7.",
     cesAverage: "6,2",
@@ -445,6 +458,7 @@ const pageCopy = {
       "O RiskAI saiu validado em essência. As fricções não estavam no valor da solução, e sim na necessidade de reforçar clareza conceitual, orientação de navegação e transparência da informação para perfis mais conservadores.",
     roadmapLabel: "Melhoria contínua",
     roadmapTitle: "Sete ondas até a visão futura",
+    roadmapTool: "Matriz impacto × esforço · Sequenciamento de épicos",
     roadmapBody:
       "80 funcionalidades previstas → 21 épicos priorizados → roadmap contínuo com 60+ épicos. Sequenciamento em sete ondas:",
     waves: [
@@ -490,6 +504,7 @@ const pageCopy = {
     ],
     phasesLabel: "Roadmap estratégico",
     phasesTitle: "Três fases de evolução",
+    phasesTool: "Roadmap de produto (Quick Wins → Consolidação → Diferenciação)",
     phases: [
       {
         n: "Fase 01",
@@ -537,6 +552,7 @@ const pageCopy = {
       },
     ],
     closeLabel: "Fechando o ciclo",
+    closeTool: "Síntese do ciclo Discovery → Validação → Roadmap",
     closeQuote:
       "A tecnologia só ajuda de verdade quando resolve a dor de quem está no dia a dia — seja o Humberto que só confia no que já é padrão, seja o Eduardo que só quer parar de brigar com PDFs.",
     closeBody:
@@ -545,6 +561,8 @@ const pageCopy = {
   en: {
     challengeLabel: "The challenge",
     challengeTitle: "Five towers, one fragmented process",
+    challengeTool: "Briefing + business-driver alignment",
+    toolLabel: "Tool",
     challengeBody:
       "Petrobras manages risk across five fronts — GIR, Projects, Stochastic, Operational and Credit — and each tower had developed its own way of handling standards, inspections, insurer recommendations and decision history. The work was technically solid but operationally fragmented: scattered information, constant rework and decisions that relied too heavily on a few specialists’ memory.",
     challengeInvite:
@@ -566,6 +584,7 @@ const pageCopy = {
     ],
     discoveryLabel: "Discovery",
     discoveryTitle: "Five structured moves",
+    discoveryTool: "Discovery roadmap (Immersion → Continuous improvement)",
     discoveryBody:
       "We designed discovery in five moves — from deep listening to an evolutionary roadmap.",
     discovery: [
@@ -597,6 +616,7 @@ const pageCopy = {
     ],
     immersionLabel: "Immersion",
     immersionTitle: "Listening to the five towers",
+    immersionTool: "In-depth interviews · AS-IS journeys · Micro-journeys",
     immersionBody:
       "Fieldwork with GIR, Projects, Stochastic, Operational and Credit produced a volume that confirmed the hypothesis: the problem wasn’t lack of data — it was lack of connection between them.",
     stats: [
@@ -605,6 +625,7 @@ const pageCopy = {
       { v: "100+", l: "Opportunities" },
     ],
     painsLabel: "Recurring pains",
+    painsTool: "Pain synthesis (Lean Inception by tower)",
     pains: [
       "Digging through multiple internal and external bases for critical information",
       "Consolidating recommendations and checking history at disproportionate cost",
@@ -616,6 +637,7 @@ const pageCopy = {
       "Gaps integrating credit, performance and sales data",
     ],
     opportunitiesLabel: "Opportunities",
+    opportunitiesTool: "Opportunity map from AS-IS journeys",
     opportunities: [
       "Unified hub for inspections and technical bases",
       "Automatic PDF interpretation and structured ingestion",
@@ -630,6 +652,7 @@ const pageCopy = {
     ],
     personasLabel: "Definition",
     personasTitle: "Fifteen people, one shared pain",
+    personasTool: "Personas (extracted from real interviews)",
     personasBody:
       "We built 15 personas from real interviews. Across different contexts, frustrations converge: trust, time and rework.",
     featuredPersonas: [
@@ -694,6 +717,7 @@ const pageCopy = {
     ],
     visionLabel: "Product vision",
     visionTitle: "What we were building, in one sentence",
+    visionTool: "Lean UX — vision statement (For / Who / It is / Unlike)",
     lean: [
       {
         k: "For",
@@ -718,6 +742,7 @@ const pageCopy = {
     ],
     canvasLabel: "Product Canvas",
     canvasTitle: "Twelve blocks to embody the vision",
+    canvasTool: "Product Canvas (12 blocks)",
     canvasName: "RiskAI · Product Canvas",
     canvas: [
       {
@@ -771,6 +796,7 @@ const pageCopy = {
     ],
     ideationLabel: "Ideation",
     ideationTitle: "From conversation to TO-BE Blueprint",
+    ideationTool: "Co-creation · MVP TO-BE Blueprint",
     ideationBody:
       "25+ idealized features, 40+ market references and 12 prioritized flows. The centerpiece: drawing the MVP to-be journey step by step.",
     journeyLane: "User",
@@ -810,6 +836,7 @@ const pageCopy = {
     ],
     flowsLabel: "Conversational flows",
     flowsTitle: "Same cadence, four sources",
+    flowsTool: "User ↔ System conversational scripts · Figma prototype",
     flowsBody:
       "Four scripts with the same User ↔ System narrative — only the consulted base changes. The product doesn’t reinvent interaction for every knowledge source.",
     flows: [
@@ -832,6 +859,7 @@ const pageCopy = {
     ],
     validationLabel: "Validation",
     validationTitle: "Testing with people who live the problem",
+    validationTool: "Qualitative usability tests · CES (Customer Effort Score)",
     validationBody:
       "Five qualitative interviews — a deliberate choice. As Nielsen argues, 5–6 users capture about 85% of critical issues in qualitative tests. Metric: CES from 1 to 7.",
     cesAverage: "6.2",
@@ -881,6 +909,7 @@ const pageCopy = {
       "RiskAI left validated in essence. Friction wasn’t in the solution’s value, but in reinforcing conceptual clarity, navigation guidance and information transparency for more conservative profiles.",
     roadmapLabel: "Continuous improvement",
     roadmapTitle: "Seven waves to the future vision",
+    roadmapTool: "Impact × effort matrix · Epic sequencing",
     roadmapBody:
       "80 planned features → 21 prioritized epics → continuous roadmap with 60+ epics. Sequencing across seven waves:",
     waves: [
@@ -926,6 +955,7 @@ const pageCopy = {
     ],
     phasesLabel: "Strategic roadmap",
     phasesTitle: "Three evolution phases",
+    phasesTool: "Product roadmap (Quick Wins → Consolidation → Differentiation)",
     phases: [
       {
         n: "Phase 01",
@@ -973,6 +1003,7 @@ const pageCopy = {
       },
     ],
     closeLabel: "Closing the loop",
+    closeTool: "Synthesis of the Discovery → Validation → Roadmap cycle",
     closeQuote:
       "Technology only truly helps when it solves the pain of people in the day-to-day — whether Humberto, who only trusts what’s already standard, or Eduardo, who just wants to stop fighting PDFs.",
     closeBody:
@@ -988,7 +1019,12 @@ export function RiskaiPage() {
 
   return (
     <CaseStudyLayout config={config}>
-      <CaseBlockSection label={copy.challengeLabel} title={copy.challengeTitle}>
+      <CaseBlockSection
+        label={copy.challengeLabel}
+        title={copy.challengeTitle}
+        tool={copy.challengeTool}
+        toolLabel={copy.toolLabel}
+      >
         <p className="max-w-3xl body-md">{copy.challengeBody}</p>
         <p className="mt-4 max-w-3xl body-md font-medium text-neutral-950">
           {copy.challengeInvite}
@@ -1006,7 +1042,12 @@ export function RiskaiPage() {
         </div>
       </CaseBlockSection>
 
-      <CaseBlockSection label={copy.discoveryLabel} title={copy.discoveryTitle}>
+      <CaseBlockSection
+        label={copy.discoveryLabel}
+        title={copy.discoveryTitle}
+        tool={copy.discoveryTool}
+        toolLabel={copy.toolLabel}
+      >
         <p className="max-w-3xl body-md">{copy.discoveryBody}</p>
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {copy.discovery.map((item, index) => (
@@ -1023,7 +1064,12 @@ export function RiskaiPage() {
         </div>
       </CaseBlockSection>
 
-      <CaseBlockSection label={copy.immersionLabel} title={copy.immersionTitle}>
+      <CaseBlockSection
+        label={copy.immersionLabel}
+        title={copy.immersionTitle}
+        tool={copy.immersionTool}
+        toolLabel={copy.toolLabel}
+      >
         <p className="max-w-3xl body-md">{copy.immersionBody}</p>
         <div className="mt-8 flex flex-wrap gap-4">
           {copy.stats.map((stat, index) => (
@@ -1039,31 +1085,46 @@ export function RiskaiPage() {
             </PostItNote>
           ))}
         </div>
-        <p className="eyebrow mt-12 mb-4 text-accent">{copy.painsLabel}</p>
-        <div className="grid sm:grid-cols-2 gap-3">
-          {copy.pains.map((item, index) => (
-            <PostItNote key={item} index={index} tone="post-it-coral" compact>
-              <p className="text-sm leading-relaxed text-neutral-950 text-pretty">
-                {item}
-              </p>
-            </PostItNote>
-          ))}
+        <div className="mt-12">
+          <p className="eyebrow mb-1 text-accent">{copy.painsLabel}</p>
+          <p className="mb-4 text-sm text-neutral-600">
+            <span className="eyebrow mr-2 text-neutral-500">{copy.toolLabel}</span>
+            {copy.painsTool}
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {copy.pains.map((item, index) => (
+              <PostItNote key={item} index={index} tone="post-it-coral" compact>
+                <p className="text-sm leading-relaxed text-neutral-950 text-pretty">
+                  {item}
+                </p>
+              </PostItNote>
+            ))}
+          </div>
         </div>
-        <p className="eyebrow mt-12 mb-4 text-accent">
-          {copy.opportunitiesLabel}
-        </p>
-        <div className="grid sm:grid-cols-2 gap-3">
-          {copy.opportunities.map((item, index) => (
-            <PostItNote key={item} index={index} tone="post-it-mint" compact>
-              <p className="text-sm leading-relaxed text-neutral-950 text-pretty">
-                {item}
-              </p>
-            </PostItNote>
-          ))}
+        <div className="mt-12">
+          <p className="eyebrow mb-1 text-accent">{copy.opportunitiesLabel}</p>
+          <p className="mb-4 text-sm text-neutral-600">
+            <span className="eyebrow mr-2 text-neutral-500">{copy.toolLabel}</span>
+            {copy.opportunitiesTool}
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {copy.opportunities.map((item, index) => (
+              <PostItNote key={item} index={index} tone="post-it-mint" compact>
+                <p className="text-sm leading-relaxed text-neutral-950 text-pretty">
+                  {item}
+                </p>
+              </PostItNote>
+            ))}
+          </div>
         </div>
       </CaseBlockSection>
 
-      <CaseBlockSection label={copy.personasLabel} title={copy.personasTitle}>
+      <CaseBlockSection
+        label={copy.personasLabel}
+        title={copy.personasTitle}
+        tool={copy.personasTool}
+        toolLabel={copy.toolLabel}
+      >
         <p className="max-w-3xl body-md">{copy.personasBody}</p>
         <div className="mt-8 grid md:grid-cols-2 gap-4">
           {copy.featuredPersonas.map((persona, index) => (
@@ -1100,6 +1161,8 @@ export function RiskaiPage() {
       <CaseQuote
         label={copy.visionLabel}
         quote={copy.visionTitle}
+        tool={copy.visionTool}
+        toolLabel={copy.toolLabel}
         maxWidth="max-w-3xl"
       >
         <div className="mt-6 flex flex-col gap-4 text-left">
@@ -1114,11 +1177,21 @@ export function RiskaiPage() {
         </div>
       </CaseQuote>
 
-      <CaseBlockSection label={copy.canvasLabel} title={copy.canvasTitle}>
+      <CaseBlockSection
+        label={copy.canvasLabel}
+        title={copy.canvasTitle}
+        tool={copy.canvasTool}
+        toolLabel={copy.toolLabel}
+      >
         <ProductCanvas title={copy.canvasName} blocks={copy.canvas} />
       </CaseBlockSection>
 
-      <CaseBlockSection label={copy.ideationLabel} title={copy.ideationTitle}>
+      <CaseBlockSection
+        label={copy.ideationLabel}
+        title={copy.ideationTitle}
+        tool={copy.ideationTool}
+        toolLabel={copy.toolLabel}
+      >
         <p className="max-w-3xl body-md">{copy.ideationBody}</p>
         <div className="mt-10">
           <ServiceBlueprint
@@ -1130,7 +1203,12 @@ export function RiskaiPage() {
         </div>
       </CaseBlockSection>
 
-      <CaseBlockSection label={copy.flowsLabel} title={copy.flowsTitle}>
+      <CaseBlockSection
+        label={copy.flowsLabel}
+        title={copy.flowsTitle}
+        tool={copy.flowsTool}
+        toolLabel={copy.toolLabel}
+      >
         <p className="max-w-3xl body-md">{copy.flowsBody}</p>
         <div className="mt-8 grid md:grid-cols-2 gap-4">
           {copy.flows.map((flow, index) => (
@@ -1153,6 +1231,8 @@ export function RiskaiPage() {
       <CaseBlockSection
         label={copy.validationLabel}
         title={copy.validationTitle}
+        tool={copy.validationTool}
+        toolLabel={copy.toolLabel}
       >
         <p className="max-w-3xl body-md">{copy.validationBody}</p>
         <div className="mt-8 flex flex-wrap gap-4">
@@ -1204,18 +1284,30 @@ export function RiskaiPage() {
         </p>
       </CaseBlockSection>
 
-      <CaseBlockSection label={copy.roadmapLabel} title={copy.roadmapTitle}>
+      <CaseBlockSection
+        label={copy.roadmapLabel}
+        title={copy.roadmapTitle}
+        tool={copy.roadmapTool}
+        toolLabel={copy.toolLabel}
+      >
         <p className="max-w-3xl body-md mb-8">{copy.roadmapBody}</p>
         <WaveRoadmap waves={copy.waves} />
       </CaseBlockSection>
 
-      <CaseBlockSection label={copy.phasesLabel} title={copy.phasesTitle}>
+      <CaseBlockSection
+        label={copy.phasesLabel}
+        title={copy.phasesTitle}
+        tool={copy.phasesTool}
+        toolLabel={copy.toolLabel}
+      >
         <PhaseRoadmap phases={copy.phases} />
       </CaseBlockSection>
 
       <CaseQuote
         label={copy.closeLabel}
         quote={copy.closeQuote}
+        tool={copy.closeTool}
+        toolLabel={copy.toolLabel}
         maxWidth="max-w-3xl"
       >
         <p>{copy.closeBody}</p>

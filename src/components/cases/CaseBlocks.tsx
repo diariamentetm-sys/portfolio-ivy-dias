@@ -50,6 +50,9 @@ type CaseBlockSectionProps = {
   title: string;
   children: ReactNode;
   inverted?: boolean;
+  /** Design tool / method that produced this section extract */
+  tool?: string;
+  toolLabel?: string;
 };
 
 export function CaseBlockSection({
@@ -57,6 +60,8 @@ export function CaseBlockSection({
   title,
   children,
   inverted = false,
+  tool,
+  toolLabel = "Ferramenta",
 }: CaseBlockSectionProps) {
   return (
     <section
@@ -73,6 +78,20 @@ export function CaseBlockSection({
         >
           {title}
         </h2>
+        {tool ? (
+          <p
+            className={`mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm ${
+              inverted ? "text-white/65" : "text-neutral-600"
+            }`}
+          >
+            <span
+              className={`eyebrow shrink-0 ${inverted ? "text-white/45" : "text-neutral-500"}`}
+            >
+              {toolLabel}
+            </span>
+            <span className="font-medium text-pretty">{tool}</span>
+          </p>
+        ) : null}
         <div className="mt-8">{children}</div>
       </div>
     </section>
@@ -84,16 +103,26 @@ export function CaseQuote({
   quote,
   maxWidth = "max-w-xl",
   children,
+  tool,
+  toolLabel = "Ferramenta",
 }: {
   label?: string;
   quote: string;
   maxWidth?: string;
   children?: ReactNode;
+  tool?: string;
+  toolLabel?: string;
 }) {
   return (
     <section className="section-inverted py-16 md:py-28">
       <div className="max-w-5xl mx-auto">
         <p className="eyebrow mb-6 text-white/50">{label}</p>
+        {tool ? (
+          <p className="mb-6 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm text-white/65">
+            <span className="eyebrow shrink-0 text-white/45">{toolLabel}</span>
+            <span className="font-medium text-pretty">{tool}</span>
+          </p>
+        ) : null}
         <blockquote
           className={`pl-6 border-l-[3px] border-accent text-2xl md:text-4xl lg:text-5xl font-bold leading-snug text-white text-pretty ${maxWidth}`}
         >
