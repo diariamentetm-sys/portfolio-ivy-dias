@@ -20,7 +20,7 @@ export default {
         error: "#DC4C4C",
       },
       fontFamily: {
-        sans: ["Hanken Grotesk", "system-ui", "sans-serif"],
+        sans: ["Radnika", "system-ui", "sans-serif"],
         mono: ["Space Mono", "monospace"],
       },
       fontSize: {

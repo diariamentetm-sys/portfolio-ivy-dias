@@ -43,7 +43,7 @@ export const pt: Dictionary = {
   },
   specialties: {
     eyebrow: "(02) Como eu trabalho",
-    title: "Frentes de atuação, não uma lista de skills.",
+    title: "As frentes que costumo conduzir.",
     intro:
       "Síntese do que conduzo em projetos reais de CX e service design.",
     items: [

@@ -2,6 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Radnika — primary sans (Light / Medium / Bold) */
+@font-face {
+  font-family: "Radnika";
+  src: url("/fonts/Radnika-Light.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Radnika";
+  src: url("/fonts/Radnika-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Radnika";
+  src: url("/fonts/Radnika-Bold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Radnika";
+  src: url("/fonts/Radnika-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Radnika";
+  src: url("/fonts/Radnika-Bold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --accent: #ec2a86;
@@ -55,7 +96,7 @@
 
 @layer components {
   .eyebrow {
-    @apply font-mono text-[11px] uppercase tracking-[0.12em] font-medium text-neutral-500;
+    @apply font-mono text-[11px] uppercase tracking-[0.12em] font-normal text-neutral-500;
   }
 
   .display-h1 {
