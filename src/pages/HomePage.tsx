@@ -20,10 +20,13 @@ import { sendContactMessage } from "../lib/sendContact";
 import { homePageSeo } from "../seo/pageMeta";
 import { buildPersonWebsiteJsonLd } from "../seo/siteConfig";
 
+const heroRoleStyles = [
+  { tone: "post-it-yellow", rotate: "-rotate-1" },
+  { tone: "post-it-blue", rotate: "rotate-2" },
+] as const;
+
 const heroLocationStyles = [
   { tone: "post-it-mint", rotate: "rotate-2" },
-  { tone: "post-it-lavender", rotate: "-rotate-1" },
-  { tone: "post-it-peach", rotate: "rotate-1" },
 ] as const;
 
 const heroStatStyles = [
@@ -168,22 +171,24 @@ export function HomePage() {
               <a href="#trabalhos" className="btn-primary">
                 {t.hero.ctaWork}
               </a>
-              <a href="#contato" className="btn-secondary">
-                {t.hero.ctaContact}
-              </a>
             </div>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <p className="eyebrow normal-case tracking-normal">{t.hero.role}</p>
-              <div className="flex flex-wrap gap-2">
-                {t.hero.locationTags.map((tag, index) => (
-                  <span
-                    key={tag}
-                    className={`post-it post-it-tag whitespace-nowrap ${heroLocationStyles[index]?.tone ?? "post-it-mint"} ${heroLocationStyles[index]?.rotate ?? "rotate-1"}`}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+            <div className="mt-8 flex flex-wrap items-center gap-2">
+              {t.hero.roleTags.map((tag, index) => (
+                <span
+                  key={tag}
+                  className={`post-it post-it-tag whitespace-nowrap ${heroRoleStyles[index]?.tone ?? "post-it-yellow"} ${heroRoleStyles[index]?.rotate ?? "rotate-1"}`}
+                >
+                  {tag}
+                </span>
+              ))}
+              {t.hero.locationTags.map((tag, index) => (
+                <span
+                  key={tag}
+                  className={`post-it post-it-tag whitespace-nowrap ${heroLocationStyles[index]?.tone ?? "post-it-mint"} ${heroLocationStyles[index]?.rotate ?? "rotate-1"}`}
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           </Reveal>
         </div>
@@ -425,8 +430,12 @@ export function HomePage() {
             <div className="mt-9 flex flex-col gap-3.5">
               {[
                 {
-                  href: "mailto:ivy.dias.de.campos@gmail.com",
-                  label: "ivy.dias.de.campos@gmail.com",
+                  href: "https://adplist.org/mentors/ivy-dc",
+                  label:
+                    locale === "en"
+                      ? "ADPList / mentorship"
+                      : "ADPList / mentoria",
+                  badge: "free",
                 },
                 {
                   href: "https://wa.me/351961954617",
@@ -444,16 +453,19 @@ export function HomePage() {
                 <a
                   key={link.href}
                   href={link.href}
-                  target={link.href.startsWith("http") ? "_blank" : undefined}
-                  rel={
-                    link.href.startsWith("http")
-                      ? "noopener noreferrer"
-                      : undefined
-                  }
-                  className="flex items-center gap-3 text-base text-white/80 hover:text-white transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative inline-flex w-fit max-w-full items-center gap-3 text-base text-white/80 hover:text-white transition-colors"
                 >
                   <span className="font-mono text-xs text-accent">→</span>
-                  {link.label}
+                  <span className="relative pr-8">
+                    {link.label}
+                    {"badge" in link && link.badge ? (
+                      <span className="badge-blink absolute -top-1.5 right-0 rounded-full bg-accent px-1.5 py-px text-[8px] font-medium uppercase tracking-[0.14em] leading-none text-white">
+                        {link.badge}
+                      </span>
+                    ) : null}
+                  </span>
                 </a>
               ))}
             </div>

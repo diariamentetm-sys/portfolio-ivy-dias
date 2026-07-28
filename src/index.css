@@ -361,6 +361,27 @@
     }
   }
 
+  .badge-blink {
+    animation: badge-blink 0.75s ease-in-out infinite;
+  }
+
+  @keyframes badge-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.28;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .badge-blink {
+      animation: none;
+      opacity: 1;
+    }
+  }
+
   .case-card {
     @apply relative overflow-hidden rounded-2xl bg-white border border-neutral-200;
     box-shadow: 0 4px 24px rgba(10, 10, 10, 0.06);

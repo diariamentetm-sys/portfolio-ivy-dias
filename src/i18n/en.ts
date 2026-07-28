@@ -17,9 +17,10 @@ export const en: Dictionary = {
       "For over 20 years I've turned business complexity into experiences that create real value — leading strategic CX Design, Service Design and User Research projects.",
     ctaWork: "View selected work →",
     ctaContact: "Get in touch",
-    role: "Service Designer | Product | Researcher",
-    location: "Portugal · remote",
-    locationTags: ["Portugal", "Remote", "Hybrid"],
+    role: "CX Designer | Service Designer",
+    roleTags: ["CX Designer", "Service Designer"],
+    location: "Portugal",
+    locationTags: ["Portugal"],
     stats: [
       { value: "20+", label: "years of experience" },
       { value: "30+", label: "brands served" },
@@ -292,7 +293,7 @@ export const en: Dictionary = {
     eyebrow: "(06) Contact",
     title: "Shall we talk about your CX project?",
     subtitle:
-      "Available for remote and international projects from Portugal. Tell me about the challenge — I reply personally.",
+      "Available for remote and hybrid projects in Portugal. Tell me about the challenge and I'll reply personally.",
     tags: ["CX Design"],
     photoAlt: "Portrait of Ivy Dias de Campos",
     formName: "Name",
@@ -304,13 +305,13 @@ export const en: Dictionary = {
     submit: "Send message",
     submitting: "Sending…",
     formHint:
-      "Your message is sent directly to ivy.dias.de.campos@gmail.com. I reply personally.",
+      "Your message goes straight to my inbox. I reply personally.",
     formError: "Couldn't send the message. Please try again or email me directly.",
     successTitle: "Message sent!",
     successBody: "Thanks for reaching out. I'll get back soon via the email you shared.",
   },
   footer: {
-    role: "CX Strategist & Designer · Portugal",
+    role: "CX Designer | Service Designer · Portugal",
   },
   caseChrome: {
     back: "← Back to work",

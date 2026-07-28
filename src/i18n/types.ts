@@ -21,6 +21,7 @@ export type Dictionary = {
     ctaWork: string;
     ctaContact: string;
     role: string;
+    roleTags: string[];
     location: string;
     locationTags: string[];
     stats: { value: string; label: string }[];
