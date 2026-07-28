@@ -85,6 +85,7 @@ export const casePageSeo: Record<
       title: "BBNK | UX Case Study | Ivy DC",
       description:
         "Estudo de caso BBNK: plataforma white-label de banking as a service com UX/UI minimalista, protótipo navegável e entrega ágil de produtos bancários digitais.",
+      ogImage: "/uploads/bbnk/bbnk-intro.png",
       related: [
         { label: "TrustHub — fintech PME", path: "/cases/trusthub" },
         { label: "Cashlog Raízen", path: "/cases/cashlog" },
@@ -175,6 +176,7 @@ export const casePageSeo: Record<
       title: "BBNK | UX Case Study | Ivy DC",
       description:
         "BBNK UX case study: white-label banking-as-a-service platform with minimalist UX/UI, a navigable prototype and fast delivery of digital banking products.",
+      ogImage: "/uploads/bbnk/bbnk-intro.png",
       related: [
         { label: "TrustHub — SME fintech", path: "/cases/trusthub" },
         { label: "Cashlog Raízen", path: "/cases/cashlog" },

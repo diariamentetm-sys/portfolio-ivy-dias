@@ -6,11 +6,13 @@ export function Footer({ inverted = false }: { inverted?: boolean }) {
 
   return (
     <footer
-      className={`px-5 md:px-16 py-8 max-w-7xl mx-auto flex flex-wrap gap-4 items-center justify-between ${
-        inverted ? "text-white/70" : "border-t border-neutral-200 text-neutral-500"
+      className={`w-full max-w-7xl mx-auto flex flex-wrap gap-4 items-center justify-between ${
+        inverted
+          ? "mt-16 md:mt-28 pt-10 md:pt-14 text-white/70"
+          : "px-5 md:px-16 py-8 border-t border-neutral-200 text-neutral-500"
       }`}
     >
-      <div className="flex items-center">
+      <div className="mr-auto flex items-center justify-start">
         <img
           src="/images/ivy-dc-logo-white.png"
           alt="IvyDC"
@@ -20,7 +22,7 @@ export function Footer({ inverted = false }: { inverted?: boolean }) {
           decoding="async"
         />
       </div>
-      <div className="text-sm">
+      <div className="text-sm shrink-0">
         {t.footer.role} · © {year}
       </div>
     </footer>

@@ -311,25 +311,20 @@ function buildBbnkLocale(locale: Locale): ProjectLocaleContent {
       ? [
           {
             number: "01",
-            kicker: "01 / 04 · Visão geral",
+            kicker: "01 / 03 · Visão geral",
             title: "Banking as a Service com entregas rápidas",
-            body: "BBNK — O BANK, plataforma digital integrada de banking as a service e white label, com entregas rápidas de produtos bancários.",
+            body: "Com o BBNK, buscamos entregar gestão financeira de forma intuitiva, personalizada e integrada aos seus negócios e dia a dia. Focados no seu sucesso, criamos o seu banco e o seu futuro, de forma simples e rápida.",
+            images: [{ src: "/uploads/bbnk/bbnk-visao-geral.png" }],
           },
           {
             number: "02",
-            kicker: "02 / 04 · Proposta de valor",
-            title: "Gestão financeira intuitiva e integrada",
-            body: "Com o BBNK, buscamos entregar gestão financeira de forma intuitiva, personalizada e integrada aos seus negócios e dia a dia. Focados no seu sucesso, criamos o seu banco e o seu futuro, de forma simples e rápida.",
-          },
-          {
-            number: "03",
-            kicker: "03 / 04 · Conceito visual",
+            kicker: "02 / 03 · Conceito visual",
             title: "Minimalista, vibrante e clean",
             body: "O conceito visual apresenta-se de forma minimalista, com cores vibrantes e um layout clean. Com uma interface intuitiva, a navegação é fácil e dinâmica, permitindo ao usuário realizar suas operações de forma rápida e segura, com o objetivo final de economizar tempo.",
           },
           {
-            number: "04",
-            kicker: "04 / 04 · Protótipo navegável",
+            number: "03",
+            kicker: "03 / 03 · Protótipo navegável",
             title: "Explore a experiência BBNK",
             body: "Interaja com o protótipo — desktop e fluxos da conta.",
           },
@@ -337,25 +332,20 @@ function buildBbnkLocale(locale: Locale): ProjectLocaleContent {
       : [
           {
             number: "01",
-            kicker: "01 / 04 · Overview",
+            kicker: "01 / 03 · Overview",
             title: "Banking as a Service with fast delivery",
-            body: "BBNK — THE BANK, an integrated digital banking-as-a-service and white-label platform built for rapid delivery of banking products.",
+            body: "With BBNK, we aim to deliver financial management in an intuitive, personalized way, integrated into business and daily life — building your bank and your future, simply and quickly.",
+            images: [{ src: "/uploads/bbnk/bbnk-visao-geral.png" }],
           },
           {
             number: "02",
-            kicker: "02 / 04 · Value proposition",
-            title: "Intuitive, personalized financial management",
-            body: "With BBNK, we deliver financial management that feels intuitive, personalized, and integrated into everyday business. Focused on your success, we create your bank — and your future — simply and quickly.",
-          },
-          {
-            number: "03",
-            kicker: "03 / 04 · Visual concept",
+            kicker: "02 / 03 · Visual concept",
             title: "Minimal, vibrant, and clean",
             body: "The visual concept is minimal, with vibrant accents and a clean layout. An intuitive interface keeps navigation easy and dynamic, so users can complete operations quickly and securely — saving time at every step.",
           },
           {
-            number: "04",
-            kicker: "04 / 04 · Navigable prototype",
+            number: "03",
+            kicker: "03 / 03 · Navigable prototype",
             title: "Explore the BBNK experience",
             body: "Interact with the prototype — account flows and desktop UI.",
           },
@@ -694,7 +684,7 @@ export const seedProjects: ManagedProject[] = [
   buildSeedProject("claro", "03", claroData.overviewImg, buildClaroLocale),
   buildSeedProject("abtest", "04", abtestData.tests[0].image, buildAbtestLocale),
   buildSeedProject("etitulo", "05", etituloData.overviewImg, buildEtituloLocale),
-  buildSeedProject("bbnk", "06", "", buildBbnkLocale),
+  buildSeedProject("bbnk", "06", "/uploads/bbnk/bbnk-intro.png", buildBbnkLocale),
   buildSeedProject(
     "trusthub",
     "07",

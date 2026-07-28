@@ -7,44 +7,41 @@ import { useLocale } from "../i18n/LocaleContext";
 import {
   getManagedProject,
   getSectionImages,
-  resolveOverviewSrc,
 } from "../utils/projectMedia";
 
 /** Bump whenever the pocket embed is rebuilt — forces a fresh iframe shell. */
-const EMBED_SRC = "/embeds/bbnk/index.html?v=20260727e";
+const EMBED_SRC = "/embeds/bbnk/index.html?v=20260728w";
+
+/** Case board — project introduction (bbnk-4 case board). */
+const INTRO_SRC = "/uploads/bbnk/bbnk-intro.png";
+
+/** UI mockup for Visão geral / Banking as a Service section. */
+const VISAO_GERAL_SRC = "/uploads/bbnk/bbnk-visao-geral.png?v=20260728u";
 
 const pageCopy = {
   pt: {
-    overviewLabel: "01 / 04 · Visão geral",
+    overviewLabel: "01 / 03 · Visão geral",
     overviewTitle: "Banking as a Service com entregas rápidas",
     overviewBody:
-      "BBNK — O BANK, plataforma digital integrada de banking as a service e white label, com entregas rápidas de produtos bancários.",
-    valueLabel: "02 / 04 · Proposta de valor",
-    valueTitle: "Gestão financeira intuitiva e integrada",
-    valueBody:
       "Com o BBNK, buscamos entregar gestão financeira de forma intuitiva, personalizada e integrada aos seus negócios e dia a dia. Focados no seu sucesso, criamos o seu banco e o seu futuro, de forma simples e rápida.",
-    visualLabel: "03 / 04 · Conceito visual",
+    visualLabel: "02 / 03 · Conceito visual",
     visualTitle: "Minimalista, vibrante e clean",
     visualBody:
       "O conceito visual apresenta-se de forma minimalista, com cores vibrantes e um layout clean. Com uma interface intuitiva, a navegação é fácil e dinâmica, permitindo ao usuário realizar suas operações de forma rápida e segura.",
-    protoLabel: "04 / 04 · Protótipo navegável",
+    protoLabel: "03 / 03 · Protótipo navegável",
     protoTitle: "Explore a experiência BBNK",
     protoBody: "Interaja com o protótipo abaixo — layout adaptado para mobile e desktop.",
   },
   en: {
-    overviewLabel: "01 / 04 · Overview",
+    overviewLabel: "01 / 03 · Overview",
     overviewTitle: "Banking as a Service with fast delivery",
     overviewBody:
-      "BBNK — O BANK, an integrated digital banking-as-a-service and white-label platform with fast delivery of banking products.",
-    valueLabel: "02 / 04 · Value proposition",
-    valueTitle: "Intuitive, integrated financial management",
-    valueBody:
       "With BBNK, we aim to deliver financial management in an intuitive, personalized way, integrated into business and daily life — building your bank and your future, simply and quickly.",
-    visualLabel: "03 / 04 · Visual concept",
+    visualLabel: "02 / 03 · Visual concept",
     visualTitle: "Minimal, vibrant, and clean",
     visualBody:
       "The visual concept is minimalist, with vibrant colors and a clean layout. An intuitive interface keeps navigation easy and dynamic so users can complete operations quickly and securely.",
-    protoLabel: "04 / 04 · Navigable prototype",
+    protoLabel: "03 / 03 · Navigable prototype",
     protoTitle: "Explore the BBNK experience",
     protoBody: "Interact with the prototype below — responsive layout for mobile and desktop.",
   },
@@ -77,32 +74,28 @@ export function BbnkPage() {
   const copy = pageCopy[locale];
   const config = resolveCaseStudyConfig("bbnk", locale, content.projects);
   const project = getManagedProject(content.projects, "bbnk");
-  const overviewSrc = resolveOverviewSrc(project);
-  const overviewImages = getSectionImages(project, locale, 0);
-  const valueImages = getSectionImages(project, locale, 1);
-  const visualImages = getSectionImages(project, locale, 2);
-  const protoImages = getSectionImages(project, locale, 3);
+  const visualImages = getSectionImages(project, locale, 1);
+  const protoImages = getSectionImages(project, locale, 2);
 
   return (
-    <CaseStudyLayout config={config}>
-      {overviewSrc ? (
-        <section className="max-w-5xl mx-auto px-5 md:px-16 pb-4">
-          <CaseImage
-            src={overviewSrc}
-            alt={`${config.title}${config.titleAccent ?? ""}`}
-            fill
-            priority
-          />
-        </section>
-      ) : null}
+    <CaseStudyLayout config={config} ogImage={INTRO_SRC}>
+      <section className="max-w-5xl mx-auto px-5 md:px-16 pb-4">
+        <CaseImage
+          src={INTRO_SRC}
+          alt={`${config.title}${config.titleAccent ?? ""}`}
+          priority
+        />
+      </section>
 
       <CaseBlockSection label={copy.overviewLabel} title={copy.overviewTitle}>
         <p className="max-w-3xl body-md">{copy.overviewBody}</p>
-        <SectionGallery images={overviewImages} title={copy.overviewTitle} />
-      </CaseBlockSection>
-      <CaseBlockSection label={copy.valueLabel} title={copy.valueTitle}>
-        <p className="max-w-3xl body-md">{copy.valueBody}</p>
-        <SectionGallery images={valueImages} title={copy.valueTitle} />
+        <div className="mt-6">
+          <CaseImage
+            src={VISAO_GERAL_SRC}
+            alt={copy.overviewTitle}
+            priority
+          />
+        </div>
       </CaseBlockSection>
       <CaseBlockSection label={copy.visualLabel} title={copy.visualTitle}>
         <p className="max-w-3xl body-md">{copy.visualBody}</p>
