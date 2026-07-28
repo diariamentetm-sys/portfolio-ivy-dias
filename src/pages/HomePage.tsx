@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { QuotesCarousel } from "../components/cases/QuotesCarousel";
 import { Footer } from "../components/layout/Footer";
 import { Navbar } from "../components/layout/Navbar";
+import { HeroTitleNotes } from "../components/home/HeroTitleNotes";
 import { SpecialtyStack } from "../components/home/SpecialtyStack";
 import { SeoHead } from "../components/seo/SeoHead";
 import { PostItTag } from "../components/ui/PostItTag";
@@ -19,23 +20,16 @@ import { sendContactMessage } from "../lib/sendContact";
 import { homePageSeo } from "../seo/pageMeta";
 import { buildPersonWebsiteJsonLd } from "../seo/siteConfig";
 
-const heroTagStyles = [
-  { tone: "post-it-yellow", rotate: "-rotate-2" },
-  { tone: "post-it-blue", rotate: "rotate-2" },
-  { tone: "post-it-coral", rotate: "-rotate-1" },
+const heroLocationStyles = [
+  { tone: "post-it-mint", rotate: "rotate-2" },
+  { tone: "post-it-lavender", rotate: "-rotate-1" },
+  { tone: "post-it-peach", rotate: "rotate-1" },
 ] as const;
 
 const heroStatStyles = [
   { tone: "post-it-mint", rotate: "rotate-1" },
   { tone: "post-it-lavender", rotate: "-rotate-2" },
   { tone: "post-it-peach", rotate: "rotate-2" },
-] as const;
-
-const contactTagStyles = [
-  { tone: "post-it-yellow", rotate: "-rotate-2" },
-  { tone: "post-it-mint", rotate: "rotate-2" },
-  { tone: "post-it-blue", rotate: "-rotate-1" },
-  { tone: "post-it-coral", rotate: "rotate-1" },
 ] as const;
 
 export function HomePage() {
@@ -163,23 +157,13 @@ export function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-50 via-transparent to-neutral-50/40 md:hidden" />
         </div>
 
-        <div className="relative z-10 px-5 md:px-16 pt-24 md:pt-28 pb-20 md:pb-28 max-w-7xl mx-auto">
+        <div className="relative z-10 px-5 md:px-16 pt-32 md:pt-40 pb-20 md:pb-28 max-w-7xl mx-auto">
           <Reveal className="max-w-xl lg:max-w-2xl">
-            <div className="flex flex-wrap gap-2.5 mb-7">
-              {t.hero.tags.map((tag, index) => (
-                <span
-                  key={tag}
-                  className={`post-it post-it-tag ${heroTagStyles[index]?.tone ?? "post-it-yellow"} ${heroTagStyles[index]?.rotate ?? "rotate-1"}`}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <h1 className="hero-h1">
-              {hero.titleBefore}{" "}
-              <span className="text-accent">{hero.titleAccent}</span>
-            </h1>
-            <p className="mt-8 max-w-xl body-lg">{hero.subtitle}</p>
+            <HeroTitleNotes
+              titleBefore={hero.titleBefore}
+              titleAccent={hero.titleAccent}
+              notes={t.hero.titleNotes}
+            />
             <div className="mt-10 flex flex-wrap gap-3.5">
               <a href="#trabalhos" className="btn-primary">
                 {t.hero.ctaWork}
@@ -189,32 +173,18 @@ export function HomePage() {
               </a>
             </div>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <p className="text-sm font-semibold text-neutral-950">
-                Ivy Dias de Campos
-              </p>
-              <span className="text-neutral-300" aria-hidden>
-                ·
-              </span>
               <p className="eyebrow normal-case tracking-normal">{t.hero.role}</p>
-              <span className="post-it post-it-tag post-it-mint rotate-2 whitespace-nowrap">
-                {t.hero.location}
-              </span>
-            </div>
-          </Reveal>
-
-          <Reveal
-            delay={200}
-            className="mt-14 md:mt-20 flex flex-wrap gap-4 md:gap-6 items-stretch border-t border-neutral-200/80 pt-8"
-          >
-            {t.hero.stats.map((stat, index) => (
-              <div
-                key={stat.label}
-                className={`post-it post-it-stat ${heroStatStyles[index]?.tone ?? "post-it-mint"} ${heroStatStyles[index]?.rotate ?? "rotate-1"}`}
-              >
-                <div className="stat-value">{stat.value}</div>
-                <div className="text-xs text-neutral-700 mt-1.5">{stat.label}</div>
+              <div className="flex flex-wrap gap-2">
+                {t.hero.locationTags.map((tag, index) => (
+                  <span
+                    key={tag}
+                    className={`post-it post-it-tag whitespace-nowrap ${heroLocationStyles[index]?.tone ?? "post-it-mint"} ${heroLocationStyles[index]?.rotate ?? "rotate-1"}`}
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-            ))}
+            </div>
           </Reveal>
         </div>
       </header>
@@ -224,14 +194,15 @@ export function HomePage() {
           <Reveal>
             <p className="eyebrow mb-5 text-accent">{t.about.eyebrow}</p>
             <h2 className="section-h2">{t.about.title}</h2>
-            <div className="mt-10 flex flex-wrap gap-2.5">
-              {t.about.languages.map((lang, index) => (
-                <span
-                  key={lang}
-                  className={index === 0 ? "chip-filled" : "chip"}
+            <div className="mt-10 flex flex-wrap gap-4 md:gap-5 items-stretch">
+              {t.hero.stats.map((stat, index) => (
+                <div
+                  key={stat.label}
+                  className={`post-it post-it-stat ${heroStatStyles[index]?.tone ?? "post-it-mint"} ${heroStatStyles[index]?.rotate ?? "rotate-1"}`}
                 >
-                  {lang}
-                </span>
+                  <div className="stat-value">{stat.value}</div>
+                  <div className="text-xs text-neutral-700 mt-1.5">{stat.label}</div>
+                </div>
               ))}
             </div>
           </Reveal>
@@ -439,19 +410,9 @@ export function HomePage() {
                   alt={t.contact.photoAlt}
                   className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover object-[center_18%] border-4 border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
                 />
-                <span className="post-it post-it-tag post-it-yellow rotate-3 absolute -bottom-2 -right-3">
-                  CX
+                <span className="post-it post-it-tag post-it-yellow -rotate-2 absolute -bottom-2 -right-3 z-10">
+                  CX Design
                 </span>
-              </div>
-              <div className="flex flex-wrap gap-2.5 pb-2">
-                {t.contact.tags.map((tag, index) => (
-                  <span
-                    key={tag}
-                    className={`post-it post-it-tag ${contactTagStyles[index]?.tone ?? "post-it-mint"} ${contactTagStyles[index]?.rotate ?? "rotate-1"}`}
-                  >
-                    {tag}
-                  </span>
-                ))}
               </div>
             </div>
             <p className="eyebrow mb-5 text-white/50">{t.contact.eyebrow}</p>

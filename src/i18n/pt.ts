@@ -17,8 +17,9 @@ export const pt: Dictionary = {
       "Há mais de 20 anos transformo complexidade de negócio em experiências que geram valor real — atuando como liderança técnica em projetos estratégicos de CX Design, Service Design e User Research.",
     ctaWork: "Ver trabalhos selecionados →",
     ctaContact: "Entrar em contato",
-    role: "Estrategista & Designer de CX",
+    role: "Service Designer | Product | Researcher",
     location: "Portugal · remoto",
+    locationTags: ["Portugal", "Remoto", "Híbrido"],
     stats: [
       { value: "20+", label: "anos de experiência" },
       { value: "30+", label: "marcas atendidas" },
@@ -26,6 +27,14 @@ export const pt: Dictionary = {
     ],
     imageAlt:
       "Ivy Dias em workshop de service design, apontando para um mapa de jornada com post-its",
+    titleNotes: [
+      "jornada!",
+      "pessoas primeiro",
+      "valor real",
+      "pesquisa",
+      "workshop",
+      "CX",
+    ],
   },
   about: {
     eyebrow: "(01) Sobre",
@@ -285,7 +294,7 @@ export const pt: Dictionary = {
     title: "Vamos conversar sobre seu projeto de CX?",
     subtitle:
       "Disponível para projetos remotos e internacionais, a partir de Portugal. Conte-me o desafio — respondo pessoalmente.",
-    tags: ["Remoto", "CX Strategy", "Workshops", "Portugal"],
+    tags: ["CX Design"],
     photoAlt: "Retrato de Ivy Dias de Campos",
     formName: "Nome",
     formEmail: "Email",

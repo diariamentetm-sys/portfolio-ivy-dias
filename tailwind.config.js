@@ -21,7 +21,9 @@ export default {
       },
       fontFamily: {
         sans: ["Radnika", "system-ui", "sans-serif"],
-        mono: ["Space Mono", "monospace"],
+        // Temporary test: handwriting in place of Space Mono
+        mono: ["Caveat", "cursive"],
+        hand: ["Caveat", "cursive"],
       },
       fontSize: {
         display: ["clamp(3.5rem,8vw,6rem)", { lineHeight: "0.98", letterSpacing: "-0.03em", fontWeight: "800" }],

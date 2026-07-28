@@ -1432,7 +1432,7 @@ export const cashlogPageContent: Record<Locale, CashlogPageContent> = {
         uiScreensLabel: "Telas em alta fidelidade",
         protoLabel: "Protótipo navegável",
         protoBody:
-          "Interaja com o protótipo abaixo — dashboard e fluxo de nova demanda (Demand Gen).",
+          "Interaja com o protótipo abaixo — navegação adaptada para mobile e desktop (Demand Gen).",
       },
     },
   },
@@ -1474,7 +1474,7 @@ export const cashlogPageContent: Record<Locale, CashlogPageContent> = {
         uiScreensLabel: "High-fidelity screens",
         protoLabel: "Navigable prototype",
         protoBody:
-          "Interact with the prototype below — dashboard and new demand flow (Demand Gen).",
+          "Interact with the prototype below — navigation adapted for mobile and desktop (Demand Gen).",
       },
     },
   },

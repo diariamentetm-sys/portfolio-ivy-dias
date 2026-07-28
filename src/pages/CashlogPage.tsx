@@ -23,7 +23,7 @@ import {
 } from "../utils/projectMedia";
 
 /** Bump whenever the Cashlog embed is rebuilt — forces a fresh iframe shell. */
-const EMBED_SRC = "/embeds/cashlog/index.html?v=20260723e";
+const EMBED_SRC = "/embeds/cashlog/index.html?v=20260727e";
 
 const statStyles = [
   { tone: "post-it-mint" as const, rotate: "rotate-1" },
@@ -206,7 +206,8 @@ export function CashlogPage() {
               ? "Cashlog Raízen — navigable prototype"
               : "Cashlog Raízen — protótipo navegável"
           }
-          heightClassName="aspect-[1200/857] h-auto min-h-0"
+          designWidth={1200}
+          designHeight={857}
         />
       </CaseSection>
 

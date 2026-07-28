@@ -22,8 +22,11 @@ export type Dictionary = {
     ctaContact: string;
     role: string;
     location: string;
+    locationTags: string[];
     stats: { value: string; label: string }[];
     imageAlt: string;
+    /** Handwritten workshop notes that appear over the hero title on hover. */
+    titleNotes: string[];
   };
   about: {
     eyebrow: string;

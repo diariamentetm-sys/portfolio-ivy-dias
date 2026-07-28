@@ -52,6 +52,7 @@
     --surface-page: #fafaf8;
     --surface-card: #ffffff;
     --border-subtle: #e4e4e1;
+    --font-hand: "Caveat", cursive;
   }
 
   html {
@@ -95,8 +96,15 @@
 }
 
 @layer components {
+  /* Handwriting test — replaces Space Mono surfaces */
+  .font-mono,
+  .font-hand {
+    font-family: var(--font-hand) !important;
+  }
+
   .eyebrow {
-    @apply font-mono text-[11px] uppercase tracking-[0.12em] font-normal text-neutral-500;
+    @apply text-[17px] tracking-[0.01em] font-medium text-neutral-500 normal-case;
+    font-family: var(--font-hand);
   }
 
   .display-h1 {
@@ -108,8 +116,8 @@
 
   .hero-h1 {
     @apply font-bold tracking-tight text-neutral-950 text-balance;
-    font-size: 46px;
-    line-height: 1.1;
+    font-size: clamp(2.75rem, 5.2vw, 3.75rem);
+    line-height: 1.08;
     letter-spacing: -0.02em;
   }
 
@@ -141,11 +149,13 @@
   }
 
   .chip {
-    @apply font-mono text-xs px-3.5 py-1.5 rounded-full border border-neutral-200 text-neutral-500;
+    @apply text-[15px] px-3.5 py-1.5 rounded-full border border-neutral-200 text-neutral-500;
+    font-family: var(--font-hand);
   }
 
   .chip-filled {
-    @apply font-mono text-xs px-3.5 py-1.5 rounded-full bg-neutral-950 text-white;
+    @apply text-[15px] px-3.5 py-1.5 rounded-full bg-neutral-950 text-white;
+    font-family: var(--font-hand);
   }
 
   .card {
@@ -269,7 +279,8 @@
   }
 
   .post-it-tag {
-    @apply inline-flex items-center px-3.5 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-neutral-800;
+    @apply inline-flex items-center px-3.5 py-2 text-[16px] tracking-[0.01em] font-semibold text-neutral-800 normal-case;
+    font-family: var(--font-hand);
     min-height: auto;
     height: auto;
   }
@@ -285,6 +296,69 @@
   .post-it-stat {
     @apply px-5 py-4;
     min-height: auto;
+  }
+
+  .post-it-scribble {
+    @apply px-3.5 py-2.5 text-[1.35rem] leading-none font-bold text-neutral-800;
+    font-family: var(--font-hand);
+    min-height: auto;
+    height: auto;
+    width: max-content;
+    max-width: 11rem;
+    box-shadow:
+      1px 2px 0 rgba(10, 10, 10, 0.05),
+      3px 6px 14px rgba(10, 10, 10, 0.14);
+  }
+
+  .post-it-scribble::before {
+    @apply h-1.5 w-1.5 -top-1;
+  }
+
+  .post-it-scribble::after {
+    border-width: 0 0 10px 10px;
+  }
+
+  .hero-title-notes {
+    cursor: default;
+  }
+
+  .hero-title-notes[data-hot="true"] .hero-h1 {
+    transition: opacity 0.35s ease;
+    opacity: 0.88;
+  }
+
+  .hero-trail-note {
+    position: absolute;
+    z-index: 20;
+    margin: 0;
+    animation: hero-trail-pop 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    will-change: transform, opacity;
+  }
+
+  @keyframes hero-trail-pop {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -35%) scale(0.55);
+    }
+    18% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+    55% {
+      opacity: 1;
+      transform: translate(-50%, -54%) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -68%) scale(0.9);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-trail-note {
+      animation: none;
+      opacity: 0 !important;
+    }
   }
 
   .case-card {

@@ -11,7 +11,7 @@ import {
 } from "../utils/projectMedia";
 
 /** Bump whenever the pocket embed is rebuilt — forces a fresh iframe shell. */
-const EMBED_SRC = "/embeds/bbnk/index.html?v=fix-20260721-2148";
+const EMBED_SRC = "/embeds/bbnk/index.html?v=20260727e";
 
 const pageCopy = {
   pt: {
@@ -29,7 +29,7 @@ const pageCopy = {
       "O conceito visual apresenta-se de forma minimalista, com cores vibrantes e um layout clean. Com uma interface intuitiva, a navegação é fácil e dinâmica, permitindo ao usuário realizar suas operações de forma rápida e segura.",
     protoLabel: "04 / 04 · Protótipo navegável",
     protoTitle: "Explore a experiência BBNK",
-    protoBody: "Interaja com o protótipo abaixo — desktop e fluxos da conta.",
+    protoBody: "Interaja com o protótipo abaixo — layout adaptado para mobile e desktop.",
   },
   en: {
     overviewLabel: "01 / 04 · Overview",
@@ -46,7 +46,7 @@ const pageCopy = {
       "The visual concept is minimalist, with vibrant colors and a clean layout. An intuitive interface keeps navigation easy and dynamic so users can complete operations quickly and securely.",
     protoLabel: "04 / 04 · Navigable prototype",
     protoTitle: "Explore the BBNK experience",
-    protoBody: "Interact with the prototype below — desktop and account flows.",
+    protoBody: "Interact with the prototype below — responsive layout for mobile and desktop.",
   },
 } as const;
 
@@ -114,7 +114,8 @@ export function BbnkPage() {
         <CaseEmbed
           src={EMBED_SRC}
           title="BBNK — protótipo navegável"
-          heightClassName="aspect-[1366/768] h-auto min-h-0"
+          designWidth={1366}
+          designHeight={768}
         />
       </CaseBlockSection>
     </CaseStudyLayout>
