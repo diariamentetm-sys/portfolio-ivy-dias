@@ -39,7 +39,7 @@ export const en: Dictionary = {
   },
   about: {
     eyebrow: "(01) About",
-    title: "I turn complexity into experiences that create real value.",
+    title: "I really love solving problems!",
     p1: "I'm a Customer Experience strategist and designer with more than two decades dedicated to products, services and digital brands.",
     p2: "I act as technical lead on strategic projects, combining systems thinking, design depth and the ability to work with stakeholders of very different profiles.",
     brandsLabel: "Brands I've collaborated with",
@@ -53,7 +53,7 @@ export const en: Dictionary = {
   },
   specialties: {
     eyebrow: "(02) How I work",
-    title: "The fronts I usually lead.",
+    title: "Fronts I work on — leading or getting hands-on:",
     intro: "",
     items: [
       {
@@ -90,7 +90,8 @@ export const en: Dictionary = {
   },
   work: {
     eyebrow: "(03) Selected work",
-    title: "Case studies in depth from challenge to outcome.",
+    title:
+      "Case studies that show the versatility and 360° perspective I bring to my work.",
     intro: "",
     countLabel: "04 cases",
     cta: "View full case study →",
@@ -102,7 +103,7 @@ export const en: Dictionary = {
     },
     industryEyebrow: "Multi-industry path · social proof",
     industryTitle:
-      "Adaptation across different business models and stakeholders.",
+      "I was born ready to adapt to different business models and stakeholders.",
     industries: [
       {
         label: "Banking & Investments",
@@ -242,7 +243,7 @@ export const en: Dictionary = {
   },
   timeline: {
     eyebrow: "(05) Timeline",
-    title: "The milestones that shaped my CX practice.",
+    title: "Design in practice: experiences that shaped my knowledge.",
     items: [
       {
         period: "2022–2026",
@@ -290,7 +291,7 @@ export const en: Dictionary = {
     eyebrow: "(06) Contact",
     title: "Shall we talk about your CX project?",
     subtitle:
-      "Available for remote and hybrid projects in Portugal. Tell me about the challenge and I'll reply personally.",
+      "Available for remote and hybrid projects. Tell me about the challenge and I'll reply personally.",
     tags: ["CX Design"],
     photoAlt: "Portrait of Ivy Dias de Campos",
     formName: "Name",
