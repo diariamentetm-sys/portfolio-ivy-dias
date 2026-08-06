@@ -33,16 +33,27 @@ function renderWords(
   keyPrefix: string,
   className?: string,
 ): ReactNode[] {
-  return text.split(/(\s+)/).map((part, index) => {
-    const key = `${keyPrefix}-${index}`;
-    if (/^\s+$/.test(part) || part === "") {
-      return <span key={key}>{part}</span>;
+  const lines = text.split("\n");
+  return lines.flatMap((line, lineIndex) => {
+    const parts = line.split(/(\s+)/).map((part, index) => {
+      const key = `${keyPrefix}-${lineIndex}-${index}`;
+      if (/^\s+$/.test(part) || part === "") {
+        return <span key={key}>{part}</span>;
+      }
+      return (
+        <span
+          key={key}
+          className={["hero-title-word", className].filter(Boolean).join(" ")}
+        >
+          {part}
+        </span>
+      );
+    });
+
+    if (lineIndex < lines.length - 1) {
+      parts.push(<br key={`${keyPrefix}-br-${lineIndex}`} />);
     }
-    return (
-      <span key={key} className={["hero-title-word", className].filter(Boolean).join(" ")}>
-        {part}
-      </span>
-    );
+    return parts;
   });
 }
 

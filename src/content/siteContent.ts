@@ -118,13 +118,13 @@ export const defaultSiteContent: SiteContent = {
   contactPhoto: "/images/ivy-dias-hero.png",
   heroCopy: {
     en: {
-      titleBefore: "Hi, I'm Ivy — I connect brands to",
+      titleBefore: "Hi, I'm Ivy DC.\nI connect brands to",
       titleAccent: "real digital experiences.",
       subtitle:
         "For over 20 years I've turned business complexity into experiences that create real value — leading strategic CX Design, Service Design and User Research projects.",
     },
     pt: {
-      titleBefore: "Olá, eu sou a Ivy, e conecto marcas a",
+      titleBefore: "Olá, eu sou a Ivy DC,\ne conecto marcas a",
       titleAccent: "experiências digitais reais.",
       subtitle:
         "Há mais de 20 anos transformo complexidade de negócio em experiências que geram valor real — atuando como liderança técnica em projetos estratégicos de CX Design, Service Design e User Research.",
@@ -154,9 +154,35 @@ export function resolveHeroImage(url: string | undefined | null): string {
 }
 
 export function normalizeSiteContent(content: SiteContent): SiteContent {
+  const heroCopy = { ...content.heroCopy };
+
+  for (const locale of ["en", "pt"] as const) {
+    const current = heroCopy[locale];
+    const defaults = defaultSiteContent.heroCopy[locale];
+    if (!current) {
+      heroCopy[locale] = structuredClone(defaults);
+      continue;
+    }
+
+    const before = current.titleBefore ?? "";
+    const needsBreak =
+      !before.includes("\n") &&
+      (/I connect brands to$/i.test(before.trim()) ||
+        /e conecto marcas a$/i.test(before.trim()));
+
+    heroCopy[locale] = {
+      ...defaults,
+      ...current,
+      titleBefore: needsBreak ? defaults.titleBefore : before,
+      titleAccent: current.titleAccent || defaults.titleAccent,
+      subtitle: current.subtitle || defaults.subtitle,
+    };
+  }
+
   return {
     ...content,
     heroImage: resolveHeroImage(content.heroImage),
+    heroCopy,
   };
 }
 

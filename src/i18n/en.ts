@@ -11,7 +11,7 @@ export const en: Dictionary = {
   },
   hero: {
     tags: ["CX Strategy", "Service Design", "User Research"],
-    titleBefore: "Hi, I'm Ivy — I connect brands to",
+    titleBefore: "Hi, I'm Ivy DC.\nI connect brands to",
     titleAccent: "real digital experiences.",
     subtitle:
       "For over 20 years I've turned business complexity into experiences that create real value — leading strategic CX Design, Service Design and User Research projects.",
