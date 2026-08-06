@@ -121,7 +121,7 @@ export const claroData = {
     { k: "Entregável", v: "Redesign dos Cards" },
   ] satisfies MetaItem[],
   about: [
-    "Atuei como service designer no time de DesignOps da Claro na condução do discovery do componente Card de vendas para os países AMX.",
+    "Atuei como service designer no time de DesignOps da Claro na condução do discovery do componente Card de vendas para o portal Claro.com.br.",
     "O objetivo era consolidar as regras de negócio e a arquitetura de informação que dariam base aos novos modelos de card — um primeiro caminho a ser priorizado dentro de um momento de definição do processo de design.",
   ],
   perfis: [

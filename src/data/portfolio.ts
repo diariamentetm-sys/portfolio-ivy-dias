@@ -240,7 +240,7 @@ export const caseStudies: Record<string, CaseStudyConfig> = {
     title: "Cards ",
     titleAccent: "Claro AMX",
     subtitle:
-      "Discovery de regras de negócio e arquitetura de informação para o componente Card de vendas em países AMX.",
+      "Discovery de regras de negócio e arquitetura de informação para o componente Card de vendas no portal Claro.com.br.",
     tags: ["Service Design", "DesignOps", "Claro", "AMX"],
     meta: claroData.meta,
     about: claroData.about,

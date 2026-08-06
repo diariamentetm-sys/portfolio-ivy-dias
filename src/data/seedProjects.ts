@@ -735,6 +735,30 @@ function enrichProjectFromSeed(
       enriched = true;
       return { ...section, images: seedSection.images };
     });
+
+    const hasLegacyAmxCopy =
+      updated.slug === "claro" &&
+      (/pa[ií]ses AMX/i.test(copy.description) ||
+        /AMX countries/i.test(copy.description) ||
+        copy.about.some(
+          (paragraph) =>
+            /pa[ií]ses AMX/i.test(paragraph) || /AMX countries/i.test(paragraph),
+        ));
+
+    if (hasLegacyAmxCopy) {
+      enriched = true;
+      updated = {
+        ...updated,
+        [locale]: {
+          ...copy,
+          description: seedCopy.description,
+          about: seedCopy.about,
+          sections,
+        },
+      };
+      continue;
+    }
+
     updated = { ...updated, [locale]: { ...copy, sections } };
   }
 

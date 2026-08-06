@@ -57,7 +57,7 @@ export const casePageSeo: Record<
     claro: {
       title: "Claro Empresas | Customer Experience | Ivy DC",
       description:
-        "Discovery e Service Design dos cards de vendas Claro AMX: regras de negócio, arquitetura de informação e DesignOps para operação comercial em vários países.",
+        "Discovery e Service Design dos cards de vendas no portal Claro.com.br: regras de negócio, arquitetura de informação e DesignOps para o e-commerce.",
       related: [
         { label: "Testes A/B Claro — CRO", path: "/cases/abtest" },
         { label: "e-Título TSE — onboarding", path: "/cases/etitulo" },
@@ -145,7 +145,7 @@ export const casePageSeo: Record<
     claro: {
       title: "Claro Empresas | Customer Experience | Ivy DC",
       description:
-        "Service Design discovery for Claro AMX sales cards: business rules, information architecture and DesignOps for multi-country commercial operations.",
+        "Service Design discovery for Claro.com.br sales cards: business rules, information architecture and DesignOps for the e-commerce portal.",
       related: [
         { label: "Claro A/B tests — CRO", path: "/cases/abtest" },
         { label: "e-Título TSE — onboarding", path: "/cases/etitulo" },

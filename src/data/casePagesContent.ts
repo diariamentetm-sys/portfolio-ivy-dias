@@ -65,7 +65,7 @@ export const caseStudyConfigs: Record<
       title: "Cards ",
       titleAccent: "Claro AMX",
       subtitle:
-        "Discovery de regras de negócio e arquitetura de informação para o componente Card de vendas em países AMX.",
+        "Discovery de regras de negócio e arquitetura de informação para o componente Card de vendas no portal Claro.com.br.",
       tags: ["Service Design", "DesignOps", "Claro", "AMX"],
       meta: [
         { k: "Papel", v: "Service Designer" },
@@ -76,7 +76,7 @@ export const caseStudyConfigs: Record<
         { k: "Entregável", v: "Redesign dos Cards" },
       ],
       about: [
-        "Atuei como service designer no time de DesignOps da Claro na condução do discovery do componente Card de vendas para os países AMX.",
+        "Atuei como service designer no time de DesignOps da Claro na condução do discovery do componente Card de vendas para o portal Claro.com.br.",
         "O objetivo era consolidar as regras de negócio e a arquitetura de informação que dariam base aos novos modelos de card — um primeiro caminho a ser priorizado dentro de um momento de definição do processo de design.",
       ],
       next: { label: "Próximo: Testes A/B →", path: "/cases/abtest" },
@@ -298,7 +298,7 @@ export const caseStudyConfigs: Record<
       title: "Claro AMX ",
       titleAccent: "Cards",
       subtitle:
-        "Business rules discovery and information architecture for the sales Card component across AMX countries.",
+        "Business rules discovery and information architecture for the sales Card component on the Claro.com.br portal.",
       tags: ["Service Design", "DesignOps", "Claro", "AMX"],
       meta: [
         { k: "Role", v: "Service Designer" },
@@ -309,7 +309,7 @@ export const caseStudyConfigs: Record<
         { k: "Deliverable", v: "Card redesign" },
       ],
       about: [
-        "I worked as a service designer on Claro's DesignOps team, leading discovery for the sales Card component across AMX countries.",
+        "I worked as a service designer on Claro's DesignOps team, leading discovery for the sales Card component on the Claro.com.br portal.",
         "The goal was to consolidate the business rules and information architecture that would underpin the new card models — a first path to prioritize during a pivotal moment in defining the design process.",
       ],
       next: { label: "Next: A/B Tests →", path: "/cases/abtest" },
@@ -1537,7 +1537,7 @@ export const claroPageContent: Record<Locale, ClaroPageContent> = {
       s01: {
         kicker: "Kick Off · 42 pessoas",
         title: "Contexto e alinhamento inicial",
-        body: "Os especialistas trouxeram o contexto e o histórico da iniciativa — resultados de testes, validações de POC e hipóteses de uso já levantadas — para que todos chegassem às sessões seguintes com o mesmo nível de entendimento.",
+        body: "As pautas foram realizadas com gerentes de produto, leads de squad, product managers, product owners, tech leads e designers de interface. Eles trouxeram o contexto e o histórico da iniciativa — resultados de testes, validações de POC e hipóteses de uso já levantadas — para que todos chegassem às sessões seguintes com o mesmo nível de entendimento.",
         funilLabel: "Funil de participação",
       },
       s02: {
@@ -1596,7 +1596,7 @@ export const claroPageContent: Record<Locale, ClaroPageContent> = {
       s01: {
         kicker: "Kick Off · 42 people",
         title: "Context and initial alignment",
-        body: "Specialists brought the initiative's context and history — test results, POC validations, and usage hypotheses already mapped — so everyone entered the following sessions with the same level of understanding.",
+        body: "The kickoff agendas brought together product managers, squad leads, product owners, tech leads, and interface designers. They shared the initiative's context and history — test results, POC validations, and usage hypotheses already mapped — so everyone entered the following sessions with the same level of understanding.",
         funilLabel: "Participation funnel",
       },
       s02: {
