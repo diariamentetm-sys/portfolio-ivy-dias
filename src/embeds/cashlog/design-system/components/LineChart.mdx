@@ -1,0 +1,33 @@
+import { Meta, Canvas, Controls, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as LineChartStories from "./LineChart.stories";
+
+<Meta of={LineChartStories} />
+
+# LineChart
+
+Dupla linha do dashboard — **Plano** (pontilhado escuro) × **Real Acumulado** (magenta sólido), com tooltip no ponto ativo.
+
+## When to use
+
+- Dispêndio × Plano Mensal
+
+## When NOT to use
+
+- Comparação categórica mensal com duas séries discretas → `BarChart`
+
+## Variants
+
+<Canvas of={LineChartStories.AllVariants} />
+
+## States
+
+<Canvas of={LineChartStories.States} />
+
+## Playground
+
+<Canvas of={LineChartStories.Playground} />
+<Controls of={LineChartStories.Playground} />
+
+## Props
+
+<ArgTypes of={LineChartStories} />

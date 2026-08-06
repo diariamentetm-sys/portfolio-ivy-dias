@@ -27,7 +27,7 @@ export const en: Dictionary = {
       { value: "3", label: "working languages" },
     ],
     imageAlt:
-      "Ivy Dias in a service design workshop, pointing to a journey map of sticky notes",
+      "Ivy Dias drawing on a glass board, with colorful sticky notes in the background",
     titleNotes: [
       "journey!",
       "people first",
@@ -54,8 +54,7 @@ export const en: Dictionary = {
   specialties: {
     eyebrow: "(02) How I work",
     title: "The fronts I usually lead.",
-    intro:
-      "A synthesis of what I lead in real CX and service design projects.",
+    intro: "",
     items: [
       {
         num: "01",
@@ -92,8 +91,7 @@ export const en: Dictionary = {
   work: {
     eyebrow: "(03) Selected work",
     title: "Case studies in depth from challenge to outcome.",
-    intro:
-      "Case studies that show the versatility and 360° perspective I bring to my work",
+    intro: "",
     countLabel: "04 cases",
     cta: "View full case study →",
     filterAll: "All",
@@ -209,8 +207,7 @@ export const en: Dictionary = {
   testimonials: {
     eyebrow: "(04) Testimonials",
     title: "What colleagues and partners say about working with me.",
-    intro:
-      "LinkedIn recommendations gathered across more than two decades of collaboration in product, design and technology.",
+    intro: "",
     carouselLabel: "What colleagues and partners say:",
     prevLabel: "Previous testimonial",
     nextLabel: "Next testimonial",

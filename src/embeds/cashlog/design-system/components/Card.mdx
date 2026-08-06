@@ -1,0 +1,35 @@
+import { Meta, Canvas, Controls, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as CardStories from "./Card.stories";
+
+<Meta of={CardStories} />
+
+# Card
+
+Painel flat do dashboard Cashlog — superfície branca, borda fina, **sem sombra**.
+
+## When to use
+
+- Agrupar gráfico ou lista em painel (Dispêndio, Real × Aprovado, demandas)
+- Blocos laterais do dashboard
+
+## When NOT to use
+
+- KPI pastel do topo → use `MetricCard`
+- Elevação / sombra → não faz parte da linguagem visual do Cashlog
+
+## Variants
+
+<Canvas of={CardStories.AllVariants} />
+
+## States
+
+<Canvas of={CardStories.States} />
+
+## Playground
+
+<Canvas of={CardStories.Playground} />
+<Controls of={CardStories.Playground} />
+
+## Props
+
+<ArgTypes of={CardStories} />

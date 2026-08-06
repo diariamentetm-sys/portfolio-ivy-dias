@@ -1,0 +1,37 @@
+import { Meta, Canvas, Controls, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as ButtonStories from "./Button.stories";
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Dispara uma ação com variantes de ênfase visual.
+
+## When to use
+
+- Confirmar ou enviar uma ação principal (`primary`)
+- Ação secundária no mesmo contexto (`secondary`)
+- Ação de baixa ênfase / terciária (`ghost`)
+
+## When NOT to use
+
+- Navegação entre páginas → use `<a href>` / link
+- Toggle on/off persistente → use um control dedicado (ainda não no DS)
+- Mais de uma `primary` na mesma viewport
+
+## Variants
+
+<Canvas of={ButtonStories.AllVariants} />
+
+## States
+
+<Canvas of={ButtonStories.States} />
+
+## Playground
+
+<Canvas of={ButtonStories.Playground} />
+<Controls of={ButtonStories.Playground} />
+
+## Props
+
+<ArgTypes of={ButtonStories} />

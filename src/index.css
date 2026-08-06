@@ -322,6 +322,10 @@
     cursor: default;
   }
 
+  .hero-title-word {
+    cursor: default;
+  }
+
   .hero-title-notes[data-hot="true"] .hero-h1 {
     transition: opacity 0.35s ease;
     opacity: 0.88;

@@ -23,7 +23,7 @@ import {
 } from "../utils/projectMedia";
 
 /** Bump whenever the Cashlog embed is rebuilt — forces a fresh iframe shell. */
-const EMBED_SRC = "/embeds/cashlog/index.html?v=20260727e";
+const EMBED_SRC = "/embeds/cashlog/index.html?v=20260731a";
 
 const statStyles = [
   { tone: "post-it-mint" as const, rotate: "rotate-1" },
@@ -208,6 +208,7 @@ export function CashlogPage() {
           }
           designWidth={1200}
           designHeight={857}
+          mobileLayout="scaled"
         />
       </CaseSection>
 

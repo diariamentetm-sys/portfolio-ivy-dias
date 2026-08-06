@@ -1,0 +1,79 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { theme } from "../tokens/theme";
+import { Swatch } from "../design-system";
+
+<Meta title="Cashlog/Foundations/Colors" />
+
+# Paleta de cores
+
+Valores de `theme.colors` — zero hardcode.
+
+## Brand
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: theme.spacing[3] }}>
+  <Swatch name="Primary" tokenPath="theme.colors.brand.primary" color={theme.colors.brand.primary} />
+  <Swatch name="Primary Hover" tokenPath="theme.colors.brand.primaryHover" color={theme.colors.brand.primaryHover} />
+  <Swatch name="Primary Pressed" tokenPath="theme.colors.brand.primaryPressed" color={theme.colors.brand.primaryPressed} />
+  <Swatch name="Primary Subtle" tokenPath="theme.colors.brand.primarySubtle" color={theme.colors.brand.primarySubtle} />
+</div>
+
+## Text
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: theme.spacing[3], marginTop: theme.spacing[6] }}>
+  <Swatch name="Default" tokenPath="theme.colors.text.default" color={theme.colors.text.default} />
+  <Swatch name="Muted" tokenPath="theme.colors.text.muted" color={theme.colors.text.muted} />
+  <Swatch name="Subtle" tokenPath="theme.colors.text.subtle" color={theme.colors.text.subtle} />
+  <Swatch name="Inverse" tokenPath="theme.colors.text.inverse" color={theme.colors.text.inverse} />
+  <Swatch name="Brand" tokenPath="theme.colors.text.brand" color={theme.colors.text.brand} />
+  <Swatch name="Link" tokenPath="theme.colors.text.link" color={theme.colors.text.link} />
+</div>
+
+## Feedback
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: theme.spacing[3], marginTop: theme.spacing[6] }}>
+  <Swatch name="Success" tokenPath="theme.colors.feedback.success" color={theme.colors.feedback.success} />
+  <Swatch name="Success Subtle" tokenPath="theme.colors.feedback.successSubtle" color={theme.colors.feedback.successSubtle} />
+  <Swatch name="Warning" tokenPath="theme.colors.feedback.warning" color={theme.colors.feedback.warning} />
+  <Swatch name="Warning Subtle" tokenPath="theme.colors.feedback.warningSubtle" color={theme.colors.feedback.warningSubtle} />
+  <Swatch name="Error" tokenPath="theme.colors.feedback.error" color={theme.colors.feedback.error} />
+  <Swatch name="Error Subtle" tokenPath="theme.colors.feedback.errorSubtle" color={theme.colors.feedback.errorSubtle} />
+  <Swatch name="Info" tokenPath="theme.colors.feedback.info" color={theme.colors.feedback.info} />
+  <Swatch name="Info Subtle" tokenPath="theme.colors.feedback.infoSubtle" color={theme.colors.feedback.infoSubtle} />
+</div>
+
+## Border & Surface
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: theme.spacing[3], marginTop: theme.spacing[6] }}>
+  <Swatch name="Border Default" tokenPath="theme.colors.border.default" color={theme.colors.border.default} />
+  <Swatch name="Border Subtle" tokenPath="theme.colors.border.subtle" color={theme.colors.border.subtle} />
+  <Swatch name="Border Strong" tokenPath="theme.colors.border.strong" color={theme.colors.border.strong} />
+  <Swatch name="Border Brand" tokenPath="theme.colors.border.brand" color={theme.colors.border.brand} />
+  <Swatch name="Border Focus" tokenPath="theme.colors.border.focus" color={theme.colors.border.focus} />
+  <Swatch name="Surface Default" tokenPath="theme.colors.surface.default" color={theme.colors.surface.default} />
+  <Swatch name="Surface Raised" tokenPath="theme.colors.surface.raised" color={theme.colors.surface.raised} />
+  <Swatch name="Surface Overlay" tokenPath="theme.colors.surface.overlay" color={theme.colors.surface.overlay} />
+  <Swatch name="KPI Lilac" tokenPath="theme.colors.surface.kpiLilac" color={theme.colors.surface.kpiLilac} />
+  <Swatch name="KPI Yellow" tokenPath="theme.colors.surface.kpiYellow" color={theme.colors.surface.kpiYellow} />
+</div>
+
+## Chart
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: theme.spacing[4], marginTop: theme.spacing[4] }}>
+  <Swatch name="Real" tokenPath="theme.colors.chart.real" color={theme.colors.chart.real} />
+  <Swatch name="Plan" tokenPath="theme.colors.chart.plan" color={theme.colors.chart.plan} />
+  <Swatch name="Approved" tokenPath="theme.colors.chart.approved" color={theme.colors.chart.approved} />
+  <Swatch name="Segment A" tokenPath="theme.colors.chart.segmentA" color={theme.colors.chart.segmentA} />
+  <Swatch name="Segment B" tokenPath="theme.colors.chart.segmentB" color={theme.colors.chart.segmentB} />
+  <Swatch name="Segment C" tokenPath="theme.colors.chart.segmentC" color={theme.colors.chart.segmentC} />
+  <Swatch name="Segment D" tokenPath="theme.colors.chart.segmentD" color={theme.colors.chart.segmentD} />
+</div>
+
+## Background
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: theme.spacing[3], marginTop: theme.spacing[6] }}>
+  <Swatch name="Default" tokenPath="theme.colors.background.default" color={theme.colors.background.default} />
+  <Swatch name="Subtle" tokenPath="theme.colors.background.subtle" color={theme.colors.background.subtle} />
+  <Swatch name="Muted" tokenPath="theme.colors.background.muted" color={theme.colors.background.muted} />
+  <Swatch name="Inverse" tokenPath="theme.colors.background.inverse" color={theme.colors.background.inverse} />
+  <Swatch name="Brand" tokenPath="theme.colors.background.brand" color={theme.colors.background.brand} />
+</div>

@@ -25,13 +25,13 @@ export const homePageSeo: Record<Locale, PageSeoCopy> = {
     title: "Ivy DC | Customer Experience Specialist | UX & Service Design",
     description:
       "Portfólio de Ivy Dias de Campos: 20+ anos em CX, Service Design e User Research. Cases reais com TSE, Claro, Polícia Federal, TrustHub e fintechs B2B.",
-    ogImage: "/images/ivy-hero-workshop-v2.png",
+    ogImage: "/images/ivy-hero-glass-board.png",
   },
   en: {
     title: "Ivy DC | Customer Experience Specialist | UX & Service Design",
     description:
       "Portfolio of Ivy Dias de Campos: 20+ years in CX, Service Design and User Research. Real cases with TSE, Claro, Federal Police, TrustHub and B2B fintechs.",
-    ogImage: "/images/ivy-hero-workshop-v2.png",
+    ogImage: "/images/ivy-hero-glass-board.png",
   },
 };
 

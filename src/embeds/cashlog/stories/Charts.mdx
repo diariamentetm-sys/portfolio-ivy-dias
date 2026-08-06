@@ -1,0 +1,97 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { theme } from "../tokens/theme";
+import { BarChart, DonutChart, LineChart, MetricCard } from "../design-system";
+
+<Meta title="Cashlog/Foundations/Charts" />
+
+# Gráficos
+
+Linguagem visual do dashboard Cashlog: **flat**, séries magenta/amarelo/cinza — não barras horizontais genéricas nem sombras em cards.
+
+## Tokens de série (`theme.colors.chart`)
+
+| Série | Token |
+|---|---|
+| Real / Real acumulado | `chart.real` |
+| Plano | `chart.plan` |
+| Total aprovado | `chart.approved` |
+| Donut A–D | `chart.segmentA` … `segmentD` |
+| Grid | `chart.grid` |
+
+<div style={{ display: "flex", gap: theme.spacing[3], flexWrap: "wrap", marginTop: theme.spacing[4] }}>
+  {[
+    ["real", theme.colors.chart.real],
+    ["plan", theme.colors.chart.plan],
+    ["approved", theme.colors.chart.approved],
+    ["segmentA", theme.colors.chart.segmentA],
+    ["segmentB", theme.colors.chart.segmentB],
+    ["segmentC", theme.colors.chart.segmentC],
+    ["segmentD", theme.colors.chart.segmentD],
+  ].map(([label, color]) => (
+    <div key={label} style={{ width: 96 }}>
+      <div style={{ height: 48, backgroundColor: color, borderRadius: theme.radius.md }} aria-hidden />
+      <p style={{ fontSize: theme.fontSize.xs, color: theme.colors.text.muted, marginTop: theme.spacing[2] }}>{label}</p>
+    </div>
+  ))}
+</div>
+
+## KPIs (MetricCard)
+
+<div
+  className="grid"
+  style={{
+    marginTop: theme.spacing[6],
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gap: theme.spacing[3],
+  }}
+>
+  <MetricCard label="Em aprovação" value="820" trend="+11.01%" fill="lilac" />
+  <MetricCard label="Para concluir" value="10" trend="+3.2%" fill="yellow" />
+  <MetricCard label="Em holding" value="34" trend="-1.4%" fill="lilac" />
+  <MetricCard label="Aprovadas" value="1.204" trend="+8.6%" fill="yellow" />
+</div>
+
+## LineChart
+
+<div style={{ marginTop: theme.spacing[6], maxWidth: 640 }}>
+  <LineChart
+    points={[
+      { label: "Jan", valueLabel: "8.420,110", x: 0.02, y: 0.79, planY: 0.71 },
+      { label: "Fev", valueLabel: "12.180,450", x: 0.2, y: 0.69, planY: 0.61 },
+      { label: "Mar", valueLabel: "30.256,598", x: 0.4, y: 0.08, planY: 0.46 },
+      { label: "Abr", valueLabel: "16.890,320", x: 0.58, y: 0.54, planY: 0.51 },
+      { label: "Mai", valueLabel: "21.450,780", x: 0.76, y: 0.37, planY: 0.34 },
+      { label: "Jun", valueLabel: "24.120,900", x: 0.98, y: 0.27, planY: 0.23 },
+    ]}
+  />
+</div>
+
+## BarChart + DonutChart
+
+<div
+  className="grid"
+  style={{
+    marginTop: theme.spacing[6],
+    gridTemplateColumns: "1fr 1fr",
+    gap: theme.spacing[4],
+  }}
+>
+  <BarChart
+    points={[
+      { label: "Jan", real: 55, approved: 40, realLabel: "18.2M", approvedLabel: "14.1M" },
+      { label: "Fev", real: 70, approved: 50, realLabel: "22.4M", approvedLabel: "16.8M" },
+      { label: "Mar", real: 45, approved: 35, realLabel: "15.6M", approvedLabel: "12.0M" },
+      { label: "Abr", real: 88, approved: 65, realLabel: "26.8M", approvedLabel: "20.4M" },
+      { label: "Mai", real: 78, approved: 58, realLabel: "24.1M", approvedLabel: "18.6M" },
+      { label: "Jun", real: 95, approved: 72, realLabel: "28.5M", approvedLabel: "22.0M" },
+    ]}
+  />
+  <DonutChart
+    slices={[
+      { label: "Rio Grande do Sul", value: 38.6, tone: "segmentA" },
+      { label: "Mato Grosso", value: 22.5, tone: "segmentB" },
+      { label: "Amazonia", value: 30.8, tone: "segmentC" },
+      { label: "Minas Gerais", value: 8.1, tone: "segmentD" },
+    ]}
+  />
+</div>

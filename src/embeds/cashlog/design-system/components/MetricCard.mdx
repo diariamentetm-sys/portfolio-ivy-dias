@@ -1,0 +1,33 @@
+import { Meta, Canvas, Controls, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as MetricCardStories from "./MetricCard.stories";
+
+<Meta of={MetricCardStories} />
+
+# MetricCard
+
+KPI flat do dashboard — fill pastel (`lilac` / `yellow`), valor grande, trend e sparkline. Sem borda e sem sombra.
+
+## When to use
+
+- Fila de status no topo (Em aprovação, Para concluir, Em holding, Aprovadas)
+
+## When NOT to use
+
+- Painel com gráfico → use `Card` + `LineChart` / `BarChart` / `DonutChart`
+
+## Variants
+
+<Canvas of={MetricCardStories.AllVariants} />
+
+## States
+
+<Canvas of={MetricCardStories.States} />
+
+## Playground
+
+<Canvas of={MetricCardStories.Playground} />
+<Controls of={MetricCardStories.Playground} />
+
+## Props
+
+<ArgTypes of={MetricCardStories} />

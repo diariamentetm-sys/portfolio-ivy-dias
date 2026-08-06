@@ -29,3 +29,10 @@ npm run dev
 - `npm run dev` — development server
 - `npm run build` — production build
 - `npm run preview` — preview build
+- `npm run cashlog:dev` — design system Cashlog (isolado do CSS do portfólio)
+- `npm run cashlog:build` — gera o workshop em `public/embeds/cashlog/ds`
+
+## Cashlog Raízen
+
+O protótipo navegável continua em `public/embeds/cashlog` (iframe do case).
+O design system fica em `src/embeds/cashlog` — Tailwind e tokens próprios, fora do bundle visual do portfólio.

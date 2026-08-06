@@ -114,7 +114,7 @@ export function createEmptyProject(): ManagedProject {
 }
 
 export const defaultSiteContent: SiteContent = {
-  heroImage: "/images/ivy-hero-workshop-v2.png",
+  heroImage: "/images/ivy-hero-glass-board.png",
   contactPhoto: "/images/ivy-dias-hero.png",
   heroCopy: {
     en: {
@@ -138,9 +138,15 @@ export function loadSiteContent(): SiteContent {
     const raw = localStorage.getItem(CONTENT_STORAGE_KEY);
     if (!raw) return structuredClone(defaultSiteContent);
     const parsed = JSON.parse(raw) as Partial<SiteContent>;
+    const legacyHero =
+      parsed.heroImage === "/images/ivy-hero-workshop-v2.png" ||
+      parsed.heroImage === "/images/ivy-hero-workshop.png";
     return {
       ...structuredClone(defaultSiteContent),
       ...parsed,
+      heroImage: legacyHero
+        ? defaultSiteContent.heroImage
+        : (parsed.heroImage ?? defaultSiteContent.heroImage),
       heroCopy: {
         ...defaultSiteContent.heroCopy,
         ...(parsed.heroCopy ?? {}),

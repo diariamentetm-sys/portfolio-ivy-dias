@@ -1,0 +1,34 @@
+import { Meta, Canvas, Controls, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as BarChartStories from "./BarChart.stories";
+
+<Meta of={BarChartStories} />
+
+# BarChart
+
+Barras **verticais agrupadas** — Real (magenta) × Total aprovado (amarelo), como no dashboard.
+
+## When to use
+
+- Comparar Real × Aprovado por mês
+
+## When NOT to use
+
+- Série temporal contínua → use `LineChart`
+- Distribuição por categoria % → use `DonutChart`
+
+## Variants
+
+<Canvas of={BarChartStories.AllVariants} />
+
+## States
+
+<Canvas of={BarChartStories.States} />
+
+## Playground
+
+<Canvas of={BarChartStories.Playground} />
+<Controls of={BarChartStories.Playground} />
+
+## Props
+
+<ArgTypes of={BarChartStories} />

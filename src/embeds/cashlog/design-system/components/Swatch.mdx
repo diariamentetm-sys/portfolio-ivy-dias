@@ -1,0 +1,35 @@
+import { Meta, Canvas, Controls, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as SwatchStories from "./Swatch.stories";
+
+<Meta of={SwatchStories} />
+
+# Swatch
+
+Exibe uma amostra de cor com nome e caminho do token.
+
+## When to use
+
+- Documentar tokens de cor no Storybook / workshop
+- Comparar tokens semânticos lado a lado
+
+## When NOT to use
+
+- Como indicador de status na UI do produto → use badge/chip dedicado
+- Para aplicar cor em componentes → consuma `theme.colors.*` diretamente
+
+## Variants
+
+<Canvas of={SwatchStories.AllVariants} />
+
+## States
+
+<Canvas of={SwatchStories.States} />
+
+## Playground
+
+<Canvas of={SwatchStories.Playground} />
+<Controls of={SwatchStories.Playground} />
+
+## Props
+
+<ArgTypes of={SwatchStories} />

@@ -1,0 +1,24 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { theme } from "../tokens/theme";
+
+<Meta title="Cashlog/Foundations/Iconography" />
+
+# Iconografia
+
+**Status: ainda não migrada para o design system.**
+
+No protótipo legado (`public/embeds/cashlog`) os ícones vivem embutidos no bundle minificado (SVG inline / assets). Ainda **não** há:
+
+- biblioteca de ícones em `src/embeds/cashlog/design-system/`
+- tokens de tamanho (`icon.sm` / `icon.md` / …)
+- stories de Icon
+
+## Próximo passo sugerido
+
+1. Inventariar ícones usados no legado (Dashboard, Priorizador, Demanda, Holding)
+2. Exportar SVGs para `src/embeds/cashlog/design-system/icons/`
+3. Criar primitivo `Icon` + tokens de tamanho em `theme`
+4. Publicar stories em `Cashlog/Components/Icon`
+
+Até lá, use o protótipo navegável como referência visual:
+[`/embeds/cashlog/`](/embeds/cashlog/).

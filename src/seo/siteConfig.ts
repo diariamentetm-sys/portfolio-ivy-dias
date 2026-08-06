@@ -1,7 +1,7 @@
 export const SITE_ORIGIN = "https://ivydc.cx";
 export const SITE_NAME = "Ivy Dias de Campos";
 export const SITE_BRAND = "Ivy DC";
-export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/images/ivy-hero-workshop-v2.png`;
+export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/images/ivy-hero-glass-board.png`;
 export const TWITTER_HANDLE = "@ivydc";
 
 export type SeoPageConfig = {

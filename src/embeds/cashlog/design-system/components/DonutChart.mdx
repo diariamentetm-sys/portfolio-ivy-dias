@@ -1,0 +1,33 @@
+import { Meta, Canvas, Controls, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as DonutChartStories from "./DonutChart.stories";
+
+<Meta of={DonutChartStories} />
+
+# DonutChart
+
+Donut + legenda — Estados mais demandados (cinza, amarelo, magenta, lilás).
+
+## When to use
+
+- Distribuição percentual por estado / categoria
+
+## When NOT to use
+
+- Séries temporais → `LineChart` ou `BarChart`
+
+## Variants
+
+<Canvas of={DonutChartStories.AllVariants} />
+
+## States
+
+<Canvas of={DonutChartStories.States} />
+
+## Playground
+
+<Canvas of={DonutChartStories.Playground} />
+<Controls of={DonutChartStories.Playground} />
+
+## Props
+
+<ArgTypes of={DonutChartStories} />

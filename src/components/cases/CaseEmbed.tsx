@@ -5,6 +5,11 @@ type CaseEmbedProps = {
   title: string;
   designWidth: number;
   designHeight: number;
+  /**
+   * `fluid` — mobile iframe reflows at real viewport width (default).
+   * `scaled` — always show the desktop design, scaled to fit (same look on mobile).
+   */
+  mobileLayout?: "fluid" | "scaled";
 };
 
 type Layout =
@@ -19,7 +24,8 @@ function supportsCssZoom(): boolean {
 }
 
 /**
- * Mobile: fluid iframe so the embed can reflow at real viewport width.
+ * Mobile: fluid iframe so the embed can reflow at real viewport width
+ * (or scaled desktop design when `mobileLayout="scaled"`).
  * Desktop: design-size iframe scaled to container width.
  */
 export function CaseEmbed({
@@ -27,6 +33,7 @@ export function CaseEmbed({
   title,
   designWidth,
   designHeight,
+  mobileLayout = "fluid",
 }: CaseEmbedProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [layout, setLayout] = useState<Layout>({
@@ -45,7 +52,7 @@ export function CaseEmbed({
       const width = node.clientWidth;
       if (width <= 0) return;
 
-      if (media.matches) {
+      if (media.matches && mobileLayout === "fluid") {
         setLayout({
           mode: "fluid",
           frameHeight: Math.min(Math.max(window.innerHeight * 0.75, 580), 820),
@@ -71,7 +78,7 @@ export function CaseEmbed({
       media.removeEventListener("change", recalc);
       window.removeEventListener("resize", recalc);
     };
-  }, [designWidth, designHeight]);
+  }, [designWidth, designHeight, mobileLayout]);
 
   if (layout.mode === "fluid") {
     return (

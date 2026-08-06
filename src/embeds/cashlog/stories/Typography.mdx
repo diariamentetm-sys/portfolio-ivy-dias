@@ -1,0 +1,98 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { theme } from "../tokens/theme";
+
+<Meta title="Cashlog/Foundations/Typography" />
+
+# Tipografia
+
+Fonte: `theme.fontFamily` + `theme.fontSize` (Inter via `--font-sans`).
+
+## Família
+
+<p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.lg, color: theme.colors.text.default }}>
+  {theme.fontFamily.sans}
+</p>
+
+## Escala (amostras visuais)
+
+<div style={{ display: "flex", flexDirection: "column", gap: theme.spacing[6], marginTop: theme.spacing[6] }}>
+  <div>
+    <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.xs, color: theme.colors.text.muted, marginBottom: theme.spacing[1] }}>
+      theme.fontSize.xs · {theme.fontSize.xs}
+    </p>
+    <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.xs, color: theme.colors.text.default, margin: 0 }}>
+      Cashlog — aprovação de demandas de investimento
+    </p>
+  </div>
+  <div>
+    <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.xs, color: theme.colors.text.muted, marginBottom: theme.spacing[1] }}>
+      theme.fontSize.sm · {theme.fontSize.sm}
+    </p>
+    <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.sm, color: theme.colors.text.default, margin: 0 }}>
+      Cashlog — aprovação de demandas de investimento
+    </p>
+  </div>
+  <div>
+    <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.xs, color: theme.colors.text.muted, marginBottom: theme.spacing[1] }}>
+      theme.fontSize.base · {theme.fontSize.base}
+    </p>
+    <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.base, color: theme.colors.text.default, margin: 0 }}>
+      Cashlog — aprovação de demandas de investimento
+    </p>
+  </div>
+  <div>
+    <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.xs, color: theme.colors.text.muted, marginBottom: theme.spacing[1] }}>
+      theme.fontSize.lg · {theme.fontSize.lg}
+    </p>
+    <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.lg, color: theme.colors.text.default, margin: 0 }}>
+      Cashlog — aprovação de demandas de investimento
+    </p>
+  </div>
+  <div>
+    <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.xs, color: theme.colors.text.muted, marginBottom: theme.spacing[1] }}>
+      theme.fontSize.xl · {theme.fontSize.xl}
+    </p>
+    <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.xl, color: theme.colors.text.default, margin: 0 }}>
+      Cashlog — aprovação de demandas de investimento
+    </p>
+  </div>
+  <div>
+    <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.xs, color: theme.colors.text.muted, marginBottom: theme.spacing[1] }}>
+      theme.fontSize["2xl"] · {theme.fontSize["2xl"]}
+    </p>
+    <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize["2xl"], color: theme.colors.text.default, margin: 0 }}>
+      Cashlog — aprovação de demandas
+    </p>
+  </div>
+  <div>
+    <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.xs, color: theme.colors.text.muted, marginBottom: theme.spacing[1] }}>
+      theme.fontSize["3xl"] · {theme.fontSize["3xl"]}
+    </p>
+    <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize["3xl"], fontWeight: 600, color: theme.colors.text.default, margin: 0 }}>
+      Design System
+    </p>
+  </div>
+</div>
+
+## Cores de texto
+
+<div style={{ display: "flex", flexDirection: "column", gap: theme.spacing[3], marginTop: theme.spacing[8] }}>
+  <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.base, color: theme.colors.text.default, margin: 0 }}>
+    text.default — corpo e títulos
+  </p>
+  <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.base, color: theme.colors.text.muted, margin: 0 }}>
+    text.muted — descrições e labels
+  </p>
+  <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.base, color: theme.colors.text.subtle, margin: 0 }}>
+    text.subtle — ênfase baixa
+  </p>
+  <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.base, color: theme.colors.text.brand, margin: 0 }}>
+    text.brand — ênfase de marca
+  </p>
+  <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.base, color: theme.colors.text.link, margin: 0 }}>
+    text.link — links e acento
+  </p>
+  <p style={{ fontFamily: theme.fontFamily.sans, fontSize: theme.fontSize.base, color: theme.colors.text.inverse, backgroundColor: theme.colors.background.inverse, padding: theme.spacing[3], margin: 0 }}>
+    text.inverse — sobre fundo escuro
+  </p>
+</div>

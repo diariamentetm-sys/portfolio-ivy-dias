@@ -1,4 +1,4 @@
-import { useRef, useState, type PointerEvent } from "react";
+import { useRef, useState, type PointerEvent, type ReactNode } from "react";
 
 const TONES = [
   "post-it-yellow",
@@ -28,10 +28,27 @@ const SPAWN_DISTANCE = 72;
 const NOTE_LIFETIME_MS = 900;
 const MAX_ACTIVE = 10;
 
+function renderWords(
+  text: string,
+  keyPrefix: string,
+  className?: string,
+): ReactNode[] {
+  return text.split(/(\s+)/).map((part, index) => {
+    const key = `${keyPrefix}-${index}`;
+    if (/^\s+$/.test(part) || part === "") {
+      return <span key={key}>{part}</span>;
+    }
+    return (
+      <span key={key} className={["hero-title-word", className].filter(Boolean).join(" ")}>
+        {part}
+      </span>
+    );
+  });
+}
+
 /**
- * Cursor trail over the hero headline — same interaction language as
- * benjamincreative.me "My Recently Selected Works" image trail, but with
- * handwritten post-it words instead of project thumbnails.
+ * Cursor trail over the hero headline — post-its only spawn when the
+ * pointer is over actual words (not empty line-box / padding space).
  */
 export function HeroTitleNotes({
   titleBefore,
@@ -52,6 +69,11 @@ export function HeroTitleNotes({
       return false;
     }
     return true;
+  }
+
+  function isOverWord(clientX: number, clientY: number) {
+    const el = document.elementFromPoint(clientX, clientY);
+    return Boolean(el?.closest(".hero-title-word"));
   }
 
   function spawnAt(clientX: number, clientY: number) {
@@ -81,6 +103,13 @@ export function HeroTitleNotes({
   function handlePointerMove(event: PointerEvent<HTMLDivElement>) {
     if (event.pointerType !== "mouse" || !canTrail()) return;
 
+    if (!isOverWord(event.clientX, event.clientY)) {
+      lastPoint.current = null;
+      setHot(false);
+      return;
+    }
+
+    setHot(true);
     const point = { x: event.clientX, y: event.clientY };
     const prev = lastPoint.current;
     if (!prev) {
@@ -98,6 +127,7 @@ export function HeroTitleNotes({
 
   function handlePointerEnter(event: PointerEvent<HTMLDivElement>) {
     if (event.pointerType !== "mouse") return;
+    if (!isOverWord(event.clientX, event.clientY)) return;
     setHot(true);
     lastPoint.current = { x: event.clientX, y: event.clientY };
   }
@@ -116,9 +146,9 @@ export function HeroTitleNotes({
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
     >
-      <h1 className="hero-h1 relative z-0">
-        {titleBefore}{" "}
-        <span className="text-accent">{titleAccent}</span>
+      <h1 className="hero-h1 relative z-0 w-fit max-w-full">
+        {renderWords(titleBefore, "before")}{" "}
+        {renderWords(titleAccent, "accent", "text-accent")}
       </h1>
 
       <div

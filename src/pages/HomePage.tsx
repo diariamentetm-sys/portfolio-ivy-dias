@@ -151,7 +151,7 @@ export function HomePage() {
             alt={t.hero.imageAlt}
             width={1600}
             height={1200}
-            className="h-full w-full object-cover object-[center_18%] scale-x-[-1] opacity-90 md:opacity-100"
+            className="h-full w-full object-cover object-[center_22%] opacity-90 md:opacity-100"
             loading="eager"
             fetchPriority="high"
             decoding="async"
@@ -229,7 +229,6 @@ export function HomePage() {
           <Reveal className="max-w-3xl">
             <p className="eyebrow mb-5">{t.specialties.eyebrow}</p>
             <h2 className="section-h2">{t.specialties.title}</h2>
-            <p className="mt-5 body-md max-w-2xl">{t.specialties.intro}</p>
           </Reveal>
           <SpecialtyStack items={specialties} />
         </div>
@@ -241,7 +240,6 @@ export function HomePage() {
             <div className="max-w-3xl">
               <p className="eyebrow mb-5">{t.work.eyebrow}</p>
               <h2 className="section-h2">{t.work.title}</h2>
-              <p className="mt-5 body-md max-w-2xl">{t.work.intro}</p>
             </div>
             <p className="eyebrow">
               {String(filteredWorkCases.length).padStart(2, "0")}{" "}
@@ -344,7 +342,6 @@ export function HomePage() {
           <Reveal className="max-w-3xl">
             <p className="eyebrow mb-5">{t.testimonials.eyebrow}</p>
             <h2 className="section-h2">{t.testimonials.title}</h2>
-            <p className="mt-5 body-md">{t.testimonials.intro}</p>
           </Reveal>
         </div>
 
@@ -392,7 +389,6 @@ export function HomePage() {
                     <h3 className="text-lg md:text-xl font-semibold text-neutral-950">
                       {item.company}
                     </h3>
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent" />
                     <span className="text-sm text-neutral-500">{item.role}</span>
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-neutral-500 text-pretty">

@@ -1,0 +1,23 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Cashlog/Guidelines" />
+
+# Regras de Harness
+
+Fonte: `src/embeds/cashlog/design-system.md`
+
+- **Nomenclatura:** kebab-case, `[categoria]-[papel]-[estado]`
+- **Cadeia obrigatória:** componente → `theme.[token]` → `primitives.[família].[peso]` → valor
+- **Snowflake:** &lt; 3 contextos de uso distintos → não exportar da biblioteca (marcar `@snowflake`)
+- **Acessibilidade:** WCAG AA, foco visível, aria-labels, semântica HTML
+- **Isolamento:** estilos Cashlog **nunca** entram no bundle do portfólio (`!./src/embeds/**` no Tailwind do portfólio)
+
+## Proibido
+
+- Hex direto em componentes e stories
+- Classes Tailwind de cor / spacing / radius / shadow quando existe token equivalente
+
+## Obrigatório
+
+- `theme.colors.*`, `theme.spacing.*`, `theme.radius.*`, `theme.fontSize.*`
+- Props TypeScript + JSDoc (`@description`, `@variant`, `@uses`, `@usedBy`, `@tokens`)

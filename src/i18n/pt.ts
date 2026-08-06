@@ -27,7 +27,7 @@ export const pt: Dictionary = {
       { value: "3", label: "idiomas de trabalho" },
     ],
     imageAlt:
-      "Ivy Dias em workshop de service design, apontando para um mapa de jornada com post-its",
+      "Ivy Dias desenhando em um quadro de vidro, com post-its coloridos ao fundo",
     titleNotes: [
       "jornada!",
       "pessoas primeiro",
@@ -39,7 +39,7 @@ export const pt: Dictionary = {
   },
   about: {
     eyebrow: "(01) Sobre",
-    title: "Transformo complexidade em experiências que geram valor real.",
+    title: "Eu gosto mesmo é de resolver problemas!",
     p1: "Sou estrategista e designer de Customer Experience com mais de duas décadas dedicadas a produtos, serviços e marcas digitais.",
     p2: "Atuo como liderança técnica em projetos estratégicos, unindo visão sistêmica, profundidade de design e a capacidade de dialogar com stakeholders de perfis muito diferentes.",
     brandsLabel: "Marcas com quem colaborei",
@@ -53,9 +53,8 @@ export const pt: Dictionary = {
   },
   specialties: {
     eyebrow: "(02) Como eu trabalho",
-    title: "As frentes que costumo conduzir.",
-    intro:
-      "Síntese do que conduzo em projetos reais de CX e service design.",
+    title: "Frentes que atuo, seja liderando ou colocando a mão na massa:",
+    intro: "",
     items: [
       {
         num: "01",
@@ -91,9 +90,8 @@ export const pt: Dictionary = {
   },
   work: {
     eyebrow: "(03) Trabalhos selecionados",
-    title: "Cases em profundidade do desafio ao resultado.",
-    intro:
-      "Estudos de casos que representam a versatilidade e o olhar 360 que aplico no meu trabalho",
+    title: "Estudos de casos que representam a versatilidade e o olhar 360 que aplico no meu trabalho.",
+    intro: "",
     countLabel: "04 casos",
     cta: "Ver estudo de caso completo →",
     filterAll: "Todos",
@@ -104,7 +102,7 @@ export const pt: Dictionary = {
     },
     industryEyebrow: "Trajetória multi-indústria · prova social",
     industryTitle:
-      "Adaptação a diferentes modelos de negócio e stakeholders.",
+      "Nasci pronta para me adaptar a diferentes modelos de negócios e stakeholders.",
     industries: [
       {
         label: "Bancos & Investimentos",
@@ -209,8 +207,7 @@ export const pt: Dictionary = {
   testimonials: {
     eyebrow: "(04) Depoimentos",
     title: "O que colegas e parceiros dizem sobre trabalhar comigo.",
-    intro:
-      "Recomendações recebidas no LinkedIn ao longo de mais de duas décadas de colaboração em produto, design e tecnologia.",
+    intro: "",
     carouselLabel: "O que colegas e parceiros dizem:",
     prevLabel: "Depoimento anterior",
     nextLabel: "Próximo depoimento",
@@ -245,7 +242,7 @@ export const pt: Dictionary = {
   },
   timeline: {
     eyebrow: "(05) Trajetória",
-    title: "Os marcos que moldaram minha prática de CX.",
+    title: "Design na prática: experiências que moldaram meu conhecimento.",
     items: [
       {
         period: "2022–2026",
@@ -294,7 +291,7 @@ export const pt: Dictionary = {
     eyebrow: "(06) Contato",
     title: "Vamos conversar sobre seu projeto de CX?",
     subtitle:
-      "Disponível para projetos remotos e híbridos em Portugal. Conte-me o desafio que eu respondo pessoalmente.",
+      "Disponível para projetos remotos e híbridos. Conte-me o desafio que eu respondo pessoalmente.",
     tags: ["CX Design"],
     photoAlt: "Retrato de Ivy Dias de Campos",
     formName: "Nome",
