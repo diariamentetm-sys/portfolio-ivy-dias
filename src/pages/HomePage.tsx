@@ -151,13 +151,13 @@ export function HomePage() {
             alt={t.hero.imageAlt}
             width={1600}
             height={1200}
-            className="h-full w-full object-cover object-[center_22%] opacity-90 md:opacity-100"
+            className="h-full w-full object-cover object-[center_22%] opacity-100"
             loading="eager"
             fetchPriority="high"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-neutral-50 via-neutral-50/85 to-neutral-50/20 md:from-neutral-50 md:via-neutral-50/70 md:to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-neutral-50 via-transparent to-neutral-50/40 md:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-r from-neutral-50 via-neutral-50/55 to-transparent md:from-neutral-50 md:via-neutral-50/40 md:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-50/50 via-transparent to-transparent md:hidden" />
         </div>
 
         <div className="relative z-10 px-5 md:px-16 pt-32 md:pt-40 pb-20 md:pb-28 max-w-7xl mx-auto">

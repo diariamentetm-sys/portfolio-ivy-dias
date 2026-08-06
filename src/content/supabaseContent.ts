@@ -1,6 +1,7 @@
 import { supabase, isSupabaseConfigured } from "../lib/supabase";
 import {
   defaultSiteContent,
+  normalizeSiteContent,
   type ManagedProject,
   type ProjectLocaleContent,
   type SiteContent,
@@ -59,7 +60,7 @@ export async function fetchSiteContentFromSupabase(): Promise<SiteContent | null
   const settings = settingsResult.data as SettingsRow | null;
   const projects = (projectsResult.data as ProjectRow[] | null) ?? [];
 
-  return {
+  return normalizeSiteContent({
     heroImage: settings?.hero_image ?? defaultSiteContent.heroImage,
     contactPhoto: settings?.contact_photo ?? defaultSiteContent.contactPhoto,
     heroCopy: {
@@ -67,7 +68,7 @@ export async function fetchSiteContentFromSupabase(): Promise<SiteContent | null
       ...(settings?.hero_copy ?? {}),
     },
     projects: projects.map(mapProject),
-  };
+  });
 }
 
 export async function persistSiteContentToSupabase(content: SiteContent) {

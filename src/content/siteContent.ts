@@ -133,26 +133,48 @@ export const defaultSiteContent: SiteContent = {
   projects: seedProjects,
 };
 
+const LEGACY_HERO_MARKERS = [
+  "ivy-hero-workshop-v2",
+  "ivy-hero-workshop.png",
+  "ivy-hero-workshop.",
+] as const;
+
+/** Maps known legacy hero assets to the current glass-board photo. */
+export function resolveHeroImage(url: string | undefined | null): string {
+  if (!url) return defaultSiteContent.heroImage;
+  if (url.includes("ivy-hero-glass-board")) return url;
+  // Previous public heroes + any path still pointing at the workshop shoot
+  if (
+    LEGACY_HERO_MARKERS.some((marker) => url.includes(marker)) ||
+    (url.includes("/images/ivy-hero") && !url.includes("glass-board"))
+  ) {
+    return defaultSiteContent.heroImage;
+  }
+  return url;
+}
+
+export function normalizeSiteContent(content: SiteContent): SiteContent {
+  return {
+    ...content,
+    heroImage: resolveHeroImage(content.heroImage),
+  };
+}
+
 export function loadSiteContent(): SiteContent {
   try {
     const raw = localStorage.getItem(CONTENT_STORAGE_KEY);
     if (!raw) return structuredClone(defaultSiteContent);
     const parsed = JSON.parse(raw) as Partial<SiteContent>;
-    const legacyHero =
-      parsed.heroImage === "/images/ivy-hero-workshop-v2.png" ||
-      parsed.heroImage === "/images/ivy-hero-workshop.png";
-    return {
+    return normalizeSiteContent({
       ...structuredClone(defaultSiteContent),
       ...parsed,
-      heroImage: legacyHero
-        ? defaultSiteContent.heroImage
-        : (parsed.heroImage ?? defaultSiteContent.heroImage),
+      heroImage: parsed.heroImage ?? defaultSiteContent.heroImage,
       heroCopy: {
         ...defaultSiteContent.heroCopy,
         ...(parsed.heroCopy ?? {}),
       },
       projects: mergeSeedProjects(parsed.projects ?? []).projects,
-    };
+    });
   } catch {
     return structuredClone(defaultSiteContent);
   }
