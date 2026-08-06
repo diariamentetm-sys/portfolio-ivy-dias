@@ -1,10 +1,30 @@
 name: Chromatic
 
+# Só roda quando o design system Cashlog (ou a infra do Storybook) muda.
+# Push/PR só de conteúdo do portfólio não disparam Chromatic.
 on:
   push:
     branches: [main]
+    paths:
+      - "src/embeds/cashlog/**"
+      - ".storybook/**"
+      - "vite.cashlog.config.ts"
+      - "tailwind.cashlog.config.js"
+      - "postcss.cashlog.config.js"
+      - ".github/workflows/chromatic.yml"
+      - "package.json"
+      - "package-lock.json"
   pull_request:
     branches: [main]
+    paths:
+      - "src/embeds/cashlog/**"
+      - ".storybook/**"
+      - "vite.cashlog.config.ts"
+      - "tailwind.cashlog.config.js"
+      - "postcss.cashlog.config.js"
+      - ".github/workflows/chromatic.yml"
+      - "package.json"
+      - "package-lock.json"
   workflow_dispatch:
 
 jobs:
