@@ -20,6 +20,9 @@ import {
   createEmptyProject,
   loadSiteContent,
   saveSiteContent,
+  blogViewSessionKey,
+  readLikedPostIds,
+  writeLikedPostIds,
   type BlogPost,
   type ManagedProject,
   type SiteContent,
@@ -42,6 +45,8 @@ type ContentContextValue = {
   addBlogPost: () => BlogPost;
   updateBlogPost: (post: BlogPost) => void;
   removeBlogPost: (id: string) => void;
+  recordBlogView: (postId: string) => void;
+  toggleBlogLike: (postId: string) => boolean;
   saveNow: () => Promise<boolean>;
 };
 
@@ -250,6 +255,55 @@ export function ContentProvider({ children }: { children: ReactNode }) {
     [applyLocal],
   );
 
+  const recordBlogView = useCallback(
+    (postId: string) => {
+      try {
+        const key = blogViewSessionKey(postId);
+        if (sessionStorage.getItem(key) === "1") return;
+        sessionStorage.setItem(key, "1");
+      } catch {
+        // Ignore sessionStorage failures and still count once per call site.
+      }
+
+      applyLocal({
+        ...contentRef.current,
+        blogPosts: contentRef.current.blogPosts.map((item) =>
+          item.id === postId
+            ? { ...item, views: (item.views || 0) + 1 }
+            : item,
+        ),
+      });
+    },
+    [applyLocal],
+  );
+
+  const toggleBlogLike = useCallback(
+    (postId: string) => {
+      const liked = readLikedPostIds();
+      const alreadyLiked = liked.has(postId);
+      if (alreadyLiked) {
+        liked.delete(postId);
+      } else {
+        liked.add(postId);
+      }
+      writeLikedPostIds(liked);
+
+      applyLocal({
+        ...contentRef.current,
+        blogPosts: contentRef.current.blogPosts.map((item) => {
+          if (item.id !== postId) return item;
+          const nextLikes = alreadyLiked
+            ? Math.max(0, (item.likes || 0) - 1)
+            : (item.likes || 0) + 1;
+          return { ...item, likes: nextLikes };
+        }),
+      });
+
+      return !alreadyLiked;
+    },
+    [applyLocal],
+  );
+
   const saveNow = useCallback(async () => {
     if (debounceRef.current) {
       window.clearTimeout(debounceRef.current);
@@ -274,6 +328,8 @@ export function ContentProvider({ children }: { children: ReactNode }) {
       addBlogPost,
       updateBlogPost,
       removeBlogPost,
+      recordBlogView,
+      toggleBlogLike,
       saveNow,
     }),
     [
@@ -291,6 +347,8 @@ export function ContentProvider({ children }: { children: ReactNode }) {
       addBlogPost,
       updateBlogPost,
       removeBlogPost,
+      recordBlogView,
+      toggleBlogLike,
       saveNow,
     ],
   );

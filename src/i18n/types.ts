@@ -126,6 +126,10 @@ export type Dictionary = {
     readMore: string;
     back: string;
     undated: string;
+    viewsLabel: string;
+    likeLabel: string;
+    likedLabel: string;
+    relatedTitle: string;
     seoTitle: string;
     seoDescription: string;
   };

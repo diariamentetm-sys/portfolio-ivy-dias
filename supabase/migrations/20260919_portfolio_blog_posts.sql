@@ -7,6 +7,8 @@ create table if not exists public.portfolio_blog_posts (
   scheduled_at timestamptz,
   cover_image text,
   tags text[] not null default '{}',
+  views integer not null default 0,
+  likes integer not null default 0,
   content_en jsonb not null default '{}'::jsonb,
   content_pt jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now(),

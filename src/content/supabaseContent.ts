@@ -37,6 +37,8 @@ type BlogPostRow = {
   scheduled_at: string | null;
   cover_image: string | null;
   tags: string[] | null;
+  views: number | null;
+  likes: number | null;
   content_en: BlogPostLocaleContent;
   content_pt: BlogPostLocaleContent;
   created_at: string;
@@ -65,6 +67,8 @@ function mapBlogPost(row: BlogPostRow): BlogPost {
     scheduledAt: row.scheduled_at,
     coverImage: row.cover_image ?? "",
     tags: row.tags ?? [],
+    views: Math.max(0, Number(row.views) || 0),
+    likes: Math.max(0, Number(row.likes) || 0),
     en: row.content_en ?? { title: "", excerpt: "", body: "" },
     pt: row.content_pt ?? { title: "", excerpt: "", body: "" },
     createdAt: row.created_at,
@@ -81,6 +85,8 @@ function blogPostToRow(post: BlogPost) {
     scheduled_at: post.scheduledAt,
     cover_image: post.coverImage || null,
     tags: post.tags,
+    views: post.views || 0,
+    likes: post.likes || 0,
     content_en: post.en,
     content_pt: post.pt,
     created_at: post.createdAt,

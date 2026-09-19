@@ -327,6 +327,10 @@ export const en: Dictionary = {
     readMore: "Read article →",
     back: "← Entre Jornadas",
     undated: "Draft",
+    viewsLabel: "Views",
+    likeLabel: "Like this piece",
+    likedLabel: "Remove like",
+    relatedTitle: "Continue the journey",
     seoTitle: "Entre Jornadas | CX Blog | Ivy DC",
     seoDescription:
       "Ivy Dias blog on Customer Experience, service design, and building digital products.",

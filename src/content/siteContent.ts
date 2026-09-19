@@ -5,6 +5,7 @@ import {
   type BlogPost,
   seedBlogPosts,
   sortBlogPostsNewestFirst,
+  normalizeBlogPost,
 } from "./blog";
 
 export const CONTENT_STORAGE_KEY = "ivy-portfolio-content-v1";
@@ -59,11 +60,16 @@ export type { BlogPost, BlogPostLocaleContent, BlogPostStatus } from "./blog";
 export {
   createEmptyBlogPost,
   getBlogPostCopy,
+  getRelatedBlogPosts,
   isBlogPostPublic,
   slugifyBlogTitle,
   sortBlogPostsNewestFirst,
   formatBlogDate,
   blogBodyParagraphs,
+  normalizeBlogPost,
+  readLikedPostIds,
+  writeLikedPostIds,
+  blogViewSessionKey,
 } from "./blog";
 
 export function emptyProjectLocale(): ProjectLocaleContent {
@@ -171,19 +177,27 @@ export function resolveHeroImage(url: string | undefined | null): string {
 }
 
 export function mergeBlogPosts(existing: BlogPost[] | undefined): BlogPost[] {
-  const current = existing ?? [];
+  const current = (existing ?? []).map(normalizeBlogPost);
   if (current.length === 0) {
     return structuredClone(seedBlogPosts);
   }
 
   const byId = new Map(current.map((post) => [post.id, post]));
   for (const seed of seedBlogPosts) {
-    if (!byId.has(seed.id)) {
-      byId.set(seed.id, seed);
+    const present = byId.get(seed.id);
+    if (!present) {
+      byId.set(seed.id, normalizeBlogPost(seed));
+      continue;
     }
+    byId.set(seed.id, {
+      ...normalizeBlogPost(seed),
+      ...present,
+      views: Math.max(present.views, seed.views),
+      likes: Math.max(present.likes, seed.likes),
+    });
   }
 
-  return sortBlogPostsNewestFirst([...byId.values()]);
+  return sortBlogPostsNewestFirst([...byId.values()].map(normalizeBlogPost));
 }
 
 export function normalizeSiteContent(content: SiteContent): SiteContent {
