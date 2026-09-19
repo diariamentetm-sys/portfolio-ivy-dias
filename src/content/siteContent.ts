@@ -1,6 +1,11 @@
 import type { Locale } from "../i18n/types";
 import { mergeSeedProjects, seedProjects } from "../data/seedProjects";
 import type { WorkCategory } from "../data/workCategories";
+import {
+  type BlogPost,
+  seedBlogPosts,
+  sortBlogPostsNewestFirst,
+} from "./blog";
 
 export const CONTENT_STORAGE_KEY = "ivy-portfolio-content-v1";
 export const ADMIN_SESSION_KEY = "ivy-portfolio-admin-session";
@@ -47,7 +52,19 @@ export type SiteContent = {
   contactPhoto: string;
   heroCopy: Record<Locale, LocalizedHero>;
   projects: ManagedProject[];
+  blogPosts: BlogPost[];
 };
+
+export type { BlogPost, BlogPostLocaleContent, BlogPostStatus } from "./blog";
+export {
+  createEmptyBlogPost,
+  getBlogPostCopy,
+  isBlogPostPublic,
+  slugifyBlogTitle,
+  sortBlogPostsNewestFirst,
+  formatBlogDate,
+  blogBodyParagraphs,
+} from "./blog";
 
 export function emptyProjectLocale(): ProjectLocaleContent {
   return {
@@ -131,6 +148,7 @@ export const defaultSiteContent: SiteContent = {
     },
   },
   projects: seedProjects,
+  blogPosts: seedBlogPosts,
 };
 
 const LEGACY_HERO_MARKERS = [
@@ -143,7 +161,6 @@ const LEGACY_HERO_MARKERS = [
 export function resolveHeroImage(url: string | undefined | null): string {
   if (!url) return defaultSiteContent.heroImage;
   if (url.includes("ivy-hero-glass-board")) return url;
-  // Previous public heroes + any path still pointing at the workshop shoot
   if (
     LEGACY_HERO_MARKERS.some((marker) => url.includes(marker)) ||
     (url.includes("/images/ivy-hero") && !url.includes("glass-board"))
@@ -151,6 +168,22 @@ export function resolveHeroImage(url: string | undefined | null): string {
     return defaultSiteContent.heroImage;
   }
   return url;
+}
+
+export function mergeBlogPosts(existing: BlogPost[] | undefined): BlogPost[] {
+  const current = existing ?? [];
+  if (current.length === 0) {
+    return structuredClone(seedBlogPosts);
+  }
+
+  const byId = new Map(current.map((post) => [post.id, post]));
+  for (const seed of seedBlogPosts) {
+    if (!byId.has(seed.id)) {
+      byId.set(seed.id, seed);
+    }
+  }
+
+  return sortBlogPostsNewestFirst([...byId.values()]);
 }
 
 export function normalizeSiteContent(content: SiteContent): SiteContent {
@@ -183,6 +216,7 @@ export function normalizeSiteContent(content: SiteContent): SiteContent {
     ...content,
     heroImage: resolveHeroImage(content.heroImage),
     heroCopy,
+    blogPosts: mergeBlogPosts(content.blogPosts),
   };
 }
 
@@ -200,6 +234,7 @@ export function loadSiteContent(): SiteContent {
         ...(parsed.heroCopy ?? {}),
       },
       projects: mergeSeedProjects(parsed.projects ?? []).projects,
+      blogPosts: mergeBlogPosts(parsed.blogPosts),
     });
   } catch {
     return structuredClone(defaultSiteContent);

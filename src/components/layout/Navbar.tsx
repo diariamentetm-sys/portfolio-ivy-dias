@@ -5,7 +5,7 @@ const navItems = [
   { href: "/#sobre", key: "about" as const },
   { href: "/#especialidades", key: "specialties" as const },
   { href: "/#trabalhos", key: "work" as const },
-  { href: "/#depoimentos", key: "testimonials" as const },
+  { href: "/entre-jornadas", key: "blog" as const, route: true },
   { href: "/#trajetoria", key: "timeline" as const },
 ] as const;
 
@@ -30,24 +30,34 @@ export function Navbar() {
         />
       </Link>
       <div className="flex items-center gap-3 md:gap-6 text-sm font-medium">
-        {navItems.map((link) => (
-          <a
-            key={link.href}
-            href={isHome ? link.href.replace(/^\//, "") : link.href}
-            className="hidden sm:inline text-neutral-500 hover:text-neutral-950 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-          >
-            {t.nav[link.key]}
-          </a>
-        ))}
+        {navItems.map((link) =>
+          "route" in link && link.route ? (
+            <Link
+              key={link.href}
+              to={link.href}
+              className="hidden sm:inline text-neutral-500 hover:text-neutral-950 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              {t.nav[link.key]}
+            </Link>
+          ) : (
+            <a
+              key={link.href}
+              href={isHome ? link.href.replace(/^\//, "") : link.href}
+              className="hidden sm:inline text-neutral-500 hover:text-neutral-950 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              {t.nav[link.key]}
+            </a>
+          ),
+        )}
         <div
-          className="flex items-center gap-1 rounded-full border border-neutral-200 bg-white p-1"
+          className="flex items-center gap-0.5 rounded-full border border-neutral-200 bg-white p-0.5"
           role="group"
           aria-label={locale === "en" ? "Language" : "Idioma"}
         >
           <button
             type="button"
             onClick={() => setLocale("en")}
-            className={`px-2.5 py-1 rounded-full text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+            className={`px-1.5 py-0.5 rounded-full text-[10px] leading-none font-semibold tracking-wide transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
               locale === "en"
                 ? "bg-neutral-950 text-white"
                 : "text-neutral-500 hover:text-neutral-950"
@@ -60,7 +70,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setLocale("pt")}
-            className={`px-2.5 py-1 rounded-full text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+            className={`px-1.5 py-0.5 rounded-full text-[10px] leading-none font-semibold tracking-wide transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
               locale === "pt"
                 ? "bg-neutral-950 text-white"
                 : "text-neutral-500 hover:text-neutral-950"

@@ -7,6 +7,7 @@ export type NavKey =
   | "about"
   | "specialties"
   | "work"
+  | "blog"
   | "testimonials"
   | "timeline"
   | "contact";
@@ -117,6 +118,17 @@ export type Dictionary = {
     aboutProject: string;
     alsoSee: string;
   };
+  blog: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    empty: string;
+    readMore: string;
+    back: string;
+    undated: string;
+    seoTitle: string;
+    seoDescription: string;
+  };
   admin: {
     title: string;
     loginTitle: string;
@@ -125,6 +137,7 @@ export type Dictionary = {
     logout: string;
     heroTab: string;
     projectsTab: string;
+    blogTab: string;
     contactTab: string;
     save: string;
     saving: string;
@@ -136,7 +149,9 @@ export type Dictionary = {
     heroImage: string;
     contactImage: string;
     addProject: string;
+    addPost: string;
     deleteProject: string;
+    deletePost: string;
     publish: string;
     unpublish: string;
     editEn: string;

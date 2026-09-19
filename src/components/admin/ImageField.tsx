@@ -4,7 +4,7 @@ import { uploadPortfolioImage } from "../../lib/uploadImage";
 type ImageFieldProps = {
   label: string;
   value: string;
-  folder: "hero" | "contact" | "projects";
+  folder: "hero" | "contact" | "projects" | "blog";
   onChange: (url: string) => void;
   previewClassName?: string;
   uploadLabel: string;

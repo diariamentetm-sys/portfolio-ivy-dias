@@ -26,7 +26,7 @@ const heroRoleStyles = [
 ] as const;
 
 const heroLocationStyles = [
-  { tone: "post-it-mint", rotate: "rotate-2" },
+  { tone: "post-it-coral", rotate: "rotate-2" },
 ] as const;
 
 const heroStatStyles = [
@@ -184,7 +184,7 @@ export function HomePage() {
               {t.hero.locationTags.map((tag, index) => (
                 <span
                   key={tag}
-                  className={`post-it post-it-tag whitespace-nowrap ${heroLocationStyles[index]?.tone ?? "post-it-mint"} ${heroLocationStyles[index]?.rotate ?? "rotate-1"}`}
+                  className={`post-it post-it-tag whitespace-nowrap ${heroLocationStyles[index]?.tone ?? "post-it-coral"} ${heroLocationStyles[index]?.rotate ?? "rotate-1"}`}
                 >
                   {tag}
                 </span>

@@ -22,7 +22,7 @@ function extensionFor(file: File) {
 
 export async function uploadPortfolioImage(
   file: File,
-  folder: "hero" | "contact" | "projects",
+  folder: "hero" | "contact" | "projects" | "blog",
 ): Promise<{ ok: true; url: string } | { ok: false; error: string }> {
   if (!supabase || !isSupabaseConfigured) {
     return { ok: false, error: "Supabase is not configured" };

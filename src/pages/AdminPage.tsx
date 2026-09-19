@@ -4,13 +4,15 @@ import { ImageField } from "../components/admin/ImageField";
 import { SeoHead } from "../components/seo/SeoHead";
 import { useContent } from "../content/ContentContext";
 import {
+  type BlogPost,
   type ManagedProject,
   type ProjectLocaleContent,
+  slugifyBlogTitle,
 } from "../content/siteContent";
 import { useLocale } from "../i18n/LocaleContext";
 import type { Locale } from "../i18n/types";
 
-type Tab = "hero" | "projects" | "contact";
+type Tab = "hero" | "projects" | "blog" | "contact";
 type ProjectEditorBlock = "identity" | "preview" | "case" | "sections";
 
 type SectionImage = NonNullable<
@@ -28,6 +30,9 @@ export function AdminPage() {
     addProject,
     updateProject,
     removeProject,
+    addBlogPost,
+    updateBlogPost,
+    removeBlogPost,
     saveNow,
     saveStatus,
     saveError,
@@ -36,6 +41,7 @@ export function AdminPage() {
   const [error, setError] = useState("");
   const [tab, setTab] = useState<Tab>("hero");
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [editingPostId, setEditingPostId] = useState<string | null>(null);
   const [editLocale, setEditLocale] = useState<Locale>("en");
 
   const editing = useMemo(
@@ -43,8 +49,31 @@ export function AdminPage() {
     [content.projects, editingId],
   );
 
+  const editingPost = useMemo(
+    () => content.blogPosts.find((item) => item.id === editingPostId) ?? null,
+    [content.blogPosts, editingPostId],
+  );
+
   async function handleSave() {
     await saveNow();
+  }
+
+  function patchBlogPost(patch: Partial<BlogPost>) {
+    if (!editingPost) return;
+    updateBlogPost({
+      ...editingPost,
+      ...patch,
+      updatedAt: new Date().toISOString(),
+    });
+  }
+
+  function patchBlogLocale(lang: Locale, patch: Partial<BlogPost["en"]>) {
+    if (!editingPost) return;
+    updateBlogPost({
+      ...editingPost,
+      [lang]: { ...editingPost[lang], ...patch },
+      updatedAt: new Date().toISOString(),
+    });
   }
 
   function handleLogin(event: FormEvent) {
@@ -107,7 +136,7 @@ export function AdminPage() {
           <p className="text-sm text-neutral-500">Locale UI: {locale.toUpperCase()}</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          {(["hero", "projects", "contact"] as Tab[]).map((item) => (
+          {(["hero", "projects", "blog", "contact"] as Tab[]).map((item) => (
             <button
               key={item}
               type="button"
@@ -122,7 +151,9 @@ export function AdminPage() {
                 ? t.admin.heroTab
                 : item === "projects"
                   ? t.admin.projectsTab
-                  : t.admin.contactTab}
+                  : item === "blog"
+                    ? t.admin.blogTab
+                    : t.admin.contactTab}
             </button>
           ))}
           <Link to="/" className="btn-ghost px-4 py-2 text-sm">
@@ -253,6 +284,269 @@ export function AdminPage() {
             >
               {saveStatus === "saving" ? t.admin.saving : t.admin.save}
             </button>
+          </section>
+        )}
+
+        {tab === "blog" && (
+          <section className="flex flex-col gap-6">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h2 className="text-xl font-bold">Entre Jornadas</h2>
+                <p className="text-sm text-neutral-500 mt-1">
+                  {locale === "en"
+                    ? "Draft → review → publish. Optional schedule supports future automation."
+                    : "Rascunho → revisão → publicar. Agendamento opcional prepara automação."}
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  className="btn-primary px-4 py-2 text-sm"
+                  onClick={() => {
+                    const created = addBlogPost();
+                    setEditingPostId(created.id);
+                  }}
+                >
+                  {t.admin.addPost}
+                </button>
+                <button
+                  type="button"
+                  className="btn-ghost px-4 py-2 text-sm"
+                  disabled={saveStatus === "saving"}
+                  onClick={() => void handleSave()}
+                >
+                  {saveStatus === "saving" ? t.admin.saving : t.admin.save}
+                </button>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-[240px_1fr] gap-6">
+              <aside className="card p-4 flex flex-col gap-2 max-h-[70vh] overflow-auto">
+                {content.blogPosts.map((post) => {
+                  const label =
+                    post[editLocale].title.trim() ||
+                    post.pt.title.trim() ||
+                    post.en.title.trim() ||
+                    post.slug;
+                  return (
+                    <button
+                      key={post.id}
+                      type="button"
+                      onClick={() => setEditingPostId(post.id)}
+                      className={`text-left rounded-lg px-3 py-2 text-sm transition-colors ${
+                        editingPostId === post.id
+                          ? "bg-neutral-950 text-white"
+                          : "hover:bg-neutral-100"
+                      }`}
+                    >
+                      <span className="font-semibold line-clamp-2">{label}</span>
+                      <span className="block mt-1 text-xs opacity-70">
+                        {post.status === "published"
+                          ? t.admin.publish
+                          : locale === "en"
+                            ? "Draft"
+                            : "Rascunho"}{" "}
+                        · {post.slug}
+                      </span>
+                    </button>
+                  );
+                })}
+              </aside>
+
+              {editingPost ? (
+                <div className="card p-6 md:p-8 flex flex-col gap-6">
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      className={
+                        editLocale === "en"
+                          ? "btn-primary px-3 py-1.5 text-sm"
+                          : "btn-ghost px-3 py-1.5 text-sm"
+                      }
+                      onClick={() => setEditLocale("en")}
+                    >
+                      {t.admin.editEn}
+                    </button>
+                    <button
+                      type="button"
+                      className={
+                        editLocale === "pt"
+                          ? "btn-primary px-3 py-1.5 text-sm"
+                          : "btn-ghost px-3 py-1.5 text-sm"
+                      }
+                      onClick={() => setEditLocale("pt")}
+                    >
+                      {t.admin.editPt}
+                    </button>
+                    <button
+                      type="button"
+                      className="btn-ghost px-3 py-1.5 text-sm ml-auto"
+                      onClick={() => {
+                        if (editingPost.status === "published") {
+                          patchBlogPost({ status: "draft" });
+                        } else {
+                          patchBlogPost({
+                            status: "published",
+                            publishedAt:
+                              editingPost.publishedAt ||
+                              new Date().toISOString(),
+                          });
+                        }
+                      }}
+                    >
+                      {editingPost.status === "published"
+                        ? t.admin.unpublish
+                        : t.admin.publish}
+                    </button>
+                    <Link
+                      to={`/entre-jornadas/${editingPost.slug}`}
+                      className="btn-ghost px-3 py-1.5 text-sm"
+                    >
+                      Ver
+                    </Link>
+                    <button
+                      type="button"
+                      className="btn-ghost px-3 py-1.5 text-sm text-error"
+                      onClick={() => {
+                        removeBlogPost(editingPost.id);
+                        setEditingPostId(null);
+                      }}
+                    >
+                      {t.admin.deletePost}
+                    </button>
+                  </div>
+
+                  <FieldLabel label="Slug" hint="URL: /entre-jornadas/slug">
+                    <input
+                      className="input-field"
+                      value={editingPost.slug}
+                      onChange={(event) =>
+                        patchBlogPost({ slug: event.target.value })
+                      }
+                    />
+                  </FieldLabel>
+
+                  <FieldLabel
+                    label="Tags"
+                    hint={
+                      locale === "en"
+                        ? "Comma separated"
+                        : "Separadas por vírgula"
+                    }
+                  >
+                    <input
+                      className="input-field"
+                      value={editingPost.tags.join(", ")}
+                      onChange={(event) =>
+                        patchBlogPost({
+                          tags: event.target.value
+                            .split(",")
+                            .map((tag) => tag.trim())
+                            .filter(Boolean),
+                        })
+                      }
+                    />
+                  </FieldLabel>
+
+                  <FieldLabel
+                    label={
+                      locale === "en"
+                        ? "Schedule (optional)"
+                        : "Agendar (opcional)"
+                    }
+                  >
+                    <input
+                      type="datetime-local"
+                      className="input-field"
+                      value={
+                        editingPost.scheduledAt
+                          ? editingPost.scheduledAt.slice(0, 16)
+                          : ""
+                      }
+                      onChange={(event) => {
+                        const value = event.target.value;
+                        patchBlogPost({
+                          scheduledAt: value
+                            ? new Date(value).toISOString()
+                            : null,
+                        });
+                      }}
+                    />
+                  </FieldLabel>
+
+                  <ImageField
+                    label={locale === "en" ? "Cover image" : "Imagem de capa"}
+                    value={editingPost.coverImage}
+                    folder="blog"
+                    uploadLabel={t.admin.uploadImage}
+                    uploadingLabel={t.admin.uploading}
+                    urlLabel={t.admin.imageUrl}
+                    onChange={(url) => patchBlogPost({ coverImage: url })}
+                  />
+
+                  <FieldLabel label={locale === "en" ? "Title" : "Título"}>
+                    <input
+                      className="input-field"
+                      value={editingPost[editLocale].title}
+                      onChange={(event) => {
+                        const title = event.target.value;
+                        const nextSlug =
+                          editingPost.slug.startsWith("rascunho-") &&
+                          title.trim()
+                            ? slugifyBlogTitle(title)
+                            : editingPost.slug;
+                        updateBlogPost({
+                          ...editingPost,
+                          slug: nextSlug,
+                          [editLocale]: {
+                            ...editingPost[editLocale],
+                            title,
+                          },
+                          updatedAt: new Date().toISOString(),
+                        });
+                      }}
+                    />
+                  </FieldLabel>
+
+                  <FieldLabel label="Excerpt / Resumo">
+                    <textarea
+                      className="input-field min-h-[88px]"
+                      value={editingPost[editLocale].excerpt}
+                      onChange={(event) =>
+                        patchBlogLocale(editLocale, {
+                          excerpt: event.target.value,
+                        })
+                      }
+                    />
+                  </FieldLabel>
+
+                  <FieldLabel
+                    label={locale === "en" ? "Body" : "Corpo"}
+                    hint={
+                      locale === "en"
+                        ? "Blank line = new paragraph"
+                        : "Linha em branco = novo parágrafo"
+                    }
+                  >
+                    <textarea
+                      className="input-field min-h-[320px] font-mono text-sm"
+                      value={editingPost[editLocale].body}
+                      onChange={(event) =>
+                        patchBlogLocale(editLocale, {
+                          body: event.target.value,
+                        })
+                      }
+                    />
+                  </FieldLabel>
+                </div>
+              ) : (
+                <div className="card p-8 text-sm text-neutral-500">
+                  {locale === "en"
+                    ? "Select an article or create a new one."
+                    : "Selecione um artigo ou crie um novo."}
+                </div>
+              )}
+            </div>
           </section>
         )}
 

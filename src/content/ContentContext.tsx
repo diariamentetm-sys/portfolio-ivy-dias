@@ -16,9 +16,11 @@ import {
 import { mergeSeedProjects } from "../data/seedProjects";
 import {
   ADMIN_SESSION_KEY,
+  createEmptyBlogPost,
   createEmptyProject,
   loadSiteContent,
   saveSiteContent,
+  type BlogPost,
   type ManagedProject,
   type SiteContent,
 } from "./siteContent";
@@ -37,6 +39,9 @@ type ContentContextValue = {
   addProject: () => ManagedProject;
   updateProject: (project: ManagedProject) => void;
   removeProject: (id: string) => void;
+  addBlogPost: () => BlogPost;
+  updateBlogPost: (post: BlogPost) => void;
+  removeBlogPost: (id: string) => void;
   saveNow: () => Promise<boolean>;
 };
 
@@ -80,7 +85,11 @@ export function ContentProvider({ children }: { children: ReactNode }) {
         const remote = await fetchSiteContentFromSupabase();
         if (!cancelled && remote) {
           const { projects, addedCount } = mergeSeedProjects(remote.projects);
-          const merged = { ...remote, projects };
+          const merged = {
+            ...remote,
+            projects,
+            blogPosts: remote.blogPosts ?? [],
+          };
           setContent(merged);
           saveSiteContent(merged);
           if (addedCount > 0) {
@@ -210,6 +219,37 @@ export function ContentProvider({ children }: { children: ReactNode }) {
     [applyLocal],
   );
 
+  const addBlogPost = useCallback(() => {
+    const post = createEmptyBlogPost();
+    applyLocal({
+      ...contentRef.current,
+      blogPosts: [post, ...contentRef.current.blogPosts],
+    });
+    return post;
+  }, [applyLocal]);
+
+  const updateBlogPost = useCallback(
+    (post: BlogPost) => {
+      applyLocal({
+        ...contentRef.current,
+        blogPosts: contentRef.current.blogPosts.map((item) =>
+          item.id === post.id ? post : item,
+        ),
+      });
+    },
+    [applyLocal],
+  );
+
+  const removeBlogPost = useCallback(
+    (id: string) => {
+      applyLocal({
+        ...contentRef.current,
+        blogPosts: contentRef.current.blogPosts.filter((item) => item.id !== id),
+      });
+    },
+    [applyLocal],
+  );
+
   const saveNow = useCallback(async () => {
     if (debounceRef.current) {
       window.clearTimeout(debounceRef.current);
@@ -231,6 +271,9 @@ export function ContentProvider({ children }: { children: ReactNode }) {
       addProject,
       updateProject,
       removeProject,
+      addBlogPost,
+      updateBlogPost,
+      removeBlogPost,
       saveNow,
     }),
     [
@@ -245,6 +288,9 @@ export function ContentProvider({ children }: { children: ReactNode }) {
       addProject,
       updateProject,
       removeProject,
+      addBlogPost,
+      updateBlogPost,
+      removeBlogPost,
       saveNow,
     ],
   );
