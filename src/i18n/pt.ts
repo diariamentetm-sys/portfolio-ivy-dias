@@ -101,9 +101,9 @@ export const pt: Dictionary = {
       "continuous-improvement": "Melhoria Contínua",
       "ux-ui": "UX — UI",
     },
-    industryEyebrow: "Trajetória multi-indústria · prova social",
+    industryEyebrow: "Trajetória multi-indústria",
     industryTitle:
-      "Nasci pronta para me adaptar a diferentes modelos de negócios e stakeholders.",
+      "Estou pronta para me adaptar a diferentes modelos de negócios e stakeholders.",
     industries: [
       {
         label: "Bancos & Investimentos",
@@ -290,7 +290,7 @@ export const pt: Dictionary = {
   },
   contact: {
     eyebrow: "(06) Contato",
-    title: "Vamos conversar sobre seu projeto de CX?",
+    title: "Vamos conversar?",
     subtitle:
       "Disponível para projetos remotos e híbridos. Conte-me o desafio que eu respondo pessoalmente.",
     tags: ["CX Design"],

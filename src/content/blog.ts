@@ -1,4 +1,6 @@
 import type { Locale } from "../i18n/types";
+import projetoAtrasadoEn from "./posts/projeto-atrasado-problema-nao-era-cronograma.en.md?raw";
+import projetoAtrasadoPt from "./posts/projeto-atrasado-problema-nao-era-cronograma.pt.md?raw";
 
 export type BlogPostStatus = "draft" | "published";
 
@@ -168,7 +170,7 @@ export function getRelatedBlogPosts(
   return scored.slice(0, limit).map((item) => item.post);
 }
 
-/** Split body into paragraphs (blank line = new paragraph). */
+/** Split body into paragraphs (blank line = new paragraph). Kept for Admin previews. */
 export function blogBodyParagraphs(body: string) {
   return body
     .replace(/\r\n/g, "\n")
@@ -177,82 +179,44 @@ export function blogBodyParagraphs(body: string) {
     .filter(Boolean);
 }
 
-const SEED_NOW = "2026-09-19T12:00:00.000Z";
+const SEED_NOW = "2026-09-20T12:00:00.000Z";
 
-/** Starter post so the section is not empty on first open. */
+/** Placeholder posts replaced by the first real Entre Jornadas article. */
+export const LEGACY_PLACEHOLDER_BLOG_IDS = [
+  "11111111-1111-4111-8111-111111111201",
+  "11111111-1111-4111-8111-111111111202",
+] as const;
+
+/** First published article for Entre Jornadas. */
 export const seedBlogPosts: BlogPost[] = [
   {
-    id: "11111111-1111-4111-8111-111111111201",
-    slug: "entre-jornadas-o-que-e-cx-na-pratica",
+    id: "11111111-1111-4111-8111-111111111301",
+    slug: "projeto-atrasado-problema-nao-era-cronograma",
     status: "published",
     publishedAt: SEED_NOW,
     scheduledAt: null,
     coverImage: "",
-    tags: ["CX", "Produto digital"],
+    tags: [
+      "Product Discovery",
+      "Governança",
+      "Stakeholders",
+      "Lean Inception",
+    ],
     views: 0,
     likes: 0,
     createdAt: SEED_NOW,
     updatedAt: SEED_NOW,
     pt: {
-      title: "O que é CX na prática — e por que não é só “deixar bonito”",
+      title: "O projeto estava atrasado, mas o problema não era o cronograma",
       excerpt:
-        "Customer Experience é o desenho das jornadas reais entre pessoas, processos e produtos. Um ponto de partida para a série Entre Jornadas.",
-      body: `CX não começa na interface. Começa na pergunta: qual problema de negócio e de pessoa estamos resolvendo juntos?
-
-Quando falamos de construção de produtos digitais, a experiência é o resultado de decisões de pesquisa, serviço, priorização e entrega — não só de telas.
-
-Neste espaço, Entre Jornadas, vou compartilhar reflexões, métodos e aprendizados de projetos reais: do discovery ao experimento em produção.
-
-Se você lidera produto, design ou operação, o objetivo é o mesmo: reduzir fricção, criar valor mensurável e manter as pessoas no centro sem perder o olhar de negócio.`,
+        "A história de um discovery de inteligência artificial que tinha cronograma, método e um time excelente. Só esqueceram de combinar com a organização.",
+      body: projetoAtrasadoPt.trim(),
     },
     en: {
-      title: "What CX looks like in practice — and why it isn’t just “making it pretty”",
+      title: "The project was late, but the problem wasn’t the schedule",
       excerpt:
-        "Customer Experience is the design of real journeys across people, processes, and products. A starting point for the Entre Jornadas series.",
-      body: `CX doesn’t start with the interface. It starts with a question: which business and human problem are we solving together?
-
-When we talk about building digital products, experience is the outcome of research, service design, prioritization, and delivery decisions — not screens alone.
-
-In Entre Jornadas I’ll share reflections, methods, and lessons from real projects: from discovery to experiments in production.
-
-If you lead product, design, or operations, the goal is the same: reduce friction, create measurable value, and keep people at the center without losing the business lens.`,
-    },
-  },
-  {
-    id: "11111111-1111-4111-8111-111111111202",
-    slug: "discovery-antes-da-interface",
-    status: "published",
-    publishedAt: "2026-09-12T12:00:00.000Z",
-    scheduledAt: null,
-    coverImage: "",
-    tags: ["CX", "Discovery", "Pesquisa"],
-    views: 0,
-    likes: 0,
-    createdAt: "2026-09-12T12:00:00.000Z",
-    updatedAt: "2026-09-12T12:00:00.000Z",
-    pt: {
-      title: "Discovery antes da interface: o que alinhar com produto e negócio",
-      excerpt:
-        "Antes de desenhar telas, alinhe problema, hipóteses e critérios de sucesso com quem decide e quem opera.",
-      body: `Um discovery bem conduzido reduz retrabalho. Ele não é um ritual burocrático — é o momento em que produto, design e negócio negociam o que vale a pena construir.
-
-Comece pelo problema observável: onde a jornada quebra, para quem, e com qual impacto. Só depois discuta soluções.
-
-Documente hipóteses testáveis e o que seria evidência suficiente para seguir, pausar ou pivotar. Isso transforma opinião em decisão compartilhada.
-
-Quando a interface entra cedo demais, o time discute detalhes estéticos enquanto o problema ainda está confuso. Inverta a ordem: clareza primeiro, pixels depois.`,
-    },
-    en: {
-      title: "Discovery before the interface: what to align with product and business",
-      excerpt:
-        "Before designing screens, align on the problem, hypotheses, and success criteria with decision-makers and operators.",
-      body: `Good discovery reduces rework. It isn’t bureaucracy — it’s where product, design, and business negotiate what is worth building.
-
-Start with the observable problem: where the journey breaks, for whom, and with what impact. Only then discuss solutions.
-
-Document testable hypotheses and what evidence would be enough to proceed, pause, or pivot. That turns opinion into shared decision-making.
-
-When the interface arrives too early, teams debate aesthetics while the problem is still unclear. Flip the order: clarity first, pixels later.`,
+        "The story of an AI discovery that had a timeline, a method, and a strong team — and still stumbled on what the organization never agreed to.",
+      body: projetoAtrasadoEn.trim(),
     },
   },
 ];

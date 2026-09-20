@@ -291,7 +291,7 @@ export function AdminPage() {
           <section className="flex flex-col gap-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <h2 className="text-xl font-bold">Entre Jornadas</h2>
+                <h2 className="text-xl font-bold">{t.admin.blogTab}</h2>
                 <p className="text-sm text-neutral-500 mt-1">
                   {locale === "en"
                     ? "Draft → review → publish. Optional schedule supports future automation."

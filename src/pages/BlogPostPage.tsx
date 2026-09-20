@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
+import { BlogBody } from "../components/blog/BlogBody";
 import { BlogEngagement } from "../components/blog/BlogEngagement";
 import { Footer } from "../components/layout/Footer";
 import { Navbar } from "../components/layout/Navbar";
@@ -8,7 +9,6 @@ import { PostItTag } from "../components/ui/PostItTag";
 import { Reveal } from "../components/ui/Reveal";
 import { useContent } from "../content/ContentContext";
 import {
-  blogBodyParagraphs,
   formatBlogDate,
   getBlogPostCopy,
   getRelatedBlogPosts,
@@ -47,7 +47,6 @@ export function BlogPostPage() {
   }
 
   const postCopy = getBlogPostCopy(post, locale);
-  const paragraphs = blogBodyParagraphs(postCopy.body);
   const dateLabel = formatBlogDate(post.publishedAt || post.createdAt, locale);
   const path = `/entre-jornadas/${post.slug}`;
 
@@ -89,7 +88,7 @@ export function BlogPostPage() {
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-950">
       <SeoHead
-        title={`${postCopy.title} | Entre Jornadas`}
+        title={`${postCopy.title} | ${copy.eyebrow}`}
         description={postCopy.excerpt || postCopy.title}
         path={path}
         image={post.coverImage || undefined}
@@ -111,6 +110,11 @@ export function BlogPostPage() {
               </Link>
               <p className="eyebrow mt-8 mb-5 text-accent">{copy.eyebrow}</p>
               <h1 className="section-h2 max-w-4xl">{postCopy.title}</h1>
+              {postCopy.excerpt ? (
+                <p className="mt-6 max-w-3xl text-lg md:text-xl leading-relaxed text-neutral-600 text-pretty">
+                  {postCopy.excerpt}
+                </p>
+              ) : null}
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 {dateLabel ? <PostItTag index={0}>{dateLabel}</PostItTag> : null}
                 {post.tags.map((tag) => (
@@ -150,12 +154,8 @@ export function BlogPostPage() {
 
           <div className="section-narrative bg-white pt-10 md:pt-14">
             <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 md:gap-12">
-              <div className="md:col-span-8 flex flex-col gap-5">
-                {paragraphs.map((paragraph) => (
-                  <p key={paragraph.slice(0, 48)} className="body-lg text-pretty">
-                    {paragraph}
-                  </p>
-                ))}
+              <div className="md:col-span-8">
+                <BlogBody body={postCopy.body} />
                 <div className="mt-8 pt-8 border-t border-neutral-200">
                   <BlogEngagement
                     views={post.views}

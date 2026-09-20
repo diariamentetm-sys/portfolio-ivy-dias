@@ -8,7 +8,7 @@ export function Footer({ inverted = false }: { inverted?: boolean }) {
     <footer
       className={`w-full max-w-7xl mx-auto flex flex-wrap gap-4 items-center justify-between ${
         inverted
-          ? "mt-16 md:mt-28 pt-10 md:pt-14 text-white/70"
+          ? "mt-10 md:mt-14 pt-8 md:pt-10 text-white/70"
           : "px-5 md:px-16 py-8 border-t border-neutral-200 text-neutral-500"
       }`}
     >

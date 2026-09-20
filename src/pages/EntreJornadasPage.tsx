@@ -30,7 +30,7 @@ export function EntreJornadasPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: copy.title,
+    name: copy.eyebrow,
     description: copy.seoDescription,
     url: absoluteUrl("/entre-jornadas"),
     inLanguage: locale === "pt" ? "pt-BR" : "en",

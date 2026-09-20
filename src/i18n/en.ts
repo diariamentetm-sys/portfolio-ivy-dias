@@ -5,7 +5,7 @@ export const en: Dictionary = {
     about: "About",
     specialties: "Specialties",
     work: "Work",
-    blog: "Entre Jornadas",
+    blog: "Between Journeys",
     testimonials: "Testimonials",
     timeline: "Timeline",
     contact: "Contact",
@@ -102,9 +102,9 @@ export const en: Dictionary = {
       "continuous-improvement": "Continuous Improvement",
       "ux-ui": "UX — UI",
     },
-    industryEyebrow: "Multi-industry path · social proof",
+    industryEyebrow: "Multi-industry path",
     industryTitle:
-      "I was born ready to adapt to different business models and stakeholders.",
+      "I'm ready to adapt to different business models and stakeholders.",
     industries: [
       {
         label: "Banking & Investments",
@@ -290,7 +290,7 @@ export const en: Dictionary = {
   },
   contact: {
     eyebrow: "(06) Contact",
-    title: "Shall we talk about your CX project?",
+    title: "Shall we talk?",
     subtitle:
       "Available for remote and hybrid projects. Tell me about the challenge and I'll reply personally.",
     tags: ["CX Design"],
@@ -319,19 +319,19 @@ export const en: Dictionary = {
     alsoSee: "Also see",
   },
   blog: {
-    eyebrow: "Entre Jornadas",
+    eyebrow: "Between Journeys",
     title: "Notes on CX and digital products",
     subtitle:
       "Essays on journeys, research, service design, and product building — published with editorial intent.",
     empty: "New pieces coming soon.",
     readMore: "Read article →",
-    back: "← Entre Jornadas",
+    back: "← Between Journeys",
     undated: "Draft",
     viewsLabel: "Views",
     likeLabel: "Like this piece",
     likedLabel: "Remove like",
     relatedTitle: "Continue the journey",
-    seoTitle: "Entre Jornadas | CX Blog | Ivy DC",
+    seoTitle: "Between Journeys | CX Blog | Ivy DC",
     seoDescription:
       "Ivy Dias blog on Customer Experience, service design, and building digital products.",
   },
@@ -343,7 +343,7 @@ export const en: Dictionary = {
     logout: "Sign out",
     heroTab: "Hero",
     projectsTab: "Projects",
-    blogTab: "Entre Jornadas",
+    blogTab: "Between Journeys",
     contactTab: "Contact photo",
     save: "Save changes",
     saving: "Saving…",

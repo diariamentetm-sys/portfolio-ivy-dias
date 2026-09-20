@@ -6,6 +6,7 @@ import {
   seedBlogPosts,
   sortBlogPostsNewestFirst,
   normalizeBlogPost,
+  LEGACY_PLACEHOLDER_BLOG_IDS,
 } from "./blog";
 
 export const CONTENT_STORAGE_KEY = "ivy-portfolio-content-v1";
@@ -138,7 +139,7 @@ export function createEmptyProject(): ManagedProject {
 
 export const defaultSiteContent: SiteContent = {
   heroImage: "/images/ivy-hero-glass-board.png",
-  contactPhoto: "/images/ivy-dias-hero.png",
+  contactPhoto: "/images/ivy-contact-portrait.jpg",
   heroCopy: {
     en: {
       titleBefore: "Hi, I'm Ivy DC.\nI connect brands to",
@@ -176,8 +177,26 @@ export function resolveHeroImage(url: string | undefined | null): string {
   return url;
 }
 
+/** Maps known legacy contact portraits to the current headshot. */
+export function resolveContactPhoto(url: string | undefined | null): string {
+  if (!url) return defaultSiteContent.contactPhoto;
+  if (url.includes("ivy-contact-portrait")) return url;
+  if (
+    url.includes("ivy-dias-hero") ||
+    url.includes("1784659658227-ff292a89") ||
+    url.includes("contact/1784659658227")
+  ) {
+    return defaultSiteContent.contactPhoto;
+  }
+  return url;
+}
+
 export function mergeBlogPosts(existing: BlogPost[] | undefined): BlogPost[] {
-  const current = (existing ?? []).map(normalizeBlogPost);
+  const legacyIds = new Set<string>(LEGACY_PLACEHOLDER_BLOG_IDS);
+  const current = (existing ?? [])
+    .map(normalizeBlogPost)
+    .filter((post) => !legacyIds.has(post.id));
+
   if (current.length === 0) {
     return structuredClone(seedBlogPosts);
   }
@@ -194,6 +213,15 @@ export function mergeBlogPosts(existing: BlogPost[] | undefined): BlogPost[] {
       ...present,
       views: Math.max(present.views, seed.views),
       likes: Math.max(present.likes, seed.likes),
+      // Keep the published seed article text authoritative until Admin edits win later.
+      slug: seed.slug,
+      tags: seed.tags.length ? seed.tags : present.tags,
+      pt: seed.pt,
+      en: {
+        title: seed.en.title || present.en.title,
+        excerpt: seed.en.excerpt || present.en.excerpt,
+        body: seed.en.body,
+      },
     });
   }
 
@@ -229,6 +257,7 @@ export function normalizeSiteContent(content: SiteContent): SiteContent {
   return {
     ...content,
     heroImage: resolveHeroImage(content.heroImage),
+    contactPhoto: resolveContactPhoto(content.contactPhoto),
     heroCopy,
     blogPosts: mergeBlogPosts(content.blogPosts),
   };

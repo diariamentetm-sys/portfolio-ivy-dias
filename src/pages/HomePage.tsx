@@ -401,7 +401,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="contato" className="section-inverted py-20 md:py-32">
+      <section id="contato" className="section-inverted pt-16 md:pt-24 pb-10 md:pb-14">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-start">
           <Reveal>
             <div className="flex flex-wrap items-end gap-6 mb-8">
@@ -409,7 +409,7 @@ export function HomePage() {
                 <img
                   src={content.contactPhoto}
                   alt={t.contact.photoAlt}
-                  className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover object-[center_18%] border-4 border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
+                  className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover object-center border-4 border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
                 />
                 <span className="post-it post-it-tag post-it-yellow -rotate-2 absolute -bottom-2 -right-3 z-10">
                   CX Design
