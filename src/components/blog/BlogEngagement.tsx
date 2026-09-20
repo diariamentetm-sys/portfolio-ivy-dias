@@ -38,21 +38,25 @@ function HeartIcon({
   className?: string;
 }) {
   return (
-    <svg
-      className={className}
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      aria-hidden
+    <span
+      className={`inline-flex h-5 w-5 shrink-0 items-center justify-center ${className}`}
     >
-      <path
-        d="M12 20.5s-7.2-4.35-9.05-8.2C1.55 9.35 2.9 6.5 5.7 5.85c1.7-.4 3.35.25 4.3 1.55.95-1.3 2.6-1.95 4.3-1.55 2.8.65 4.15 3.5 2.75 6.45C19.2 16.15 12 20.5 12 20.5Z"
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
         fill={filled ? "currentColor" : "none"}
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinejoin="round"
-      />
-    </svg>
+        aria-hidden
+      >
+        <path
+          d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+          stroke={filled ? "none" : "currentColor"}
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </span>
   );
 }
 
@@ -90,7 +94,7 @@ export function BlogEngagement({
           event.stopPropagation();
           onToggleLike();
         }}
-        className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+        className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
           liked
             ? "border-accent/40 bg-accent/10 text-accent"
             : "border-neutral-200 bg-white text-neutral-500 hover:border-accent/40 hover:text-accent"
@@ -98,8 +102,8 @@ export function BlogEngagement({
         aria-pressed={liked}
         aria-label={liked ? likedLabel : likeLabel}
       >
-        <HeartIcon filled={liked} className="shrink-0" />
-        <span className="font-semibold tabular-nums">{likes}</span>
+        <HeartIcon filled={liked} />
+        <span className="font-semibold tabular-nums leading-none">{likes}</span>
       </button>
     </div>
   );

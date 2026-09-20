@@ -100,8 +100,8 @@ export function BlogPostPage() {
 
       <main className="pt-20 md:pt-24">
         <article>
-          <header className="section-narrative border-t-0 pb-10 md:pb-12">
-            <div className="max-w-7xl mx-auto">
+          <header className="section-narrative border-t-0 pb-10 md:pb-12 md:!pl-[200px]">
+            <div className="max-w-3xl">
               <Link
                 to="/entre-jornadas"
                 className="text-sm font-semibold text-neutral-500 hover:text-accent transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
@@ -109,9 +109,9 @@ export function BlogPostPage() {
                 {copy.back}
               </Link>
               <p className="eyebrow mt-8 mb-5 text-accent">{copy.eyebrow}</p>
-              <h1 className="section-h2 max-w-4xl">{postCopy.title}</h1>
+              <h1 className="section-h2">{postCopy.title}</h1>
               {postCopy.excerpt ? (
-                <p className="mt-6 max-w-3xl text-lg md:text-xl leading-relaxed text-neutral-600 text-pretty">
+                <p className="mt-6 text-lg md:text-xl leading-relaxed text-neutral-600 text-pretty">
                   {postCopy.excerpt}
                 </p>
               ) : null}
@@ -141,7 +141,7 @@ export function BlogPostPage() {
           </header>
 
           {post.coverImage ? (
-            <div className="max-w-7xl mx-auto px-5 md:px-16 mb-10">
+            <div className="max-w-3xl px-5 md:pl-[200px] md:pr-16 mb-10">
               <img
                 src={post.coverImage}
                 alt=""
@@ -152,21 +152,19 @@ export function BlogPostPage() {
             </div>
           ) : null}
 
-          <div className="section-narrative bg-white pt-10 md:pt-14">
-            <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 md:gap-12">
-              <div className="md:col-span-8">
-                <BlogBody body={postCopy.body} />
-                <div className="mt-8 pt-8 border-t border-neutral-200">
-                  <BlogEngagement
-                    views={post.views}
-                    likes={post.likes}
-                    liked={liked}
-                    onToggleLike={() => setLiked(toggleBlogLike(post.id))}
-                    viewsLabel={copy.viewsLabel}
-                    likeLabel={copy.likeLabel}
-                    likedLabel={copy.likedLabel}
-                  />
-                </div>
+          <div className="section-narrative bg-white pt-10 md:pt-14 md:!pl-[200px]">
+            <div className="max-w-3xl">
+              <BlogBody body={postCopy.body} />
+              <div className="mt-8 pt-8 border-t border-neutral-200">
+                <BlogEngagement
+                  views={post.views}
+                  likes={post.likes}
+                  liked={liked}
+                  onToggleLike={() => setLiked(toggleBlogLike(post.id))}
+                  viewsLabel={copy.viewsLabel}
+                  likeLabel={copy.likeLabel}
+                  likedLabel={copy.likedLabel}
+                />
               </div>
             </div>
           </div>
