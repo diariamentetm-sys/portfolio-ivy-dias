@@ -143,6 +143,41 @@ export async function fetchSiteContentFromSupabase(): Promise<SiteContent | null
   });
 }
 
+export async function incrementBlogPostViews(postId: string) {
+  if (!supabase || !isSupabaseConfigured) {
+    return { ok: false as const, views: null };
+  }
+
+  const { data, error } = await supabase.rpc("increment_blog_post_views", {
+    post_id: postId,
+  });
+
+  if (error) {
+    console.warn("increment_blog_post_views failed:", error.message);
+    return { ok: false as const, views: null };
+  }
+
+  return { ok: true as const, views: Number(data) || 0 };
+}
+
+export async function adjustBlogPostLikes(postId: string, delta: 1 | -1) {
+  if (!supabase || !isSupabaseConfigured) {
+    return { ok: false as const, likes: null };
+  }
+
+  const { data, error } = await supabase.rpc("adjust_blog_post_likes", {
+    post_id: postId,
+    delta,
+  });
+
+  if (error) {
+    console.warn("adjust_blog_post_likes failed:", error.message);
+    return { ok: false as const, likes: null };
+  }
+
+  return { ok: true as const, likes: Number(data) || 0 };
+}
+
 export async function persistSiteContentToSupabase(content: SiteContent) {
   if (!supabase || !isSupabaseConfigured) {
     return { ok: false as const, error: "Supabase not configured" };

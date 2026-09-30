@@ -12,6 +12,8 @@ import { isSupabaseConfigured } from "../lib/supabase";
 import {
   fetchSiteContentFromSupabase,
   persistSiteContentToSupabase,
+  incrementBlogPostViews,
+  adjustBlogPostLikes,
 } from "./supabaseContent";
 import { mergeSeedProjects } from "../data/seedProjects";
 import { seedBlogPosts } from "./blog";
@@ -299,6 +301,23 @@ export function ContentProvider({ children }: { children: ReactNode }) {
             : item,
         ),
       });
+
+      void incrementBlogPostViews(postId).then((result) => {
+        if (!result.ok || result.views == null) return;
+        const current = contentRef.current.blogPosts.find(
+          (item) => item.id === postId,
+        );
+        if (!current || current.views >= result.views) return;
+        applyLocal(
+          {
+            ...contentRef.current,
+            blogPosts: contentRef.current.blogPosts.map((item) =>
+              item.id === postId ? { ...item, views: result.views! } : item,
+            ),
+          },
+          { syncRemote: false },
+        );
+      });
     },
     [applyLocal],
   );
@@ -314,6 +333,8 @@ export function ContentProvider({ children }: { children: ReactNode }) {
       }
       writeLikedPostIds(liked);
 
+      const delta: 1 | -1 = alreadyLiked ? -1 : 1;
+
       applyLocal({
         ...contentRef.current,
         blogPosts: contentRef.current.blogPosts.map((item) => {
@@ -323,6 +344,19 @@ export function ContentProvider({ children }: { children: ReactNode }) {
             : (item.likes || 0) + 1;
           return { ...item, likes: nextLikes };
         }),
+      });
+
+      void adjustBlogPostLikes(postId, delta).then((result) => {
+        if (!result.ok || result.likes == null) return;
+        applyLocal(
+          {
+            ...contentRef.current,
+            blogPosts: contentRef.current.blogPosts.map((item) =>
+              item.id === postId ? { ...item, likes: result.likes! } : item,
+            ),
+          },
+          { syncRemote: false },
+        );
       });
 
       return !alreadyLiked;
