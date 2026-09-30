@@ -92,7 +92,16 @@ export function ContentProvider({ children }: { children: ReactNode }) {
         const remote = await fetchSiteContentFromSupabase();
         if (!cancelled && remote) {
           const { projects, addedCount } = mergeSeedProjects(remote.projects);
-          const blogPosts = mergeBlogPosts(remote.blogPosts);
+          const localBlog = contentRef.current.blogPosts;
+          const blogPosts = mergeBlogPosts(remote.blogPosts).map((post) => {
+            const local = localBlog.find((item) => item.id === post.id);
+            if (!local) return post;
+            return {
+              ...post,
+              views: Math.max(post.views || 0, local.views || 0),
+              likes: Math.max(post.likes || 0, local.likes || 0),
+            };
+          });
           const merged = {
             ...remote,
             projects,
