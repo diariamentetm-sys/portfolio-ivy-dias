@@ -9,7 +9,7 @@ import {
   LEGACY_PLACEHOLDER_BLOG_IDS,
 } from "./blog";
 
-export const CONTENT_STORAGE_KEY = "ivy-portfolio-content-v1";
+export const CONTENT_STORAGE_KEY = "ivy-portfolio-content-v2";
 export const ADMIN_SESSION_KEY = "ivy-portfolio-admin-session";
 
 export type LocalizedHero = {

@@ -108,7 +108,9 @@ export function ContentProvider({ children }: { children: ReactNode }) {
             return (
               !remotePost ||
               remotePost.status !== "published" ||
-              remotePost.slug !== seed.slug
+              remotePost.slug !== seed.slug ||
+              remotePost.pt.excerpt !== seed.pt.excerpt ||
+              remotePost.pt.title !== seed.pt.title
             );
           });
 
