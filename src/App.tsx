@@ -1,5 +1,8 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { ScrollToTop } from "./components/layout/ScrollToTop";
+import { GoogleAnalytics } from "./components/seo/GoogleAnalytics";
 import { ContentProvider } from "./content/ContentContext";
 import { LocaleProvider } from "./i18n/LocaleContext";
 import { AbtestPage } from "./pages/AbtestPage";
@@ -22,6 +25,7 @@ function App() {
       <ContentProvider>
         <BrowserRouter>
           <ScrollToTop />
+          <GoogleAnalytics />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/admin" element={<AdminPage />} />
@@ -49,6 +53,8 @@ function App() {
             />
             <Route path="/cases/:slug" element={<DynamicCasePage />} />
           </Routes>
+          <Analytics />
+          <SpeedInsights />
         </BrowserRouter>
       </ContentProvider>
     </LocaleProvider>
