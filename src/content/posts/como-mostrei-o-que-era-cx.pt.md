@@ -70,7 +70,7 @@ Acredito que o papel do CX não é se achar a Eureka do time, que vai trazer tud
 
 Vou concluir por aqui porque o restante é rotina. Houve circunstâncias em que, por falta de cultura da empresa, fui questionada sobre o que estava fazendo ali, como quando, mapeando fluxos, descobri uma quebra entre um CTA e o funil de checkout da área residencial.
 
-Fui danada, retruquei de volta: “O que você espera que um CX faça?”, entre outros pequenos climas sudoestes hehe.
+Fui danada, retruquei de volta: “O que você espera que um CX faça?”, entre outros pequenos climas noroestes hehe.
 
 Mas, no resumo da ópera, saí de um time que deixou saudades na mesma proporção em que acredito que tenha imprimido minha assinatura profissional. Fui útil até o último fio condutor da minha atuação.
 

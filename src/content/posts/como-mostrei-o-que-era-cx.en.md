@@ -70,7 +70,7 @@ I believe the CX role isn’t to play Eureka for the team, pulling everything ou
 
 I’ll wrap up here because the rest is routine. There were moments when, for lack of company culture, I was questioned about what I was doing there — like when, while mapping flows, I found a break between a CTA and the residential checkout funnel.
 
-I pushed back: “What do you expect a CX to do?” — among other small southwestern climates hehe.
+I pushed back: “What do you expect a CX to do?” — among other small northwestern climates hehe.
 
 But, in the end, I left a team I missed as much as I believe I left my professional signature on. I was useful down to the last conducting wire of my work.
 
