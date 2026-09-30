@@ -208,14 +208,14 @@ export const seedBlogPosts: BlogPost[] = [
       title:
         "Como mostrei o que era CX num lugar onde ninguém sabia se isso era pra comer ou passar no cabelo",
       excerpt:
-        "Cheguei como CX num portal de telecom sem território definido. Mapeamento, pesquisa e rotina com o time foram o caminho para conquistar espaço — e voz para o cliente.",
+        "Cheguei como CX num portal de telecom sem território definido. Mapeamento, pesquisa e rotina com o time foram o caminho para conquistar espaço e voz para o cliente.",
       body: comoMostreiCxPt.trim(),
     },
     en: {
       title:
         "How I showed what CX was in a place where nobody knew if it was something to eat or put in your hair",
       excerpt:
-        "I arrived as CX on a telecom portal with no defined territory. Mapping, research, and routines with the team were how I earned space — and a voice for the customer.",
+        "I arrived as CX on a telecom portal with no defined territory. Mapping, research, and routines with the team were how I earned space and a voice for the customer.",
       body: comoMostreiCxEn.trim(),
     },
   },
@@ -245,7 +245,7 @@ export const seedBlogPosts: BlogPost[] = [
     en: {
       title: "The project was late, but the problem wasn’t the schedule",
       excerpt:
-        "The story of an AI discovery that had a timeline, a method, and a strong team — and still stumbled on what the organization never agreed to.",
+        "The story of an AI discovery that had a timeline, a method, and a strong team, and still stumbled on what the organization never agreed to.",
       body: projetoAtrasadoEn.trim(),
     },
   },
