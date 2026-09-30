@@ -1,4 +1,6 @@
 import type { Locale } from "../i18n/types";
+import comoMostreiCxEn from "./posts/como-mostrei-o-que-era-cx.en.md?raw";
+import comoMostreiCxPt from "./posts/como-mostrei-o-que-era-cx.pt.md?raw";
 import projetoAtrasadoEn from "./posts/projeto-atrasado-problema-nao-era-cronograma.en.md?raw";
 import projetoAtrasadoPt from "./posts/projeto-atrasado-problema-nao-era-cronograma.pt.md?raw";
 
@@ -180,6 +182,7 @@ export function blogBodyParagraphs(body: string) {
 }
 
 const SEED_NOW = "2026-09-20T12:00:00.000Z";
+const SEED_CX_STORY = "2026-09-30T12:00:00.000Z";
 
 /** Placeholder posts replaced by the first real Entre Jornadas article. */
 export const LEGACY_PLACEHOLDER_BLOG_IDS = [
@@ -187,8 +190,35 @@ export const LEGACY_PLACEHOLDER_BLOG_IDS = [
   "11111111-1111-4111-8111-111111111202",
 ] as const;
 
-/** First published article for Entre Jornadas. */
+/** Published articles for Entre Jornadas. */
 export const seedBlogPosts: BlogPost[] = [
+  {
+    id: "11111111-1111-4111-8111-111111111302",
+    slug: "como-mostrei-o-que-era-cx",
+    status: "published",
+    publishedAt: SEED_CX_STORY,
+    scheduledAt: null,
+    coverImage: "",
+    tags: ["CX", "Pesquisa", "Portal", "Operação"],
+    views: 0,
+    likes: 0,
+    createdAt: SEED_CX_STORY,
+    updatedAt: SEED_CX_STORY,
+    pt: {
+      title:
+        "Como mostrei o que era CX num lugar onde ninguém sabia se isso era pra comer ou passar no cabelo",
+      excerpt:
+        "Cheguei como CX num portal de telecom sem território definido. Mapeamento, pesquisa e rotina com o time foram o caminho para conquistar espaço — e voz para o cliente.",
+      body: comoMostreiCxPt.trim(),
+    },
+    en: {
+      title:
+        "How I showed what CX was in a place where nobody knew if it was something to eat or put in your hair",
+      excerpt:
+        "I arrived as CX on a telecom portal with no defined territory. Mapping, research, and routines with the team were how I earned space — and a voice for the customer.",
+      body: comoMostreiCxEn.trim(),
+    },
+  },
   {
     id: "11111111-1111-4111-8111-111111111301",
     slug: "projeto-atrasado-problema-nao-era-cronograma",
