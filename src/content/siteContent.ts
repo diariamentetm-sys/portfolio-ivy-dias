@@ -208,20 +208,11 @@ export function mergeBlogPosts(existing: BlogPost[] | undefined): BlogPost[] {
       byId.set(seed.id, normalizeBlogPost(seed));
       continue;
     }
+    // Seed editorial posts stay authoritative (status, copy, slug).
     byId.set(seed.id, {
       ...normalizeBlogPost(seed),
-      ...present,
       views: Math.max(present.views, seed.views),
       likes: Math.max(present.likes, seed.likes),
-      // Keep the published seed article text authoritative until Admin edits win later.
-      slug: seed.slug,
-      tags: seed.tags.length ? seed.tags : present.tags,
-      pt: seed.pt,
-      en: {
-        title: seed.en.title || present.en.title,
-        excerpt: seed.en.excerpt || present.en.excerpt,
-        body: seed.en.body,
-      },
     });
   }
 

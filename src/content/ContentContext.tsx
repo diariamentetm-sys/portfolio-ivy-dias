@@ -14,11 +14,13 @@ import {
   persistSiteContentToSupabase,
 } from "./supabaseContent";
 import { mergeSeedProjects } from "../data/seedProjects";
+import { seedBlogPosts } from "./blog";
 import {
   ADMIN_SESSION_KEY,
   createEmptyBlogPost,
   createEmptyProject,
   loadSiteContent,
+  mergeBlogPosts,
   saveSiteContent,
   blogViewSessionKey,
   readLikedPostIds,
@@ -90,14 +92,27 @@ export function ContentProvider({ children }: { children: ReactNode }) {
         const remote = await fetchSiteContentFromSupabase();
         if (!cancelled && remote) {
           const { projects, addedCount } = mergeSeedProjects(remote.projects);
+          const blogPosts = mergeBlogPosts(remote.blogPosts);
           const merged = {
             ...remote,
             projects,
-            blogPosts: remote.blogPosts ?? [],
+            blogPosts,
           };
           setContent(merged);
           saveSiteContent(merged);
-          if (addedCount > 0) {
+
+          const blogNeedsSync = seedBlogPosts.some((seed) => {
+            const remotePost = (remote.blogPosts ?? []).find(
+              (post) => post.id === seed.id,
+            );
+            return (
+              !remotePost ||
+              remotePost.status !== "published" ||
+              remotePost.slug !== seed.slug
+            );
+          });
+
+          if (addedCount > 0 || blogNeedsSync) {
             void persistSiteContentToSupabase(merged);
           }
         }
