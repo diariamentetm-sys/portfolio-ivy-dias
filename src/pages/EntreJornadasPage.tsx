@@ -15,10 +15,13 @@ import {
 } from "../content/blog";
 import { casePostItStyles } from "../data/portfolio";
 import { useLocale } from "../i18n/LocaleContext";
+import { localizePath } from "../i18n/localeRouting";
+import { useLocalizedPath } from "../i18n/useLocalizedPath";
 import { absoluteUrl, SITE_NAME } from "../seo/siteConfig";
 
 export function EntreJornadasPage() {
   const { locale, t } = useLocale();
+  const lp = useLocalizedPath();
   const { content, toggleBlogLike } = useContent();
   const copy = t.blog;
   const [likedIds, setLikedIds] = useState(() => readLikedPostIds());
@@ -32,12 +35,12 @@ export function EntreJornadasPage() {
     "@type": "Blog",
     name: copy.eyebrow,
     description: copy.seoDescription,
-    url: absoluteUrl("/entre-jornadas"),
+    url: absoluteUrl(localizePath(locale, "/entre-jornadas")),
     inLanguage: locale === "pt" ? "pt-BR" : "en",
     author: {
       "@type": "Person",
       name: SITE_NAME,
-      url: absoluteUrl("/"),
+      url: absoluteUrl(localizePath(locale, "/")),
     },
     blogPost: posts.map((post) => {
       const postCopy = getBlogPostCopy(post, locale);
@@ -46,7 +49,9 @@ export function EntreJornadasPage() {
         headline: postCopy.title,
         description: postCopy.excerpt,
         datePublished: post.publishedAt ?? post.createdAt,
-        url: absoluteUrl(`/entre-jornadas/${post.slug}`),
+        url: absoluteUrl(
+          localizePath(locale, `/entre-jornadas/${post.slug}`),
+        ),
       };
     }),
   };
@@ -97,7 +102,7 @@ export function EntreJornadasPage() {
                   return (
                     <Reveal key={post.id} delay={index * 60} className="h-full">
                       <Link
-                        to={`/entre-jornadas/${post.slug}`}
+                        to={lp(`/entre-jornadas/${post.slug}`)}
                         className="group block h-full"
                       >
                         <article className="case-card flex h-full flex-col p-6 md:p-8 group-hover:-translate-y-1">

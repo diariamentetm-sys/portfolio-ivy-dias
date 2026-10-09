@@ -1,6 +1,8 @@
 import type { Locale } from "../i18n/types";
 import comoMostreiCxEn from "./posts/como-mostrei-o-que-era-cx.en.md?raw";
 import comoMostreiCxPt from "./posts/como-mostrei-o-que-era-cx.pt.md?raw";
+import pequenasRealidadesEn from "./posts/pequenas-realidades-impossiveis-nos-dias-de-hoje.en.md?raw";
+import pequenasRealidadesPt from "./posts/pequenas-realidades-impossiveis-nos-dias-de-hoje.pt.md?raw";
 import projetoAtrasadoEn from "./posts/projeto-atrasado-problema-nao-era-cronograma.en.md?raw";
 import projetoAtrasadoPt from "./posts/projeto-atrasado-problema-nao-era-cronograma.pt.md?raw";
 
@@ -183,6 +185,7 @@ export function blogBodyParagraphs(body: string) {
 
 const SEED_NOW = "2026-09-20T12:00:00.000Z";
 const SEED_CX_STORY = "2026-09-30T12:00:00.000Z";
+const SEED_PHEBO = "2026-10-07T12:00:00.000Z";
 
 /** Placeholder posts replaced by the first real Entre Jornadas article. */
 export const LEGACY_PLACEHOLDER_BLOG_IDS = [
@@ -192,6 +195,31 @@ export const LEGACY_PLACEHOLDER_BLOG_IDS = [
 
 /** Published articles for Entre Jornadas. */
 export const seedBlogPosts: BlogPost[] = [
+  {
+    id: "11111111-1111-4111-8111-111111111303",
+    slug: "pequenas-realidades-impossiveis-nos-dias-de-hoje",
+    status: "published",
+    publishedAt: SEED_PHEBO,
+    scheduledAt: null,
+    coverImage: "",
+    tags: ["UX", "Wireframe", "Memória", "Carreira"],
+    views: 0,
+    likes: 0,
+    createdAt: SEED_PHEBO,
+    updatedAt: SEED_PHEBO,
+    pt: {
+      title: "Pequenas realidades impossíveis nos dias de hoje",
+      excerpt:
+        "Uma lembrança de 2011 que ainda pergunta se certos encontros de trabalho cabem no mundo de hoje.",
+      body: pequenasRealidadesPt.trim(),
+    },
+    en: {
+      title: "Small impossible realities these days",
+      excerpt:
+        "A 2011 memory that still asks whether some ways of working can exist today.",
+      body: pequenasRealidadesEn.trim(),
+    },
+  },
   {
     id: "11111111-1111-4111-8111-111111111302",
     slug: "como-mostrei-o-que-era-cx",
@@ -206,7 +234,7 @@ export const seedBlogPosts: BlogPost[] = [
     updatedAt: SEED_CX_STORY,
     pt: {
       title:
-        "Como mostrei o que era CX num lugar onde ninguém sabia se isso era pra comer ou passar no cabelo",
+        "Como mostrei o trabalho de CX num lugar onde ninguém sabia bem se isso era pra comer ou passar no cabelo.",
       excerpt:
         "Cheguei como CX num portal de telecom sem território definido. Mapeamento, pesquisa e rotina com o time foram o caminho para conquistar espaço e voz para o cliente.",
       body: comoMostreiCxPt.trim(),

@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { useContent } from "../../content/ContentContext";
 import { useLocale } from "../../i18n/LocaleContext";
+import { useLocalizedPath } from "../../i18n/useLocalizedPath";
 import { getCasePageSeo } from "../../seo/pageMeta";
 import { buildCaseJsonLd } from "../../seo/siteConfig";
 import type { CaseStudyConfig } from "../../types/portfolio";
@@ -23,6 +24,7 @@ export function CaseStudyLayout({
   ogImage,
 }: CaseStudyLayoutProps) {
   const { locale, t } = useLocale();
+  const lp = useLocalizedPath();
   const { content } = useContent();
   const project = getManagedProject(content.projects, config.id);
   const pageSeo = getCasePageSeo(config.id, locale);
@@ -61,7 +63,7 @@ export function CaseStudyLayout({
         aria-label={locale === "en" ? "Case navigation" : "Navegação do case"}
       >
         <Link
-          to="/#trabalhos"
+          to={lp("/#trabalhos")}
           className="text-sm font-semibold text-neutral-950 hover:text-accent transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           {t.caseChrome.back}
@@ -140,11 +142,11 @@ export function CaseStudyLayout({
           }
         >
           <div className="flex flex-wrap gap-3">
-            <Link to="/#trabalhos" className="btn-ghost">
+            <Link to={lp("/#trabalhos")} className="btn-ghost">
               {t.caseChrome.allWork}
             </Link>
             {config.next && (
-              <Link to={config.next.path} className="btn-primary">
+              <Link to={lp(config.next.path)} className="btn-primary">
                 {config.next.label}
               </Link>
             )}
@@ -158,7 +160,7 @@ export function CaseStudyLayout({
                 <span key={item.path}>
                   {index > 0 ? " · " : null}
                   <Link
-                    to={item.path}
+                    to={lp(item.path)}
                     className="text-neutral-700 underline-offset-2 hover:text-accent hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                   >
                     {item.label}

@@ -1,51 +1,220 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ivydc.cx/</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://www.ivydc.cx/pt</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt" />
+    <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ivydc.cx/cases/cashlog</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://www.ivydc.cx/en</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt" />
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/pt/cases/cashlog</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/cases/cashlog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/cases/cashlog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/cases/cashlog" />
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/en/cases/cashlog</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/cases/cashlog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/cases/cashlog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/cases/cashlog" />
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/pt/cases/claro</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/cases/claro" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/cases/claro" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/cases/claro" />
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/en/cases/claro</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/cases/claro" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/cases/claro" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/cases/claro" />
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/pt/cases/abtest</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/cases/abtest" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/cases/abtest" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/cases/abtest" />
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ivydc.cx/cases/claro</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://www.ivydc.cx/en/cases/abtest</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/cases/abtest" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/cases/abtest" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/cases/abtest" />
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ivydc.cx/cases/abtest</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://www.ivydc.cx/pt/cases/etitulo</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/cases/etitulo" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/cases/etitulo" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/cases/etitulo" />
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ivydc.cx/cases/etitulo</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://www.ivydc.cx/en/cases/etitulo</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/cases/etitulo" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/cases/etitulo" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/cases/etitulo" />
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ivydc.cx/cases/bbnk</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://www.ivydc.cx/pt/cases/bbnk</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/cases/bbnk" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/cases/bbnk" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/cases/bbnk" />
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ivydc.cx/cases/trusthub</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://www.ivydc.cx/en/cases/bbnk</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/cases/bbnk" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/cases/bbnk" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/cases/bbnk" />
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ivydc.cx/cases/policia-federal</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://www.ivydc.cx/pt/cases/trusthub</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/cases/trusthub" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/cases/trusthub" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/cases/trusthub" />
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/en/cases/trusthub</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/cases/trusthub" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/cases/trusthub" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/cases/trusthub" />
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/pt/cases/policia-federal</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/cases/policia-federal" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/cases/policia-federal" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/cases/policia-federal" />
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/en/cases/policia-federal</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/cases/policia-federal" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/cases/policia-federal" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/cases/policia-federal" />
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/pt/entre-jornadas</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/entre-jornadas" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/entre-jornadas" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/entre-jornadas" />
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/en/entre-jornadas</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/entre-jornadas" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/entre-jornadas" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/entre-jornadas" />
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/pt/entre-jornadas/pequenas-realidades-impossiveis-nos-dias-de-hoje</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/entre-jornadas/pequenas-realidades-impossiveis-nos-dias-de-hoje" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/entre-jornadas/pequenas-realidades-impossiveis-nos-dias-de-hoje" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/entre-jornadas/pequenas-realidades-impossiveis-nos-dias-de-hoje" />
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/en/entre-jornadas/pequenas-realidades-impossiveis-nos-dias-de-hoje</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/entre-jornadas/pequenas-realidades-impossiveis-nos-dias-de-hoje" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/entre-jornadas/pequenas-realidades-impossiveis-nos-dias-de-hoje" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/entre-jornadas/pequenas-realidades-impossiveis-nos-dias-de-hoje" />
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/pt/entre-jornadas/como-mostrei-o-que-era-cx</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/entre-jornadas/como-mostrei-o-que-era-cx" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/entre-jornadas/como-mostrei-o-que-era-cx" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/entre-jornadas/como-mostrei-o-que-era-cx" />
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/en/entre-jornadas/como-mostrei-o-que-era-cx</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/entre-jornadas/como-mostrei-o-que-era-cx" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/entre-jornadas/como-mostrei-o-que-era-cx" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/entre-jornadas/como-mostrei-o-que-era-cx" />
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/pt/entre-jornadas/projeto-atrasado-problema-nao-era-cronograma</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/entre-jornadas/projeto-atrasado-problema-nao-era-cronograma" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/entre-jornadas/projeto-atrasado-problema-nao-era-cronograma" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/entre-jornadas/projeto-atrasado-problema-nao-era-cronograma" />
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/en/entre-jornadas/projeto-atrasado-problema-nao-era-cronograma</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/entre-jornadas/projeto-atrasado-problema-nao-era-cronograma" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/entre-jornadas/projeto-atrasado-problema-nao-era-cronograma" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/entre-jornadas/projeto-atrasado-problema-nao-era-cronograma" />
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

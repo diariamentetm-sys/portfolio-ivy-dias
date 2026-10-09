@@ -1,6 +1,7 @@
 export type Locale = "en" | "pt";
 
-export const DEFAULT_LOCALE: Locale = "en";
+/** Default / x-default locale for SEO and first visit without preference. */
+export const DEFAULT_LOCALE: Locale = "pt";
 export const LOCALE_STORAGE_KEY = "ivy-portfolio-locale";
 
 export type NavKey =

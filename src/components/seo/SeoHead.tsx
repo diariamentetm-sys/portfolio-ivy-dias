@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import {
   absoluteImageUrl,
   absoluteUrl,
@@ -7,6 +7,7 @@ import {
   type SeoPageConfig,
 } from "../../seo/siteConfig";
 import { withIvyDcTitle } from "../../seo/pageMeta";
+import { LOCALES, localizePath } from "../../i18n/localeRouting";
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(
@@ -30,6 +31,19 @@ function upsertLink(rel: string, href: string) {
   el.setAttribute("href", href);
 }
 
+function upsertHrefLang(hreflang: string, href: string) {
+  let el = document.head.querySelector<HTMLLinkElement>(
+    `link[rel="alternate"][hreflang="${hreflang}"]`,
+  );
+  if (!el) {
+    el = document.createElement("link");
+    el.setAttribute("rel", "alternate");
+    el.setAttribute("hreflang", hreflang);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("href", href);
+}
+
 function upsertJsonLd(id: string, data: unknown) {
   let el = document.getElementById(id) as HTMLScriptElement | null;
   if (!el) {
@@ -45,7 +59,10 @@ type SeoHeadProps = SeoPageConfig & {
   locale?: "pt" | "en";
 };
 
-/** Updates document head for the active route (SPA-friendly SEO). */
+/**
+ * Updates document head for the active route.
+ * `path` must be locale-agnostic (e.g. `/cases/cashlog`); locale prefix is applied here.
+ */
 export function SeoHead({
   title,
   description,
@@ -56,11 +73,13 @@ export function SeoHead({
   jsonLd,
   locale = "pt",
 }: SeoHeadProps) {
-  useEffect(() => {
-    const url = absoluteUrl(path);
+  useLayoutEffect(() => {
+    const localizedPath = localizePath(locale, path);
+    const url = absoluteUrl(localizedPath);
     const imageUrl = absoluteImageUrl(image);
     const fullTitle = withIvyDcTitle(title);
 
+    document.documentElement.lang = locale === "pt" ? "pt-BR" : "en";
     document.title = fullTitle;
 
     upsertMeta("name", "description", description);
@@ -77,6 +96,11 @@ export function SeoHead({
       "og:locale",
       locale === "pt" ? "pt_BR" : "en_US",
     );
+    upsertMeta(
+      "property",
+      "og:locale:alternate",
+      locale === "pt" ? "en_US" : "pt_BR",
+    );
     upsertMeta("name", "twitter:card", "summary_large_image");
     upsertMeta("name", "twitter:title", fullTitle);
     upsertMeta("name", "twitter:description", description);
@@ -84,6 +108,12 @@ export function SeoHead({
     upsertMeta("name", "twitter:site", TWITTER_HANDLE);
 
     upsertLink("canonical", url);
+
+    for (const loc of LOCALES) {
+      const hrefLang = loc === "pt" ? "pt-BR" : "en";
+      upsertHrefLang(hrefLang, absoluteUrl(localizePath(loc, path)));
+    }
+    upsertHrefLang("x-default", absoluteUrl(localizePath("pt", path)));
 
     if (jsonLd) {
       upsertJsonLd("seo-json-ld", Array.isArray(jsonLd) ? jsonLd : [jsonLd]);

@@ -5,12 +5,14 @@ import { SeoHead } from "../components/seo/SeoHead";
 import { PostItTag } from "../components/ui/PostItTag";
 import { useContent } from "../content/ContentContext";
 import { useLocale } from "../i18n/LocaleContext";
+import { useLocalizedPath } from "../i18n/useLocalizedPath";
 import { getCasePageSeo } from "../seo/pageMeta";
 import { buildCaseJsonLd } from "../seo/siteConfig";
 
 export function DynamicCasePage() {
   const { slug } = useParams();
   const { locale, t } = useLocale();
+  const lp = useLocalizedPath();
   const { content } = useContent();
 
   const project = content.projects.find(
@@ -18,7 +20,7 @@ export function DynamicCasePage() {
   );
 
   if (!project) {
-    return <Navigate to="/" replace />;
+    return <Navigate to={lp("/")} replace />;
   }
 
   const copy = project[locale];
@@ -56,7 +58,7 @@ export function DynamicCasePage() {
         aria-label={locale === "en" ? "Case navigation" : "Navegação do case"}
       >
         <Link
-          to="/#trabalhos"
+          to={lp("/#trabalhos")}
           className="text-sm font-semibold text-neutral-950 hover:text-accent transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           {t.caseChrome.back}
@@ -163,7 +165,7 @@ export function DynamicCasePage() {
           }
         >
           <div className="flex flex-wrap gap-3">
-            <Link to="/#trabalhos" className="btn-ghost">
+            <Link to={lp("/#trabalhos")} className="btn-ghost">
               {t.caseChrome.allWork}
             </Link>
           </div>

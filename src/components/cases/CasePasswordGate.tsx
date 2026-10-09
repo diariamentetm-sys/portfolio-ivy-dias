@@ -6,6 +6,7 @@ import {
   verifyCasePassword,
 } from "../../lib/caseAccess";
 import { useLocale } from "../../i18n/LocaleContext";
+import { useLocalizedPath } from "../../i18n/useLocalizedPath";
 import { SeoHead } from "../seo/SeoHead";
 
 type CasePasswordGateProps = {
@@ -22,6 +23,7 @@ export function CasePasswordGate({
   children,
 }: CasePasswordGateProps) {
   const { locale } = useLocale();
+  const lp = useLocalizedPath();
   const [unlocked, setUnlocked] = useState(() => isCaseUnlocked(caseId));
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -94,7 +96,7 @@ export function CasePasswordGate({
           {copy.submit}
         </button>
         <Link
-          to="/"
+          to={lp("/")}
           className="text-sm text-center text-neutral-500 hover:text-accent"
         >
           {copy.back}

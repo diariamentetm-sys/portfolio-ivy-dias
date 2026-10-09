@@ -1,4 +1,7 @@
-export const SITE_ORIGIN = "https://ivydc.cx";
+import { localizePath } from "../i18n/localeRouting";
+import type { Locale } from "../i18n/types";
+
+export const SITE_ORIGIN = "https://www.ivydc.cx";
 export const SITE_NAME = "Ivy Dias de Campos";
 export const SITE_BRAND = "Ivy DC";
 export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/images/ivy-hero-glass-board.png`;
@@ -17,7 +20,9 @@ export type SeoPageConfig = {
 export function absoluteUrl(path: string) {
   if (path.startsWith("http")) return path;
   const normalized = path.startsWith("/") ? path : `/${path}`;
-  return `${SITE_ORIGIN}${normalized === "/" ? "/" : normalized}`;
+  // Locale homes are /pt and /en (no trailing slash).
+  if (normalized === "/") return `${SITE_ORIGIN}/`;
+  return `${SITE_ORIGIN}${normalized}`;
 }
 
 export function absoluteImageUrl(src?: string) {
@@ -27,24 +32,25 @@ export function absoluteImageUrl(src?: string) {
 }
 
 export function buildPersonWebsiteJsonLd(input: {
-  locale: "pt" | "en";
+  locale: Locale;
   title: string;
   description: string;
 }) {
   const inLanguage = input.locale === "pt" ? "pt-BR" : "en";
+  const homeUrl = absoluteUrl(localizePath(input.locale, "/"));
   return [
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: SITE_BRAND,
       alternateName: SITE_NAME,
-      url: SITE_ORIGIN,
+      url: homeUrl,
       description: input.description,
       inLanguage,
       publisher: {
         "@type": "Person",
         name: SITE_NAME,
-        url: SITE_ORIGIN,
+        url: homeUrl,
       },
     },
     {
@@ -52,7 +58,7 @@ export function buildPersonWebsiteJsonLd(input: {
       "@type": "Person",
       name: SITE_NAME,
       alternateName: SITE_BRAND,
-      url: SITE_ORIGIN,
+      url: homeUrl,
       jobTitle:
         input.locale === "pt"
           ? "Estrategista e Designer de Customer Experience"
@@ -76,8 +82,8 @@ export function buildPersonWebsiteJsonLd(input: {
       "@type": "WebPage",
       name: input.title,
       description: input.description,
-      url: SITE_ORIGIN,
-      isPartOf: { "@type": "WebSite", url: SITE_ORIGIN },
+      url: homeUrl,
+      isPartOf: { "@type": "WebSite", url: homeUrl },
       about: { "@type": "Person", name: SITE_NAME },
       inLanguage,
     },
@@ -90,10 +96,13 @@ export function buildCaseJsonLd(input: {
   path: string;
   image?: string;
   datePublished?: string;
-  locale?: "pt" | "en";
+  locale?: Locale;
 }) {
-  const url = absoluteUrl(input.path);
-  const inLanguage = input.locale === "en" ? "en" : "pt-BR";
+  const locale = input.locale ?? "pt";
+  const url = absoluteUrl(localizePath(locale, input.path));
+  const homeUrl = absoluteUrl(localizePath(locale, "/"));
+  const workUrl = absoluteUrl(localizePath(locale, "/#trabalhos"));
+  const inLanguage = locale === "en" ? "en" : "pt-BR";
 
   return [
     {
@@ -102,7 +111,7 @@ export function buildCaseJsonLd(input: {
       name: input.title,
       description: input.description,
       url,
-      isPartOf: { "@type": "WebSite", url: SITE_ORIGIN },
+      isPartOf: { "@type": "WebSite", url: homeUrl },
       about: { "@type": "Person", name: SITE_NAME },
       inLanguage,
       primaryImageOfPage: absoluteImageUrl(input.image),
@@ -117,12 +126,12 @@ export function buildCaseJsonLd(input: {
       author: {
         "@type": "Person",
         name: SITE_NAME,
-        url: SITE_ORIGIN,
+        url: homeUrl,
       },
       creator: {
         "@type": "Person",
         name: SITE_NAME,
-        url: SITE_ORIGIN,
+        url: homeUrl,
       },
       inLanguage: ["pt-BR", "en"],
       ...(input.datePublished ? { datePublished: input.datePublished } : {}),
@@ -135,13 +144,13 @@ export function buildCaseJsonLd(input: {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: SITE_ORIGIN,
+          item: homeUrl,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Work",
-          item: `${SITE_ORIGIN}/#trabalhos`,
+          item: workUrl,
         },
         {
           "@type": "ListItem",

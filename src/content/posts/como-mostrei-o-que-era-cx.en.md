@@ -1,3 +1,5 @@
+> **Editor’s note:** the names of the organization, teams, and professionals have been omitted. Some contextual details were generalized to protect confidentiality, without changing what the role taught us.
+
 ## Arriving as CX without finding a defined territory
 
 In November 2022 I started working as CX on the website of a telecom company. I got through the interview after a half-hour conversation with the area manager, who explained what she expected from the role and also told me it would be a dual-hat job: besides owning CX for the company’s portal, I would also work on the CX chapter of the digital CoE. I remember that, in the interview, she also said: “There’s another opportunity in here that I think you might fit as well.” I answered: “Look, I really enjoyed talking with you. I’d rather work under your management, because I feel we already had a lot of chemistry in this short conversation.”
@@ -54,17 +56,25 @@ What was clear to me should be done — because it had worked in one area — ge
 
 ## When CX topics started showing up in the team’s planning
 
-Every three months the portal held quarterly planning. A very rewarding moment was noticing that the areas where research ran started bringing topics discussed in the Task Force agendas. I don’t know if it was at the Squad Lead’s request, but I loved seeing the discussions gain strength and surprise management.
+Every three months the portal held quarterly planning. A very rewarding moment was noticing that the areas where research ran started bringing topics discussed in the Task Force agendas as epics for the quarter. It was possibly at the Squad Lead’s request, but I loved seeing the discussions gain strength and surprise management.
 
-It seemed that maybe she was getting a bit more contact with what I’d been working on, but until then she didn’t know I had that routine with the team.
+It seemed that maybe she was getting a bit more contact with what I’d been working on, but until that moment she didn’t know I had that routine with the team.
+
+That’s where I finally saw the loop close.
+
+With that win, at management’s request, two more portal areas joined the CSAT research circuit. In other words, I gained a little more room to discuss customer-voice insights and continuous improvement: the Mobile and SMB areas of the portal.
 
 ## Turning scattered needs into a shared vision for the team
 
-I finally built a CX opportunity tree from all the insights we’d discussed with the content editors, the need for new components, the flow reviews to make the path between portals more fluid, and the inclusion of flows that didn’t exist yet but were already aspirations for other people on the team.
+To stitch together everything coming out of the discussions with the areas, I built a CX opportunity tree. It’s worth remembering those sessions happened separately with each of them.
 
-The Scrum Master bought the idea easily and turned it into something bigger for the whole team to see and act on.
+In the tree, I gathered the insights we’d discussed with the content editors and with the CMS team. I also included journey discussions with other teams that continued both the purchase funnel and the post-sales journey. Finally came opportunities that still had no initiatives, but were already aspirations of other people on the team.
 
-I believe the CX role isn’t to play Eureka for the team, pulling everything out of your own hat. It’s a role that acts as a spokesperson for collective needs — everyone involved in the process and, above all, the customers. So a lot of what was there wasn’t invented; it was a simple exercise of observation and fitting pieces together with the resources I had.
+The Scrum Master always bought the ideas with great ease and enthusiasm, which helped me a lot keep that field open. He consolidated all of that into something bigger for the whole team to see and act on too.
+
+I believe the CX role isn’t to play Eureka for the team, pulling everything out of your own hat. It’s a role that acts as a spokesperson for collective needs — everyone involved in the process and, above all, the customers.
+
+So a lot of what was there wasn’t invented; it was a simple exercise of observation and fitting pieces together with the resources I had.
 
 ## The space CX won and what remained from that experience
 

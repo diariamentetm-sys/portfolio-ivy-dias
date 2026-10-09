@@ -1,5 +1,43 @@
 {
-  "rewrites": [{ "source": "/((?!robots\\.txt|sitemap\\.xml|site\\.webmanifest).*)", "destination": "/index.html" }],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "ivydc.cx" }],
+      "destination": "https://www.ivydc.cx/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "destination": "/pt",
+      "permanent": true
+    },
+    {
+      "source": "/cases/:path*",
+      "destination": "/pt/cases/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/entre-jornadas",
+      "destination": "/pt/entre-jornadas",
+      "permanent": true
+    },
+    {
+      "source": "/entre-jornadas/:path*",
+      "destination": "/pt/entre-jornadas/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap.xls",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!.*\\..*).*)",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/robots.txt",
@@ -8,7 +46,8 @@
     {
       "source": "/sitemap.xml",
       "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" }
+        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     },
     {

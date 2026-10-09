@@ -17,11 +17,14 @@ import {
 } from "../content/blog";
 import { casePostItStyles } from "../data/portfolio";
 import { useLocale } from "../i18n/LocaleContext";
+import { localizePath } from "../i18n/localeRouting";
+import { useLocalizedPath } from "../i18n/useLocalizedPath";
 import { absoluteUrl, SITE_NAME } from "../seo/siteConfig";
 
 export function BlogPostPage() {
   const { slug } = useParams();
   const { locale, t } = useLocale();
+  const lp = useLocalizedPath();
   const { content, recordBlogView, toggleBlogLike } = useContent();
   const copy = t.blog;
 
@@ -43,12 +46,14 @@ export function BlogPostPage() {
   }, [post?.id, recordBlogView]);
 
   if (!post) {
-    return <Navigate to="/entre-jornadas" replace />;
+    return <Navigate to={lp("/entre-jornadas")} replace />;
   }
 
   const postCopy = getBlogPostCopy(post, locale);
   const dateLabel = formatBlogDate(post.publishedAt || post.createdAt, locale);
   const path = `/entre-jornadas/${post.slug}`;
+  const localizedPath = localizePath(locale, path);
+  const homeUrl = absoluteUrl(localizePath(locale, "/"));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -72,14 +77,14 @@ export function BlogPostPage() {
     author: {
       "@type": "Person",
       name: SITE_NAME,
-      url: absoluteUrl("/"),
+      url: homeUrl,
     },
     publisher: {
       "@type": "Person",
       name: SITE_NAME,
-      url: absoluteUrl("/"),
+      url: homeUrl,
     },
-    mainEntityOfPage: absoluteUrl(path),
+    mainEntityOfPage: absoluteUrl(localizedPath),
     inLanguage: locale === "pt" ? "pt-BR" : "en",
     keywords: post.tags.join(", "),
     image: post.coverImage ? absoluteUrl(post.coverImage) : undefined,
@@ -103,7 +108,7 @@ export function BlogPostPage() {
           <header className="section-narrative border-t-0 pb-10 md:pb-12 md:!pl-[200px]">
             <div className="max-w-3xl">
               <Link
-                to="/entre-jornadas"
+                to={lp("/entre-jornadas")}
                 className="text-sm font-semibold text-neutral-500 hover:text-accent transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
                 {copy.back}
@@ -189,7 +194,7 @@ export function BlogPostPage() {
                     return (
                       <Reveal key={item.id} delay={index * 60} className="h-full">
                         <Link
-                          to={`/entre-jornadas/${item.slug}`}
+                          to={lp(`/entre-jornadas/${item.slug}`)}
                           className="group block h-full"
                         >
                           <article className="case-card flex h-full flex-col p-6 md:p-8 group-hover:-translate-y-1">

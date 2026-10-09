@@ -10,6 +10,7 @@ import { PostItTag } from "../components/ui/PostItTag";
 import { Reveal } from "../components/ui/Reveal";
 import { useContent } from "../content/ContentContext";
 import { casePostItStyles } from "../data/portfolio";
+import { useLocalizedPath } from "../i18n/useLocalizedPath";
 import {
   resolveWorkCategory,
   WORK_CATEGORIES,
@@ -37,6 +38,7 @@ const heroStatStyles = [
 
 export function HomePage() {
   const { locale, t } = useLocale();
+  const lp = useLocalizedPath();
   const { content } = useContent();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -281,7 +283,7 @@ export function HomePage() {
               const accent = casePostItStyles[index % casePostItStyles.length];
               return (
                 <Reveal key={item.id} delay={index * 60} className="h-full">
-                  <Link to={item.path} className="group block h-full">
+                  <Link to={lp(item.path)} className="group block h-full">
                     <article className="case-card flex h-full flex-col p-6 md:p-8 group-hover:-translate-y-1">
                       <span
                         aria-hidden

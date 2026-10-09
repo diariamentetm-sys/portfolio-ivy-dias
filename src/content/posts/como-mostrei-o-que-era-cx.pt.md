@@ -1,3 +1,5 @@
+> **Nota editorial:** os nomes da organização, das áreas e dos profissionais foram omitidos. Alguns detalhes contextuais foram generalizados para preservar a confidencialidade, sem alterar os aprendizados da função.
+
 ## Chegar como CX sem encontrar um território definido
 
 Em novembro de 2022 comecei a trabalhar como CX no site de uma empresa de telecomunicação. Passei na entrevista após conversar meia hora com a gerente da área, que me explicou o que ela esperava da função e me contou também que seria um papel de chapéu duplo, pois, além de cuidar do CX do portal da empresa, deveria atuar no capítulo de CX do CoE digital. Lembro que, na entrevista, ela ainda disse: “Há uma outra oportunidade aqui dentro que acho que você tem o perfil também.” Respondi: “Olha, gostei muito de conversar com você, eu preferia trabalhar sob sua gestão, pois acredito que houve muita sintonia nessa conversa breve.”
@@ -54,17 +56,25 @@ Mas o que pra mim era claro que deveria ser feito, porque havia funcionado com u
 
 ## Quando as pautas de CX começaram a aparecer no planejamento do time
 
-A cada três meses ocorriam os planejamentos trimestrais do portal. Um movimento muito gratificante foi perceber que as áreas onde as pesquisas rodavam começaram a trazer tópicos discutidos nas pautas de Força Tarefa. Não sei se foi a pedido da Squad Lead, mas achei legal ver as discussões ganharem força e surpreenderem a gerência.
+A cada três meses ocorriam os planejamentos trimestrais do portal. Um movimento muito gratificante foi perceber que as áreas onde as pesquisas rodavam começaram a trazer tópicos discutidos nas pautas de Força Tarefa como épicos para trabalhar no trimestre. Possivelmente foi a pedido da Squad Lead, mas achei legal ver as discussões ganharem força e surpreenderem a gerência.
 
-Me pareceu que ali talvez ela tivesse um pouco mais de contato com o que vinha trabalhando, mas que ela não sabia até o momento que eu tinha essa rotina com o time.
+Me pareceu que ali talvez ela tivesse um pouco mais de contato com o que eu vinha trabalhando, mas que não sabia, até aquele momento, que eu tinha essa rotina com o time.
+
+Finalmente vi ali o fechamento de loop acontecer.
+
+Com essa conquista, a pedido da gerência, mais duas áreas do portal entraram no circuito de pesquisas CSAT. Ou seja, ganhei mais um espacinho para discutir insights de voz do cliente e melhoria contínua: as áreas Móvel e PME do portal.
 
 ## Transformar necessidades dispersas em uma visão comum para o time
 
-Gerei uma árvore de oportunidades de CX finalmente a partir de todos os insights que havíamos discutido com as conteudistas, as necessidades de novos componentes, a revisão de fluxos para tornar a esteira entre os portais mais fluida e a inclusão de fluxos que ainda não existiam, mas já eram anseios de outras pessoas dentro do time.
+Para costurar tudo que saía das discussões com as áreas, gerei uma árvore de oportunidades de CX. Vale lembrar que essas pautas eram realizadas separadamente com cada uma delas.
 
-O Scrum Master comprou a ideia com grande facilidade, tornou aquilo em algo maior, pra todo o time ver e atuar também.
+Na árvore, reuni os insights que havíamos discutido com as conteudistas e com o time de CMS. Incluí também as discussões de jornadas com outros times, que continuavam tanto o funil de compras quanto a jornada de pós-venda. Por fim, entraram oportunidades para as quais ainda não existiam iniciativas, mas que já eram anseios de outros colaboradores dentro do time.
 
-Acredito que o papel do CX não é se achar a Eureka do time, que vai trazer tudo do próprio chapéu. Mas sim uma função que está como porta-voz das necessidades coletivas, de todos os envolvidos no processo e, principalmente, dos clientes. Então muito ali não é inventado, é simples exercício de observação e encaixe de peças com os recursos que tinha.
+O Scrum Master comprava sempre as ideias com grande facilidade e entusiasmo, o que me ajudava muito a ter esse campo aberto. Ele consolidou aquilo tudo em algo maior, pra todo o time ver e atuar também.
+
+Acredito que o papel do CX não é se achar a Eureka do time, que vai trazer tudo do próprio chapéu. Mas sim uma função que está como porta-voz das necessidades coletivas, de todos os envolvidos no processo e, principalmente, dos clientes.
+
+Então muito ali não é inventado, é simples exercício de observação e encaixe de peças com os recursos que tinha.
 
 ## O espaço que CX conquistou e o que ficou dessa experiência
 
