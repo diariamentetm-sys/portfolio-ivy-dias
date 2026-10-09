@@ -22,6 +22,6 @@ Instantes depois de mostrar o layout, Paulo abriu um sorriso e disse: “Por ess
 
 Aquelas palavras me acompanham até hoje. A lembrança do reconhecimento também.
 
-Fico me perguntando se, nos dias de hoje, teria a mesma oportunidade de viver uma situação como aquela. Poderia rolar num Teams da vida? Poderia. Mas, num mundo de Claudes e afins, onde caberia a atmosfera daquele momento? O wireframe a quatro mãos, os olhares entusiasmados, a vibração de quem assistiu à reunião e, principalmente, o cheirinho de sabonete Phebo que o Paulo Henrique Amorim tinha.
+Fico me perguntando se, nos dias de hoje, teria a mesma oportunidade de viver uma situação como aquela. Poderia rolar num Teams da vida? Poderia. Mas, num mundo de Claudes e com a democracia brasileira colocada à prova a cada dia, até quando teremos espaço para a atmosfera daquele momento? O wireframe a quatro mãos, os olhares entusiasmados de quem assistiu àquela construção e, sobretudo, a liberdade de expressão que cheirava a sabonete Phebo.
 
-Quem viveu, viveu.
+Quem viveu, viveu?

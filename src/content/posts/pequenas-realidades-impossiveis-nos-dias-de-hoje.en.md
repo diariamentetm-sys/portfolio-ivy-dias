@@ -22,6 +22,6 @@ Moments after I showed the layout, Paulo opened a smile and said: “Not even Th
 
 Those words stay with me to this day. So does the memory of being recognized.
 
-I keep wondering whether, nowadays, I’d have the same chance to live a moment like that. Could it happen on a Teams call? It could. But in a world of Claudes and the like, where would the atmosphere of that moment fit? The four-handed wireframe, the eager looks, the buzz of whoever sat in on the meeting — and, above all, the faint smell of Phebo soap that Paulo Henrique Amorim carried.
+I keep wondering whether, nowadays, I’d have the same chance to live a moment like that. Could it happen on a Teams call? It could. But in a world of Claudes, and with Brazilian democracy put to the test every day, how long will we still have room for the atmosphere of that moment? The four-handed wireframe, the eager looks of those who watched that construction, and above all the freedom of expression that smelled like Phebo soap.
 
-Those who lived it, lived it.
+Those who lived it, lived it?
