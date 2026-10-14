@@ -26,4 +26,4 @@ E talvez seja esse o ponto mais curioso dessa relação. Produtos e CX deveriam 
 
 No fim, não adianta ter pesquisa, dashboard, NPS, fechamento de loop e uma bela apresentação de resultados se a voz do cliente só pode circular até onde a política interna permite.
 
-Não mate o mensageiro, viemos em paz
+Não mate o mensageiro, viemos em paz.

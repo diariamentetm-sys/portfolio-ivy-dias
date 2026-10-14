@@ -26,4 +26,4 @@ And maybe that’s the curiousest part of this relationship. Product and CX shou
 
 In the end, research, dashboards, NPS, closed loop, and a beautiful results deck are useless if the customer’s voice can only travel as far as internal politics allow.
 
-Don’t shoot the messenger, we come in peace
+Don’t shoot the messenger, we come in peace.
