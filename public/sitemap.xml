@@ -150,7 +150,7 @@
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/entre-jornadas" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/entre-jornadas" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/entre-jornadas" />
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -159,9 +159,27 @@
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/entre-jornadas" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/entre-jornadas" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/entre-jornadas" />
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/pt/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ivydc.cx/en/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.ivydc.cx/pt/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ivydc.cx/en/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ivydc.cx/pt/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.ivydc.cx/pt/entre-jornadas/pequenas-realidades-impossiveis-nos-dias-de-hoje</loc>

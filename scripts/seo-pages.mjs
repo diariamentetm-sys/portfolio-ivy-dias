@@ -69,6 +69,14 @@ const pagesByLocale = {
       type: "website",
     },
     {
+      barePath: "/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx",
+      title:
+        "Por que a área de Produtos não gosta de CX? | Entre Jornadas | Ivy DC",
+      description:
+        "Observações de quem vivenciou o atrito entre CX e Produtos: backlog, política interna e até onde a voz do cliente pode circular.",
+      type: "article",
+    },
+    {
       barePath: "/entre-jornadas/pequenas-realidades-impossiveis-nos-dias-de-hoje",
       title:
         "Pequenas realidades impossíveis nos dias de hoje | Entre Jornadas | Ivy DC",
@@ -156,6 +164,14 @@ const pagesByLocale = {
       description:
         "Ivy Dias’s blog on Customer Experience, service design and building digital products.",
       type: "website",
+    },
+    {
+      barePath: "/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx",
+      title:
+        "Why doesn’t the Product area like CX? | Between Journeys | Ivy DC",
+      description:
+        "Notes from living the friction between CX and Product: backlog ownership, internal politics, and how far the customer’s voice is allowed to travel.",
+      type: "article",
     },
     {
       barePath: "/entre-jornadas/pequenas-realidades-impossiveis-nos-dias-de-hoje",

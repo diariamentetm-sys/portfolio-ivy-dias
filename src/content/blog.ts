@@ -3,6 +3,8 @@ import comoMostreiCxEn from "./posts/como-mostrei-o-que-era-cx.en.md?raw";
 import comoMostreiCxPt from "./posts/como-mostrei-o-que-era-cx.pt.md?raw";
 import pequenasRealidadesEn from "./posts/pequenas-realidades-impossiveis-nos-dias-de-hoje.en.md?raw";
 import pequenasRealidadesPt from "./posts/pequenas-realidades-impossiveis-nos-dias-de-hoje.pt.md?raw";
+import porQueProdutosNaoGostaDeCxEn from "./posts/por-que-a-area-de-produtos-nao-gosta-de-cx.en.md?raw";
+import porQueProdutosNaoGostaDeCxPt from "./posts/por-que-a-area-de-produtos-nao-gosta-de-cx.pt.md?raw";
 import projetoAtrasadoEn from "./posts/projeto-atrasado-problema-nao-era-cronograma.en.md?raw";
 import projetoAtrasadoPt from "./posts/projeto-atrasado-problema-nao-era-cronograma.pt.md?raw";
 
@@ -186,6 +188,7 @@ export function blogBodyParagraphs(body: string) {
 const SEED_NOW = "2026-09-20T12:00:00.000Z";
 const SEED_CX_STORY = "2026-09-30T12:00:00.000Z";
 const SEED_PHEBO = "2026-10-07T12:00:00.000Z";
+const SEED_CX_VS_PRODUCT = "2026-10-14T12:00:00.000Z";
 
 /** Placeholder posts replaced by the first real Entre Jornadas article. */
 export const LEGACY_PLACEHOLDER_BLOG_IDS = [
@@ -195,6 +198,31 @@ export const LEGACY_PLACEHOLDER_BLOG_IDS = [
 
 /** Published articles for Entre Jornadas. */
 export const seedBlogPosts: BlogPost[] = [
+  {
+    id: "11111111-1111-4111-8111-111111111304",
+    slug: "por-que-a-area-de-produtos-nao-gosta-de-cx",
+    status: "published",
+    publishedAt: SEED_CX_VS_PRODUCT,
+    scheduledAt: null,
+    coverImage: "",
+    tags: ["CX", "Produtos", "Organizações", "Voz do cliente"],
+    views: 0,
+    likes: 0,
+    createdAt: SEED_CX_VS_PRODUCT,
+    updatedAt: SEED_CX_VS_PRODUCT,
+    pt: {
+      title: "Por que a área de Produtos não gosta de CX?",
+      excerpt:
+        "Observações de quem vivenciou o atrito entre CX e Produtos: backlog, política interna e até onde a voz do cliente pode circular.",
+      body: porQueProdutosNaoGostaDeCxPt.trim(),
+    },
+    en: {
+      title: "Why doesn’t the Product area like CX?",
+      excerpt:
+        "Notes from living the friction between CX and Product: backlog ownership, internal politics, and how far the customer’s voice is allowed to travel.",
+      body: porQueProdutosNaoGostaDeCxEn.trim(),
+    },
+  },
   {
     id: "11111111-1111-4111-8111-111111111303",
     slug: "pequenas-realidades-impossiveis-nos-dias-de-hoje",
