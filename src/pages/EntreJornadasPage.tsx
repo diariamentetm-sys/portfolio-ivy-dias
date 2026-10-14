@@ -40,9 +40,11 @@ export function EntreJornadasPage() {
     [content.blogPosts],
   );
 
-  const topics = useMemo(() => collectBlogTags(allPosts), [allPosts]);
-
-  const activeTopic = topics.find((topic) => topic.slug === activeTagSlug);
+  const activeTopic = useMemo(
+    () =>
+      collectBlogTags(allPosts).find((topic) => topic.slug === activeTagSlug),
+    [activeTagSlug, allPosts],
+  );
 
   const posts = useMemo(() => {
     if (!activeTagSlug) return allPosts;
@@ -105,45 +107,21 @@ export function EntreJornadasPage() {
               </p>
             </Reveal>
 
-            {topics.length > 0 ? (
-              <Reveal className="mt-8 md:mt-10">
-                <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500 mb-3">
-                  {copy.topicsLabel}
+            {activeTopic ? (
+              <Reveal className="mt-6">
+                <p className="text-sm text-neutral-600">
+                  {copy.filteringBy}:{" "}
+                  <span className="font-semibold text-neutral-950">
+                    {activeTopic.label}
+                  </span>
+                  {" · "}
+                  <Link
+                    to={lp("/entre-jornadas")}
+                    className="font-semibold text-accent hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  >
+                    {copy.clearFilter}
+                  </Link>
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {topics.map((topic) => {
-                    const isActive = topic.slug === activeTagSlug;
-                    return (
-                      <Link
-                        key={topic.slug}
-                        to={lp(`/entre-jornadas?tag=${topic.slug}`)}
-                        aria-current={isActive ? "page" : undefined}
-                        className={`text-xs font-semibold uppercase tracking-wide px-3 py-1.5 rounded-full border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
-                          isActive
-                            ? "bg-neutral-950 text-neutral-50 border-neutral-950"
-                            : "bg-white text-neutral-600 border-neutral-200 hover:border-neutral-400 hover:text-neutral-950"
-                        }`}
-                      >
-                        {topic.label}
-                      </Link>
-                    );
-                  })}
-                </div>
-                {activeTopic ? (
-                  <p className="mt-4 text-sm text-neutral-600">
-                    {copy.filteringBy}:{" "}
-                    <span className="font-semibold text-neutral-950">
-                      {activeTopic.label}
-                    </span>
-                    {" · "}
-                    <Link
-                      to={lp("/entre-jornadas")}
-                      className="font-semibold text-accent hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                    >
-                      {copy.clearFilter}
-                    </Link>
-                  </p>
-                ) : null}
               </Reveal>
             ) : null}
 
@@ -180,18 +158,11 @@ export function EntreJornadasPage() {
                             <span className="text-4xl md:text-5xl font-extrabold leading-none text-neutral-200">
                               {number}
                             </span>
-                            <div className="flex flex-col gap-2 min-w-0">
-                              <span
-                                className={`post-it post-it-tag w-fit ${accent.tone} ${accent.tagRotate}`}
-                              >
-                                {dateLabel || copy.undated}
-                              </span>
-                              {post.tags[0] ? (
-                                <p className="text-xs text-neutral-500">
-                                  {post.tags.slice(0, 2).join(" · ")}
-                                </p>
-                              ) : null}
-                            </div>
+                            <span
+                              className={`post-it post-it-tag w-fit ${accent.tone} ${accent.tagRotate}`}
+                            >
+                              {dateLabel || copy.undated}
+                            </span>
                           </div>
                           <h2 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-950 text-balance">
                             {postCopy.title}
