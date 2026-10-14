@@ -24,22 +24,28 @@ export function readPreferredLocale(): Locale {
  *  localizePath("pt", "/") -> "/pt"
  *  localizePath("en", "/cases/cashlog") -> "/en/cases/cashlog"
  *  localizePath("pt", "/#trabalhos") -> "/pt#trabalhos"
+ *  localizePath("pt", "/entre-jornadas?tag=cx") -> "/pt/entre-jornadas?tag=cx"
  */
 export function localizePath(locale: Locale, path: string): string {
   if (!path) return `/${locale}`;
   if (path.startsWith("http://") || path.startsWith("https://")) return path;
   if (path.startsWith("#")) return `/${locale}${path}`;
+  if (path.startsWith("?")) return `/${locale}${path}`;
 
   const hashIndex = path.indexOf("#");
-  const pathname = hashIndex >= 0 ? path.slice(0, hashIndex) : path;
+  const beforeHash = hashIndex >= 0 ? path.slice(0, hashIndex) : path;
   const hash = hashIndex >= 0 ? path.slice(hashIndex) : "";
+
+  const queryIndex = beforeHash.indexOf("?");
+  const pathname = queryIndex >= 0 ? beforeHash.slice(0, queryIndex) : beforeHash;
+  const search = queryIndex >= 0 ? beforeHash.slice(queryIndex) : "";
 
   let clean = pathname.replace(LOCALE_PREFIX_RE, "") || "/";
   if (!clean.startsWith("/")) clean = `/${clean}`;
   clean = clean.replace(/\/+$/, "") || "/";
 
-  if (clean === "/") return `/${locale}${hash}`;
-  return `/${locale}${clean}${hash}`;
+  if (clean === "/") return `/${locale}${search}${hash}`;
+  return `/${locale}${clean}${search}${hash}`;
 }
 
 export function stripLocalePrefix(pathname: string): string {

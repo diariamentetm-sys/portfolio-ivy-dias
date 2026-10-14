@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useMemo, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { BlogEngagement } from "../components/blog/BlogEngagement";
 import { Footer } from "../components/layout/Footer";
 import { Navbar } from "../components/layout/Navbar";
@@ -7,10 +7,13 @@ import { SeoHead } from "../components/seo/SeoHead";
 import { Reveal } from "../components/ui/Reveal";
 import { useContent } from "../content/ContentContext";
 import {
+  blogPostHasTag,
+  collectBlogTags,
   formatBlogDate,
   getBlogPostCopy,
   isBlogPostPublic,
   readLikedPostIds,
+  slugifyBlogTag,
   sortBlogPostsNewestFirst,
 } from "../content/blog";
 import { casePostItStyles } from "../data/portfolio";
@@ -24,11 +27,27 @@ export function EntreJornadasPage() {
   const lp = useLocalizedPath();
   const { content, toggleBlogLike } = useContent();
   const copy = t.blog;
+  const [searchParams] = useSearchParams();
   const [likedIds, setLikedIds] = useState(() => readLikedPostIds());
 
-  const posts = sortBlogPostsNewestFirst(
-    content.blogPosts.filter((post) => isBlogPostPublic(post)),
+  const activeTagSlug = slugifyBlogTag(searchParams.get("tag") ?? "");
+
+  const allPosts = useMemo(
+    () =>
+      sortBlogPostsNewestFirst(
+        content.blogPosts.filter((post) => isBlogPostPublic(post)),
+      ),
+    [content.blogPosts],
   );
+
+  const topics = useMemo(() => collectBlogTags(allPosts), [allPosts]);
+
+  const activeTopic = topics.find((topic) => topic.slug === activeTagSlug);
+
+  const posts = useMemo(() => {
+    if (!activeTagSlug) return allPosts;
+    return allPosts.filter((post) => blogPostHasTag(post, activeTagSlug));
+  }, [activeTagSlug, allPosts]);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -64,6 +83,7 @@ export function EntreJornadasPage() {
         path="/entre-jornadas"
         type="website"
         locale={locale}
+        robots={activeTagSlug ? "noindex, follow" : "index, follow"}
         jsonLd={jsonLd}
       />
       <Navbar />
@@ -85,8 +105,54 @@ export function EntreJornadasPage() {
               </p>
             </Reveal>
 
-            {posts.length === 0 ? (
+            {topics.length > 0 ? (
+              <Reveal className="mt-8 md:mt-10">
+                <p className="text-xs font-semibold uppercase tracking-wide text-neutral-500 mb-3">
+                  {copy.topicsLabel}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {topics.map((topic) => {
+                    const isActive = topic.slug === activeTagSlug;
+                    return (
+                      <Link
+                        key={topic.slug}
+                        to={lp(`/entre-jornadas?tag=${topic.slug}`)}
+                        aria-current={isActive ? "page" : undefined}
+                        className={`text-xs font-semibold uppercase tracking-wide px-3 py-1.5 rounded-full border transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+                          isActive
+                            ? "bg-neutral-950 text-neutral-50 border-neutral-950"
+                            : "bg-white text-neutral-600 border-neutral-200 hover:border-neutral-400 hover:text-neutral-950"
+                        }`}
+                      >
+                        {topic.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+                {activeTopic ? (
+                  <p className="mt-4 text-sm text-neutral-600">
+                    {copy.filteringBy}:{" "}
+                    <span className="font-semibold text-neutral-950">
+                      {activeTopic.label}
+                    </span>
+                    {" · "}
+                    <Link
+                      to={lp("/entre-jornadas")}
+                      className="font-semibold text-accent hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                    >
+                      {copy.clearFilter}
+                    </Link>
+                  </p>
+                ) : null}
+              </Reveal>
+            ) : null}
+
+            {allPosts.length === 0 ? (
               <p className="mt-10 body-md text-neutral-500">{copy.empty}</p>
+            ) : posts.length === 0 ? (
+              <p className="mt-10 body-md text-neutral-500">
+                {copy.emptyFiltered}
+              </p>
             ) : (
               <div className="mt-10 md:mt-12 grid sm:grid-cols-2 gap-5 md:gap-6">
                 {posts.map((post, index) => {

@@ -9,6 +9,7 @@ import { PostItTag } from "../components/ui/PostItTag";
 import { Reveal } from "../components/ui/Reveal";
 import { useContent } from "../content/ContentContext";
 import {
+  blogTagPath,
   formatBlogDate,
   getBlogPostCopy,
   getRelatedBlogPosts,
@@ -123,12 +124,13 @@ export function BlogPostPage() {
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 {dateLabel ? <PostItTag index={0}>{dateLabel}</PostItTag> : null}
                 {post.tags.map((tag) => (
-                  <span
+                  <Link
                     key={tag}
-                    className="text-xs font-semibold uppercase tracking-wide text-neutral-500"
+                    to={lp(blogTagPath(tag))}
+                    className="text-xs font-semibold uppercase tracking-wide text-neutral-500 underline-offset-2 hover:text-accent hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                   >
                     {tag}
-                  </span>
+                  </Link>
                 ))}
               </div>
               <div className="mt-6">

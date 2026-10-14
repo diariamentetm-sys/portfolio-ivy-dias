@@ -109,6 +109,33 @@ export function slugifyBlogTitle(value: string) {
     .slice(0, 80);
 }
 
+export function slugifyBlogTag(tag: string) {
+  return slugifyBlogTitle(tag);
+}
+
+export function blogPostHasTag(post: BlogPost, tagSlug: string) {
+  const needle = slugifyBlogTag(tagSlug);
+  if (!needle) return false;
+  return post.tags.some((tag) => slugifyBlogTag(tag) === needle);
+}
+
+export function collectBlogTags(posts: BlogPost[]) {
+  const bySlug = new Map<string, string>();
+  for (const post of posts) {
+    for (const tag of post.tags) {
+      const slug = slugifyBlogTag(tag);
+      if (slug && !bySlug.has(slug)) bySlug.set(slug, tag);
+    }
+  }
+  return [...bySlug.entries()]
+    .map(([slug, label]) => ({ slug, label }))
+    .sort((a, b) => a.label.localeCompare(b.label, "pt"));
+}
+
+export function blogTagPath(tag: string) {
+  return `/entre-jornadas?tag=${encodeURIComponent(slugifyBlogTag(tag))}`;
+}
+
 /** Public visibility: published and not scheduled in the future. */
 export function isBlogPostPublic(post: BlogPost, now = new Date()) {
   if (post.status !== "published") return false;

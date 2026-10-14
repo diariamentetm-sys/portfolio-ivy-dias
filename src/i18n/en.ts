@@ -324,6 +324,7 @@ export const en: Dictionary = {
     subtitle:
       "Essays on journeys, research, service design, and product building — published with editorial intent.",
     empty: "New pieces coming soon.",
+    emptyFiltered: "No pieces with this topic yet.",
     readMore: "Read article →",
     back: "← Between Journeys",
     undated: "Draft",
@@ -331,6 +332,9 @@ export const en: Dictionary = {
     likeLabel: "Like this piece",
     likedLabel: "Remove like",
     relatedTitle: "Continue the journey",
+    topicsLabel: "Topics",
+    filteringBy: "Filtering by",
+    clearFilter: "Clear filter",
     seoTitle: "Between Journeys | CX Blog | Ivy DC",
     seoDescription:
       "Ivy Dias blog on Customer Experience, service design, and building digital products.",

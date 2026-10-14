@@ -326,6 +326,7 @@ export const pt: Dictionary = {
     subtitle:
       "Textos sobre jornadas, pesquisa, serviço e construção de produtos — publicados com intenção editorial.",
     empty: "Em breve, novos textos por aqui.",
+    emptyFiltered: "Nenhum texto com este assunto ainda.",
     readMore: "Ler artigo →",
     back: "← Entre Jornadas",
     undated: "Rascunho",
@@ -333,6 +334,9 @@ export const pt: Dictionary = {
     likeLabel: "Curtir este texto",
     likedLabel: "Remover curtida",
     relatedTitle: "Continue a jornada",
+    topicsLabel: "Assuntos",
+    filteringBy: "Filtrando por",
+    clearFilter: "Limpar filtro",
     seoTitle: "Entre Jornadas | Blog de CX | Ivy DC",
     seoDescription:
       "Blog de Ivy Dias sobre Customer Experience, service design e construção de produtos digitais.",

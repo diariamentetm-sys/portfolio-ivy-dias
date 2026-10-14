@@ -124,6 +124,7 @@ export type Dictionary = {
     title: string;
     subtitle: string;
     empty: string;
+    emptyFiltered: string;
     readMore: string;
     back: string;
     undated: string;
@@ -131,6 +132,9 @@ export type Dictionary = {
     likeLabel: string;
     likedLabel: string;
     relatedTitle: string;
+    topicsLabel: string;
+    filteringBy: string;
+    clearFilter: string;
     seoTitle: string;
     seoDescription: string;
   };
