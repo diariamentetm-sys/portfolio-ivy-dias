@@ -14,7 +14,7 @@ In that same situation, my manager — whose reasoning I still find ignoble and 
 
 No methodology could save it. The move was low, because that decision shielded managers from the improvement actions that needed urgent attention. The clever trick was to camouflage what would reach the board, which had weekly accountability agendas. With one more barrier in place, information was filtered and chosen by eeny-meeny-miny-moe. While what really needed to change didn’t change, NPS (ah, someone remembered NPS?) got worse every month, as expected.
 
-In the other piece I wrote here, “How I showed what CX was in a place where nobody knew if it was something to eat or put in your hair,” I told how a Squad Lead tore into me because I had found a flaw in a flow that left the product she owned and crossed into another product’s gate.
+In the other piece I wrote here, [“How I showed what CX was in a place where nobody knew if it was something to eat or put in your hair”](/en/entre-jornadas/como-mostrei-o-que-era-cx), I told how a Squad Lead tore into me because I had found a flaw in a flow that left the product she owned and crossed into another product’s gate.
 
 That was small potatoes next to the larger context I was in. When I shared customer-voice insights with the POs of those areas, they didn’t take the change suggestions to the marketing and product teams requesting those pages. Not out of incompetence. They were coached to filter problems so those areas would interfere less with the site.
 
@@ -26,4 +26,4 @@ And maybe that’s the curiousest part of this relationship. Product and CX shou
 
 In the end, research, dashboards, NPS, closed loop, and a beautiful results deck are useless if the customer’s voice can only travel as far as internal politics allow.
 
-Anyway — don’t shoot the messenger. We come in peace!
+Don’t shoot the messenger, we come in peace

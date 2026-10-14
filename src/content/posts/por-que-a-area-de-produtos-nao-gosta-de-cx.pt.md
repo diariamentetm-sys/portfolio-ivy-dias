@@ -14,7 +14,7 @@ Nessa mesma situação, minha gerente, cujo raciocínio ignóbil até hoje não 
 
 Não teve metodologia que salvasse. O golpe foi baixíssimo, porque essa decisão blindava os gerentes das ações de melhoria que precisavam ser feitas com urgência. A malandragem era camuflar o que seria levado até a diretoria, que tinha pautas semanais de cobrança. Com uma barreira a mais, as informações eram filtradas e escolhidas no uni-duni-tê. Enquanto não se mudava o que realmente precisava ser feito, o NPS (ah, alguém lembrou do NPS?) piorava a cada mês, como era de se esperar.
 
-No outro texto que escrevi aqui, “Como mostrei o trabalho de CX num lugar onde ninguém sabia bem se isso era pra comer ou passar no cabelo”, contei que a Squad Lead me comeu as vísceras porque havia encontrado uma falha em um fluxo que saía do produto que ela geria para a porteira de outro produto.
+No outro texto que escrevi aqui, [“Como mostrei o trabalho de CX num lugar onde ninguém sabia bem se isso era pra comer ou passar no cabelo”](/pt/entre-jornadas/como-mostrei-o-que-era-cx), contei que a Squad Lead me comeu as vísceras porque havia encontrado uma falha em um fluxo que saía do produto que ela geria para a porteira de outro produto.
 
 Isso foi café pequeno perto do contexto maior em que estava inserida. Ao partilhar os insights da voz do cliente com as POs das áreas, elas não levavam as sugestões de mudança para as áreas de marketing e produto demandantes das páginas. Não levavam, mas não por incompetência. Eram orientadas a filtrar os problemas para que essas áreas interferissem menos no site.
 
@@ -26,4 +26,4 @@ E talvez seja esse o ponto mais curioso dessa relação. Produtos e CX deveriam 
 
 No fim, não adianta ter pesquisa, dashboard, NPS, fechamento de loop e uma bela apresentação de resultados se a voz do cliente só pode circular até onde a política interna permite.
 
-Enfim, não mate o mensageiro, viemos em paz!
+Não mate o mensageiro, viemos em paz

@@ -6,7 +6,8 @@ type BlogBodyProps = {
 
 function renderInline(text: string): ReactNode[] {
   const nodes: ReactNode[] = [];
-  const pattern = /(\*\*[^*]+\*\*|\*[^*]+\*|_[^_]+_)/g;
+  const pattern =
+    /(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|\*[^*]+\*|_[^_]+_)/g;
   let lastIndex = 0;
   let match: RegExpExecArray | null;
   let key = 0;
@@ -16,7 +17,23 @@ function renderInline(text: string): ReactNode[] {
       nodes.push(text.slice(lastIndex, match.index));
     }
     const token = match[0];
-    if (token.startsWith("**") && token.endsWith("**")) {
+    const linkMatch = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(token);
+    if (linkMatch) {
+      const [, label, href] = linkMatch;
+      const isExternal = /^https?:\/\//i.test(href);
+      nodes.push(
+        <a
+          key={`a-${key++}`}
+          href={href}
+          className="font-semibold text-accent underline underline-offset-2 hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          {...(isExternal
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
+        >
+          {label}
+        </a>,
+      );
+    } else if (token.startsWith("**") && token.endsWith("**")) {
       nodes.push(
         <strong key={`b-${key++}`} className="font-semibold text-neutral-950">
           {token.slice(2, -2)}
