@@ -14,7 +14,7 @@ A few days later I came back with the layout for his approval. That day the room
 
 I showed the layout expecting red marks and criticism. My impostor syndrome wanted to take over, but I stayed upright, explaining where I had drawn the references to consolidate that vision.
 
-> **Note:** in 2011, nobody was talking about Design Thinking in Brazil. The agency where I worked still followed a waterfall model, and approvals often sat with commercial account managers before they ever reached the client.
+> **Note:** in 2011, in Brazil, Design Thinking was not yet a popularized methodology. The agency where I worked still followed a waterfall model, and approvals often sat with commercial account managers before they ever reached the client.
 
 Dead silence in the room.
 

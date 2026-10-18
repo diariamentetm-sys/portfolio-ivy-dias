@@ -14,7 +14,7 @@ Alguns dias depois, voltei com o layout para ele aprovar. Nesse dia, a sala esta
 
 Mostrei o layout esperando canetadas e críticas. Minha síndrome de impostora queria assumir o alter ego, mas me mantive ereta, explicando de onde tirei as referências para consolidar aquela visão.
 
-> **Nota:** em 2011, nem se falava em Design Thinking no Brasil. Os trabalhos da agência onde eu atuava seguiam o modelo cascata, e a alçada de aprovações muitas vezes ficava no colo dos atendimentos comerciais antes de chegar aos clientes.
+> **Nota:** em 2011, no Brasil, o Design Thinking não era uma metodologia popularizada. Os trabalhos da agência onde eu atuava seguiam o modelo cascata, e a alçada de aprovações muitas vezes ficava no colo dos atendimentos comerciais antes de chegar aos clientes.
 
 Silêncio sepulcral na sala.
 
