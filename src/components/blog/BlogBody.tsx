@@ -81,8 +81,14 @@ function isBlockquote(block: string) {
   return lines.length > 0 && lines.every((line) => /^>\s?/.test(line.trim()));
 }
 
+function parseImageBlock(block: string) {
+  const match = /^!\[([^\]]*)\]\(([^)]+)\)$/.exec(block.trim());
+  if (!match) return null;
+  return { alt: match[1], src: match[2] };
+}
+
 /**
- * Lightweight markdown for Entre Jornadas posts: headings, quotes, lists, bold/italic.
+ * Lightweight markdown for Entre Jornadas posts: headings, quotes, lists, images, bold/italic.
  */
 export function BlogBody({ body }: BlogBodyProps) {
   const blocks = splitBlocks(body);
@@ -131,6 +137,25 @@ export function BlogBody({ body }: BlogBodyProps) {
             >
               {renderInline(block.slice(2).trim())}
             </h2>
+          );
+        }
+
+        const image = parseImageBlock(block);
+        if (image) {
+          return (
+            <figure key={key} className="my-2 md:my-4">
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-auto rounded-ui border border-neutral-200 bg-white"
+                loading="lazy"
+              />
+              {image.alt ? (
+                <figcaption className="mt-3 text-sm leading-relaxed text-neutral-500 text-pretty">
+                  {image.alt}
+                </figcaption>
+              ) : null}
+            </figure>
           );
         }
 

@@ -48,6 +48,8 @@ From integrating those maps, the complete house blueprint is born. No specialist
 
 **Each specialist knows their room deeply. Together, they know the house.**
 
+![Integrated product and experience flow](/images/blog/fluxo-integrado-produtos-experiencias.jpg)
+
 But during that work, the plumber notices something interesting: even after the repairs, water pressure in the kitchen keeps oscillating. Checking the integrated house blueprint, they see that the kitchen plumbing shares part of the hydraulic network with the bathroom.
 
 They seek out the specialist responsible for that space and, together, investigate the problem. They discover the failure’s origin is in a shared stretch of pipe, outside both of their scopes.

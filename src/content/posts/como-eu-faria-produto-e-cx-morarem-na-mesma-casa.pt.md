@@ -48,6 +48,8 @@ Da integração desses mapas nasce o blueprint completo da casa. Nenhum especial
 
 **Cada especialista conhece profundamente seu cômodo. Juntos, conhecem a casa.**
 
+![Fluxo integrado de produtos e experiências](/images/blog/fluxo-integrado-produtos-experiencias.jpg)
+
 Mas, durante esse trabalho, o encanador percebe uma coisa interessante: mesmo depois dos reparos, a pressão da água na cozinha continua oscilando. Ao consultar o blueprint integrado da casa, identifica que a tubulação da cozinha compartilha parte da rede hidráulica com o banheiro.
 
 Ele procura o especialista responsável por aquele ambiente e, juntos, investigam o problema. Descobrem que a origem da falha está num trecho compartilhado da tubulação, fora dos limites de atuação de ambos.
