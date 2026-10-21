@@ -69,6 +69,15 @@ const pagesByLocale = {
       type: "website",
     },
     {
+      barePath:
+        "/entre-jornadas/como-eu-faria-produto-e-cx-morarem-na-mesma-casa",
+      title:
+        "Como eu faria Produto e CX morarem na mesma casa | Entre Jornadas | Ivy DC",
+      description:
+        "Uma metáfora do encanador para imaginar CX e UX dentro dos produtos, com governança transversal e sem mirante distante.",
+      type: "article",
+    },
+    {
       barePath: "/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx",
       title:
         "Por que a área de Produtos não gosta de CX? | Entre Jornadas | Ivy DC",
@@ -164,6 +173,15 @@ const pagesByLocale = {
       description:
         "Ivy Dias’s blog on Customer Experience, service design and building digital products.",
       type: "website",
+    },
+    {
+      barePath:
+        "/entre-jornadas/como-eu-faria-produto-e-cx-morarem-na-mesma-casa",
+      title:
+        "How I’d make Product and CX live in the same house | Between Journeys | Ivy DC",
+      description:
+        "A plumber metaphor for imagining CX and UX inside products, with transversal governance and no distant lookout.",
+      type: "article",
     },
     {
       barePath: "/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx",

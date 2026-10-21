@@ -1,4 +1,6 @@
 import type { Locale } from "../i18n/types";
+import comoEuFariaProdutoCxEn from "./posts/como-eu-faria-produto-e-cx-morarem-na-mesma-casa.en.md?raw";
+import comoEuFariaProdutoCxPt from "./posts/como-eu-faria-produto-e-cx-morarem-na-mesma-casa.pt.md?raw";
 import comoMostreiCxEn from "./posts/como-mostrei-o-que-era-cx.en.md?raw";
 import comoMostreiCxPt from "./posts/como-mostrei-o-que-era-cx.pt.md?raw";
 import pequenasRealidadesEn from "./posts/pequenas-realidades-impossiveis-nos-dias-de-hoje.en.md?raw";
@@ -216,6 +218,7 @@ const SEED_NOW = "2026-09-20T12:00:00.000Z";
 const SEED_CX_STORY = "2026-09-30T12:00:00.000Z";
 const SEED_PHEBO = "2026-10-07T12:00:00.000Z";
 const SEED_CX_VS_PRODUCT = "2026-10-14T12:00:00.000Z";
+const SEED_CX_SAME_HOUSE = "2026-10-21T12:00:00.000Z";
 
 /** Placeholder posts replaced by the first real Entre Jornadas article. */
 export const LEGACY_PLACEHOLDER_BLOG_IDS = [
@@ -225,6 +228,31 @@ export const LEGACY_PLACEHOLDER_BLOG_IDS = [
 
 /** Published articles for Entre Jornadas. */
 export const seedBlogPosts: BlogPost[] = [
+  {
+    id: "11111111-1111-4111-8111-111111111305",
+    slug: "como-eu-faria-produto-e-cx-morarem-na-mesma-casa",
+    status: "published",
+    publishedAt: SEED_CX_SAME_HOUSE,
+    scheduledAt: null,
+    coverImage: "",
+    tags: ["CX", "Produtos", "UX", "Organizações"],
+    views: 0,
+    likes: 0,
+    createdAt: SEED_CX_SAME_HOUSE,
+    updatedAt: SEED_CX_SAME_HOUSE,
+    pt: {
+      title: "Como eu faria Produto e CX morarem na mesma casa",
+      excerpt:
+        "Uma metáfora do encanador para imaginar CX e UX dentro dos produtos, com governança transversal e sem mirante distante.",
+      body: comoEuFariaProdutoCxPt.trim(),
+    },
+    en: {
+      title: "How I’d make Product and CX live in the same house",
+      excerpt:
+        "A plumber metaphor for imagining CX and UX inside products, with transversal governance and no distant lookout.",
+      body: comoEuFariaProdutoCxEn.trim(),
+    },
+  },
   {
     id: "11111111-1111-4111-8111-111111111304",
     slug: "por-que-a-area-de-produtos-nao-gosta-de-cx",
