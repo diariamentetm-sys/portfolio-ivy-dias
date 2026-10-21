@@ -1,4 +1,4 @@
-Depois de chorar um pouco no último post, acho que agora tenho o compromisso de pensar em como seria o mundo ideal entre Produto e CX, certo? (Pergunta retórica, rs.)
+Depois de chorar um pouco no [último post](/pt/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx), acho que agora tenho o compromisso de pensar em como seria o mundo ideal entre Produto e CX, certo? (Pergunta retórica, rs.)
 
 Penso que, antes de tudo, devemos extinguir o departamento de CX. Risos nervosos. Explico.
 
@@ -88,7 +88,7 @@ E não vejo necessidade de uma liderança que intermedeie cada conversa entre o 
 
 A governança existe para assegurar que os mapas conversem entre si, que os métodos sejam consistentes e que o conhecimento produzido por um especialista possa ser aproveitado pelos demais.
 
-Afinal, a quem esses profissionais servem?
+## Afinal, a quem esses profissionais servem?
 
 À casa como um todo. Aos PMs, POs, desenvolvedores e, principalmente, a quem vive nos ambientes.
 

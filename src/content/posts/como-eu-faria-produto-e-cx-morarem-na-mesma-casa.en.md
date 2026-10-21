@@ -1,4 +1,4 @@
-After crying a little in the last post, I think I now have a duty to imagine what an ideal world between Product and CX would look like, right? (Rhetorical question, lol.)
+After crying a little in the [last post](/en/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx), I think I now have a duty to imagine what an ideal world between Product and CX would look like, right? (Rhetorical question, lol.)
 
 I think, first of all, we should abolish the CX department. Nervous laughter. Let me explain.
 
@@ -88,7 +88,7 @@ And I see no need for a leadership that intermediates every conversation between
 
 Governance exists to ensure the maps talk to each other, methods stay consistent, and knowledge produced by one specialist can be used by the others.
 
-After all, who do these professionals serve?
+## After all, who do these professionals serve?
 
 The house as a whole. PMs, POs, developers, and above all whoever lives in those spaces.
 
