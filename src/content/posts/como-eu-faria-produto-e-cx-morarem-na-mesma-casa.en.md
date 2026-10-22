@@ -1,5 +1,7 @@
 After crying a little in the [last post](/en/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx), I think I now have a duty to imagine what an ideal world between Product and CX would look like, right? (Rhetorical question, lol.)
 
+## CX inside the squad, not in a separate department
+
 I think, first of all, we should abolish the CX department. Nervous laughter. Let me explain.
 
 CX should be a team person, a squad person, who takes an active part in the product, who breathes the agendas and evolutions of the journey they care for. They cannot sit on a distant lookout, wrapped in the customer’s cape, pointing at improvements with a selfie stick once a month. No way.
@@ -10,7 +12,7 @@ When I say abolish the CX department, I’m not suggesting we end the discipline
 
 I came up with a metaphor here. Maybe it will help me make myself clear.
 
-## CX can be a plumber
+## CX as the plumber of the journey
 
 Their goal this time is to keep the kitchen sink pipes flowing. But to do that, they need the complete map of the kitchen plumbing. Where does the water come from? Where does it go? What causes clogs? How do you fix each problem? What future improvements could keep those problems from repeating?
 
@@ -60,7 +62,7 @@ That’s when integrated mapping starts to make even more sense. The specialists
 
 The PM now has material to discuss priorities with the people responsible for different rooms, weighing how each decision affects the house’s functioning.
 
-## And who runs this house?
+## Transversal governance: who runs the house without killing autonomy
 
 Plumbers, electricians, and gas technicians are the CX and UX specialists of the *house* product. And here’s a clarification: CX and UX are different disciplines, with their own competencies and responsibilities, but in this metaphor both can take the plumber’s role.
 

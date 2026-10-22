@@ -28,7 +28,7 @@ I met the agency traffic manager who handled layouts for the portal pages. Even 
 
 The traffic manager told me the agency had a hard time shipping simple, easy-to-read pages. The medicine-leaflet look and massive blocks of text were, most of the time, a house requirement — whether from the product area requesting the page, or from how marketing, SEO, or the content editor for that portal area interpreted the brief. That’s when I felt the hole went deeper, and that what was obvious from a UX lens might not even be saved by Nielsen’s heuristics.
 
-## Using research to put the customer’s voice into the routine
+## CSAT research: putting the customer’s voice into the routine
 
 In my second month, the manager announced we would bring CX metrics back into the monthly reports to the area’s leadership. I had already analyzed the on-site questionnaires measuring CSAT and flagged, in a document, attention points that needed fixing so we could get clean answers about what belonged to the portal’s scope.
 
@@ -64,7 +64,7 @@ That’s where I finally saw the loop close.
 
 With that win, at management’s request, two more portal areas joined the CSAT research circuit. In other words, I gained a little more room to discuss customer-voice insights and continuous improvement: the Mobile and SMB areas of the portal.
 
-## Turning scattered needs into a shared vision for the team
+## A CX opportunity tree: a shared vision for the team
 
 To stitch together everything coming out of the discussions with the areas, I built a CX opportunity tree. It’s worth remembering those sessions happened separately with each of them.
 

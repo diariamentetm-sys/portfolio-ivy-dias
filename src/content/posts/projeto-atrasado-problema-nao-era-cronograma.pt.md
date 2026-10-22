@@ -1,6 +1,6 @@
 > **Nota editorial:** os nomes da organização, das áreas e dos profissionais foram omitidos. Alguns detalhes contextuais foram generalizados para preservar a confidencialidade, sem alterar os aprendizados do projeto.
 
-## O projeto que começou com uma ideia e quase nenhuma pergunta
+## Product discovery sem problema definido: a ideia veio antes das perguntas
 
 Uma grande empresa brasileira procurou a consultoria onde eu trabalhava para desenvolver uma solução de inteligência artificial voltada à avaliação de riscos. Havia um esboço de RFP e algumas ideias mais ou menos estruturadas, mas nada muito formal ou técnico sobre o problema, os usuários ou o funcionamento esperado da solução.
 
@@ -197,7 +197,7 @@ O produto tinha interface. O que ele ainda não tinha era continuidade de experi
 
 Quem viveu, viveu.
 
-## O problema nunca foi apenas o cronograma
+## O atraso não era o cronograma: era governança e alinhamento
 
 O cronograma atrasou, mas não porque o processo de Design Thinking tivesse etapas demais. Atrasou porque as condições necessárias para executar essas etapas nunca foram verdadeiramente garantidas.
 

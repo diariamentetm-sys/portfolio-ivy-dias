@@ -1,3 +1,5 @@
+## A four-handed wireframe in 2011
+
 In 2011, I made a wireframe four-handed with the late Paulo Henrique Amorim. I was working on the Conversa Afiada site through the Inter.net agency and designed a polls section inside the journalist’s portal.
 
 Back then, discussions started on paper. I remember being nervous. It was the first time in my career I was that close to someone famous — and, at the time, fairly controversial. For those who don’t remember, PHA was openly left-leaning, and his portal was a place where journalism wore its politics on its sleeve, with sharp headlines and pieces on the contradictions of the right.
@@ -10,6 +12,8 @@ The two of us sat at the table and he told me how he imagined the polls section.
 
 When he finished his sketch, I took the paper from his hands and made my notes, speaking and writing the paths we could take and where the poll could live. He listened carefully, eyes bright, like someone waiting for an early Christmas present rs.
 
+## From paper to layout, with a fuller room
+
 A few days later I came back with the layout for his approval. That day the room was fuller. The agency’s project manager and, I think, the account manager were there too.
 
 I showed the layout expecting red marks and criticism. My impostor syndrome wanted to take over, but I stayed upright, explaining where I had drawn the references to consolidate that vision.
@@ -21,6 +25,8 @@ Dead silence in the room.
 Moments after I showed the layout, Paulo opened a smile and said: “Not even The Guardian saw that one coming.” He kept talking about how much he loved the layout and that he wanted the section live as soon as possible.
 
 Those words stay with me to this day. So does the memory of being recognized.
+
+## Could that way of working still happen today?
 
 I keep wondering whether, nowadays, I’d have the same chance to live a moment like that. Could it happen on a Teams call? It could. But in a world of Claudes, and with Brazilian democracy put to the test every day, how long will we still have room for the atmosphere of that moment? The four-handed wireframe, the eager looks of those who watched that construction, and above all the freedom of expression that smelled like Phebo soap.
 

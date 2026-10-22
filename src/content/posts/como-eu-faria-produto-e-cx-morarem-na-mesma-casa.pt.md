@@ -1,5 +1,7 @@
 Depois de chorar um pouco no [último post](/pt/entre-jornadas/por-que-a-area-de-produtos-nao-gosta-de-cx), acho que agora tenho o compromisso de pensar em como seria o mundo ideal entre Produto e CX, certo? (Pergunta retórica, rs.)
 
+## CX dentro da squad, não num departamento à parte
+
 Penso que, antes de tudo, devemos extinguir o departamento de CX. Risos nervosos. Explico.
 
 CX deveria ser um cara de time, de squad, que participa ativamente do produto, que respira as pautas e evoluções da jornada da qual cuida. Ele não pode ficar num mirante distante, paramentado com a manta do cliente e apontando melhorias com um pau de selfie uma vez por mês. Não mesmo.
@@ -10,7 +12,7 @@ Quando falo em extinguir o departamento de CX, não estou sugerindo acabar com a
 
 Pensei numa metáfora aqui. Talvez me faça entender.
 
-## O CX pode ser um encanador
+## O papel de CX como encanador da jornada
 
 Seu objetivo da vez é manter as tubulações da pia da cozinha fluindo. Mas, para isso, ele precisa ter o mapa completo do encanamento da cozinha. De onde vem a água? Para onde ela vai? O que provoca entupimentos? Como resolver cada problema? Quais melhorias futuras poderiam evitar que esses problemas se repetissem?
 
@@ -60,7 +62,7 @@ O problema já não pertence exclusivamente à cozinha ou ao banheiro. O PO de c
 
 O PM passa a ter elementos para discutir as prioridades com os responsáveis pelos diferentes ambientes, considerando os impactos de cada decisão sobre o funcionamento da casa.
 
-## E quem manda nessa casa?
+## Governança transversal: quem manda na casa sem matar a autonomia
 
 Encanadores, eletricistas e gasistas são os especialistas de CX e UX do produto *casa*. E aqui vale um esclarecimento: CX e UX são disciplinas diferentes, com competências e responsabilidades próprias, mas, nesta metáfora, ambos podem assumir o papel de encanadores.
 

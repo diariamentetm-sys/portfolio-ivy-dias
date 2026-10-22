@@ -1,3 +1,5 @@
+## Wireframe a quatro mãos em 2011
+
 Em 2011, fiz um wireframe a quatro mãos com o (saudoso) Paulo Henrique Amorim. Atendia o site Conversa Afiada pela agência Inter.net e desenhei uma área de enquetes dentro do portal do jornalista.
 
 Naquele tempo, as discussões começavam no papel. Lembro que fiquei nervosa. Era a primeira vez na carreira que estava tão próxima de uma figura famosa e, na época, bastante polêmica. Pra quem não lembra, o PHA era reconhecidamente de esquerda e seu portal era um espaço onde o jornalismo escancarava sua posição política, com títulos e matérias afiadas sobre as contradições da direita.
@@ -10,6 +12,8 @@ Sentamos os dois à mesa e ele contou como imaginava a seção de enquetes. Ouvi
 
 Ao concluir seu rascunho, tomei o papel de suas mãos e fiz minhas notas, falando e escrevendo os caminhos que poderíamos seguir e em quais locais a enquete poderia ser aplicada. Ele ouviu atentamente, com os olhos vibrantes, como quem ansiava por um presente de Natal antecipado rs.
 
+## Do papel ao layout, com a sala cheia
+
 Alguns dias depois, voltei com o layout para ele aprovar. Nesse dia, a sala estava mais cheia. O gerente de projetos da agência e, acho que, a atendimento da conta estavam na sala também.
 
 Mostrei o layout esperando canetadas e críticas. Minha síndrome de impostora queria assumir o alter ego, mas me mantive ereta, explicando de onde tirei as referências para consolidar aquela visão.
@@ -21,6 +25,8 @@ Silêncio sepulcral na sala.
 Instantes depois de mostrar o layout, Paulo abriu um sorriso e disse: “Por essa nem o The Guardian esperava”. Continuou falando sobre o quanto tinha adorado o layout e que queria ver a seção no ar o quanto antes.
 
 Aquelas palavras me acompanham até hoje. A lembrança do reconhecimento também.
+
+## Cabe essa forma de trabalhar nos dias de hoje?
 
 Fico me perguntando se, nos dias de hoje, teria a mesma oportunidade de viver uma situação como aquela. Poderia rolar num Teams da vida? Poderia. Mas, num mundo de Claudes e com a democracia brasileira colocada à prova a cada dia, até quando teremos espaço para a atmosfera daquele momento? O wireframe a quatro mãos, os olhares entusiasmados de quem assistiu àquela construção e, sobretudo, a liberdade de expressão que cheirava a sabonete Phebo.
 

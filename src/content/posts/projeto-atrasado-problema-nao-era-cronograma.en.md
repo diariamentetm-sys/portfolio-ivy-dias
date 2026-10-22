@@ -1,6 +1,6 @@
 > **Editor’s note:** the names of the organization, teams, and professionals have been omitted. Some contextual details were generalized to protect confidentiality, without changing what the project taught us.
 
-## The project that started with an idea and almost no questions
+## Product discovery without a defined problem: the idea came before the questions
 
 A large Brazilian company approached the consultancy where I worked to develop an artificial intelligence solution for risk assessment. There was a rough RFP and a few loosely structured ideas, but almost nothing formal or technical about the problem, the users, or how the solution was supposed to work.
 
@@ -197,7 +197,7 @@ The product had an interface. What it still didn’t have was experience continu
 
 Those who lived it, lived it.
 
-## The problem was never just the timeline
+## The delay wasn’t the timeline: it was governance and alignment
 
 The timeline slipped, but not because the Design Thinking process had too many stages. It slipped because the conditions required to run those stages were never truly secured.
 

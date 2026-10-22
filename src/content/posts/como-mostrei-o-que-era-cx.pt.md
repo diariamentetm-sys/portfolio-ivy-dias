@@ -28,7 +28,7 @@ Conheci a tráfego da agência que cuidava do layout das páginas do portal. Mes
 
 A tráfego me contou que a agência tinha grande dificuldade de emplacar páginas simples, de fácil leitura. O aspecto de bula de remédio e textos massivos era, na maior parte das vezes, uma exigência da casa, seja da área de produto que demandava a página, seja da interpretação da área de marketing, SEO ou do próprio conteudista que cuidava da área do portal. Ali eu senti que o buraco era mais embaixo e que o que era muito óbvio na visão de UX, nem as leis de Nielsen talvez poderiam salvar.
 
-## Usar pesquisa para colocar a voz do cliente dentro da rotina
+## Pesquisa CSAT: colocar a voz do cliente dentro da rotina
 
 No segundo mês de casa, a gerente comunicou que traríamos de volta métricas de CX dentro dos reportes mensais à diretoria da área. Já havia feito a análise dos questionários aplicados dentro do site, que mediam CSAT, e apontado em um documento alguns pontos de atenção que deveriam ser corrigidos para obtermos respostas limpas sobre o que cabia ao recorte do portal.
 
@@ -64,7 +64,7 @@ Finalmente vi ali o fechamento de loop acontecer.
 
 Com essa conquista, a pedido da gerência, mais duas áreas do portal entraram no circuito de pesquisas CSAT. Ou seja, ganhei mais um espacinho para discutir insights de voz do cliente e melhoria contínua: as áreas Móvel e PME do portal.
 
-## Transformar necessidades dispersas em uma visão comum para o time
+## Árvore de oportunidades de CX: uma visão comum para o time
 
 Para costurar tudo que saía das discussões com as áreas, gerei uma árvore de oportunidades de CX. Vale lembrar que essas pautas eram realizadas separadamente com cada uma delas.
 
