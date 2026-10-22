@@ -15,3 +15,5 @@ uploads/
 storybook-static
 .cursor/
 prototypes/
+
+.tmp-supabase-migrate/
