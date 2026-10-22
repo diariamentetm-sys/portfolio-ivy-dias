@@ -13,8 +13,11 @@ export const SUPABASE_VAIBES_SCHEMA = "vaibes";
 
 export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
 
-export const supabase: SupabaseClient | null = isSupabaseConfigured
-  ? createClient(supabaseUrl!, supabaseAnonKey!, {
-      db: { schema: SUPABASE_CMS_SCHEMA },
-    })
-  : null;
+// Cast: supabase-js defaults the client generic to schema "public".
+export const supabase = (
+  isSupabaseConfigured
+    ? createClient(supabaseUrl!, supabaseAnonKey!, {
+        db: { schema: SUPABASE_CMS_SCHEMA },
+      })
+    : null
+) as SupabaseClient | null;
