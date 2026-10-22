@@ -112,6 +112,13 @@ export const claroSteps: Step[] = [
 
 export const timeline: TimelineItem[] = [
   {
+    period: "2026–atual",
+    company: "Vaibes",
+    role: "Owner e Head de CX",
+    scope:
+      "Fundação e liderança da agência: estratégia de Customer Experience, governança de CX/UX e construção de produtos e serviços digitais.",
+  },
+  {
     period: "2022–2026",
     company: "Claro Brasil",
     role: "Líder de Pilar → Especialista CX CoE",

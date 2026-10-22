@@ -246,6 +246,13 @@ export const pt: Dictionary = {
     title: "Design na prática: experiências que moldaram meu conhecimento.",
     items: [
       {
+        period: "2026–atual",
+        company: "Vaibes",
+        role: "Owner e Head de CX",
+        scope:
+          "Fundação e liderança da agência: estratégia de Customer Experience, governança de CX/UX e construção de produtos e serviços digitais.",
+      },
+      {
         period: "2022–2026",
         company: "Claro Brasil",
         role: "Líder de Pilar → Especialista CX CoE",
