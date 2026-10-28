@@ -12,7 +12,7 @@ O esquema tático foi compor o time com 4 Service Designers, dois Consumer Insig
 
 Sabe quando alguém brinca de “pensa rápido”, jogando uma bolinha na sua cabeça, e você consegue, por reflexo, rebater com a mão? Foi assim que saiu o cronograma.
 
-A primeira semana foi dedicada a colocar os profissionais de CX recrutados a bordo. Toda reunião era gravada e transformada em ata. Catalogamos cada extrato de conversa com o cliente, ainda que não fossem as entrevistas em profundidade ou os grupos focais que serviriam para compor os blueprints. Com um prazo daqueles, qualquer informação que escapasse poderia fazer falta lá na frente.
+A primeira semana foi dedicada a colocar os profissionais de CX recrutados a bordo. Toda reunião era gravada e transformada em ata. Catalogamos cada extrato de conversa com o cliente, ainda que não fossem as entrevistas de contexto ou os mapeamentos de jornadas que serviriam para compor os blueprints. Com um prazo daqueles, qualquer informação que escapasse poderia fazer falta lá na frente.
 
 A metodologia era conhecida: imersão com pesquisa qualitativa, mapeamento de service blueprint, priorização de oportunidades a partir de matriz de impacto e esforço, jornadas to-be e MVP Canvas. O desafio era fazer tudo isso caber num calendário que parecia ter sido elaborado por alguém que desconhecia a quantidade de horas de um dia.
 

@@ -12,7 +12,7 @@ The tactical plan was to staff the team with 4 Service Designers, two Consumer I
 
 You know when someone plays “think fast,” tossing a ball at your head, and you manage, on reflex, to bat it away with your hand? That’s how the schedule came out.
 
-The first week was dedicated to getting the recruited CX professionals on board. Every meeting was recorded and turned into minutes. We cataloged every extract of conversation with the client, even when those weren’t the in-depth interviews or focus groups that would later feed the blueprints. With a deadline like that, any information that slipped away could be missing later.
+The first week was dedicated to getting the recruited CX professionals on board. Every meeting was recorded and turned into minutes. We cataloged every extract of conversation with the client, even when those weren’t the context interviews or journey mappings that would later feed the blueprints. With a deadline like that, any information that slipped away could be missing later.
 
 The methodology was familiar: immersion with qualitative research, service blueprint mapping, opportunity prioritization via an impact-effort matrix, to-be journeys, and MVP Canvas. The challenge was fitting all of that into a calendar that seemed drawn up by someone who didn’t know how many hours are in a day.
 
