@@ -12,11 +12,11 @@ Sabe quando alguém brinca de “pensa rápido”, jogando uma bolinha na sua ca
 
 A primeira semana foi dedicada a colocar os profissionais de CX recrutados a bordo. Toda reunião era gravada e transformada em ata. Catalogamos cada extrato de conversa com o cliente, ainda que não fossem as entrevistas em profundidade ou os grupos focais que serviriam para compor os blueprints. Com um prazo daqueles, qualquer informação que escapasse poderia fazer falta lá na frente.
 
-A metodologia era conhecida: Service Design, pesquisa qualitativa, mapeamento de jornadas e identificação de oportunidades. O desafio era fazer tudo isso caber num calendário que parecia ter sido elaborado por alguém que desconhecia a quantidade de horas de um dia.
+A metodologia era conhecida: imersão com pesquisa qualitativa, mapeamento de service blueprint, priorização de oportunidades a partir de matriz de impacto e esforço, jornadas to-be e MVP Canvas. O desafio era fazer tudo isso caber num calendário que parecia ter sido elaborado por alguém que desconhecia a quantidade de horas de um dia.
 
 ## Pesquisa qualitativa: o universo escondido entre um clique e outro
 
-Partimos para as sessões de imersão com os profissionais das cinco frentes operacionais de um contact center que prestava serviços de atendimento B2B para uma empresa de telecomunicações. A dinâmica era relativamente simples. Pedíamos que cada participante compartilhasse a tela e narrasse o próprio trabalho, passo a passo, enquanto fazíamos perguntas para entender o que acontecia entre um clique e outro.
+Partimos para as sessões de imersão aplicando focus groups com os profissionais das cinco frentes operacionais. A dinâmica era relativamente simples. Pedíamos que cada participante compartilhasse a tela e narrasse o próprio trabalho, passo a passo, enquanto fazíamos perguntas para entender o que acontecia entre um clique e outro.
 
 E, como era de se esperar, entre um clique e outro havia um universo inteiro.
 

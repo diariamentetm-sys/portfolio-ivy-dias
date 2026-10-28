@@ -12,11 +12,11 @@ You know when someone plays “think fast,” tossing a ball at your head, and y
 
 The first week was dedicated to getting the recruited CX professionals on board. Every meeting was recorded and turned into minutes. We cataloged every extract of conversation with the client, even when those weren’t the in-depth interviews or focus groups that would later feed the blueprints. With a deadline like that, any information that slipped away could be missing later.
 
-The methodology was familiar: Service Design, qualitative research, journey mapping, and opportunity identification. The challenge was fitting all of that into a calendar that seemed drawn up by someone who didn’t know how many hours are in a day.
+The methodology was familiar: immersion with qualitative research, service blueprint mapping, opportunity prioritization via an impact-effort matrix, to-be journeys, and MVP Canvas. The challenge was fitting all of that into a calendar that seemed drawn up by someone who didn’t know how many hours are in a day.
 
 ## Qualitative research: the universe hidden between one click and the next
 
-We moved into immersion sessions with professionals from the five operational fronts of a contact center that provided B2B support services for a telecom company. The dynamic was relatively simple. We asked each participant to share their screen and narrate their own work, step by step, while we asked questions to understand what happened between one click and the next.
+We moved into immersion sessions running focus groups with professionals from the five operational fronts. The dynamic was relatively simple. We asked each participant to share their screen and narrate their own work, step by step, while we asked questions to understand what happened between one click and the next.
 
 And, as you’d expect, between one click and the next there was an entire universe.
 
