@@ -1,6 +1,6 @@
 ## Como prometer uma solução de IA antes de conhecer o problema
 
-O diretor ficou louco e prometeu a entrega de uma solução única de IA formatada em 2 meses para um cliente B2B, com 5 frentes operacionais. Fizeram uma comissão de frente com um PMO de rádio-corredor, um Consumer Insights, um coordenador e um diretor de CX engolirem esse prazo a seco, sem vaselina. A promessa ainda foi endossada pelo time técnico da solução, que acreditava que um sistema pré-formatado já existente seria a bala de prata. “Mas, por via das dúvidas, vamos deixar o time de CX fazer seu teatro.” Parece que consigo ler esse pensamento vindo do gerente de IA.
+Num surto de tempos modernos o diretor ficou louco e prometeu a entrega de uma solução única de IA formatada em 2 meses para um cliente B2B, com 5 frentes operacionais. Fizeram uma comissão de frente com um PMO de rádio-corredor, um Consumer Insights, um coordenador e um diretor de CX engolirem esse prazo a seco, sem vaselina. A promessa ainda foi endossada pelo time técnico da solução, que acreditava que um sistema pré-formatado já existente seria a bala de prata. “Mas, por via das dúvidas, vamos deixar o time de CX fazer seu teatro.” Parece que consigo ler esse pensamento vindo do gerente de IA.
 
 Depois da promessa vem a contenção de danos. Inflaram o time com mais gente a bordo que a banda The Polyphonic Spree, como se 9 grávidas pudessem parir uma criança em 1 mês. A missão inicial era gerar 5 blueprints, um por frente. Já aviso que conseguimos entregar, na verdade, 17 blueprints em 2 meses.
 
