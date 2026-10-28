@@ -1,3 +1,5 @@
+> **Disclaimer:** A essa altura do campeonato vocês já devem ter entendido que a linha editorial do Entre Jornadas é focada em contar histórias e mais histórias. Acho que funciona bem contexto com método, mas me perdoem se soar ácida demais, satírica demais ou até mesmo soberba. Ao vivo juro que sou um doce.
+
 ## Como prometer uma solução de IA antes de conhecer o problema
 
 Num surto da era cognitiva o diretor prometeu a entrega de uma solução única de IA formatada em 2 meses para um cliente B2B, com 5 frentes operacionais. O prazo foi entuchado a uma comissão de frente com um PMO, um Consumer Insights, um Coordenador e o diretor de CX a seco, sem vaselina. A promessa ainda foi endossada pelo time técnico da solução, que acreditava que um sistema pré-formatado já existente seria a bala de prata. “Mas, por via das dúvidas, vamos deixar o time de CX fazer seu teatro.” Parece que consigo ler esse pensamento vindo do gerente de IA.

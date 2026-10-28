@@ -1,3 +1,5 @@
+> **Disclaimer:** By this point in the championship you should already have figured out that Entre Jornadas’ editorial line is focused on telling stories — and more stories. I think context with method works well, but forgive me if I come across as too sharp, too satirical, or even a bit full of myself. In person, I swear I’m a sweetheart.
+
 ## How to promise an AI solution before knowing the problem
 
 In a cognitive-era outburst the director promised a single packaged AI solution in 2 months for a B2B client with 5 operational fronts. The deadline was force-fed to a frontline committee with a PMO, a Consumer Insights person, a Coordinator, and the CX director — dry, no lubricant. The promise was also endorsed by the solution’s tech team, who believed an existing preformatted system would be the silver bullet. “But just in case, let’s let the CX team put on their theater.” I can almost hear that thought coming from the AI manager.
