@@ -65,3 +65,5 @@ E pensar que tudo começou com a ideia de adaptar um sistema de IA que já estav
 Spoiler: o gerente de IA, muito mal amparado por um PO escudeiro, ainda insistiu por mais algum tempo em entubar a solução pronta que já existia, desconsiderando o trabalho do time de CX. Mas isso posso deixar para uma parte dois dessa história.
 
 O teatro de CX acabou revelando que, antes de decidir qual tecnologia colocar em cena, talvez fosse interessante conhecer a peça, os personagens e, principalmente, o enredo.
+
+![Jornada do Diagnóstico à Transformação](/images/blog/jornada-do-diagnostico-transformacao-ivydc.png)

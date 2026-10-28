@@ -65,3 +65,5 @@ And to think it all started with the idea of adapting an AI system that was alre
 Spoiler: the AI manager, poorly supported by a shield-bearing PO, still insisted for a while on force-feeding the ready-made solution that already existed, disregarding the CX team’s work. But I can leave that for a part two of this story.
 
 CX’s theater ended up revealing that, before deciding which technology to put on stage, it might be worth knowing the play, the characters and, above all, the plot.
+
+![Journey from Diagnosis to Transformation](/images/blog/jornada-do-diagnostico-transformacao-ivydc.png)
