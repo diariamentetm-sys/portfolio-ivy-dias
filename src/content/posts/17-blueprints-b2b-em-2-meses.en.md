@@ -1,6 +1,6 @@
 ## How to promise an AI solution before knowing the problem
 
-In a modern-times outburst the director promised a single packaged AI solution in 2 months for a B2B client with 5 operational fronts. The deadline was force-fed to a frontline committee with a PMO, a Consumer Insights person, a Coordinator, and the CX director — dry, no lubricant. The promise was also endorsed by the solution’s tech team, who believed an existing preformatted system would be the silver bullet. “But just in case, let’s let the CX team put on their theater.” I can almost hear that thought coming from the AI manager.
+In a cognitive-era outburst the director promised a single packaged AI solution in 2 months for a B2B client with 5 operational fronts. The deadline was force-fed to a frontline committee with a PMO, a Consumer Insights person, a Coordinator, and the CX director — dry, no lubricant. The promise was also endorsed by the solution’s tech team, who believed an existing preformatted system would be the silver bullet. “But just in case, let’s let the CX team put on their theater.” I can almost hear that thought coming from the AI manager.
 
 After the promise comes damage control. They inflated the team with more people on board than The Polyphonic Spree, as if 9 pregnant people could deliver one baby in 1 month. The initial mission was to produce 5 blueprints, one per front. I’ll say it upfront: we actually delivered 17 blueprints in 2 months.
 
