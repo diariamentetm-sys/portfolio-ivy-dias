@@ -18,7 +18,7 @@ The methodology was familiar: immersion with qualitative research, service bluep
 
 ## Qualitative research: the universe hidden between one click and the next
 
-We moved into immersion sessions running focus groups with professionals from the five operational fronts. The dynamic was relatively simple. We asked each participant to share their screen and narrate their own work, step by step, while we asked questions to understand what happened between one click and the next.
+We moved into journey-mapping sessions with professionals from the five operational fronts. The dynamic was relatively simple. We asked the participants to share their screens and narrate their own work, step by step, while we asked questions to understand what happened between one click and the next.
 
 And, as you’d expect, between one click and the next there was an entire universe.
 

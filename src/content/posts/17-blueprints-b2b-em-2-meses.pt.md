@@ -18,7 +18,7 @@ A metodologia era conhecida: imersão com pesquisa qualitativa, mapeamento de se
 
 ## Pesquisa qualitativa: o universo escondido entre um clique e outro
 
-Partimos para as sessões de imersão aplicando focus groups com os profissionais das cinco frentes operacionais. A dinâmica era relativamente simples. Pedíamos que cada participante compartilhasse a tela e narrasse o próprio trabalho, passo a passo, enquanto fazíamos perguntas para entender o que acontecia entre um clique e outro.
+Partimos para as sessões de mapeamento de jornada com os profissionais das cinco frentes operacionais. A dinâmica era relativamente simples. Pedíamos que os participantes compartilhassem a tela e narrassem o próprio trabalho, passo a passo, enquanto fazíamos perguntas para entender o que acontecia entre um clique e outro.
 
 E, como era de se esperar, entre um clique e outro havia um universo inteiro.
 
