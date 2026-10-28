@@ -1,0 +1,71 @@
+The director went off the rails and promised a single packaged AI solution in 2 months for a B2B client with 5 operational fronts. They formed a frontline committee so a hallway-radio PMO, a Consumer Insights person, a coordinator, and a CX director would swallow that deadline dry, no lubricant. The promise was also endorsed by the solution’s tech team, who believed an existing preformatted system would be the silver bullet. “But just in case, let’s let the CX team put on their theater.” I can almost hear that thought coming from the AI manager.
+
+After the promise comes damage control. They inflated the team with more people on board than The Polyphonic Spree, as if 9 pregnant people could deliver one baby in 1 month. The initial mission was to produce 5 blueprints, one per front. I’ll say it upfront: we actually delivered 17 blueprints in 2 months.
+
+## Service Design team: composition and a schedule under pressure
+
+The tactical plan was to staff the team with 4 Service Designers, two Consumer Insights people, and a CX consultant, plus the PMO orchestrating the agendas.
+
+You know when someone plays “think fast,” tossing a ball at your head, and you manage, on reflex, to bat it away with your hand? That’s how the schedule came out.
+
+## Cataloging every client conversation in the first week
+
+The first week was dedicated to getting the recruited CX professionals on board. Every meeting was recorded and turned into minutes. We cataloged every extract of conversation with the client, even when those weren’t the in-depth interviews or focus groups that would later feed the blueprints. With a deadline like that, any information that slipped away could be missing later.
+
+## Service Design and qualitative research on an impossible calendar
+
+The methodology was familiar: Service Design, qualitative research, journey mapping, and opportunity identification. The challenge was fitting all of that into a calendar that seemed drawn up by someone who didn’t know how many hours are in a day.
+
+## Immersion across five B2B contact center fronts
+
+We moved into immersion sessions with professionals from the five operational fronts of a contact center that provided B2B support services for a telecom company. The dynamic was relatively simple. We asked each participant to share their screen and narrate their own work, step by step, while we asked questions to understand what happened between one click and the next.
+
+And, as you’d expect, between one click and the next there was an entire universe.
+
+Systems that didn’t talk to each other, spreadsheets that saved the workday, procedures that existed on paper but took on their own interpretations in the operation. There were also those small improvisations nobody documents, but everyone learns after a few months on the job.
+
+Everything was recorded. Recordings, transcripts, screenshots, exception stories and, above all, explanations from people who knew the shortcuts and traps of each process.
+
+## Using AI to organize accounts and structure blueprints
+
+And to handle that volume of information, we turned to artificial intelligence itself. It would have been a bit masochistic to try processing all of that manually, especially with the clock running against us. We used AI tools to help organize the accounts, structure blueprint information, cross journeys, and spot patterns that could have gone unnoticed across so many interviews. Of course, nothing came out ready and gift-wrapped. We still had to review, check results against the original records, and make sure the technology wasn’t inventing an operation that only existed in its own head.
+
+The irony is that while part of the tech team was betting on ready-made AI to solve the client’s problems, we were already using AI to find out what those problems were.
+
+## Turning interviews into AS-IS Service Blueprints
+
+With that material in hand, the second part of the marathon began: turning hours of conversation into AS-IS journeys structured as Service Blueprints.
+
+We organized the steps chronologically, identifying employee actions, systems involved, support processes, pains, feelings, and improvement opportunities. It was almost investigative work. A detail mentioned in passing in one interview could explain a problem reported by another professional days earlier.
+
+## From 5 promised blueprints to 17 documented journeys
+
+And that was exactly where the five blueprints initially promised started to multiply. Each front hid different journeys, with particularities that wouldn’t fit in a single representation. Forcing everything into five drawings would have been a very efficient way to meet the agreement — and an equally efficient way to understand almost nothing.
+
+We reached 17.
+
+## Crossing Service Blueprints: bottlenecks and cross-cutting opportunities
+
+But the story didn’t end when the last blueprint was ready. We needed to find what those journeys had in common. After all, if five different areas suffered from the same problem, inventing five different solutions might not make much sense.
+
+So we started crossing the blueprints, looking for recurring bottlenecks, dependencies between areas, duplicated activities, and opportunities that could be used transversely. It was the moment to discover which problems belonged to a specific journey and which had already earned the right to torment the whole company.
+
+## MVP Canvas: what needs AI and what needs process
+
+From that analysis came the feature brainstorms. We grouped opportunities into epics and built MVP Canvases, discussing what could be solved with automation, what truly justified artificial intelligence, and what only needed a solid process review.
+
+Because, let’s be honest, not every operational problem needs an algorithm. Sometimes it just needs someone to stop forcing three people to enter the same information into four different systems.
+
+## Prioritizing operational improvement opportunities
+
+The last stage was putting some order into the ambitions. We prioritized opportunities considering operational impact, implementation complexity, human effort, and potential to reduce rework. We also assessed what could be improved without depending on technology, because there were problems that didn’t need to wait for the long-promised AI solution.
+
+In the end, we went from a promise of five blueprints to a much broader diagnosis of the operation, with 17 documented journeys, recurring problems identified, and opportunities organized to guide the evolution of processes and the digital solution. The process was painful, but finishing it inside the director’s crazy deadline had its own flavor. After two months racing the clock, we had managed to deliver far more than originally requested.
+
+## Before the AI solution, know the operation end to end
+
+And to think it all started with the idea of adapting an AI system that was already practically ready.
+
+Spoiler: the AI manager, poorly supported by a shield-bearing PO, still insisted for a while on force-feeding the ready-made solution that already existed, disregarding the CX team’s work. But I can leave that for a part two of this story.
+
+CX’s theater ended up revealing that, before deciding which technology to put on stage, it might be worth knowing the play, the characters and, above all, the plot.

@@ -1,4 +1,6 @@
 import type { Locale } from "../i18n/types";
+import blueprintsB2bEn from "./posts/17-blueprints-b2b-em-2-meses.en.md?raw";
+import blueprintsB2bPt from "./posts/17-blueprints-b2b-em-2-meses.pt.md?raw";
 import comoEuFariaProdutoCxEn from "./posts/como-eu-faria-produto-e-cx-morarem-na-mesma-casa.en.md?raw";
 import comoEuFariaProdutoCxPt from "./posts/como-eu-faria-produto-e-cx-morarem-na-mesma-casa.pt.md?raw";
 import comoMostreiCxEn from "./posts/como-mostrei-o-que-era-cx.en.md?raw";
@@ -219,6 +221,7 @@ const SEED_CX_STORY = "2026-09-30T12:00:00.000Z";
 const SEED_PHEBO = "2026-10-07T12:00:00.000Z";
 const SEED_CX_VS_PRODUCT = "2026-10-14T12:00:00.000Z";
 const SEED_CX_SAME_HOUSE = "2026-10-21T12:00:00.000Z";
+const SEED_BLUEPRINTS_B2B = "2026-10-28T12:00:00.000Z";
 
 /** Placeholder posts replaced by the first real Entre Jornadas article. */
 export const LEGACY_PLACEHOLDER_BLOG_IDS = [
@@ -228,6 +231,37 @@ export const LEGACY_PLACEHOLDER_BLOG_IDS = [
 
 /** Published articles for Entre Jornadas. */
 export const seedBlogPosts: BlogPost[] = [
+  {
+    id: "11111111-1111-4111-8111-111111111306",
+    slug: "17-blueprints-b2b-em-2-meses",
+    status: "published",
+    publishedAt: SEED_BLUEPRINTS_B2B,
+    scheduledAt: null,
+    coverImage: "",
+    tags: [
+      "Service Design",
+      "Service Blueprint",
+      "B2B",
+      "IA",
+      "Contact Center",
+    ],
+    views: 0,
+    likes: 0,
+    createdAt: SEED_BLUEPRINTS_B2B,
+    updatedAt: SEED_BLUEPRINTS_B2B,
+    pt: {
+      title: "17 blueprints B2B em 2 meses",
+      excerpt:
+        "De 5 Service Blueprints prometidos a 17 jornadas AS-IS: Service Design, pesquisa e IA num prazo impossível de contact center B2B.",
+      body: blueprintsB2bPt.trim(),
+    },
+    en: {
+      title: "17 B2B blueprints in 2 months",
+      excerpt:
+        "From 5 promised Service Blueprints to 17 AS-IS journeys: Service Design, research, and AI on an impossible B2B contact center deadline.",
+      body: blueprintsB2bEn.trim(),
+    },
+  },
   {
     id: "11111111-1111-4111-8111-111111111305",
     slug: "como-eu-faria-produto-e-cx-morarem-na-mesma-casa",

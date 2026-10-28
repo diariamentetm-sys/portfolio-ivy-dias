@@ -69,6 +69,13 @@ const pagesByLocale = {
       type: "website",
     },
     {
+      barePath: "/entre-jornadas/17-blueprints-b2b-em-2-meses",
+      title: "17 blueprints B2B em 2 meses | Entre Jornadas | Ivy DC",
+      description:
+        "De 5 Service Blueprints prometidos a 17 jornadas AS-IS: Service Design, pesquisa e IA num prazo impossível de contact center B2B.",
+      type: "article",
+    },
+    {
       barePath:
         "/entre-jornadas/como-eu-faria-produto-e-cx-morarem-na-mesma-casa",
       title:
@@ -173,6 +180,13 @@ const pagesByLocale = {
       description:
         "Ivy Dias’s blog on Customer Experience, service design and building digital products.",
       type: "website",
+    },
+    {
+      barePath: "/entre-jornadas/17-blueprints-b2b-em-2-meses",
+      title: "17 B2B blueprints in 2 months | Between Journeys | Ivy DC",
+      description:
+        "From 5 promised Service Blueprints to 17 AS-IS journeys: Service Design, research, and AI on an impossible B2B contact center deadline.",
+      type: "article",
     },
     {
       barePath:
