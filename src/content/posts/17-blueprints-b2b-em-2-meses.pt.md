@@ -68,4 +68,4 @@ Spoiler: o gerente de IA, muito mal amparado por um PO escudeiro, ainda insistiu
 
 O teatro de CX acabou revelando que, antes de decidir qual tecnologia colocar em cena, talvez fosse interessante conhecer a peça, os personagens e, principalmente, o enredo.
 
-![Jornada do Diagnóstico à Transformação](/images/blog/jornada-do-diagnostico-transformacao-ivydc.png)
+![Teatro dos Cinco Blueprints](/images/blog/teatro-dos-cinco-blueprints.png)

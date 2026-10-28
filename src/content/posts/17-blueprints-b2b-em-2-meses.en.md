@@ -68,4 +68,4 @@ Spoiler: the AI manager, poorly supported by a shield-bearing PO, still insisted
 
 CX’s theater ended up revealing that, before deciding which technology to put on stage, it might be worth knowing the play, the characters and, above all, the plot.
 
-![Journey from Diagnosis to Transformation](/images/blog/jornada-do-diagnostico-transformacao-ivydc.png)
+![The Theater of the Five Blueprints](/images/blog/teatro-dos-cinco-blueprints.png)
