@@ -70,7 +70,7 @@ const pagesByLocale = {
     },
     {
       barePath: "/entre-jornadas/17-blueprints-b2b-em-2-meses",
-      title: "17 blueprints B2B em 2 meses | Entre Jornadas | Ivy DC",
+      title: "Teatro dos Cinco Blueprints | Entre Jornadas | Ivy DC",
       description:
         "Prometeram 5 Service Blueprints. Saíram 17 em 2 meses: Service Design, pesquisa e IA num prazo impossível de contact center B2B.",
       type: "article",
@@ -183,7 +183,7 @@ const pagesByLocale = {
     },
     {
       barePath: "/entre-jornadas/17-blueprints-b2b-em-2-meses",
-      title: "17 B2B blueprints in 2 months | Between Journeys | Ivy DC",
+      title: "Theater of the Five Blueprints | Between Journeys | Ivy DC",
       description:
         "They promised 5 Service Blueprints. We delivered 17 in 2 months: Service Design, research, and AI on an impossible B2B contact center deadline.",
       type: "article",
