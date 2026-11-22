@@ -35,9 +35,9 @@ export const projectVisuals: ProjectVisual[] = [
   },
   {
     slug: "policia-federal",
-    displayName: "policia federal",
+    displayName: "policia",
     themeColor: "#C8E66B",
-    summary: "Workshop · padronização nacional",
+    summary: "Workshop · padronização nacional (Polícia Federal)",
     order: 4,
   },
   {
@@ -63,7 +63,7 @@ export const projectVisuals: ProjectVisual[] = [
   },
   {
     slug: "gerenciador-de-riscos-com-ai",
-    displayName: "risk ai",
+    displayName: "riskai",
     themeColor: "#C8E66B",
     summary: "Discovery · IA e governança",
     order: 8,

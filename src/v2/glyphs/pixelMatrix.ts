@@ -114,6 +114,16 @@ const L: PixelMatrix = [
   [1, 1, 1, 1, 1],
 ];
 
+const M: PixelMatrix = [
+  [1, 0, 0, 0, 1],
+  [1, 1, 0, 1, 1],
+  [1, 0, 1, 0, 1],
+  [1, 0, 0, 0, 1],
+  [1, 0, 0, 0, 1],
+  [1, 0, 0, 0, 1],
+  [1, 0, 0, 0, 1],
+];
+
 const N: PixelMatrix = [
   [1, 0, 0, 0, 1],
   [1, 1, 0, 0, 1],
@@ -239,6 +249,7 @@ export const PIXEL_GLYPHS: Record<string, PixelMatrix> = {
   i: I,
   k: K,
   l: L,
+  m: M,
   n: N,
   o: O,
   p: P,

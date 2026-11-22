@@ -9,6 +9,11 @@ import {
   smoothstep,
   type MatchedPixel,
 } from "../motion/pixelMatch";
+import {
+  clearStageSession,
+  readStageSession,
+  saveStageSession,
+} from "../motion/stageSession";
 import { v2Theme } from "../tokens/theme";
 
 export type StageItem = {
@@ -100,6 +105,26 @@ export function ProjectStage({
     mq.addEventListener("change", apply);
     return () => mq.removeEventListener("change", apply);
   }, []);
+
+  useEffect(() => {
+    const saved = readStageSession();
+    if (!saved) return;
+    const id = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: saved.scrollY, behavior: "auto" });
+      setActiveIndex(
+        Math.min(Math.max(saved.activeIndex, 0), stages.length - 1),
+      );
+      clearStageSession();
+    });
+    return () => window.cancelAnimationFrame(id);
+  }, [stages.length]);
+
+  const persistBeforeLeave = () => {
+    saveStageSession({
+      scrollY: window.scrollY,
+      activeIndex,
+    });
+  };
 
   useEffect(() => {
     if (reducedMotion) return;
@@ -249,6 +274,7 @@ export function ProjectStage({
               {stage.slug ? (
                 <Link
                   to={lp(`/cases/${stage.slug}`)}
+                  onClick={persistBeforeLeave}
                   style={{
                     fontWeight: 600,
                     borderBottom: "2px solid currentColor",
@@ -328,6 +354,7 @@ export function ProjectStage({
           {active.slug ? (
             <Link
               to={lp(`/cases/${active.slug}`)}
+              onClick={persistBeforeLeave}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -342,57 +369,81 @@ export function ProjectStage({
           ) : null}
         </div>
 
-        <ol
-          aria-label="Stages"
+        <div
           style={{
             display: "flex",
-            gap: 8,
-            listStyle: "none",
-            margin: 0,
-            padding: 0,
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 10,
           }}
         >
-          {stages.map((stage, index) => (
-            <li key={stage.id}>
-              <button
-                type="button"
-                aria-label={stage.text}
-                aria-current={index === activeIndex ? "true" : undefined}
-                onClick={() => {
-                  const track = trackRef.current;
-                  if (!track) return;
-                  const viewH = window.innerHeight || 1;
-                  const total = Math.max(track.offsetHeight - viewH, 1);
-                  const target =
-                    track.offsetTop + (index / Math.max(stages.length - 1, 1)) * total;
-                  window.scrollTo({ top: target, behavior: "smooth" });
-                }}
-                style={{
-                  width: 10,
-                  height: 10,
-                  padding: 0,
-                  border: `1px solid ${v2Theme.colors.ink}`,
-                  background: index === activeIndex ? v2Theme.colors.ink : "transparent",
-                  cursor: "pointer",
-                  minWidth: 44,
-                  minHeight: 44,
-                  display: "grid",
-                  placeItems: "center",
-                }}
-              >
-                <span
-                  aria-hidden="true"
-                  style={{
-                    width: 10,
-                    height: 10,
-                    background: index === activeIndex ? v2Theme.colors.ink : "transparent",
-                    border: `1px solid ${v2Theme.colors.ink}`,
+          <p
+            aria-live="polite"
+            style={{
+              margin: 0,
+              fontSize: 12,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              opacity: 0.7,
+            }}
+          >
+            {activeIndex + 1} / {stages.length}
+          </p>
+          <ol
+            aria-label="Stages"
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              gap: 4,
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
+              maxWidth: "90vw",
+            }}
+          >
+            {stages.map((stage, index) => (
+              <li key={stage.id}>
+                <button
+                  type="button"
+                  aria-label={stage.text}
+                  aria-current={index === activeIndex ? "true" : undefined}
+                  onClick={() => {
+                    const track = trackRef.current;
+                    if (!track) return;
+                    const viewH = window.innerHeight || 1;
+                    const total = Math.max(track.offsetHeight - viewH, 1);
+                    const target =
+                      track.offsetTop +
+                      (index / Math.max(stages.length - 1, 1)) * total;
+                    window.scrollTo({ top: target, behavior: "smooth" });
                   }}
-                />
-              </button>
-            </li>
-          ))}
-        </ol>
+                  style={{
+                    padding: 0,
+                    border: "none",
+                    background: "transparent",
+                    cursor: "pointer",
+                    minWidth: 36,
+                    minHeight: 36,
+                    display: "grid",
+                    placeItems: "center",
+                  }}
+                >
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      width: 8,
+                      height: 8,
+                      background:
+                        index === activeIndex ? v2Theme.colors.ink : "transparent",
+                      border: `1px solid ${v2Theme.colors.ink}`,
+                    }}
+                  />
+                </button>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   );

@@ -7,6 +7,7 @@ import { ProjectStage, type StageItem } from "../components/ProjectStage";
 import { ScrollIndicator } from "../components/ScrollIndicator";
 import { SiteHeader } from "../components/SiteHeader";
 import { projectVisuals } from "../data/projectVisuals";
+import { saveStageSession } from "../motion/stageSession";
 import { v2Theme } from "../tokens/theme";
 import "../tokens/tokens.css";
 
@@ -14,11 +15,8 @@ const V2_FONTS_ID = "v2-fonts";
 const V2_FONTS_HREF =
   "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Space+Grotesk:wght@400;500;600&display=swap";
 
-/** Fase B proof: brand → two real cases only. */
-const PROOF_SLUGS = ["claro", "cashlog"] as const;
-
 /**
- * @description v2 home — Fase B: scroll morph proof (ivy dc → claro → cashlog).
+ * @description v2 home — Fase C: full published gallery on the morph stage.
  */
 export function V2HomePage() {
   const { locale } = useLocale();
@@ -36,45 +34,46 @@ export function V2HomePage() {
   const copy =
     locale === "en"
       ? {
-          title: "Ivy DC v2 | Pixel morph proof (preview)",
+          title: "Ivy DC v2 | Project stage (preview)",
           description:
-            "Isolated redesign preview: scroll morph ivy dc → claro → cashlog. Not indexed.",
+            "Isolated redesign preview: scroll morph across published cases. Not indexed.",
           roles: "Service Designer · Product Discovery · CX Designer",
           scroll: "Scroll",
           explore: "Explore case",
           back: "Back to live site",
           h1: "Ivy DC",
-          brandSummary: "From Post-it to Pixel — motion proof",
+          brandSummary: "From Post-it to Pixel",
           reducedMotion: "Reduced motion: static stages (morph disabled)",
           allProjects: "All published cases",
         }
       : {
-          title: "Ivy DC v2 | Prova de morph (preview)",
+          title: "Ivy DC v2 | Palco de projetos (preview)",
           description:
-            "Preview isolado: morph no scroll ivy dc → claro → cashlog. Sem indexação.",
+            "Preview isolado: morph no scroll por todos os cases publicados. Sem indexação.",
           roles: "Service Designer · Product Discovery · CX Designer",
           scroll: "Scroll",
           explore: "Explorar case",
           back: "Voltar ao site atual",
           h1: "Ivy DC",
-          brandSummary: "From Post-it to Pixel — prova de motion",
+          brandSummary: "From Post-it to Pixel",
           reducedMotion: "Movimento reduzido: stages estáticos (morph desligado)",
           allProjects: "Todos os cases publicados",
         };
 
   const stages: StageItem[] = useMemo(() => {
-    const proof = PROOF_SLUGS.map((slug) => {
-      const project = projectVisuals.find((item) => item.slug === slug);
-      if (!project) return null;
-      return {
-        id: project.slug,
-        text: project.displayName,
-        ink: v2Theme.colors.ink,
-        stageColor: project.themeColor,
-        summary: project.summary,
-        slug: project.slug,
-      } satisfies StageItem;
-    }).filter(Boolean) as StageItem[];
+    const projects = [...projectVisuals]
+      .sort((a, b) => a.order - b.order)
+      .map(
+        (project) =>
+          ({
+            id: project.slug,
+            text: project.displayName,
+            ink: v2Theme.colors.ink,
+            stageColor: project.themeColor,
+            summary: project.summary,
+            slug: project.slug,
+          }) satisfies StageItem,
+      );
 
     return [
       {
@@ -84,7 +83,7 @@ export function V2HomePage() {
         stageColor: v2Theme.colors.canvas,
         summary: copy.brandSummary,
       },
-      ...proof,
+      ...projects,
     ];
   }, [copy.brandSummary]);
 
@@ -178,10 +177,16 @@ export function V2HomePage() {
               gap: 8,
             }}
           >
-            {projectVisuals.map((project) => (
+            {projectVisuals.map((project, index) => (
               <li key={project.slug}>
                 <Link
                   to={lp(`/cases/${project.slug}`)}
+                  onClick={() =>
+                    saveStageSession({
+                      scrollY: window.scrollY,
+                      activeIndex: index + 1,
+                    })
+                  }
                   style={{
                     display: "inline-flex",
                     minHeight: 44,
