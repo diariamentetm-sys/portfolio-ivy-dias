@@ -1,4 +1,5 @@
-import { useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
+import { v2Motion } from "../motion/timings";
 
 export type EvidenceItem = {
   src: string;
@@ -13,13 +14,57 @@ type EvidenceGridProps = {
 };
 
 /**
- * @description Small bento of real evidence — object-fit contain for diagrams.
+ * @description Small bento of real evidence — short zoom lightbox, Escape + focus return.
  */
 export function EvidenceGrid({ items, label }: EvidenceGridProps) {
   const [active, setActive] = useState<EvidenceItem | null>(null);
+  const [open, setOpen] = useState(false);
   const titleId = useId();
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const closeRef = useRef<HTMLButtonElement | null>(null);
+
+  const close = () => {
+    setOpen(false);
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.setTimeout(
+      () => {
+        setActive(null);
+        triggerRef.current?.focus();
+      },
+      reduced ? 0 : v2Motion.mediaZoomMs,
+    );
+  };
+
+  useEffect(() => {
+    if (!active) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const frame = window.requestAnimationFrame(() => setOpen(true));
+    const focusTimer = window.setTimeout(
+      () => closeRef.current?.focus(),
+      reduced ? 0 : 40,
+    );
+
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") close();
+    };
+    window.addEventListener("keydown", onKey);
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(focusTimer);
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = previousOverflow;
+    };
+    // intentionally re-run only when dialog opens for a given item
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active]);
 
   if (items.length === 0) return null;
+
+  const duration = v2Motion.mediaZoomMs;
 
   return (
     <div style={{ marginTop: "var(--v2-space-4)" }}>
@@ -55,7 +100,14 @@ export function EvidenceGrid({ items, label }: EvidenceGridProps) {
           >
             <button
               type="button"
-              onClick={() => setActive(item)}
+              ref={(node) => {
+                if (active?.src === item.src) triggerRef.current = node;
+              }}
+              onClick={(event) => {
+                triggerRef.current = event.currentTarget;
+                setOpen(false);
+                setActive(item);
+              }}
               style={{
                 display: "block",
                 width: "100%",
@@ -96,19 +148,18 @@ export function EvidenceGrid({ items, label }: EvidenceGridProps) {
             position: "fixed",
             inset: 0,
             zIndex: 80,
-            background: "rgba(0,0,0,0.72)",
+            background: open ? "rgba(0,0,0,0.72)" : "rgba(0,0,0,0)",
             display: "grid",
             placeItems: "center",
             padding: 24,
+            transition: `background ${duration}ms ${v2Motion.easeSoft}`,
           }}
-          onClick={() => setActive(null)}
-          onKeyDown={(event) => {
-            if (event.key === "Escape") setActive(null);
-          }}
+          onClick={close}
         >
           <button
+            ref={closeRef}
             type="button"
-            onClick={() => setActive(null)}
+            onClick={close}
             style={{
               position: "absolute",
               top: 16,
@@ -123,12 +174,26 @@ export function EvidenceGrid({ items, label }: EvidenceGridProps) {
           >
             Esc
           </button>
-          <figure style={{ margin: 0, maxWidth: "min(960px, 100%)" }} onClick={(e) => e.stopPropagation()}>
+          <figure
+            style={{
+              margin: 0,
+              maxWidth: "min(960px, 100%)",
+              opacity: open ? 1 : 0,
+              transform: open ? "scale(1)" : "scale(0.92)",
+              transition: `opacity ${duration}ms ${v2Motion.easeSoft}, transform ${duration}ms ${v2Motion.easeImmersive}`,
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
             <img
               id={titleId}
               src={active.src}
               alt={active.alt}
-              style={{ width: "100%", height: "auto", objectFit: "contain", background: "#fff" }}
+              style={{
+                width: "100%",
+                height: "auto",
+                objectFit: "contain",
+                background: "#fff",
+              }}
             />
             <figcaption style={{ color: "#fff", marginTop: 8, fontSize: 14 }}>
               {active.caption ?? active.alt}

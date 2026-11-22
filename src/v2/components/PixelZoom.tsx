@@ -1,34 +1,56 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { markCameFromZoom, v2Motion } from "../motion/timings";
 
 type PixelZoomProps = {
   color: string;
-  to: string;
+  /** Navigate after expand (enter). Omit for exit-only collapse. */
+  to?: string;
   origin?: { x: number; y: number };
+  /** expand = leave home for case; collapse = return to stage */
+  mode?: "expand" | "collapse";
   onDone?: () => void;
 };
 
 /**
- * @description Expands a square from a pixel origin until it fills the viewport, then navigates.
+ * @description Square expands/collapses from a pixel origin; coordinates with real navigation.
  */
-export function PixelZoom({ color, to, origin, onDone }: PixelZoomProps) {
+export function PixelZoom({
+  color,
+  to,
+  origin,
+  mode = "expand",
+  onDone,
+}: PixelZoomProps) {
   const navigate = useNavigate();
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(mode === "collapse");
+  const reduced =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const duration = reduced ? v2Motion.reducedMaxMs : v2Motion.zoomMs;
 
   useEffect(() => {
-    const frame = window.requestAnimationFrame(() => setExpanded(true));
+    const frame = window.requestAnimationFrame(() => {
+      setExpanded(mode === "expand");
+    });
+
     const timer = window.setTimeout(() => {
-      navigate(to);
+      if (mode === "expand" && to) {
+        markCameFromZoom(color);
+        navigate(to);
+      }
       onDone?.();
-    }, 720);
+    }, duration);
+
     return () => {
       window.cancelAnimationFrame(frame);
       window.clearTimeout(timer);
     };
-  }, [navigate, onDone, to]);
+  }, [color, duration, mode, navigate, onDone, to]);
 
-  const x = origin?.x ?? window.innerWidth / 2;
-  const y = origin?.y ?? window.innerHeight / 2;
+  const x = origin?.x ?? (typeof window !== "undefined" ? window.innerWidth / 2 : 0);
+  const y = origin?.y ?? (typeof window !== "undefined" ? window.innerHeight / 2 : 0);
+  const transition = `width ${duration}ms ${v2Motion.easeImmersive}, height ${duration}ms ${v2Motion.easeImmersive}, margin ${duration}ms ${v2Motion.easeImmersive}`;
 
   return (
     <div
@@ -51,7 +73,7 @@ export function PixelZoom({ color, to, origin, onDone }: PixelZoomProps) {
           marginLeft: expanded ? "-150vmax" : -6,
           marginTop: expanded ? "-150vmax" : -6,
           background: color,
-          transition: "width 700ms cubic-bezier(.77,0,.18,1), height 700ms cubic-bezier(.77,0,.18,1), margin 700ms cubic-bezier(.77,0,.18,1)",
+          transition,
         }}
       />
     </div>

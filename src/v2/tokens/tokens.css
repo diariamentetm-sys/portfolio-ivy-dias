@@ -45,6 +45,29 @@
   outline-offset: 3px;
 }
 
+@keyframes v2-scroll-pulse {
+  0%,
+  100% {
+    transform: scaleY(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scaleY(1.15);
+    opacity: 1;
+  }
+}
+
+.v2-scroll-cue__line {
+  transform-origin: top center;
+  animation: v2-scroll-pulse 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v2-scroll-cue__line {
+    animation: none;
+  }
+}
+
 .v2-editorial {
   display: grid;
   grid-template-columns: 1fr;

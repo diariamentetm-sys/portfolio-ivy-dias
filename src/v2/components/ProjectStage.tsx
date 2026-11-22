@@ -1,4 +1,10 @@
-import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type MouseEvent,
+} from "react";
 import { Link } from "react-router-dom";
 import { useLocalizedPath } from "../../i18n/useLocalizedPath";
 import { centerLayout, layoutWord, type LayoutCell } from "../glyphs/wordLayout";
@@ -14,6 +20,7 @@ import {
   readStageSession,
   saveStageSession,
 } from "../motion/stageSession";
+import { consumeExitZoom, v2Motion } from "../motion/timings";
 import { v2Theme } from "../tokens/theme";
 import { PixelZoom } from "./PixelZoom";
 
@@ -89,13 +96,22 @@ export function ProjectStage({
   const lp = useLocalizedPath();
   const trackRef = useRef<HTMLDivElement>(null);
   const rectRefs = useRef<(SVGRectElement | null)[]>([]);
+  const activeIndexRef = useRef(0);
+  const restoredSessionRef = useRef(false);
+  const hoverLiftRef = useRef(0);
+  const hoverTargetRef = useRef(0);
+  const hoverFrameRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [caption, setCaption] = useState(stages[0]);
+  const [captionOpacity, setCaptionOpacity] = useState(1);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [zoom, setZoom] = useState<{
     color: string;
-    to: string;
+    to?: string;
     origin: { x: number; y: number };
+    mode: "expand" | "collapse";
   } | null>(null);
+  const [exploreHover, setExploreHover] = useState(false);
 
   const { plans, boxW, boxH, poolSize, centered } = useMemo(
     () => buildPlans(stages),
@@ -106,6 +122,12 @@ export function ProjectStage({
   const svgH = boxH * UNIT + Math.max(boxH - 1, 0) * GAP;
   const segmentCount = Math.max(stages.length - 1, 1);
 
+  const setActiveSafe = (index: number) => {
+    if (activeIndexRef.current === index) return;
+    activeIndexRef.current = index;
+    setActiveIndex(index);
+  };
+
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     const apply = () => setReducedMotion(mq.matches);
@@ -115,11 +137,25 @@ export function ProjectStage({
   }, []);
 
   useEffect(() => {
+    const exitColor = consumeExitZoom();
+    if (!exitColor || reducedMotion) return;
+    setZoom({
+      color: exitColor,
+      mode: "collapse",
+      origin: {
+        x: window.innerWidth / 2,
+        y: window.innerHeight * 0.42,
+      },
+    });
+  }, [reducedMotion]);
+
+  useEffect(() => {
     const saved = readStageSession();
     if (!saved) return;
+    restoredSessionRef.current = true;
     const id = window.requestAnimationFrame(() => {
       window.scrollTo({ top: saved.scrollY, behavior: "auto" });
-      setActiveIndex(
+      setActiveSafe(
         Math.min(Math.max(saved.activeIndex, 0), stages.length - 1),
       );
       clearStageSession();
@@ -127,15 +163,45 @@ export function ProjectStage({
     return () => window.cancelAnimationFrame(id);
   }, [stages.length]);
 
+  useEffect(() => {
+    const next = stages[activeIndex] ?? stages[0];
+    if (!next || next.id === caption?.id) return;
+    setCaptionOpacity(0);
+    const timer = window.setTimeout(() => {
+      setCaption(next);
+      setCaptionOpacity(1);
+    }, v2Motion.legendFadeMs);
+    return () => window.clearTimeout(timer);
+  }, [activeIndex, caption?.id, stages]);
+
   const persistBeforeLeave = () => {
     saveStageSession({
       scrollY: window.scrollY,
-      activeIndex,
+      activeIndex: activeIndexRef.current,
     });
   };
 
   const resolveCaseHref = (stage: StageItem) =>
     stage.v2Path ?? (stage.slug ? `/cases/${stage.slug}` : "/v2");
+
+  const tickHover = () => {
+    hoverFrameRef.current = 0;
+    const current = hoverLiftRef.current;
+    const target = hoverTargetRef.current;
+    const next = current + (target - current) * 0.28;
+    hoverLiftRef.current = Math.abs(target - next) < 0.01 ? target : next;
+    if (Math.abs(hoverLiftRef.current - target) > 0.01) {
+      hoverFrameRef.current = window.requestAnimationFrame(tickHover);
+    }
+  };
+
+  const setHoverTarget = (value: number) => {
+    hoverTargetRef.current = value;
+    setExploreHover(value > 0.5);
+    if (!hoverFrameRef.current) {
+      hoverFrameRef.current = window.requestAnimationFrame(tickHover);
+    }
+  };
 
   const openCase = (stage: StageItem, event: MouseEvent<HTMLAnchorElement>) => {
     persistBeforeLeave();
@@ -145,6 +211,7 @@ export function ProjectStage({
       color: stage.stageColor,
       to: lp(resolveCaseHref(stage)),
       origin: { x: event.clientX, y: event.clientY },
+      mode: "expand",
     });
   };
 
@@ -155,9 +222,15 @@ export function ProjectStage({
     if (!track) return;
 
     let frame = 0;
+    let introProgress = 0;
+    let introDone = false;
+    let visible = true;
+    const introStart = performance.now();
+    const skipIntro = restoredSessionRef.current;
 
     const paint = (pairs: MatchedPixel[], t: number) => {
       const midLift = Math.sin(Math.PI * t) * 0.35;
+      const hover = hoverLiftRef.current;
       for (let i = 0; i < poolSize; i++) {
         const el = rectRefs.current[i];
         if (!el) continue;
@@ -195,6 +268,10 @@ export function ProjectStage({
           fill = v2Theme.colors.ink;
         }
 
+        if (hover > 0 && i % 3 === 0) {
+          y -= hover * 0.45;
+        }
+
         el.setAttribute("x", String(x * (UNIT + GAP)));
         el.setAttribute("y", String(y * (UNIT + GAP)));
         el.setAttribute("fill", fill);
@@ -202,7 +279,8 @@ export function ProjectStage({
       }
     };
 
-    const paintRest = (cells: LayoutCell[]) => {
+    const paintRest = (cells: LayoutCell[], introT = 1) => {
+      const hover = hoverLiftRef.current;
       for (let i = 0; i < poolSize; i++) {
         const el = rectRefs.current[i];
         if (!el) continue;
@@ -211,15 +289,34 @@ export function ProjectStage({
           el.setAttribute("opacity", "0");
           continue;
         }
+        const appear = smoothstep(clamp01((introT - i / poolSize * 0.35) / 0.65));
+        let y = cell.y + (1 - appear) * 1.4;
+        if (hover > 0 && i % 3 === 0) {
+          y -= hover * 0.45;
+        }
         el.setAttribute("x", String(cell.x * (UNIT + GAP)));
-        el.setAttribute("y", String(cell.y * (UNIT + GAP)));
+        el.setAttribute("y", String(y * (UNIT + GAP)));
         el.setAttribute("fill", cell.fill);
-        el.setAttribute("opacity", "1");
+        el.setAttribute("opacity", String(appear));
       }
     };
 
-    const update = () => {
+    const update = (now = performance.now()) => {
       frame = 0;
+      if (!visible) return;
+
+      if (!introDone && !skipIntro) {
+        introProgress = clamp01((now - introStart) / v2Motion.introMs);
+        paintRest(centered[0], introProgress);
+        track.style.background = stages[0].stageColor;
+        setActiveSafe(0);
+        if (introProgress < 1) {
+          frame = window.requestAnimationFrame(update);
+          return;
+        }
+        introDone = true;
+      }
+
       const rect = track.getBoundingClientRect();
       const viewH = window.innerHeight || 1;
       const total = Math.max(track.offsetHeight - viewH, 1);
@@ -231,7 +328,7 @@ export function ProjectStage({
       const plan = plans[segmentIndex];
       if (!plan) {
         paintRest(centered[stages.length - 1]);
-        setActiveIndex(stages.length - 1);
+        setActiveSafe(stages.length - 1);
         track.style.background = stages[stages.length - 1].stageColor;
         return;
       }
@@ -240,12 +337,16 @@ export function ProjectStage({
         const t = smoothstep(local / MORPH_RATIO);
         paint(plan.pairs, t);
         const stageIdx = t < 0.5 ? segmentIndex : segmentIndex + 1;
-        setActiveIndex(stageIdx);
+        setActiveSafe(stageIdx);
         track.style.background = lerpColor(plan.fromColor, plan.toColor, t);
       } else {
         paintRest(centered[segmentIndex + 1]);
-        setActiveIndex(segmentIndex + 1);
+        setActiveSafe(segmentIndex + 1);
         track.style.background = plan.toColor;
+      }
+
+      if (hoverLiftRef.current !== hoverTargetRef.current && !hoverFrameRef.current) {
+        hoverFrameRef.current = window.requestAnimationFrame(tickHover);
       }
     };
 
@@ -254,17 +355,29 @@ export function ProjectStage({
       frame = window.requestAnimationFrame(update);
     };
 
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible) onScroll();
+      },
+      { threshold: 0.01 },
+    );
+    io.observe(track);
+
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
     return () => {
       if (frame) window.cancelAnimationFrame(frame);
+      if (hoverFrameRef.current) window.cancelAnimationFrame(hoverFrameRef.current);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      io.disconnect();
     };
   }, [centered, plans, poolSize, reducedMotion, segmentCount, stages]);
 
   const active = stages[activeIndex] ?? stages[0];
+  const shown = caption ?? active;
 
   if (reducedMotion) {
     return (
@@ -339,7 +452,15 @@ export function ProjectStage({
           gap: "var(--v2-space-4)",
         }}
       >
-        <div style={{ width: "min(90vw, 1100px)" }}>
+        <div
+          style={{
+            width: "min(90vw, 1100px)",
+            transition: `transform ${v2Motion.hoverMs}ms ${v2Motion.easeSoft}`,
+            transform: exploreHover ? "translateY(-2px)" : "none",
+          }}
+          onMouseEnter={() => active.slug && setHoverTarget(1)}
+          onMouseLeave={() => setHoverTarget(0)}
+        >
           <svg
             viewBox={`0 0 ${svgW} ${svgH}`}
             width="100%"
@@ -370,13 +491,19 @@ export function ProjectStage({
             textAlign: "center",
             maxWidth: "36rem",
             minHeight: 88,
+            opacity: captionOpacity,
+            transition: `opacity ${v2Motion.legendFadeMs}ms ${v2Motion.easeSoft}`,
           }}
         >
-          <p style={{ margin: "0 0 12px", fontSize: 16 }}>{active.summary}</p>
-          {active.slug ? (
+          <p style={{ margin: "0 0 12px", fontSize: 16 }}>{shown.summary}</p>
+          {shown.slug ? (
             <Link
-              to={lp(resolveCaseHref(active))}
-              onClick={(event) => openCase(active, event)}
+              to={lp(resolveCaseHref(shown))}
+              onClick={(event) => openCase(shown, event)}
+              onMouseEnter={() => setHoverTarget(1)}
+              onMouseLeave={() => setHoverTarget(0)}
+              onFocus={() => setHoverTarget(1)}
+              onBlur={() => setHoverTarget(0)}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -384,6 +511,8 @@ export function ProjectStage({
                 fontWeight: 600,
                 fontSize: 15,
                 borderBottom: "2px solid currentColor",
+                transition: `letter-spacing ${v2Motion.hoverMs}ms ${v2Motion.easeSoft}`,
+                letterSpacing: exploreHover ? "0.02em" : "0",
               }}
             >
               {exploreLabel} →
@@ -459,6 +588,7 @@ export function ProjectStage({
                       background:
                         index === activeIndex ? v2Theme.colors.ink : "transparent",
                       border: `1px solid ${v2Theme.colors.ink}`,
+                      transition: `background ${v2Motion.hoverMs}ms ${v2Motion.easeSoft}`,
                     }}
                   />
                 </button>
@@ -472,6 +602,7 @@ export function ProjectStage({
           color={zoom.color}
           to={zoom.to}
           origin={zoom.origin}
+          mode={zoom.mode}
           onDone={() => setZoom(null)}
         />
       ) : null}
