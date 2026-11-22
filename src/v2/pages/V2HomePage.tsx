@@ -72,8 +72,7 @@ export function V2HomePage() {
             stageColor: project.themeColor,
             summary: project.summary,
             slug: project.slug,
-            v2Path:
-              project.slug === "claro" ? "/v2/cases/claro" : undefined,
+            v2Path: `/v2/cases/${project.slug}`,
           }) satisfies StageItem,
       );
 
@@ -182,11 +181,7 @@ export function V2HomePage() {
             {projectVisuals.map((project, index) => (
               <li key={project.slug}>
                 <Link
-                  to={lp(
-                    project.slug === "claro"
-                      ? "/v2/cases/claro"
-                      : `/cases/${project.slug}`,
-                  )}
+                  to={lp(`/v2/cases/${project.slug}`)}
                   onClick={() =>
                     saveStageSession({
                       scrollY: window.scrollY,

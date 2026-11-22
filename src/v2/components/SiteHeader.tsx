@@ -4,15 +4,14 @@ import { useLocalizedPath } from "../../i18n/useLocalizedPath";
 import { v2Theme } from "../tokens/theme";
 
 const navItems = [
-  { key: "about" as const, href: "/#sobre", accent: v2Theme.nav.about },
+  { key: "about" as const, href: "/v2/about", accent: v2Theme.nav.about },
   { key: "work" as const, href: "/v2#work", accent: v2Theme.nav.work },
   {
     key: "journal" as const,
     href: "/entre-jornadas",
     accent: v2Theme.nav.journal,
-    route: true,
   },
-  { key: "contact" as const, href: "/#contato", accent: v2Theme.nav.contact },
+  { key: "contact" as const, href: "/v2/contact", accent: v2Theme.nav.contact },
 ] as const;
 
 type SiteHeaderProps = {
@@ -75,11 +74,10 @@ export function SiteHeader({ brandHref = "/v2" }: SiteHeaderProps) {
         >
           {navItems.map((item) => {
             const label = labels[item.key];
-            const to = "route" in item && item.route ? lp(item.href) : lp(item.href);
             return (
               <li key={item.key}>
                 <Link
-                  to={to}
+                  to={lp(item.href)}
                   style={{
                     display: "inline-flex",
                     alignItems: "center",

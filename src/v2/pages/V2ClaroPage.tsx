@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { SeoHead } from "../../components/seo/SeoHead";
 import { useContent } from "../../content/ContentContext";
 import {
@@ -8,7 +7,6 @@ import {
 import { claroData } from "../../data/caseStudies";
 import { resolveCaseStudyConfig } from "../../data/seedProjects";
 import { useLocale } from "../../i18n/LocaleContext";
-import { useLocalizedPath } from "../../i18n/useLocalizedPath";
 import {
   getManagedProject,
   getSectionImages,
@@ -17,6 +15,7 @@ import {
 import { CaseHero } from "../components/CaseHero";
 import { EditorialSection } from "../components/EditorialSection";
 import { EvidenceGrid } from "../components/EvidenceGrid";
+import { V2CaseChrome } from "../components/V2CaseChrome";
 import { projectVisuals } from "../data/projectVisuals";
 import { v2Theme } from "../tokens/theme";
 import "../tokens/tokens.css";
@@ -28,7 +27,6 @@ const theme = projectVisuals.find((item) => item.slug === "claro");
  */
 export function V2ClaroPage() {
   const { locale } = useLocale();
-  const lp = useLocalizedPath();
   const { content } = useContent();
   const config = resolveCaseStudyConfig("claro", locale, content.projects);
   const page = claroPageContent[locale];
@@ -44,11 +42,13 @@ export function V2ClaroPage() {
   );
 
   const stageColor = theme?.themeColor ?? v2Theme.colors.cyan;
-  const closeLabel = locale === "en" ? "Close" : "Fechar";
-  const next = projectVisuals.find((item) => item.slug === "cashlog");
 
   return (
-    <div className="v2-root" style={{ background: stageColor }}>
+    <V2CaseChrome
+      slug="claro"
+      breadcrumb={config.breadcrumb}
+      stageColor={stageColor}
+    >
       <SeoHead
         title={`${config.title}${config.titleAccent ?? ""} | v2 preview | Ivy DC`}
         description={config.subtitle}
@@ -56,47 +56,6 @@ export function V2ClaroPage() {
         locale={locale}
         robots="noindex, nofollow"
       />
-
-      <div
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 30,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 12,
-          padding: "var(--v2-space-3) var(--v2-gutter)",
-          background: `color-mix(in srgb, ${stageColor} 88%, transparent)`,
-          backdropFilter: "blur(8px)",
-        }}
-      >
-        <Link
-          to={lp("/v2")}
-          style={{
-            fontWeight: 600,
-            fontSize: 14,
-            minHeight: 44,
-            display: "inline-flex",
-            alignItems: "center",
-          }}
-        >
-          ivy.dc
-        </Link>
-        <span style={{ fontSize: 13, opacity: 0.7 }}>{config.breadcrumb}</span>
-        <Link
-          to={lp("/v2#work")}
-          style={{
-            fontWeight: 600,
-            fontSize: 14,
-            minHeight: 44,
-            display: "inline-flex",
-            alignItems: "center",
-          }}
-        >
-          {closeLabel}
-        </Link>
-      </div>
 
       <main>
         <CaseHero
@@ -238,44 +197,6 @@ export function V2ClaroPage() {
           {caseData.quote}
         </blockquote>
       </main>
-
-      <nav
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          gap: 16,
-          padding: "var(--v2-space-4) var(--v2-gutter) var(--v2-space-5)",
-          borderTop: `1px solid color-mix(in srgb, ${v2Theme.colors.ink} 18%, transparent)`,
-          maxWidth: 1200,
-          margin: "0 auto",
-        }}
-        aria-label={locale === "en" ? "Case navigation" : "Navegação do case"}
-      >
-        <Link
-          to={lp("/v2#work")}
-          style={{
-            fontWeight: 600,
-            minHeight: 44,
-            display: "inline-flex",
-            alignItems: "center",
-          }}
-        >
-          ← {locale === "en" ? "Gallery" : "Galeria"}
-        </Link>
-        {next ? (
-          <Link
-            to={lp(`/cases/${next.slug}`)}
-            style={{
-              fontWeight: 600,
-              minHeight: 44,
-              display: "inline-flex",
-              alignItems: "center",
-            }}
-          >
-            {next.displayName} →
-          </Link>
-        ) : null}
-      </nav>
-    </div>
+    </V2CaseChrome>
   );
 }
