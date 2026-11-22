@@ -24,6 +24,7 @@ import { HomePage } from "./pages/HomePage";
 import { PoliciaFederalPage } from "./pages/PoliciaFederalPage";
 import { RiskaiPage } from "./pages/RiskaiPage";
 import { TrusthubPage } from "./pages/TrusthubPage";
+import { V2ClaroPage } from "./v2/pages/V2ClaroPage";
 import { V2HomePage } from "./v2/pages/V2HomePage";
 
 function RiskaiAliasRedirect() {
@@ -44,6 +45,7 @@ function App() {
             <Route path="/:locale" element={<LocaleLayout />}>
               <Route index element={<HomePage />} />
               <Route path="v2" element={<V2HomePage />} />
+              <Route path="v2/cases/claro" element={<V2ClaroPage />} />
               <Route path="entre-jornadas" element={<EntreJornadasPage />} />
               <Route path="entre-jornadas/:slug" element={<BlogPostPage />} />
               <Route path="cases/cashlog" element={<CashlogPage />} />

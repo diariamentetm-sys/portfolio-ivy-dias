@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import { useLocalizedPath } from "../../i18n/useLocalizedPath";
 import { centerLayout, layoutWord, type LayoutCell } from "../glyphs/wordLayout";
@@ -15,6 +15,7 @@ import {
   saveStageSession,
 } from "../motion/stageSession";
 import { v2Theme } from "../tokens/theme";
+import { PixelZoom } from "./PixelZoom";
 
 export type StageItem = {
   id: string;
@@ -24,6 +25,8 @@ export type StageItem = {
   summary: string;
   /** When set, wordmark is a real case link. */
   slug?: string;
+  /** Optional isolated v2 case path (e.g. /v2/cases/claro). */
+  v2Path?: string;
 };
 
 type ProjectStageProps = {
@@ -88,6 +91,11 @@ export function ProjectStage({
   const rectRefs = useRef<(SVGRectElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [zoom, setZoom] = useState<{
+    color: string;
+    to: string;
+    origin: { x: number; y: number };
+  } | null>(null);
 
   const { plans, boxW, boxH, poolSize, centered } = useMemo(
     () => buildPlans(stages),
@@ -123,6 +131,20 @@ export function ProjectStage({
     saveStageSession({
       scrollY: window.scrollY,
       activeIndex,
+    });
+  };
+
+  const resolveCaseHref = (stage: StageItem) =>
+    stage.v2Path ?? (stage.slug ? `/cases/${stage.slug}` : "/v2");
+
+  const openCase = (stage: StageItem, event: MouseEvent<HTMLAnchorElement>) => {
+    persistBeforeLeave();
+    if (!stage.v2Path || reducedMotion) return;
+    event.preventDefault();
+    setZoom({
+      color: stage.stageColor,
+      to: lp(resolveCaseHref(stage)),
+      origin: { x: event.clientX, y: event.clientY },
     });
   };
 
@@ -273,8 +295,8 @@ export function ProjectStage({
               <p style={{ margin: "0 0 12px", maxWidth: "42ch" }}>{stage.summary}</p>
               {stage.slug ? (
                 <Link
-                  to={lp(`/cases/${stage.slug}`)}
-                  onClick={persistBeforeLeave}
+                  to={lp(resolveCaseHref(stage))}
+                  onClick={(event) => openCase(stage, event)}
                   style={{
                     fontWeight: 600,
                     borderBottom: "2px solid currentColor",
@@ -353,8 +375,8 @@ export function ProjectStage({
           <p style={{ margin: "0 0 12px", fontSize: 16 }}>{active.summary}</p>
           {active.slug ? (
             <Link
-              to={lp(`/cases/${active.slug}`)}
-              onClick={persistBeforeLeave}
+              to={lp(resolveCaseHref(active))}
+              onClick={(event) => openCase(active, event)}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -445,6 +467,14 @@ export function ProjectStage({
           </ol>
         </div>
       </div>
+      {zoom ? (
+        <PixelZoom
+          color={zoom.color}
+          to={zoom.to}
+          origin={zoom.origin}
+          onDone={() => setZoom(null)}
+        />
+      ) : null}
     </section>
   );
 }
