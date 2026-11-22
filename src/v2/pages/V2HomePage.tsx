@@ -1,26 +1,28 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { SeoHead } from "../../components/seo/SeoHead";
 import { useLocale } from "../../i18n/LocaleContext";
 import { useLocalizedPath } from "../../i18n/useLocalizedPath";
-import { PixelWordmark } from "../components/PixelWordmark";
+import { ProjectStage, type StageItem } from "../components/ProjectStage";
 import { ScrollIndicator } from "../components/ScrollIndicator";
 import { SiteHeader } from "../components/SiteHeader";
 import { projectVisuals } from "../data/projectVisuals";
+import { v2Theme } from "../tokens/theme";
 import "../tokens/tokens.css";
 
 const V2_FONTS_ID = "v2-fonts";
 const V2_FONTS_HREF =
   "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Space+Grotesk:wght@400;500;600&display=swap";
 
+/** Fase B proof: brand → two real cases only. */
+const PROOF_SLUGS = ["claro", "cashlog"] as const;
+
 /**
- * @description v2 home — Fase A: tokens, header, static monumental wordmark.
- * Morphing ships in Fase B; this page is noindex until release.
+ * @description v2 home — Fase B: scroll morph proof (ivy dc → claro → cashlog).
  */
 export function V2HomePage() {
   const { locale } = useLocale();
   const lp = useLocalizedPath();
-  const firstProject = projectVisuals[0];
 
   useEffect(() => {
     if (document.getElementById(V2_FONTS_ID)) return;
@@ -34,27 +36,57 @@ export function V2HomePage() {
   const copy =
     locale === "en"
       ? {
-          title: "Ivy DC v2 | Post-it to Pixel (preview)",
+          title: "Ivy DC v2 | Pixel morph proof (preview)",
           description:
-            "Isolated redesign preview: monumental pixel wordmark and project stage. Not indexed.",
+            "Isolated redesign preview: scroll morph ivy dc → claro → cashlog. Not indexed.",
           roles: "Service Designer · Product Discovery · CX Designer",
           scroll: "Scroll",
-          stageNote: "Project stage (motion in next phase)",
           explore: "Explore case",
           back: "Back to live site",
           h1: "Ivy DC",
+          brandSummary: "From Post-it to Pixel — motion proof",
+          reducedMotion: "Reduced motion: static stages (morph disabled)",
+          allProjects: "All published cases",
         }
       : {
-          title: "Ivy DC v2 | Post-it to Pixel (preview)",
+          title: "Ivy DC v2 | Prova de morph (preview)",
           description:
-            "Preview isolado do redesign: wordmark pixelado monumental e palco de projetos. Sem indexação.",
+            "Preview isolado: morph no scroll ivy dc → claro → cashlog. Sem indexação.",
           roles: "Service Designer · Product Discovery · CX Designer",
           scroll: "Scroll",
-          stageNote: "Palco de projetos (motion na próxima fase)",
           explore: "Explorar case",
           back: "Voltar ao site atual",
           h1: "Ivy DC",
+          brandSummary: "From Post-it to Pixel — prova de motion",
+          reducedMotion: "Movimento reduzido: stages estáticos (morph desligado)",
+          allProjects: "Todos os cases publicados",
         };
+
+  const stages: StageItem[] = useMemo(() => {
+    const proof = PROOF_SLUGS.map((slug) => {
+      const project = projectVisuals.find((item) => item.slug === slug);
+      if (!project) return null;
+      return {
+        id: project.slug,
+        text: project.displayName,
+        ink: v2Theme.colors.ink,
+        stageColor: project.themeColor,
+        summary: project.summary,
+        slug: project.slug,
+      } satisfies StageItem;
+    }).filter(Boolean) as StageItem[];
+
+    return [
+      {
+        id: "brand",
+        text: "ivy dc",
+        ink: v2Theme.colors.ink,
+        stageColor: v2Theme.colors.canvas,
+        summary: copy.brandSummary,
+      },
+      ...proof,
+    ];
+  }, [copy.brandSummary]);
 
   return (
     <div className="v2-root">
@@ -79,6 +111,7 @@ export function V2HomePage() {
             padding: "var(--v2-space-5) var(--v2-gutter) var(--v2-space-4)",
             gap: "var(--v2-space-4)",
             textAlign: "center",
+            background: v2Theme.colors.canvas,
           }}
         >
           <h1
@@ -97,8 +130,6 @@ export function V2HomePage() {
             {copy.h1}
           </h1>
 
-          <PixelWordmark text="ivy dc" label="ivy dc" maxWidth="min(90vw, 1100px)" />
-
           <p
             style={{
               margin: 0,
@@ -114,64 +145,33 @@ export function V2HomePage() {
           <ScrollIndicator label={copy.scroll} targetId="work" />
         </section>
 
+        <ProjectStage
+          stages={stages}
+          exploreLabel={copy.explore}
+          reducedMotionLabel={copy.reducedMotion}
+        />
+
         <section
-          id="work"
           style={{
-            minHeight: "70svh",
             padding: "var(--v2-space-5) var(--v2-gutter) var(--v2-space-6)",
+            background: v2Theme.colors.canvas,
             borderTop: "1px solid color-mix(in srgb, var(--v2-ink) 10%, transparent)",
           }}
         >
-          <p
+          <h2
             style={{
-              margin: "0 0 var(--v2-space-4)",
+              margin: "0 0 var(--v2-space-3)",
               fontSize: 13,
               letterSpacing: "0.06em",
               textTransform: "uppercase",
-              opacity: 0.65,
+              fontWeight: 600,
             }}
           >
-            {copy.stageNote}
-          </p>
-
-          {/* Fase A: static first-name placeholder — morph comes in Fase B */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              gap: "var(--v2-space-3)",
-              maxWidth: 960,
-            }}
-          >
-            <PixelWordmark
-              text={firstProject.displayName}
-              label={firstProject.displayName}
-              maxWidth="min(88vw, 920px)"
-              ink={firstProject.themeColor}
-            />
-            <p style={{ margin: 0, maxWidth: "40ch", fontSize: 16 }}>
-              {firstProject.summary}
-            </p>
-            <Link
-              to={lp(`/cases/${firstProject.slug}`)}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                minHeight: 44,
-                fontWeight: 600,
-                fontSize: 15,
-                borderBottom: "2px solid currentColor",
-              }}
-            >
-              {copy.explore} →
-            </Link>
-          </div>
-
-          {/* Semantic list for progressive enhancement / reduced-motion path */}
+            {copy.allProjects}
+          </h2>
           <ul
             style={{
-              marginTop: "var(--v2-space-5)",
+              margin: 0,
               padding: 0,
               listStyle: "none",
               display: "grid",
@@ -211,6 +211,7 @@ export function V2HomePage() {
           padding: "var(--v2-space-4) var(--v2-gutter)",
           borderTop: "1px solid color-mix(in srgb, var(--v2-ink) 10%, transparent)",
           fontSize: 14,
+          background: v2Theme.colors.canvas,
         }}
       >
         <Link to={lp("/")} style={{ fontWeight: 500 }}>
